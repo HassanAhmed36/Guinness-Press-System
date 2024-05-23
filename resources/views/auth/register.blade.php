@@ -22,15 +22,20 @@
                         <!-- Title -->
                         <div class="form-group mb-4 col-4">
                             <label for="title">Title</label>
-                            <input id="title" type="text" class="form-control" name="title"
-                                value="{{ old('title') }}" required @error('title') is-invalid @enderror
-                                placeholder="Enter your title">
+                            <select id="title" class="form-control" name="title" required>
+                                <option value="">Select Title</option>
+                                <option value="Prof." {{ old('title') == 'Prof.' ? 'selected' : '' }}>Prof.</option>
+                                <option value="Dr." {{ old('title') == 'Dr.' ? 'selected' : '' }}>Dr.</option>
+                                <option value="Ms." {{ old('title') == 'Ms.' ? 'selected' : '' }}>Ms.</option>
+                                <option value="Mrs." {{ old('title') == 'Mrs.' ? 'selected' : '' }}>Mrs.</option>
+                            </select>
                             @error('title')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
+
                         <!-- First Name -->
                         <div class="form-group mb-4 col-4">
                             <label for="first_name">First Name</label>

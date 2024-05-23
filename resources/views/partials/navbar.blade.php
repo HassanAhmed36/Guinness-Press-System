@@ -12,10 +12,24 @@
                         href="{{ route('home') }}">Home</a>
                 </li>
                 @auth
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('submission/index') ? 'active' : '' }}"
-                            href="{{ route('submission.index') }}">Our Submission</a>
-                    </li>
+                    @if (Auth::user()->role_id == 3)
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('submission/index') ? 'active' : '' }}"
+                                href="{{ route('submission.index') }}">Our Submission</a>
+                        </li>
+                    @endif
+                    @if (in_array(Auth::user()->role_id, [1, 2]))
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('our-submission') ? 'active' : '' }}"
+                                href="{{ route('submission.index') }}">Submissions</a>
+                        </li>
+                    @endif
+                    @if (Auth::user()->role_id == 1)
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('Users') ? 'active' : '' }}"
+                                href="{{ route('user.index') }}">Users</a>
+                        </li>
+                    @endif
                 @endauth
             </ul>
             @guest

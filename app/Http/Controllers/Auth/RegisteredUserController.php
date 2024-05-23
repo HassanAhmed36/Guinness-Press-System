@@ -53,10 +53,9 @@ class RegisteredUserController extends Controller
             'institution' => $request->institution,
             'country' => $request->country,
             'contact_number' => $request->contact_number,
+            'role_id' => 3
         ]);
-
         event(new Registered($user));
-
         Auth::login($user);
         return redirect(route('verification.notice', absolute: false));
     }
