@@ -60,7 +60,7 @@ class SubmissionController extends Controller
                 $name = uniqid() . '.' . $request->manuscript->getClientOriginalName();
                 $manuscript_name = $request->manuscript->getClientOriginalName();
                 $request->manuscript->move(public_path('manuscripts/'), $name);
-                $manuscript_path = 'manuscript/' . $name;
+                $manuscript_path = 'manuscripts/' . $name;
             }
             if ($request->hasFile('cover_letter')) {
                 $name = uniqid() . '.' . $request->cover_letter->getClientOriginalName();

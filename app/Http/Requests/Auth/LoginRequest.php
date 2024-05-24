@@ -41,6 +41,8 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
+
+
         if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
@@ -48,6 +50,16 @@ class LoginRequest extends FormRequest
                 'email' => trans('auth.failed'),
             ]);
         }
+
+    $user = Auth::user();
+
+    if (!$user->is_active) {
+        Auth::logout();
+
+        throw ValidationException::withMessages([
+            'email' => 'Your account is not active.',
+        ]);
+    }
 
         RateLimiter::clear($this->throttleKey());
     }

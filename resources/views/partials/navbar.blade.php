@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary py-2">
     <div class="container">
-        <a class="navbar-brand fw-bold fs-4" href="{{ route('home') }}">Logo.</a>
+        <a class="navbar-brand fw-bolder  fs-4" href="{{ route('home') }}"><strong>Logo.</strong></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -14,7 +14,7 @@
                 @auth
                     @if (Auth::user()->role_id == 3)
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('submission/index') ? 'active' : '' }}"
+                            <a class="nav-link {{ request()->is('our-submission') ? 'active' : '' }}"
                                 href="{{ route('submission.index') }}">Our Submission</a>
                         </li>
                     @endif
@@ -28,6 +28,10 @@
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('Users') ? 'active' : '' }}"
                                 href="{{ route('user.index') }}">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('review-requests') ? 'active' : '' }}"
+                                href="{{ route('reviewer.index') }}">Reviewer Request</a>
                         </li>
                     @endif
                 @endauth

@@ -16,7 +16,7 @@ class UserController extends Controller
         if(in_array(Auth::user()->role_id , [2,3])){
             return back()->with('error' , 'Unauthorized!');
         }
-        $users = User::with('role')->get();
+        $users = User::with('role')->where('is_active' , true)->get();
         $roles = Role::all();
         return view('users.index' , compact('users' , 'roles'));
     }

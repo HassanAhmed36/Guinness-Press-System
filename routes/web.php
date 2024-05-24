@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewerController;
 use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\UserController;
 use App\Models\Submission;
@@ -27,6 +28,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/user-update' , [UserController::class , 'update'])->name('user.update');
     Route::get('/user-delete/{id}' , [UserController::class , 'delete'])->name('user.delete');
 
+    Route::get('/review-requests' , [ReviewerController::class , 'index'])->name('reviewer.index');
+    Route::get('/approve-reviewer-request/{id}' , [ReviewerController::class , 'update'])->name('reviewer.update');
+
 });
+
+Route::get('/review-request' , [ReviewerController::class , 'create'])->name('reviewer.request');
+Route::post('/submit-review-request' , [ReviewerController::class , 'store'])->name('submit.reviewer.request');
+
+
+
 
 require __DIR__.'/auth.php';

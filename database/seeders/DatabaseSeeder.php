@@ -24,10 +24,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::insert([
-            'email' => 'jhon@gmail.com',
+            'email' => 'admin@gmail.com',
             'title' => 'Mr.',
-            'first_name' => 'John',
-            'last_name' => 'Doe',
+            'first_name' => 'Admin',
+            'last_name' => '.',
             'current_job_title' => 'Software Developer',
             'department' => 'Engineering',
             'institution' => 'Example Institution',

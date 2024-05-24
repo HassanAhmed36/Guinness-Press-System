@@ -3,8 +3,8 @@
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-8">
-                <h4 class="mb-4 fw-semibold ">User Registration</h4>
-                <form method="POST" action="{{ route('register') }}">
+                <h4 class="mb-4 fw-semibold">Reviewer Request</h4>
+                <form method="POST" action="{{ route('submit.reviewer.request') }}">
                     @csrf
                     <div class="row">
                         <!-- Email -->
@@ -148,11 +148,8 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="mb-4 col-12">
-                            <a href="{{ route('reviewer.request') }}">review request</a>
-                        </div>
                         <div class="form-group mb-4 col-12">
-                            <button type="submit" class="btn btn-dark">Register</button>
+                            <button type="submit" class="btn btn-dark">Submit Request</button>
                         </div>
                     </div>
 
