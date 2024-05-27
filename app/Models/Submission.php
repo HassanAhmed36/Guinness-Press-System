@@ -21,17 +21,25 @@ class Submission extends Model
         'cover_letter_path',
         'author_message',
         'reviewer_message',
-        'status',
-        'user_id'
+        'admin_message',
+        'reviewer_status',
+        'admin_status',
+        'user_id',
+        'reviewer_id',
     ];
 
-    public function user():BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class , 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function submision_keywords():HasMany
+    public function submision_keywords(): HasMany
     {
-        return $this->hasMany(SubmissionKeyword::class , 'submission_id');
+        return $this->hasMany(SubmissionKeyword::class, 'submission_id');
+    }
+
+    public function reviewer(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'reviewer_id');
     }
 }

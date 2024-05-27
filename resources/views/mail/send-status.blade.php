@@ -9,8 +9,11 @@
 </head>
 
 <body>
-    <p>Hi {{ $user->first_name }} {{ $user->last_name }}, your submitted submission {{ $submission->menuscript_id }} is
-        {{ $statusText }}. Reviewer comments are attached. Please check the comments on our website.</p>
+    <p>Hi,</p>
+    <p>The submission by {{ $user->first_name }} {{ $user->last_name }}, manuscript ID {{ $submission->manuscript_id }},
+        has been {{ $statusText }} by reviewer {{ $submission->reviewer->first_name }}
+        {{ $submission->reviewer->last_name }}. Reviewer comments are attached. Please check the comments on our
+        website.</p>
 </body>
 
 </html>

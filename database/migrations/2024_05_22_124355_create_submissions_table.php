@@ -19,12 +19,15 @@ return new class extends Migration
             $table->string('journal');
             $table->string('manuscript_name');
             $table->string('manuscript_path');
-            $table->string('cover_letter_name');
-            $table->string('cover_letter_path');
+            $table->string('cover_letter_name')->nullable();
+            $table->string('cover_letter_path')->nullable();
             $table->string('author_message')->nullable();
             $table->string('reviewer_message')->nullable();
-            $table->integer('status')->default(0); // 0 - submitted , 1 - Approved , 3 - Rejected
+            $table->string('admin_message')->nullable();
+            $table->integer('reviewer_status')->default(0); // 0 - submitted , 1 - Approved , 3 - Rejected
+            $table->integer('admin_status')->default(0); // 0 - submitted , 1 - Approved , 3 - Rejected
             $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->foreignId('reviewer_id')->nullable()->constrained('users');
             $table->timestamps();
         });
     }

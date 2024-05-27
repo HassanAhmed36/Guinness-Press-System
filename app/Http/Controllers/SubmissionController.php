@@ -32,7 +32,7 @@ class SubmissionController extends Controller
      */
     public function create()
     {
-        return view('submission.create' , [
+        return view('submission.create', [
             'menuscript_id' => $this->create_menuscript_id()
         ]);
     }
@@ -48,8 +48,8 @@ class SubmissionController extends Controller
             'keywords' => 'string',
             'journal' => 'required|string',
             'manuscript' => 'required|file',
-            'cover_letter' => 'required|file',
-            'author_message' => 'sometimes|string'
+            'cover_letter' => 'sometimes|file',
+            'author_message' => 'sometimes'
         ]);
         DB::beginTransaction();
         try {
@@ -76,25 +76,25 @@ class SubmissionController extends Controller
                 'journal' => $request->journal,
                 'manuscript_name' => $manuscript_name,
                 'manuscript_path' => $manuscript_path,
-                'cover_letter_name' => $cover_letter_name,
-                'cover_letter_path' => $cover_letter_path,
-                'author_message' => $request->author_message,
+                'cover_letter_name' => $cover_letter_name ?? null,
+                'cover_letter_path' => $cover_letter_path ?? null,
+                'author_message' => $request->author_message ?? null,
                 'status' => 0,
                 'user_id' => Auth::id()
             ]);
 
-        foreach ($keywordsArray as $key => $value) {
-           SubmissionKeyword::create([
-                'keyword' => $value,
-                'submission_id' => $submission->id
-           ]);
-        }
+            foreach ($keywordsArray as $key => $value) {
+                SubmissionKeyword::create([
+                    'keyword' => $value,
+                    'submission_id' => $submission->id
+                ]);
+            }
             DB::commit();
-            return redirect()->route('submission.index')->with('success' , 'Submitted Successfully!');
+            return redirect()->route('submission.index')->with('success', 'Submitted Successfully!');
         } catch (\Exception $e) {
             DB::rollBack();
             dd($e->getMessage());
-            return back()->with('error' , 'Submission Failed!');
+            return back()->with('error', 'Submission Failed!');
         }
     }
 
@@ -104,7 +104,7 @@ class SubmissionController extends Controller
     public function show(Request $request)
     {
         $submission =  Submission::with('submision_keywords')->find($request->id);
-        return view('modals.view-submission' , compact('submission'))->render();
+        return view('modals.view-submission', compact('submission'))->render();
     }
 
     /**
@@ -126,25 +126,37 @@ class SubmissionController extends Controller
             'reviewer_message' => 'required|string',
         ]);
 
-        $submission = Submission::findOrFail($request->submission_id);
-        $submission->update([
-            'status' => $request->status == "0" ? 2 : 1,
-            'reviewer_message' => $request->reviewer_message,
-        ]);
-
-        $user = $submission->user;
+        $submission = Submission::with('reviewer')->findOrFail($request->submission_id);
+        if (Auth::user()->role_id == 1) {
+            $submission->update([
+                'admin_status' => $request->status == "0" ? 2 : 1,
+                'admin_message' => $request->reviewer_message,
+            ]);
+        } else {
+            $submission->update([
+                'reviewer_status' => $request->status == "0" ? 2 : 1,
+                'reviewer_message' => $request->reviewer_message,
+                'reviewer_id' => Auth::id()
+            ]);
+        }
+        if (Auth::user()->role_id != 1) {
+            $user = User::find(1);
+        } else {
+            $user = $submission->user;
+        }
         $subject = $request->status == "0" ? "Submission Rejected" : "Submission Approved";
         $statusText = $request->status == '0' ? 'Rejected' : 'Approved';
-
-        Mail::send('mail.send-status', ['user' => $user, 'submission' => $submission , 'statusText' => $statusText ], function ($m) use ($user, $subject) {
-            $m->to($user->email)->subject($subject);
-        });
-
+        if (Auth::user()->role_id == 1) {
+            Mail::send('mail.admin-approve', ['user' => $user, 'submission' => $submission, 'statusText' => $statusText], function ($m) use ($user, $subject) {
+                $m->to($user->email)->subject($subject);
+            });
+        } else {
+            Mail::send('mail.send-status', ['user' => $user, 'submission' => $submission, 'statusText' => $statusText], function ($m) use ($user, $subject) {
+                $m->to($user->email)->subject($subject);
+            });
+        }
         return back()->with('success', 'Status Updated Successfully!');
     }
-
-
-
 
     /**
      * Remove the specified resource from storage.
@@ -154,7 +166,8 @@ class SubmissionController extends Controller
         //
     }
 
-    private function create_menuscript_id(){
+    private function create_menuscript_id()
+    {
         $lastSubmission = Submission::orderByDesc('id')->first();
         $id = $lastSubmission ? $lastSubmission->id + 1 : 1;
         return 'MS-' . str_pad($id, 4, '0', STR_PAD_LEFT);

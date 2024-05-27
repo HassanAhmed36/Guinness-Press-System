@@ -31,21 +31,33 @@
                         </thead>
                         <tbody>
                             @forelse ($submissions as $submission)
-                                {{-- @dd($submission->toArray()) --}}
                                 <tr>
                                     <td class="w-50">
                                         <span class="my-0"><span class="fw-semibold "> MenuScript ID:</span>
                                             {{ $submission->menuscript_id }}</span><br>
                                     </td>
-                                    <td>{{ $submission->status == 0 ? 'Submitted' : ($submission->status == 1 ? 'Approved' : 'Rejected') }}
-                                    </td>
+                                    @if (Auth::user()->role_id == 2)
+                                        <td>{{ $submission->reviewer_status == 0 ? 'Submitted' : ($submission->reviewer_status == 1 ? 'Approved' : 'Rejected') }}
+                                        </td>
+                                    @else
+                                        <td>{{ $submission->admin_status == 0 ? 'Submitted' : ($submission->admin_status == 1 ? 'Approved' : 'Rejected') }}
+                                        </td>
+                                    @endif
                                     <td>
                                         <button type="button" class="btn btn-warning btn-sm view_btn"
                                             data-id="{{ $submission->id }}" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal">
                                             view
                                         </button>
-                                        @if (in_array(Auth::user()->role_id, [1, 2]))
+                                        @if (Auth::user()->role_id == 2)
+                                            <button class="btn btn-success btn-sm approveBtn" data-bs-toggle="modal"
+                                                data-bs-target="#StatusModal" data-id="{{ $submission->id }}"
+                                                data-status="1">Approve</button>
+                                            <button class="btn btn-danger btn-sm approveBtn" data-bs-toggle="modal"
+                                                data-bs-target="#StatusModal" data-id="{{ $submission->id }}"
+                                                data-status="0">Reject</button>
+                                        @endif
+                                        @if (Auth::user()->role_id == 1)
                                             <button class="btn btn-success btn-sm approveBtn" data-bs-toggle="modal"
                                                 data-bs-target="#StatusModal" data-id="{{ $submission->id }}"
                                                 data-status="1">Approve</button>

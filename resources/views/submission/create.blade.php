@@ -84,7 +84,7 @@
                             <div class="col-12 mb-3">
                                 <label for="" class="form-label">Message <small>(optional)</small> </label>
                                 <textarea rows="5" class="form-control   @error('author_message') is-invalid  @enderror" name="author_message">{{ old('author_message') ?? '' }} </textarea>
-                                @error('abstract')
+                                @error('author_message')
                                     <div class="invalid-feedback"> {{ $message }} </div>
                                 @enderror
                             </div>
