@@ -43,6 +43,13 @@
                                         value="{{ old('image') }}">
                                 </div>
                             </div>
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Acronym</label>
+                                    <input type="text" class="form-control" placeholder="Enter Your acronym"
+                                        value="{{ $journal->acronym }}" name="acronym" value="{{ old('acronym') }}">
+                                </div>
+                            </div>
                             <div class="col-md-3 pt-4 mt-1">
                                 <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
                                     <input class="form-check-input" type="checkbox" id="SwitchCheckSizemd" name="is_active"
@@ -138,38 +145,40 @@
                                 <div class="col-md-6 mt-1">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Manuscript Prepation Guideline</label>
-                                        <textarea rows="4" class="form-control" name="manuscript_prepation_guideline"
+                                        <textarea rows="4" class="form-control content" name="manuscript_prepation_guideline"
                                             placeholder="Enter Manuscript Prepation Guideline..">{{ old('manuscript_prepation_guideline') ?? $journal->journal_overview->manuscript_prepation_guideline }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mt-1">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Aims & Scope</label>
-                                        <textarea rows="4" class="form-control" name="aims_and_scope" placeholder="Enter Aims & Scope..">{{ old('aims_and_scope') ?? $journal->journal_overview->aims_and_scope }}</textarea>
+                                        <textarea rows="4" class="form-control content" name="aims_and_scope" placeholder="Enter Aims & Scope..">{{ old('aims_and_scope') ?? $journal->journal_overview->aims_and_scope }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mt-1">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Editorial Polices</label>
-                                        <textarea rows="4" class="form-control" name="editorial_polices" placeholder="Enter Editorial Polices..">{{ old('address') ?? $journal->journal_overview->editorial_polices }}</textarea>
+                                        <textarea rows="4" class="form-control content" name="editorial_polices"
+                                            placeholder="Enter Editorial Polices..">{{ old('address') ?? $journal->journal_overview->editorial_polices }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mt-1">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Author Guideline</label>
-                                        <textarea rows="4" class="form-control" name="author_guideline" placeholder="Enter Author Guideline..">{{ old('address') ?? $journal->journal_overview->author_guideline }}</textarea>
+                                        <textarea rows="4" class="form-control content" name="author_guideline"
+                                            placeholder="Enter Author Guideline..">{{ old('address') ?? $journal->journal_overview->author_guideline }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mt-1">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Role of EIC</label>
-                                        <textarea rows="4" class="form-control" name="role_of_eic" placeholder="Enter Role of EIC..">{{ old('address') ?? $journal->journal_overview->role_of_eic }}</textarea>
+                                        <textarea rows="4" class="form-control content" name="role_of_eic" placeholder="Enter Role of EIC..">{{ old('address') ?? $journal->journal_overview->role_of_eic }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mt-1">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Role Of EBM</label>
-                                        <textarea rows="4" class="form-control" name="role_of_ebm" placeholder="Enter Role of EBM..">{{ old('address') ?? $journal->journal_overview->role_of_ebm }}</textarea>
+                                        <textarea rows="4" class="form-control content" name="role_of_ebm" placeholder="Enter Role of EBM..">{{ old('address') ?? $journal->journal_overview->role_of_ebm }}</textarea>
                                     </div>
                                 </div>
                             </div>

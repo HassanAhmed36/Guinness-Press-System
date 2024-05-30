@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class VolumeIssue extends Model
 {
@@ -15,4 +16,13 @@ class VolumeIssue extends Model
         'is_active',
     ];
 
+
+    public function journal(): BelongsTo
+    {
+        return $this->belongsTo(Journal::class);
+    }
+    public function volume(): BelongsTo
+    {
+        return $this->belongsTo(JournalVolume::class, 'volume_id');
+    }
 }

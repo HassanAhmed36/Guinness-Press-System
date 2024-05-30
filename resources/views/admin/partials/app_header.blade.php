@@ -1,82 +1,98 @@
-<header id="page-topbar">
-    <div class="navbar-header">
-        <div class="d-flex">
-            <!-- LOGO -->
-            <div class="navbar-brand-box  pt-4 ">
-                <a href="{{ route('dashboard') }}" class="logo logo-dark">
-                    <span class="logo-sm">
-                        <img src="{{ asset('assets/images/logo.svg') }}">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="{{ asset('assets/images/logo-dark.png') }}">
-                    </span>
-                </a>
-                <a href="index-2.html" class="logo logo-light">
-                    <span class="logo-sm">
-                        <img src="{{ asset('assets/images/logo-light.svg') }}" class="img-fluid w-75">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="{{ asset('assets/images/logo-light.png') }}" class="img-fluid w-75">
-                    </span>
-                </a>
-            </div>
-            <button type="button" class="btn btn-sm px-3  pt-4 font-size-16 header-item waves-effect" id="vertical-menu-btn">
-                <i class="fa fa-fw fa-bars"></i>
-            </button>
-        </div>
-        <div class="d-flex">
-            <div class="dropdown d-inline-block d-lg-none ms-2">
-                <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="mdi mdi-magnify"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                    aria-labelledby="page-header-search-dropdown">
-                    <form class="p-3">
-                        <div class="form-group m-0">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search ..."
-                                    aria-label="Recipient's username">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit"><i
-                                            class="mdi mdi-magnify"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+       <!--app header-->
+       <div class="app-header header">
+           <div class="container-fluid">
+               <div class="d-flex">
+                   <a class="header-brand" href="index.html">
+                       <img src="../../assets/images/brand/logo.png" class="header-brand-img desktop-lgo" alt="Dayonelogo">
+                       <img src="../../assets/images/brand/logo-white.png" class="header-brand-img dark-logo"
+                           alt="Dayonelogo">
+                       <img src="../../assets/images/brand/favicon.png" class="header-brand-img mobile-logo"
+                           alt="Dayonelogo">
+                       <img src="../../assets/images/brand/favicon1.png" class="header-brand-img darkmobile-logo"
+                           alt="Dayonelogo">
+                   </a>
+                   <div class="app-sidebar__toggle" data-bs-toggle="sidebar">
+                       <a class="open-toggle" href="#">
+                           <i class="feather feather-menu"></i>
+                       </a>
+                       <a class="close-toggle" href="#">
+                           <i class="feather feather-x"></i>
+                       </a>
+                   </div>
+                   <div class="mt-0">
+                       <form class="form-inline">
+                           <div class="search-element">
+                               <input type="search" class="form-control header-search" placeholder="Search…"
+                                   aria-label="Search" tabindex="1">
+                               <button class="btn btn-primary-color">
+                                   <i class="feather feather-search"></i>
+                               </button>
+                           </div>
+                       </form>
+                   </div><!-- SEARCH -->
+                   <div class="d-flex order-lg-2 my-auto ms-auto">
+                       <button class="navbar-toggler nav-link icon navresponsive-toggler vertical-icon ms-auto"
+                           type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4"
+                           aria-controls="navbarSupportedContent-4" aria-expanded="false"
+                           aria-label="Toggle navigation">
+                           <i class="fe fe-more-vertical header-icons navbar-toggler-icon"></i>
+                       </button>
+                       <div class="mb-0 navbar navbar-expand-lg navbar-nav-right responsive-navbar navbar-dark p-0">
+                           <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                               <div class="d-flex ms-auto">
+                                   <a class="nav-link my-auto icon p-0 nav-link-lg d-md-none navsearch" href="#"
+                                       data-bs-toggle="search">
+                                       <i class="feather feather-search search-icon header-icon"></i>
+                                   </a>
 
-            <div class="dropdown d-none d-lg-inline-block ms-1">
-                <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
-                    <i class="bx bx-fullscreen"></i>
-                </button>
-            </div>
-            <div class="dropdown d-inline-block" id="right-bar-toggle">
-                <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
-                    <i class="bx bx-bell bx-tada"></i>
-                    <span class="badge bg-danger rounded-pill">3</span>
-                </button>
-            </div>
-            <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user"
-                        src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ Auth::user()->name }}</span>
-                    <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end">
-                    @can('permission', 'employee_detail')
-                        <a class="dropdown-item" href="{{ route('employee.profile', ['id' => Auth::user()->id]) }}"><i
-                                class="bx bx-user font-size-16 align-middle me-1"></i>
-                            <span key="t-profile">Profile</span></a>
-                    @endcan
-                    <a class="dropdown-item text-danger" href="{{ route('admin.logout') }}"><i
-                            class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span
-                            key="t-logout">Logout</span></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+                                   <div class="dropdown header-fullscreen">
+                                       <a class="nav-link icon full-screen-link">
+                                           <i
+                                               class="feather feather-maximize fullscreen-button fullscreen header-icons"></i>
+                                           <i
+                                               class="feather feather-minimize fullscreen-button exit-fullscreen header-icons"></i>
+                                       </a>
+                                   </div>
+
+                                   <div class="dropdown header-notify">
+                                       <a class="nav-link icon" data-bs-toggle="sidebar-right"
+                                           data-bs-target=".sidebar-right">
+                                           <i class="feather feather-bell header-icon"></i>
+                                           <span class="bg-dot"></span>
+                                       </a>
+                                   </div>
+                                   <div class="dropdown profile-dropdown">
+                                       <a href="#" class="nav-link pe-1 ps-0 leading-none"
+                                           data-bs-toggle="dropdown">
+                                           <span>
+                                               <img src="../../assets/images/users/16.jpg" alt="img"
+                                                   class="avatar avatar-md bradius">
+                                           </span>
+                                       </a>
+                                       <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow animated">
+                                           <div class="p-3 text-center border-bottom">
+                                               <a href="profile-1.html"
+                                                   class="text-center user pb-0 font-weight-bold">John
+                                                   Thomson</a>
+                                               <p class="text-center user-semi-title">App Developer</p>
+                                           </div>
+                                           <a class="dropdown-item d-flex" href="profile-1.html">
+                                               <i class="feather feather-user me-3 fs-16 my-auto"></i>
+                                               <div class="mt-1">Profile</div>
+                                           </a>
+                                           <a class="dropdown-item d-flex" href="{{ route('admin.logout') }}">
+                                               <i class="feather feather-power me-3 fs-16 my-auto"></i>
+                                               <div class="mt-1">Logout</div>
+                                           </a>
+                                       </div>
+                                   </div>
+
+                               </div>
+
+                           </div>
+
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>

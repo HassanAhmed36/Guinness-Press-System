@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('journals', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('acronym')->nullable();
             $table->string('issn_no')->nullable();
             $table->string('image');
             $table->text('description');

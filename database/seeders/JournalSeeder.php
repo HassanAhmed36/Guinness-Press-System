@@ -14,6 +14,7 @@ class JournalSeeder extends Seeder
     {
         $journal_one = Journal::create([
             'name' => 'INTERNATIONAL JOURNAL OF EMPIRICAL RESEARCH METHODS',
+            'acronym' => 'ijerm',
             'issn_no' => '2995-6110', 'image' => 'journal-images/1.png',
             'description' => 'The International Journal of Empirical Research Methods is dedicated to promoting and advancing empirical research methodologies across various disciplines. This journal aims to provide a platform for researchers, scholars, educators, and practitioners to share insights, methodologies, and findings that contribute to the improvement of empirical research practices and the enhancement of evidence-based decision-making. ',
             'is_active' => true,
@@ -25,6 +26,7 @@ class JournalSeeder extends Seeder
 
         $journal_two = Journal::create([
             'name' => 'CULTURAL LANDSCAPE INSIGHTS',
+            'acronym' => 'cli',
             'issn_no' => '2995-6129', 'image' => 'journal-images/2.png',
             'description' => 'Cultural Landscape Insights is a multidisciplinary journal that explores and understands the complex interplay between culture, organization, society, and physical environments. This journal provides a platform for researchers, scholars, and practitioners to delve into the rich tapestry of cultural expressions, traditions, and their dynamic relationship with the landscapes they inhabit.',
             'is_active' => true,
@@ -37,6 +39,7 @@ class JournalSeeder extends Seeder
 
         $journal_three = Journal::create([
             'name' => 'SUSTAINABLE ENERGY AND ENVIRONMENT REVIEW',
+            'acronym' => 'seer',
             'issn_no' => '2996-1181', 'image' => 'journal-images/3.png',
             'description' => 'Sustainable Energy and Environment Review is dedicated to advancing the knowledge and understanding of sustainable practices, innovations, and policies in the fields of energy and the environment. Our journal aims to provide a platform for researchers, policymakers, practitioners, and stakeholders to share insights, research findings, and strategies that contribute to the transition towards a more sustainable and environmentally responsible future.',
             'is_active' => true,
@@ -44,12 +47,10 @@ class JournalSeeder extends Seeder
 
 
         $journal_three->journal_matrix()->create(['acceptance_rate' => '39', 'submission_to_final_decision' => '143', 'acceptance_to_publication' => '41', 'dio_prefix' => '10.59762/seer', 'publication_type' => 'Peer Reviewed', 'publishing_model' => 'Open Access', 'journal_category' => 'Environmental Sciences / Energy', 'acp' => '100',]);
-
         $this->create_overview($journal_three);
-
-
         $journal_four = Journal::create([
             'name' => 'CURRENT INTEGRATIVE ENGINEERING',
+            'acronym' => 'cie',
             'issn_no' => '2995-6307', 'image' => 'journal-images/4.png',
             'description' => 'Current Integrative Engineering is dedicated to providing a platform for the exchange of cutting-edge research and innovative solutions across various engineering disciplines. Our mission is to foster collaboration and knowledge sharing among engineers, researchers, and industry professionals. We aim to bridge gaps in understanding, encourage interdisciplinary collaborations, and contribute to the collective advancement of engineering knowledge and its practical applications. Through our diverse scope, we strive to drive innovation, sustainability, and progress in the field of engineering.',
             'is_active' => true,
@@ -63,6 +64,7 @@ class JournalSeeder extends Seeder
 
         $journal_five = Journal::create([
             'name' => 'JOURNAL OF BUSINESS LEADERSHIP AND MANAGEMENT',
+            'acronym' => 'jblm',
             'issn_no' => '2995-620X', 'image' => 'journal-images/5.png',
             'description' => 'The Journal of Business Leadership and Management is committed to advancing the understanding of effective leadership and management practices in the dynamic landscape of business. Our journal aims to provide a platform for academics, practitioners, researchers, and thought leaders to share insights, research findings, and strategies that contribute to informed decision-making and organizational success.',
             'is_active' => true,
@@ -75,6 +77,7 @@ class JournalSeeder extends Seeder
 
         $journal_six = Journal::create([
             'name' => 'RECENT EDUCATIONAL RESEARCH',
+            'acronym' => 'reer',
             'issn_no' => '2996-2366', 'image' => 'journal-images/6.png',
             'description' => 'The aim of the journal "Recent Educational Research" is to provide a platform for scholars, researchers, educators, and practitioners to disseminate high-quality, original research findings and innovative educational practices. The journal strives to advance the understanding of contemporary educational issues and contribute to the enhancement of teaching, learning, and educational policy development.',
             'is_active' => true,
@@ -87,6 +90,7 @@ class JournalSeeder extends Seeder
 
         $journal_seven = Journal::create([
             'name' => 'PHARMACEUTICAL BREAKTHROUGHS',
+            'acronym' => 'pb',
             'issn_no' => '2996-1157', 'image' => 'journal-images/7.png',
             'description' => 'Pharmaceutical Breakthroughs is dedicated to fostering a deep understanding of novel developments, advancements, and breakthroughs in the field of pharmaceutical sciences. Our journal aims to be a platform for researchers, scientists, clinicians, and industry professionals to share their insights, discoveries, and perspectives in the realm of pharmaceutical innovation.',
             'is_active' => true,
@@ -99,6 +103,7 @@ class JournalSeeder extends Seeder
 
         $journal_eight = Journal::create([
             'name' => 'MEDICAL SPECTRUM REVIEW',
+            'acronym' => 'msr',
             'issn_no' => '', 'image' => 'journal-images/8.png',
             'description' => 'Medical Spectrum Review is dedicated to advancing medical knowledge and practice. Our journal aims to facilitate collaboration among diverse medical professionals, including clinicians, researchers, and educators. We strive to promote the translation of cutting-edge research into clinical applications for enhanced patient care. Additionally, we address global health challenges through impactful research and public health initiatives. Above all, we encourage ethical and evidence-based medical practice, prioritizing patient well-being. Medical Spectrum Review strives to contribute to the continuous improvement of healthcare worldwide.',
             'is_active' => true,
@@ -111,6 +116,7 @@ class JournalSeeder extends Seeder
 
         $journal_nine = Journal::create([
             'name' => 'STRATEGIC FINANCIAL REVIEW',
+            'acronym' => 'sfr',
             'issn_no' => '', 'image' => 'journal-images/9.png',
             'description' => 'Strategic Financial Review is dedicated to advancing the understanding of strategic financial management and its role in driving organizational success. Our journal aims to provide a platform for researchers, practitioners, academics, and policymakers to share insights, research findings, and strategies that contribute to informed financial decision-making and sustainable growth.',
             'is_active' => true,
@@ -123,6 +129,7 @@ class JournalSeeder extends Seeder
 
         $journal_ten = Journal::create([
             'name' => 'ADVANCED CHEMISTRY INSIGHTS',
+            'acronym' => 'aci',
             'issn_no' => '', 'image' => 'journal-images/10.jpg',
             'description' => 'Advanced Chemistry Insights is a leading platform for the dissemination of cutting-edge research and insights in the field of chemistry. The journal is committed to advancing scientific knowledge and catalyzing innovation across various domains of chemistry.',
             'is_active' => true,

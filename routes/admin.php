@@ -1,19 +1,21 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\JournalBoardMemberController;
-use App\Http\Controllers\JournalController;
-use App\Http\Controllers\JournalVolumeController;
+use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DoiGeneratorController;
+use App\Http\Controllers\Admin\JournalBoardMemberController;
+use App\Http\Controllers\Admin\JournalController;
+use App\Http\Controllers\Admin\JournalVolumeController;
+use App\Http\Controllers\Admin\VolumeIssueController;
+use App\Services\CustomService;
 use Illuminate\Support\Facades\Route;
 
 
 
 Route::prefix('/admin')->group(function () {
-
     Route::redirect('/', '/login');
     Route::get('/login', [AuthController::class, 'login'])->name('admin.login');
     Route::post('/submit-login', [AuthController::class, 'Submitlogin'])->name('admin.submit.login');
-
     //journals
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
     Route::get('/journals', [JournalController::class, 'index'])->name('admin.journal.index');
@@ -37,6 +39,32 @@ Route::prefix('/admin')->group(function () {
     Route::post('/update-volume/{id}', [JournalVolumeController::class, 'update'])->name('admin.volume.update');
     Route::get('/delete-volume/{id}', [JournalVolumeController::class, 'destroy'])->name('admin.volume.destroy');
 
+    //Issue
+    Route::get('/issues', [VolumeIssueController::class, 'index'])->name('admin.issue.index');
+    Route::post('/issues-store', [VolumeIssueController::class, 'store'])->name('admin.issue.store');
+    Route::get('/issues-edit', [VolumeIssueController::class, 'edit'])->name('admin.issue.edit');
+    Route::post('/issues-update/{id}', [VolumeIssueController::class, 'update'])->name('admin.issue.update');
+    Route::get('/issues-delete/{id}', [VolumeIssueController::class, 'destroy'])->name('admin.issue.delete');
+
+    //Articles
+    Route::get('/articles', [ArticleController::class, 'index'])->name('admin.article.index');
+    Route::get('/article-create', [ArticleController::class, 'create'])->name('admin.article.create');
+    Route::post('/article-store', [ArticleController::class, 'store'])->name('admin.article.store');
+    Route::get('/article-edit/{id}', [ArticleController::class, 'edit'])->name('admin.article.edit');
+    Route::post('/article-update/{id}', [ArticleController::class, 'update'])->name('admin.article.update');
+    Route::get('/article-delete/{id}', [ArticleController::class, 'destroy'])->name('admin.article.delete');
+
+    //Extra
+    Route::get('/fetch-volumes', [CustomService::class, 'fetchVolumes'])->name('volumes.fetch');
+    Route::get('/fetch-issue', [CustomService::class, 'fetchIssue'])->name('issue.fetch');
+
+    //doi dependent select box
+    Route::get('/fetch-volumes-dio', [CustomService::class, 'fetchVolumesdoi'])->name('volumes.fetch.dio');
+    Route::get('/fetch-issue-dio', [CustomService::class, 'fetchIssuedoi'])->name('issue.fetch.dio');
+
+    //DOI Generator
+    Route::get('/DOI-Generator', [DoiGeneratorController::class, 'index'])->name('doi.index');
+    Route::post('/DOI-Generator-Save', [DoiGeneratorController::class, 'store'])->name('doi.store');
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
 });

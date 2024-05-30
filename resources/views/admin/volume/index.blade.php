@@ -13,11 +13,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="card-title fs-4 fw-semibold">Journal Volumes</h3>
+                        <h3 class="card-title fs-4 fw-semibold">Journal Volums</h3>
                         <div>
                             <button data-bs-toggle="modal" data-bs-target="#myModal"
                                 class="btn btn-primary waves-effect waves-light">
-                                <i class="fa fa-plus-circle me-2"></i>Add new Volumes</button>
+                                <i class="fa fa-plus-circle me-2"></i>Add new Volums</button>
                         </div>
                     </div>
                     <hr>
@@ -36,7 +36,8 @@
                             @foreach ($volums as $v)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $v->name }}</td>
+                                    {{-- <td>{{ $v->id }}</td> --}}
+                                    <td>volume {{ $v->name }}</td>
                                     <td>{{ $v->journal->name }}</td>
                                     <td>{{ $v->created_at->format('Y') }}</td>
                                     <td>

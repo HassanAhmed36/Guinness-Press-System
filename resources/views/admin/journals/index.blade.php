@@ -11,22 +11,23 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="card-title fs-4 fw-semibold">Journals</h3>
-                        <div>
-                            <a href="{{ route('admin.journal.create') }}" class="btn btn-primary waves-effect waves-light">
-                                <i class="fa fa-plus-circle me-2"></i>Add new Journals</a>
-                        </div>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="">
+                        <h4 class="card-title fs-5 fw-bold">Journals</h4>
                     </div>
-                    <hr>
-                    <br>
+                    <div>
+                        <a href="{{ route('admin.journal.create') }}" class="btn btn-primary waves-effect waves-light">
+                            <i class="fa fa-plus-circle me-2"></i>Add new Journals</a>
+                    </div>
+                </div>
+                <div class="card-body">
                     <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
                         <thead>
                             <tr>
                                 <th>S.No</th>
                                 <th>Image</th>
                                 <th>Name</th>
+                                <th>Acronym</th>
                                 <th>ISSN No</th>
                                 <th>Action</th>
                             </tr>
@@ -35,9 +36,14 @@
                             @foreach ($journals as $j)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td class="w-25"><img src="{{ asset($j->image) }}" alt="" class="img-fluid "
-                                            style="height: 80px; width:80px"></td>
-                                    <td class="w-50">{{ $j->name }}</td>
+                                    <td>
+                                        <span class="w-50 h-25">
+                                            <img src="{{ asset($j->image) }}" alt="" class="img-fluid"
+                                                style="width: 50px; object-fit: cover">
+                                        </span>
+                                    </td>
+                                    <td>{{ $j->name }}</td>
+                                    <td>{{ $j->acronym }}</td>
                                     <td class="">{{ $j->issn_no }}</td>
                                     <td>
                                         <a class="btn btn-primary btn-sm edit-department"

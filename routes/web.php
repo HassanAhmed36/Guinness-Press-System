@@ -11,7 +11,7 @@ use App\Models\Journal;
 use App\Models\Submission;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => view('index'))->name('home');
+Route::get('/', fn () => redirect()->route('admin.login'))->name('home');
 Route::view('/email', 'email');
 
 Route::middleware('auth')->group(function () {

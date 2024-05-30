@@ -1,129 +1,170 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Dashboard | HRM - Human Resources managment</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesbrand" name="author" />
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet"
-        type="text/css">
-    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <!-- Meta data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <!-- Title -->
+    <title>Guinness Press System</title>
+
+    <link rel="icon" href="{{ asset('admin_assets/images/brand/favicon.ico') }}" type="image/x-icon" />
+    <link href="{{ asset('admin_assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/css/boxed.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/css/dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/css/skin-modes.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/css/animated.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/plugins/p-scrollbar/p-scrollbar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/css/icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/plugins/sidebar/sidebar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/plugins/select2/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/plugins/datatable/css/dataTables.bootstrap5.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/plugins/datatable/css/buttons.bootstrap5.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin_assets/plugins/datatable/responsive.bootstrap5.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/plugins/wysiwyag/richtext.css') }}" rel="stylesheet" />
+
     <style>
-        .toast-success {
-            background-color: rgb(10, 192, 116) !important;
+        .form-control::placeholder {
+            color: rgba(0, 0, 0, 0.820) !important;
         }
     </style>
+
 </head>
 
-<body data-sidebar="dark">
-    <div id="layout-wrapper">
-        @include('admin.partials.app_header')
-        @include('admin.partials.sidebar')
-        <div class="main-content">
-            <div class="page-content">
-                <div class="container-fluid">
-                    @yield('main_section')
-                </div>
-            </div>
-        </div>
+<body class="app sidebar-mini">
+
+    <!---Global-loader-->
+    <div id="global-loader">
+        <img src="{{ asset('admin_assets/images/svgs/loader.svg') }}" alt="loader">
     </div>
-    <div class="right-bar">
-        <div data-simplebar class="h-100" style="background: white !important;">
-            <div class="">
-                <div class="py-2 d-flex justify-content-between align-items-center px-3"
-                    style="border-bottom: 2px solid lightgray ">
-                    <div>
-                        <h5 class="mt-3 ">Notifications</h5>
+
+    <div class="page">
+        <div class="page-main">
+            @include('admin.partials.sidebar')
+            @include('admin.partials.app_header')
+            <div class="app-content main-content">
+                <div class="side-app">
+                    <div class="pt-5">
+                        @yield('main_section')
                     </div>
-                    <button class="btn btn-light" id="close-btn">X</button>
-                </div>
-                <div id="notification-box">
-
                 </div>
             </div>
         </div>
-        <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
-        <div class="bg-light shadow-lg"></div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-        <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/metismenu/metisMenu.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-        <script src="{{ asset('assets/js/app.js') }}"></script>
-        <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
-        <script>
-            $('#datatable').DataTable();
-        </script>
-        @session('success')
-            <script>
-                toastr.success("{{ session('success') }}");
-            </script>
-        @endsession
-        @session('error')
-            <script>
-                toastr.error("{{ session('error') }}");
-            </script>
-        @endsession
-        {{-- <script>
-            $(document).ready(function() {
-                function fetchNotifications() {
-                    $.ajax({
-                        type: "GET",
-                        url: "{{ route('get.notification') }}",
-                        success: function(response) {
-                            $('#notification-box').html(response);
-                        }
-                    });
-                }
+        <!--Footer-->
+        <footer class="footer">
+            <div class="container">
+                <div class="row align-items-center flex-row-reverse">
+                    <div class="col-md-12 col-sm-12 mt-3 mt-lg-0 text-center">
+                        Copyright © 2021 <a href="#">Dayone</a>. Designed with <span
+                            class="fa fa-heart text-danger"></span> by <a href="#">Spruko Technologies
+                            Pvt.Ltd</a> All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer-->
 
-                $('#close-btn').click(function(e) {
-                    e.preventDefault();
-                    $('.right-bar').hide();
-                });
-                $('#right-bar-toggle').click(function(e) {
-                    e.preventDefault();
-                    $('.right-bar').show();
-                });
-                $(document).on('click', '.read-notification', function(e) {
-                    e.preventDefault();
-                    var notificationID = $(this).data('id');
-                    $.ajax({
-                        type: "GET",
-                        url: "{{ route('read.notification') }}",
-                        data: {
-                            id: notificationID
-                        },
-                        success: function(response) {
-                            if (response) {
-                                toastr.success('Notification read successfully');
-                                fetchNotifications();
-                            } else {
-                                toastr.error('Failed to read notification');
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
-                        }
-                    });
-                });
-                fetchNotifications();
-            });
-        </script> --}}
+        <!--sidebar-right-->
+        <div class="sidebar sidebar-right sidebar-animate">
+            <div class="card-header border-bottom pb-5">
+                <h4 class="card-title">Notifications </h4>
+                <div class="card-options">
+                    <a href="#" class="btn btn-sm btn-icon btn-light  text-primary" data-bs-toggle="sidebar-right"
+                        data-bs-target=".sidebar-right"><i class="feather feather-x"></i> </a>
+                </div>
+            </div>
+            <div class="">
+                <div class="list-group-item  align-items-center border-0">
+                    <div class="d-flex">
+                        <span class="avatar avatar-lg brround me-3"
+                            style="background-image: url(../../assets/images/users/4.jpg)"></span>
+                        <div class="mt-1">
+                            <a href="#" class="font-weight-semibold fs-16">Liam <span
+                                    class="text-muted font-weight-normal">Sent Message</span></a>
+                            <span class="clearfix"></span>
+                            <span class="text-muted fs-13 ms-auto"><i class="mdi mdi-clock text-muted me-1"></i>30
+                                mins ago</span>
+                        </div>
+                        <div class="ms-auto">
+                            <a href="" class="me-0 option-dots" data-bs-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                                <span class="feather feather-more-horizontal"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" role="menu">
+                                <li><a href="#"><i class="feather feather-eye me-2"></i>View</a></li>
+                                <li><a href="#"><i class="feather feather-plus-circle me-2"></i>Add</a></li>
+                                <li><a href="#"><i class="feather feather-trash-2 me-2"></i>Remove</a></li>
+                                <li><a href="#"><i class="feather feather-settings me-2"></i>More</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--/sidebar-right-->
     </div>
+
+    <a href="#top" id="back-to-top"><span class="feather feather-chevrons-up"></span></a>
+    <script src="{{ asset('admin_assets/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/bootstrap/js/popper.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/othercharts/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/circle-progress/circle-progress.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/sidemenu/sidemenu.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/p-scrollbar/p-scrollbar.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/p-scrollbar/p-scroll1.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/sidebar/sidebar.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/js/custom.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/js/datatables.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/wysiwyag/jquery.richtext.js') }}"></script>
+    <link href="{{ asset('admin_assets/plugins/wysiwyag/richtext.css') }}" rel="stylesheet" />
+    <script src="{{ asset('admin_assets/js/formelementadvnced.js') }}"></script>
+    <script src="{{ asset('admin_assets/js/form-elements.js') }}"></script>
+    <script src="{{ asset('admin_assets/js/select2.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.content').each(function() {
+                $(this).richText({
+                    bold: true,
+                    italic: true,
+                    underline: false,
+                    strikeThrough: false,
+                    ol: false,
+                    ul: false,
+                    heading: false,
+                    fontColor: false,
+                    fontSize: true,
+                    imageUpload: false,
+                    fileUpload: false,
+                    videoEmbed: false,
+                    urls: false,
+                    table: false,
+                    removeStyles: false,
+                    code: false,
+                    youtube: false,
+                    align: true,
+                    leftAlign: true,
+                    centerAlign: true,
+                    rightAlign: true,
+                    justify: true,
+                });
+            });
+
+            $('#datatable').DataTable();
+        })
+    </script>
+
+
 </body>
 
 </html>

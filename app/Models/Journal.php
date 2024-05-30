@@ -11,6 +11,7 @@ class Journal extends Model
 
     protected $fillable = [
         'name',
+        'acronym',
         'issn_no',
         'image',
         'description',

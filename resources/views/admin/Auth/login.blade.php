@@ -1,80 +1,63 @@
- @extends('admin.Layout.auth-master')
- @section('main_section')
-     <div class="row justify-content-center mt-5">
-         <div class="col-md-8 col-lg-6 col-xl-5">
-             <div class="card overflow-hidden">
-                 <div class="bg-primary-subtle" style="background-color: #184888; color:aliceblue">
-                     <div class="row">
-                         <div class="col-7">
-                             <div class="text-primary p-4">
-                                 <h5 class="text-white">Welcome Back !</h5>
-                                 <p class="text-white">Sign in to continue to Admin Dashboard.</p>
-                             </div>
-                         </div>
-                         <div class="col-5 align-self-end">
-                             <img src="assets/images/profile-img.png" alt="" class="img-fluid">
-                         </div>
-                     </div>
-                 </div>
-                 <div class="card-body pt-0">
-                     <div class="auth-logo">
-                         <a href="index-2.html" class="auth-logo-light">
-                             <div class="avatar-md profile-user-wid mb-4">
-                                 <span class="avatar-title rounded-circle bg-light">
-                                     <img src="{{ asset('assets/images/logo-light.svg') }}" alt=""
-                                         class="rounded-circle" height="34">
-                                 </span>
-                             </div>
-                         </a>
-                         <a href="index-2.html" class="auth-logo-dark">
-                             <div class="avatar-md profile-user-wid mb-4">
-                                 <span class="avatar-title rounded-circle bg-light">
-                                     <img src="{{ asset('assets/images/logo.svg') }}" alt="" class="rounded-circle"
-                                         height="34">
-                                 </span>
-                             </div>
-                         </a>
-                     </div>
-                     <div class="p-2">
-                         <form class="form-horizontal" action="{{ route('admin.submit.login') }}" method="POST">
-                             @csrf
-                             <div class="mb-3">
-                                 <label for="username" class="form-label">Email</label>
-                                 <input type="text" name="email" class="form-control" placeholder="Enter Email">
-                                 @error('email')
-                                     <span class="text-danger">{{ $message }}</span>
-                                 @enderror
-                             </div>
-                             <div class="mb-3">
-                                 <label class="form-label">Password</label>
-                                 <div class="input-group auth-pass-inputgroup">
-                                     <input type="password" class="form-control" placeholder="Enter password"
-                                         name="password">
-                                     <button class="btn btn-light " type="button" id="password-addon"><i
-                                             class="mdi mdi-eye-outline"></i></button>
-                                 </div>
-                                 @error('password')
-                                     <span class="text-danger">{{ $message }}</span>
-                                 @enderror
-                             </div>
-                             <div class="form-check">
-                                 <input class="form-check-input" type="checkbox" id="remember-check">
-                                 <label class="form-check-label" for="remember-check">
-                                     Remember me
-                                 </label>
-                             </div>
-                             <div class="mt-3 d-grid">
-                                 <button class="btn btn-primary waves-effect waves-light" type="submit">Log In</button>
-                             </div>
-                             <div class="mt-4 text-center">
-                                 <a href="" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot
-                                     your password?</a>
-                             </div>
-                         </form>
-                     </div>
+@extends('admin.Layout.auth-master')
+@section('main_sction')
+    <div class="page login-bg">
+        <div class="page-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col mx-auto">
+                        <div class="row justify-content-center">
+                            <div class="col-md-7 col-lg-5">
+                                <div class="card">
+                                    <div class="p-4 pt-6 text-center">
+                                        <h1 class="mb-2">
+                                            <img src="https://guinnesspress.org/assets/images/logo-dark.png" alt="">
+                                        </h1>
+                                        <p class="text-muted">Sign In to your account</p>
+                                    </div>
+                                    <form class="card-body pt-3" action="{{ route('admin.submit.login') }}" method="POST">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label class="form-label">Email</label>
+                                            <div class="input-group mb-4">
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        <i class="fe fe-mail" aria-hidden="true"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="Email" name="email">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Password</label>
+                                            <div class="input-group mb-4">
+                                                <div class="input-group" id="Password-toggle">
+                                                    <a href="" class="input-group-text">
+                                                        <i class="fe fe-eye-off" aria-hidden="true"></i>
+                                                    </a>
+                                                    <input class="form-control" type="password" placeholder="Password"
+                                                        name="password">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" name="example-checkbox1"
+                                                    value="option1">
+                                                <span class="custom-control-label">Remeber me</span>
+                                            </label>
+                                        </div>
+                                        <div class="submit">
+                                            <button class="btn btn-primary btn-block" type="submit">Login</button>
+                                        </div>
 
-                 </div>
-             </div>
-         </div>
-     </div>
- @endsection
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

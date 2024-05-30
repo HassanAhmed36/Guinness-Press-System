@@ -15,13 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('author_name');
-            $table->string('author_education');
+            $table->string('author_affiliation');
             $table->string('page');
             $table->string('published_date');
             $table->string('doi');
             $table->integer('views_count');
             $table->integer('download_count');
             $table->boolean('is_active');
+            $table->string('file');
+            $table->foreignId('issue_id')->constrained('volume_issues')->cascadeOnDelete();
+            $table->foreignId('volume_id')->constrained('journal_volumes')->cascadeOnDelete();
+            $table->foreignId('journal_id')->constrained('journals')->cascadeOnDelete();
             $table->timestamps();
         });
     }

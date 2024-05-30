@@ -1,49 +1,37 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Login | HRM - Human Resources Managment</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="HRM - Human Resources Managment" name="description" />
-    <meta content="Build By Hassan Ahmed" name="author" />
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
-    <link href="{{ asset('admin_assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('admin_assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('admin_assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <style>
-        .toast-success {
-            background-color: rgb(10, 192, 116) !important;
-        }
-    </style>
+
+    <!-- Meta data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <!-- Title -->
+    <title>Guinness Press System</title>
+
+    <!--Favicon -->
+    <link rel="icon" href="../../assets/images/brand/favicon.ico" type="image/x-icon" />
+
+    <link href="{{ asset('admin_assets/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/css/boxed.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/css/dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/css/skin-modes.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/css/animated.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/css/icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/plugins/select2/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/plugins/p-scrollbar/p-scrollbar.css') }}" rel="stylesheet" />
 </head>
 
-<body>
-    <div class="account-pages my-5 pt-sm-5">
-        <div class="container">
-            @yield('main_section')
-        </div>
-    </div>
-    <script src="{{ asset('admin_assets/libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/libs/metismenu/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/libs/simplebar/simplebar.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/libs/node-waves/waves.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/js/app.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<body class="">
+    @yield('main_sction')
+    <script src="{{ asset('admin_assets/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/bootstrap/js/popper.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/p-scrollbar/p-scrollbar.js') }}"></script>
+    <script src="{{ asset('admin_assets/js/custom.js') }}"></script>
 
-    @session('success')
-        <script>
-            toastr.success("{{ session('success') }}");
-        </script>
-    @endsession
-    @session('error')
-        <script>
-            toastr.error("{{ session('error') }}");
-        </script>
-    @endsession
 </body>
 
 </html>
