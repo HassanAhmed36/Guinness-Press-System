@@ -19,7 +19,7 @@
                         class="avatar-xxl rounded-circle mb-1">
                 </div>
                 <div class="user-info">
-                    <h5 class=" mb-3">{{ Auth::user()->first_name }}{{ Auth::user()->last_name }}</h5>
+                    <h5 class=" mb-3">{{ Auth::user()->full_name }}</h5>
                     <span class="text-muted app-sidebar__user-name text-sm">{{ Auth::user()->role->name ?? '' }}</span>
                 </div>
             </div>

@@ -40,7 +40,8 @@
                                     </select>
                                 </div>
                             </div>
-
+                            <input type="hidden" name="author_array" id="author_array">
+                            <input type="hidden" name="affiliation_array" id="affiliation_array">
                             <div class="col-md-3 mb-4">
                                 <div class="mb-4">
                                     <label for="" class="form-label">Issue</label>
@@ -215,35 +216,22 @@
                                     <h5 class="my-3">Article Details</h5>
                                     <hr>
                                 </div>
-                                <div class="col-md-6 mb-2">
+                                <div class="col-md-12 mb-2">
                                     <div class="mb-4">
                                         <label for="" class="form-label">Abstract</label>
                                         <textarea rows="4" class="form-control content" name="abstract" placeholder="Enter Abstract..">{{ old('abstract') }}</textarea>
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-2">
+                                <div class="col-md-12 mb-2">
                                     <div class="mb-4">
                                         <label for="" class="form-label">References</label>
                                         <textarea rows="4" class="form-control content" name="references" placeholder="Enter references..">{{ old('references') }}</textarea>
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-2">
+                                <div class="col-md-12 mb-2">
                                     <div class="mb-4">
-                                        <label for="" class="form-label">citation</label>
-                                        <textarea rows="4" class="form-control content" name="citation" placeholder="Enter references..">{{ old('citation') }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-2">
-                                    <div class="mb-4">
-                                        <label for="" class="form-label">Metrics</label>
-                                        <textarea rows="4" class="form-control content" name="metrics" placeholder="Enter metrics..">{{ old('metrics') }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-2">
-                                    <div class="mb-4">
-                                        <label for="" class="form-label">Copyright And Permission</label>
-                                        <textarea rows="4" class="form-control content" name="copyright_and_permission"
-                                            placeholder="Enter Copyrights and Permissions">{{ old('references') }}</textarea>
+                                        <label for="" class="form-label">Extra Meta Data</label>
+                                        <textarea rows="4" class="form-control content" name="references" placeholder="Enter references..">{{ old('references') }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -258,7 +246,6 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script>
         $(document).ready(function() {
             $('#journal').change(function() {
@@ -295,22 +282,26 @@
             });
         });
     </script>
-
     <script>
         $(document).ready(function() {
             let affiliations = [];
+            let authors = [];
 
             function updateAffiliations() {
                 affiliations = [];
                 $('.affiliation-entry').each(function() {
                     let name = $(this).find('input[name="affiliation[name]"]').val();
                     let country = $(this).find('select[name="affiliation[country]"]').val();
+                    let id = 0;
                     if (name && country && country !== 'Choose Country') {
                         affiliations.push({
+                            id: id++,
                             name: name,
                             country: country
                         });
                     }
+                    console.log(affiliations);
+                    $('#affiliation_array').val(JSON.stringify(affiliations))
                 });
 
                 // Update all affiliation dropdowns
@@ -318,22 +309,46 @@
                     $(this).empty().append('<option selected disabled>Choose Affiliation</option>');
                     affiliations.forEach(function(affiliation) {
                         $(this).append(
-                            `<option value="${affiliation.name}">${affiliation.name}</option>`);
+                            `<option value="${affiliation.id}">${affiliation.name}</option>`);
                     }.bind(this));
                 });
-
                 $('.select2').select2();
+            }
+
+            function updateAuthors() {
+                authors = [];
+                $('.author-form').each(function() {
+                    let firstname = $(this).find('input[name="authors[][firstname]"]').val();
+                    let middlename = $(this).find('input[name="authors[][middlename]"]').val();
+                    let lastname = $(this).find('input[name="authors[][lastname]"]').val();
+                    let affiliations = $(this).find('select[name="authors[][affiliation][]"]').val();
+                    let email = $(this).find('input[name="authors[][email]"]').val();
+                    let orchid_id = $(this).find('input[name="authors[][orchid_id]"]').val();
+
+                    if (firstname && lastname && email && affiliations && affiliations.length > 0) {
+                        authors.push({
+                            firstname: firstname,
+                            middlename: middlename,
+                            lastname: lastname,
+                            affiliations: affiliations,
+                            email: email,
+                            orchid_id: orchid_id
+                        });
+                    }
+                });
+                console.log("Authors:", authors);
+                $('#author_array').val(JSON.stringify(authors))
             }
 
             $('#affiliation-container').on('click', '.add-affiliation', function() {
                 let newAffiliationRow = $(`
-            <div class="row affiliation-entry"><div class="col-7"><div class="mb-4"><label for="affiliation_name" class="form-label">Affiliation</label> <input type="text" class="form-control" name="affiliation[name]" placeholder="Enter Affiliation" required></div></div><div class="col-3"><label for="" class="form-label">Country</label><select class="form-select custom-select select2 select2-show-search" name="affiliation[country]"><option selected disabled>Choose Country</option>
-                        @foreach ($countries as $c)
-                            <option value="{{ $c['name'] }}">{{ $c['name'] }}</option>
-                        @endforeach
-                    </select>
-                </div><div class="col-2 mt-5"><button type="button" class="btn btn-success save-affiliation">Save</button><button type="button" class="btn btn-danger remove-affiliation">Remove</button> </div>
-            </div>
+                    <div class="row affiliation-entry"><div class="col-7"><div class="mb-4"><label for="affiliation_name" class="form-label">Affiliation</label> <input type="text" class="form-control" name="affiliation[name]" placeholder="Enter Affiliation" required></div></div><div class="col-3"><label for="" class="form-label">Country</label><select class="form-select custom-select select2 select2-show-search" name="affiliation[country]"><option selected disabled>Choose Country</option>
+                                @foreach ($countries as $c)
+                                    <option value="{{ $c['name'] }}">{{ $c['name'] }}</option>
+                                @endforeach
+                            </select>
+                        </div><div class="col-2 mt-5"><button type="button" class="btn btn-success save-affiliation">Save</button><button type="button" class="btn btn-danger remove-affiliation">Remove</button> </div>
+                    </div>
         `);
                 $('#affiliation-container').append(newAffiliationRow);
                 $('.select2').select2();
@@ -394,18 +409,31 @@
                     </div>
                 </div>
                 <div class="col-2 mt-5">
+                    <button type="button" class="btn btn-primary save-author">Save</button>
                     <button type="button" class="btn btn-danger remove-author">Remove Author</button>
                 </div>
             </div>`;
                 let newAuthorForm = $(authorHtml);
                 $('#author-box').append(newAuthorForm);
                 newAuthorForm.find('.select2').select2();
-                updateAffiliations();
+                updateAuthors();
             });
             $('#author-box').on('click', '.remove-author', function() {
                 $(this).closest('.author-form').remove();
             });
+
+            $('#author-box').on('click', '.remove-author', function() {
+                $(this).closest('.author-form').remove();
+            });
             updateAffiliations();
+            updateAuthors();
+
+            $(document).on('click', '.save-author', function() {
+                updateAuthors();
+            });
+
+
+
         });
     </script>
 @endsection

@@ -17,9 +17,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::with('issue')->get();
-        $journals = Journal::all();
-        return view('admin.article.index', compact('articles', 'journals'));
+        return view('admin.article.index');
     }
 
     /**
@@ -29,7 +27,7 @@ class ArticleController extends Controller
     {
         $iso3166 = new ISO3166();
         $countries = $iso3166->all();
-        $journals = Journal::all();
+        $journals = Journal::select('id', 'name')->get();
         return view('admin.article.create', compact('journals', 'countries'));
     }
 
@@ -38,6 +36,12 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+
+        $authors = json_decode($request->input('author_array'), true);
+        $affiliations = json_decode($request->input('affiliation_array'), true);
+        // dd($authors);
+        // dd($affiliations);
+        dd($request->toArray());
         dd($request->toArray());
     }
 
