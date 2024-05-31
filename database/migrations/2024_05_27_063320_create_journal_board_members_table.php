@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('affliation');
             $table->string('country');
-            $table->string('biography');
+            $table->longText('biography')->nullable();
             $table->foreignId('journal_id')->constrained('journals')->cascadeOnDelete();
             $table->timestamps();
         });
