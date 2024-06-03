@@ -21,14 +21,6 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
-            $table->string('title');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('current_job_title');
-            $table->string('department');
-            $table->string('institution');
-            $table->string('country');
-            $table->string('contact_number');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->foreignId('role_id')->constrained('roles');

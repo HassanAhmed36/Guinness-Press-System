@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('volume_issues', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('issue_id')->nullable();
             $table->foreignId('volume_id')->constrained('journal_volumes')->cascadeOnDelete();
             $table->foreignId('journal_id')->constrained('journals')->cascadeOnDelete();
             $table->boolean('is_active')->default(true);

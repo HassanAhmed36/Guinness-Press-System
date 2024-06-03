@@ -22,18 +22,10 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'email',
         'password',
-        'title',
-        'first_name',
-        'last_name',
-        'current_job_title',
-        'department',
-        'institution',
-        'country',
-        'contact_number',
         'role_id',
+        'remember_token',
         'is_active'
     ];
-
 
     /**
      * The attributes that should be hidden for serialization.
@@ -71,5 +63,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getFullNameAttribute()
     {
         return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function user_basic_info()
+    {
+        return $this->hasOne(UserBasicInfo::class, 'user_id');
     }
 }

@@ -29,7 +29,8 @@ class MainController extends Controller
 
     public function journal_details($journal_name)
     {
-        $journal = Journal::with('journal_overview','journal_matrix')->where('acronym' , $journal_name)->first();
+        $journal = Journal::with(['journal_overview','journal_matrix' , 'volume.issue'])->where('acronym' , $journal_name)->first();
+        // dd($journal->toArray());
         return view('user.pages.journal-details', compact('journal'));
     }
 
@@ -112,29 +113,9 @@ class MainController extends Controller
 
     public function editorial_board($journal_name)
     {
-
-        if ($journal_name == 'aci') {
-            $array = array(
-                "journal_cover" => "Recent-Educational-Research-Cover.jpg",
-                "journal_title" => "Recent Educational Research",
-                "aims" => "<p>The aim of the journal 'Recent Educational Research' is to provide a platform for scholars, researchers, educators, and practitioners to disseminate high-quality, original research findings and innovative educational practices. The journal strives to advance the understanding of contemporary educational issues and contribute to the enhancement of teaching, learning, and educational policy development.</p>",
-                "journal_abbr" => "$journal_name",
-                "journal_issn" => "",
-                "board_members" => []
-            );
-        }
-        if ($journal_name == 'sfr') {
-            $array = array(
-                "journal_cover" => "Strategic-Financial-Review-Front-Cover.jpg",
-                "journal_title" => "Strategic Financial Review",
-                "aims" => "<p>Strategic Financial Review is dedicated to advancing the understanding of strategic financial management and its role in driving organizational success. Our journal aims to provide a platform for researchers, practitioners, academics, and policymakers to share insights, research findings, and strategies that contribute to informed financial decision-making and sustainable growth.</p>",
-                "journal_abbr" => "$journal_name",
-                "journal_issn" => "",
-                "board_members" => array(
-                )
-            );
-        }
-        return view('front-end/editorial-board', compact('journals', 'data', 'subcategories', 'array'));
+       $journal=  Journal::with('board_member')->where('acronym' , $journal_name)->first();
+    //    dd($journal->toArray());
+        return view('user.pages.editorial-board', compact('journal'));
     }
 
     public function article_details()
@@ -298,275 +279,18 @@ class MainController extends Controller
 
     public function journal_issue($id, $issue, $issue_no)
     {
-        //return "ID: $journal_name";
-        session(['abbs' => $id]);
-        $journals = Journal::with('settings')->get();
-        $data = DB::table('categories')
-            ->select('*')
-            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
-            ->where(['parent_id' => null, 'setting_name' => 'title'])
-            ->orderBy('categories.category_id', 'desc')
-            ->limit(6)
-            ->get();
-        $subcategories = DB::table('categories')
-            ->select('*')
-            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
-            ->orderBy('categories.category_id', 'desc')
-            ->get();
-        $query_for_journal_id = DB::table('journals')
-            ->select('*')
-            ->where(['path' => $id])
-            ->get();
-        $journal_id = $query_for_journal_id[0]->journal_id;
-        $volumes = DB::table('issues')
-            ->select('*')
-            ->where(['journal_id' => $journal_id])
-            ->groupBy('volume')
-            ->get();
-        $issues = DB::table('issues')
-            ->select('*')
-            ->where(['journal_id' => $journal_id])
-            ->get();
-        $articles = DB::table('publications')
-            ->select('*')
-            ->join('publication_settings', 'publication_settings.publication_id', '=', 'publications.publication_id')
-            ->join('submissions', 'submissions.submission_id', '=', 'publications.submission_id')
-            ->where(['setting_name' => 'title', 'context_id' => $journal_id])
-            ->orderBy('publications.publication_id', 'desc')
-            ->limit(3)
-            ->get();
-        $issueid = DB::table('publications')
-            ->select('*')
-            ->join('publication_settings', 'publication_settings.publication_id', '=', 'publications.publication_id')
-            ->join('submissions', 'submissions.submission_id', '=', 'publications.submission_id')
-            ->where(['setting_name' => 'issueId', 'context_id' => $journal_id])
-            ->get();
-        if ($id == 'ijerm' && $issue_no == '1001') {
-            $array = array(
-                "journal_cover" => "International-Journal-of-Empirical-Research-Methods-Front-Cover.jpg",
-                "journal_issn" => "2995-6110",
-                "journal_title" => "International Journal of Empirical Research-Methods",
-                "aims" => "<p>The International Journal of Empirical Research Methods is dedicated to promoting and advancing empirical research methodologies across various disciplines. This journal aims to provide a platform for researchers, scholars, educators, and practitioners to share insights, methodologies, and findings that contribute to the improvement of empirical research practices and the enhancement of evidence-based decision-making.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2023",
-            );
-        }
-
-
-        if ($id == 'ijerm' && $issue_no == '1002') {
-            $array = array(
-
-                "journal_cover" => "International-Journal-of-Empirical-Research-Methods-Front-Cover.jpg",
-                "journal_issn" => "2995-6110",
-                "journal_title" => "International Journal of Empirical Research-Methods",
-                "aims" => "<p>The International Journal of Empirical Research Methods is dedicated to promoting and advancing empirical research methodologies across various disciplines. This journal aims to provide a platform for researchers, scholars, educators, and practitioners to share insights, methodologies, and findings that contribute to the improvement of empirical research practices and the enhancement of evidence-based decision-making.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2023",
-            );
-        }
-
-        if ($id == 'ijerm' && $issue_no == '2001') {
-            $array = array(
-                "journal_cover" => "International-Journal-of-Empirical-Research-Methods-Front-Cover.jpg",
-                "journal_issn" => "2995-6110",
-                "journal_title" => "International Journal of Empirical Research-Methods",
-                "aims" => "<p>The International Journal of Empirical Research Methods is dedicated to promoting and advancing empirical research methodologies across various disciplines. This journal aims to provide a platform for researchers, scholars, educators, and practitioners to share insights, methodologies, and findings that contribute to the improvement of empirical research practices and the enhancement of evidence-based decision-making.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2024",
-            );
-        }
-
-        if ($id == 'jblm' && $issue_no == '1001') {
-            $array = array(
-                "journal_cover" => "Journal-of-Business-Leadership-and-Management-Front-Cover.jpg",
-                "journal_issn" => "2995-620X",
-                "journal_title" => "Journal Of Business Leadership And Management",
-                "aims" => "<p>The Journal of Business Leadership and Management is committed to advancing the understanding of effective leadership and management practices in the dynamic landscape of business. Our journal aims to provide a platform for academics, practitioners, researchers, and thought leaders to share insights, research findings, and strategies that contribute to informed decision-making and organizational success.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2023",
-            );
-        }
-
-
-        if ($id == 'jblm' && $issue_no == '1002') {
-            $array = array(
-                "journal_cover" => "Journal-of-Business-Leadership-and-Management-Front-Cover.jpg",
-                "journal_issn" => "2995-620X",
-                "journal_title" => "Journal Of Business Leadership And Management",
-                "aims" => "<p>The Journal of Business Leadership and Management is committed to advancing the understanding of effective leadership and management practices in the dynamic landscape of business. Our journal aims to provide a platform for academics, practitioners, researchers, and thought leaders to share insights, research findings, and strategies that contribute to informed decision-making and organizational success.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2023",
-            );
-        }
-
-
-        if ($id == 'cli' && $issue_no == '1001') {
-            $array = array(
-                "journal_cover" => "Organizational-Cultural-Landscapes-Front-Cover.png",
-                "journal_title" => "Cultural Landscape Insights",
-                "journal_issn" => "2995-6129",
-                "aims" => "<p>Cultural Landscape Insights is a multidisciplinary journal that explores and understands the complex interplay between culture, organization, society, and physical environments. This journal provides a platform for researchers, scholars, and practitioners to delve into the rich tapestry of cultural expressions, traditions, and their dynamic relationship with the landscapes they inhabit.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2023",
-            );
-        }
-
-        if ($id == 'cli' && $issue_no == '2001') {
-            $array = array(
-                "journal_cover" => "Organizational-Cultural-Landscapes-Front-Cover.png",
-                "journal_title" => "Cultural Landscape Insights",
-                "journal_issn" => "2995-6129",
-                "aims" => "<p>Cultural Landscape Insights is a multidisciplinary journal that explores and understands the complex interplay between culture, organization, society, and physical environments. This journal provides a platform for researchers, scholars, and practitioners to delve into the rich tapestry of cultural expressions, traditions, and their dynamic relationship with the landscapes they inhabit.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2024",
-            );
-        }
-
-        if ($id == 'cie' && $issue_no == '1001') {
-            $array = array(
-                "journal_cover" => "Current-Integrative-Engineering-Cover.png",
-                "journal_issn" => "2995-6307",
-                "journal_title" => "Current Integrative Engineering",
-                "aims" => "<p>Current Integrative Engineering is dedicated to providing a platform for the exchange of cutting-edge research and innovative solutions across various engineering disciplines. Our mission is to foster collaboration and knowledge sharing among engineers, researchers, and industry professionals. We aim to bridge gaps in understanding, encourage interdisciplinary collaborations, and contribute to the collective advancement of engineering knowledge and its practical applications. Through our diverse scope, we strive to drive innovation, sustainability, and progress in the field of engineering.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2023",
-            );
-        }
-
-        if ($id == 'seer' && $issue_no == '1001') {
-            $array = array(
-                "journal_cover" => "Sustainable-Energy-and-Environment-Review-Front-Cover.jpg",
-                "journal_title" => "Sustainable Energy And Environment Review",
-                "journal_issn" => "2996-1181",
-                "aims" => "<p>Sustainable Energy and Environment Review is dedicated to advancing the knowledge and understanding of sustainable practices, innovations, and policies in the fields of energy and the environment. Our journal aims to provide a platform for researchers, policymakers, practitioners, and stakeholders to share insights, research findings, and strategies that contribute to the transition towards a more sustainable and environmentally responsible future.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2023",
-            );
-        }
-
-        if ($id == 'seer' && $issue_no == '2001') {
-            $array = array(
-                "journal_cover" => "Sustainable-Energy-and-Environment-Review-Front-Cover.jpg",
-                "journal_title" => "Sustainable Energy And Environment Review",
-                "journal_issn" => "2996-1181",
-                "aims" => "<p>Sustainable Energy and Environment Review is dedicated to advancing the knowledge and understanding of sustainable practices, innovations, and policies in the fields of energy and the environment. Our journal aims to provide a platform for researchers, policymakers, practitioners, and stakeholders to share insights, research findings, and strategies that contribute to the transition towards a more sustainable and environmentally responsible future.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2024",
-            );
-        }
-
-
-        if ($id == 'pb' && $issue_no == '1001') {
-            $array = array(
-                "journal_cover" => "Pharmaceutical-Breakthroughs-Cover.png",
-                "journal_title" => "Pharmaceutical Breakthroughs",
-                "journal_issn" => "2996-1157",
-                "aims" => "<p>Pharmaceutical Breakthroughs is dedicated to fostering a deep understanding of novel developments, advancements, and breakthroughs in the field of pharmaceutical sciences. Our journal aims to be a platform for researchers, scientists, clinicians, and industry professionals to share their insights, discoveries, and perspectives in the realm of pharmaceutical innovation.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2023",
-            );
-        }
-
-        if ($id == 'rer' && $issue_no == '1001') {
-            $array = array(
-                "journal_cover" => "Recent-Educational-Research-Cover.jpg",
-                "journal_issn" => "2996-2366",
-                "journal_title" => "Recent Educational Research",
-                "aims" => "<p>The aim of the journal 'Recent Educational Research' is to provide a platform for scholars, researchers, educators, and practitioners to disseminate high-quality, original research findings and innovative educational practices. The journal strives to advance the understanding of contemporary educational issues and contribute to the enhancement of teaching, learning, and educational policy development.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2023",
-            );
-        }
-
-        if ($id == 'rer' && $issue_no == '2001') {
-            $array = array(
-                "journal_cover" => "Recent-Educational-Research-Cover.jpg",
-                "journal_title" => "Recent Educational Research",
-                "journal_issn" => "2996-2366",
-                "aims" => "<p>The aim of the journal 'Recent Educational Research' is to provide a platform for scholars, researchers, educators, and practitioners to disseminate high-quality, original research findings and innovative educational practices. The journal strives to advance the understanding of contemporary educational issues and contribute to the enhancement of teaching, learning, and educational policy development.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2024",
-            );
-        }
-
-        if ($id == 'sfr' && $issue_no == '1001') {
-            $array = array(
-                "journal_cover" => "Strategic-Financial-Review-Front-Cover.jpg",
-                "journal_issn" => "",
-                "journal_title" => "Strategic Financial Review",
-                "aims" => "<p>Strategic Financial Review is dedicated to advancing the understanding of strategic financial management and its role in driving organizational success. Our journal aims to provide a platform for researchers, practitioners, academics, and policymakers to share insights, research findings, and strategies that contribute to informed financial decision-making and sustainable growth.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2024",
-            );
-        }
-
-        if ($id == 'rer' && $issue_no == '1002') {
-            $array = array(
-                "journal_cover" => "Recent-Educational-Research-Cover.jpg",
-                "journal_issn" => "2996-2366",
-                "journal_title" => "Recent Educational Research",
-                "aims" => "<p>The aim of the journal 'Recent Educational Research' is to provide a platform for scholars, researchers, educators, and practitioners to disseminate high-quality, original research findings and innovative educational practices. The journal strives to advance the understanding of contemporary educational issues and contribute to the enhancement of teaching, learning, and educational policy development.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2023",
-            );
-        }
-
-
-        if ($id == 'cli' && $issue_no == '1002') {
-            $array = array(
-                "journal_cover" => "Organizational-Cultural-Landscapes-Front-Cover.png",
-                "journal_title" => "Cultural Landscape Insights",
-                "journal_issn" => "2995-6129",
-                "aims" => "<p>Cultural Landscape Insights is a multidisciplinary journal that explores and understands the complex interplay between culture, organization, society, and physical environments. This journal provides a platform for researchers, scholars, and practitioners to delve into the rich tapestry of cultural expressions, traditions, and their dynamic relationship with the landscapes they inhabit.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2023",
-            );
-        }
-
-        if ($id == 'cie' && $issue_no == '2001') {
-            $array = array(
-                "journal_cover" => "Current-Integrative-Engineering-Cover.png",
-                "journal_title" => "Current Integrative Engineering",
-                "journal_issn" => "2995-6307",
-                "aims" => "<p>Current Integrative Engineering is dedicated to providing a platform for the exchange of cutting-edge research and innovative solutions across various engineering disciplines. Our mission is to foster collaboration and knowledge sharing among engineers, researchers, and industry professionals. We aim to bridge gaps in understanding, encourage interdisciplinary collaborations, and contribute to the collective advancement of engineering knowledge and its practical applications. Through our diverse scope, we strive to drive innovation, sustainability, and progress in the field of engineering.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2024",
-            );
-        }
-
-        if ($id == 'jblm' && $issue_no == '2001') {
-            $array = array(
-                "journal_cover" => "
-                    Journal-of-Business-Leadership-and-Management-Front-Cover.jpg",
-                "journal_issn" => "2995-620X",
-                "journal_title" => "Journal Of Business Leadership And Management",
-                "aims" => "<p>The Journal of Business Leadership and Management is committed to advancing the understanding of effective leadership and management practices in the dynamic landscape of business. Our journal aims to provide a platform for academics, practitioners, researchers, and thought leaders to share insights, research findings, and strategies that contribute to informed decision-making and organizational success.</p>",
-                "journal_abbr" => "$id",
-                "issue_no" => $issue_no,
-                "year" => "2024",
-            );
-        }
-
-
-        return view('front-end/issue', compact('journals', 'data', 'subcategories', 'volumes', 'issues', 'articles', 'issueid', 'array'));
+        $journal = Journal::with(['volume' => function ($query) use ($issue_no) {
+            $query->whereHas('issue', function ($query) use ($issue_no) {
+                $query->where('issue_id', $issue_no);
+            });
+        }, 'volume.issue' => function ($query) use ($issue_no) {
+            $query->where('issue_id', $issue_no);
+        }])->whereHas('volume.issue', function ($query) use ($issue_no) {
+            $query->where('issue_id', $issue_no);
+        })->first();
+        return view('user.pages.issue', compact('journal'));
     }
+
 
     public function article($id, $code)
     {
@@ -1572,7 +1296,6 @@ class MainController extends Controller
                 )
             );
         }
-
 
         if ($id == "jblm" && $code == '5243012') {
             $article_array = array(
@@ -24393,8 +24116,6 @@ chase happiness from others, but eventually fails sometimes.
                 )
             );
         }
-
-
         if ($id == "seer" && $code == '5242205') {
             $article_array = array(
                 "journal_abbr" => "$id",
@@ -24427,22 +24148,22 @@ chase happiness from others, but eventually fails sometimes.
                 "article_pdf" => "seer-v2-5-Ros-tamaji-Korniawan.pdf",
                 "article_keywords" => "European Union deforestation, Palm oil commodities, EU regulations, Legislations, Innovation, Change management",
                 "abstract" => "The implementation of the EU Regulation on Deforestation-Free
-     Products is the current problem point, so the study refers to implementing
-     deforestation regulation for certain trade goods or commodities.
-     This study provides a brief overview of the EU Regulation
-     on Deforestation-Free Products. The study also aims to examine the
-     development of ASEAN’s trade pattern, especially Indonesia and
-     Malaysia, with the European Union, which will be reviewed below.
-     In order to facilitate the analysis of the European Union’s green
-     economic policies, particularly the impact of the EU Regulation on
-     deforestation-free products, the study needs to develop a research
-     question. How does the EU Regulation on Deforestation-Free
-     Products hinder trade in Indonesian and Malaysian palm oil derivatives
-     and products? Moreover, how about a fair recommendation
-     for solving this problem? Case studies and research on the issue
-     of trade in palm oil commodities in the European Union have been
-     carried out a lot. However, the discussed study tries to provide an
-     argumentative explanation using a narrative analysis approach.",
+                    Products is the current problem point, so the study refers to implementing
+                    deforestation regulation for certain trade goods or commodities.
+                    This study provides a brief overview of the EU Regulation
+                    on Deforestation-Free Products. The study also aims to examine the
+                    development of ASEAN’s trade pattern, especially Indonesia and
+                    Malaysia, with the European Union, which will be reviewed below.
+                    In order to facilitate the analysis of the European Union’s green
+                    economic policies, particularly the impact of the EU Regulation on
+                    deforestation-free products, the study needs to develop a research
+                    question. How does the EU Regulation on Deforestation-Free
+                    Products hinder trade in Indonesian and Malaysian palm oil derivatives
+                    and products? Moreover, how about a fair recommendation
+                    for solving this problem? Case studies and research on the issue
+                    of trade in palm oil commodities in the European Union have been
+                    carried out a lot. However, the discussed study tries to provide an
+                    argumentative explanation using a narrative analysis approach.",
                 "article_references" => array(
                     "De Hoop, E., & Van der Vleuten, E. (2022). Sustainability
                  Knowledge Politics: Southeast
@@ -24509,51 +24230,8 @@ chase happiness from others, but eventually fails sometimes.
                 )
             );
         }
-
-
-        session(['abbs' => $id]);
-        $journals = Journal::with('settings')->get();
-        $data = DB::table('categories')
-            ->select('*')
-            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
-            ->where(['parent_id' => null, 'setting_name' => 'title'])
-            ->orderBy('categories.category_id', 'desc')
-            ->limit(6)
-            ->get();
-        $subcategories = DB::table('categories')
-            ->select('*')
-            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
-            ->orderBy('categories.category_id', 'desc')
-            ->get();
-        $query_for_journal_id = DB::table('journals')
-            ->select('*')
-            ->where(['path' => $id])
-            ->get();
-        $journal_id = $query_for_journal_id[0]->journal_id;
-        $volumes = DB::table('issues')
-            ->select('*')
-            ->where(['journal_id' => $journal_id])
-            ->groupBy('volume')
-            ->get();
-        $issues = DB::table('issues')
-            ->select('*')
-            ->where(['journal_id' => $journal_id])
-            ->get();
-        $articles = DB::table('publications')
-            ->select('*')
-            ->join('publication_settings', 'publication_settings.publication_id', '=', 'publications.publication_id')
-            ->join('submissions', 'submissions.submission_id', '=', 'publications.submission_id')
-            ->where(['setting_name' => 'title', 'context_id' => $journal_id])
-            ->orderBy('publications.publication_id', 'desc')
-            ->limit(3)
-            ->get();
-        $issueid = DB::table('publications')
-            ->select('*')
-            ->join('publication_settings', 'publication_settings.publication_id', '=', 'publications.publication_id')
-            ->join('submissions', 'submissions.submission_id', '=', 'publications.submission_id')
-            ->where(['setting_name' => 'issueId', 'context_id' => $journal_id])
-            ->get();
-        return view('front-end/article', compact('journals', 'data', 'subcategories', 'volumes', 'issues', 'articles', 'issueid', 'article_array'));
+        $journal = Journal::where('acronym', $id)->first();
+         return view('user.pages.article', compact('article_array' , 'journal'));
     }
 
     public function join_board($journal_name)

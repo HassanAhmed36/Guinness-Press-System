@@ -1,4 +1,4 @@
-@extends('layouts.thank-you-template')
+@extends('user.layouts.thank-you-template')
 
 @section('title', 'Guinness Press - Article Submission')
 
@@ -33,13 +33,13 @@
                     <div class="thanku_img">
                       <img src="{{URL::asset('assets/images/thanku/thanku_image.png')}}" title="Thank You" alt="Thank You" loading="lazy">
                     </div>
-                    
+
                   <div class="thanku_txt">
                     <h2>Thank You For Reaching Out</h2>
                     <p> We will get back to you  </p>
                  </div>
-                
-                
+
+
                     <div class="sec-btns">
                         <a href="{{ URL('') }}" class="btn1">Back to Home</a>
                     </div>

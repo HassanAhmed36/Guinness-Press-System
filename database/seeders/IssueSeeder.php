@@ -13,10 +13,10 @@ class IssueSeeder extends Seeder
      */
     public function run(): void
     {
-        //1- jblm v1 -1
-        //1- jblm v2 -2
-        //2- CLI v1- 3
-        //2- CLI v2- 4
+        //1- jblm v1 -1 --
+        //1- jblm v2 -2 --
+        //2- CLI v1- 3 --
+        //2- CLI v2- 4 --
         // 3- SEER v1- 5
         // 3- SEER v2- 6
         // 4- CIE v1- 7
@@ -32,110 +32,122 @@ class IssueSeeder extends Seeder
             [
                 'name' => '1',
                 'volume_id' => '1',
+                'issue_id' => '1001',
                 'journal_id' => '1',
                 'is_active' => true,
             ], [
                 'name' => '2',
                 'volume_id' => '1',
+                'issue_id' => '1002',
                 'journal_id' => '1',
                 'is_active' => true,
             ], [
                 'name' => '2',
                 'volume_id' => '2',
+                'issue_id' => '2001',
                 'journal_id' => '1',
                 'is_active' => true,
             ], [
                 'name' => '1',
                 'volume_id' => '3',
+                'issue_id' => '1001',
                 'journal_id' => '2',
                 'is_active' => true,
             ], [
                 'name' => '2',
                 'volume_id' => '3',
+                'issue_id' => '1002',
                 'journal_id' => '2',
                 'is_active' => true,
             ],
             [
                 'name' => '1',
                 'volume_id' => '4',
+                'issue_id' => '2001',
                 'journal_id' => '2',
                 'is_active' => true,
             ],
             [
-                'name' => '2',
-                'volume_id' => '4',
-                'journal_id' => '2',
+                'name' => '1',
+                'volume_id' => '6',
+                'issue_id' => '2001',
+                'journal_id' => '3',
                 'is_active' => true,
             ],
             [
                 'name' => '1',
                 'volume_id' => '5',
-                'journal_id' => '3',
-                'is_active' => true,
-            ],
-            [
-                'name' => '2',
-                'volume_id' => '6',
+                'issue_id' => '1001',
                 'journal_id' => '3',
                 'is_active' => true,
             ],
             [
                 'name' => '1',
                 'volume_id' => '7',
+                'issue_id' => '1001',
                 'journal_id' => '4',
                 'is_active' => true,
             ],
             [
                 'name' => '2',
                 'volume_id' => '8',
+                'issue_id' => '2001',
                 'journal_id' => '4',
                 'is_active' => true,
             ],
             [
                 'name' => '1',
                 'volume_id' => '9',
+                'issue_id' => '1001',
                 'journal_id' => '5',
                 'is_active' => true,
             ],
             [
                 'name' => '2',
                 'volume_id' => '9',
+                'issue_id' => '1002',
                 'journal_id' => '5',
                 'is_active' => true,
             ],
             [
                 'name' => '1',
                 'volume_id' => '10',
+                'issue_id' => '2001',
                 'journal_id' => '5',
                 'is_active' => true,
             ],
             [
                 'name' => '1',
                 'volume_id' => '11',
+                'issue_id' => '1001',
                 'journal_id' => '6',
                 'is_active' => true,
             ],
             [
                 'name' => '2',
                 'volume_id' => '11',
+                'issue_id' => '1002',
                 'journal_id' => '6',
                 'is_active' => true,
             ],
             [
                 'name' => '1',
                 'volume_id' => '12',
+                'issue_id' => '2001',
                 'journal_id' => '6',
                 'is_active' => true,
             ],
             [
                 'name' => '1',
                 'volume_id' => '13',
+                'issue_id' => '1001',
                 'journal_id' => '7',
                 'is_active' => true,
             ],
             [
                 'name' => '1',
                 'volume_id' => '14',
+                'issue_id' => '1001',
                 'journal_id' => '8',
                 'is_active' => true,
             ],

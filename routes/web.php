@@ -10,35 +10,30 @@ use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\UserController;
 use App\Models\Journal;
 use App\Models\Submission;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => view('index'))->name('home');
-Route::view('/email', 'email');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
-    Route::post('/update-profile', [ProfileController::class, 'update'])->name('update.profile');
-    Route::get('/our-submission', [SubmissionController::class, 'index'])->name('submission.index');
-    Route::get('/guideline-page', fn () => view('submission.guideline'))->name('submision.guideline');
-    Route::get('/create-submission', [SubmissionController::class, 'create'])->name('submission.create');
-    Route::post('/submit-submission', [SubmissionController::class, 'store'])->name('submission.store');
-    Route::get('/view-submission', [SubmissionController::class, 'show'])->name('view.submission');
-    Route::post('/update-submission', [SubmissionController::class, 'update'])->name('update.submission');
-    Route::get('/Users', [UserController::class, 'index'])->name('user.index');
-    Route::post('/user-store', [UserController::class, 'store'])->name('user.store');
-    Route::get('/user-edit', [UserController::class, 'edit'])->name('user.edit');
-    Route::post('/user-update', [UserController::class, 'update'])->name('user.update');
-    Route::get('/user-delete/{id}', [UserController::class, 'delete'])->name('user.delete');
-    Route::get('/review-requests', [ReviewerController::class, 'index'])->name('reviewer.index');
-    Route::get('/approve-reviewer-request/{id}', [ReviewerController::class, 'update'])->name('reviewer.update');
-    Route::get('/review-request', [ReviewerController::class, 'create'])->name('reviewer.request');
-    Route::post('/submit-review-request', [ReviewerController::class, 'store'])->name('submit.reviewer.request');
-});
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
+Route::post('/update-profile', [ProfileController::class, 'update'])->name('update.profile');
+Route::get('/our-submission', [SubmissionController::class, 'index'])->name('submission.index');
+Route::post('/submit-submission', [SubmissionController::class, 'store'])->name('submission.store');
+Route::get('/view-submission', [SubmissionController::class, 'show'])->name('view.submission');
+Route::post('/update-submission', [SubmissionController::class, 'update'])->name('update.submission');
+Route::get('/Users', [UserController::class, 'index'])->name('user.index');
+Route::post('/user-store', [UserController::class, 'store'])->name('user.store');
+Route::get('/user-edit', [UserController::class, 'edit'])->name('user.edit');
+Route::post('/user-update', [UserController::class, 'update'])->name('user.update');
+Route::get('/user-delete/{id}', [UserController::class, 'delete'])->name('user.delete');
+Route::get('/review-requests', [ReviewerController::class, 'index'])->name('reviewer.index');
+Route::get('/approve-reviewer-request/{id}', [ReviewerController::class, 'update'])->name('reviewer.update');
+Route::get('/review-request', [ReviewerController::class, 'create'])->name('reviewer.request');
+Route::post('/submit-review-request', [ReviewerController::class, 'store'])->name('submit.reviewer.request');
 
 
 //Pages Route
 
-Route::get('/', [MainController::class, 'index']);
+Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/home', [MainController::class, 'index']);
 Route::get('/index', [MainController::class, 'index']);
 Route::get('/main', [MainController::class, 'index']);
@@ -83,11 +78,28 @@ Route::view('/submit-your-article', 'user.pages.submit_articles');
 Route::post('/form-submission', [MainController::class, 'sendEmail'])->name('send.email');
 Route::post('/article-submission', [MainController::class, 'sendArticleEmail'])->name('send.articlemail');
 Route::get('/publication/journal/{id}/{code}', [MainController::class, 'article']);
-Route::get('/thank-you', function () {
-    return view('front-end/thanku');
-});
+Route::view('/thank-you', 'user.pages.thanku');
 Route::get('/journal/{journal_name}/join-board', [MainController::class, 'join_board']);
 Route::post('/joinboard', [MainController::class, 'sendBoardEmail'])->name('send.joinboard');
+Route::get('/submit-manuscripts', [SubmissionController::class, 'create'])->name('submit.manuscript');
+Route::get('/login', [AuthController::class, 'loginAfterSubmission'])->name('login.after.submission');
+Route::post('/submit-login', [AuthController::class, 'submitLoginAfterSubmission'])->name('submit.login.after.submission');
+Route::get('/verify-email/{token}', [AuthController::class, 'VerifyEmail'])->name('verify.email');
+Route::view('/verification-email', 'user.auth.verification')->name('after.verify.email');
+Route::get('/login-password', [AuthController::class, 'VerifyEmail'])->name('login.password');
+Route::post('/submit-login-password', [AuthController::class, 'submitLoginAfterSubmissionPassword'])->name('submit.login.after.submission.password');
+
+Route::get('/user-login', [AuthController::class, 'login'])->name('user.login');
+Route::post('/submit-user-login', [AuthController::class, 'SubmitLogin'])->name('submit.user.login');
+
+Route::get('/user-logout', [AuthController::class, 'logout'])->name('user.logout');
+Route::get('/register', [AuthController::class, 'register'])->name('user.register');
+Route::post('/submit-register', [AuthController::class, 'SubmitRegister'])->name('submit.register');
+
+Route::view('/test', 'mail.send-verification-mail');
+
+
+
 
 
 

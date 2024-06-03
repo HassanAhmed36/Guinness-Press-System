@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Journal;
 use App\Models\Submission;
 use App\Models\SubmissionKeyword;
 use App\Models\User;
@@ -16,23 +17,20 @@ class SubmissionController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
-        $submissions = Submission::with(['user', 'submision_keywords']);
-        if (Auth::user()->role_id == 3) {
-            $submissions = $submissions->where('user_id', Auth::id());
-        }
-        $submissions = $submissions->get();
-        return view('submission.index', compact('submissions'));
+        $submissions = Submission::with(['user', 'submision_keywords'])->where('user_id', Auth::id())->paginate(10);
+        return view('user.pages.our-submission', compact('submissions'));
     }
-
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('submission.create', [
+        return view('user.pages.submission', [
+            'journals' => Journal::all(),
             'menuscript_id' => $this->create_menuscript_id()
         ]);
     }
@@ -48,7 +46,7 @@ class SubmissionController extends Controller
             'keywords' => 'string',
             'journal' => 'required|string',
             'manuscript' => 'required|file',
-            'cover_letter' => 'sometimes|file',
+            'cover_letter' => 'sometimes',
             'author_message' => 'sometimes'
         ]);
         DB::beginTransaction();
@@ -80,9 +78,9 @@ class SubmissionController extends Controller
                 'cover_letter_path' => $cover_letter_path ?? null,
                 'author_message' => $request->author_message ?? null,
                 'status' => 0,
-                'user_id' => Auth::id()
+                'user_id' => Auth::id() ?? null
             ]);
-
+            session()->push('manuscript_id', $submission->menuscript_id);
             foreach ($keywordsArray as $key => $value) {
                 SubmissionKeyword::create([
                     'keyword' => $value,
@@ -90,6 +88,9 @@ class SubmissionController extends Controller
                 ]);
             }
             DB::commit();
+            if (!Auth::check()) {
+                return redirect()->route('login.after.submission');
+            }
             return redirect()->route('submission.index')->with('success', 'Submitted Successfully!');
         } catch (\Exception $e) {
             DB::rollBack();

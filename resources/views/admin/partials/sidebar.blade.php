@@ -76,7 +76,7 @@
                 </a>
             </li>
             <li class="slide">
-                <a class="side-menu__item" href="#">
+                <a class="side-menu__item" href="{{ route('admin.submission.index') }}">
                     <i class="feather feather-upload sidemenu_icon"></i>
                     <span class="side-menu__label">Submissions</span>
                 </a>

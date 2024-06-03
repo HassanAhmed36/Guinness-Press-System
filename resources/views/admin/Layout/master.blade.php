@@ -161,6 +161,7 @@
             });
 
             $('#datatable').DataTable();
+            $('#responsive-datatable').DataTable();
         })
     </script>
 

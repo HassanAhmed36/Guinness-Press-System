@@ -1,37 +1,6 @@
 @extends('user.layouts.template')
 @section('title', 'Editorial Board')
 @section('banner')
-    @php
-        $journalname = '';
-        $short_description = '';
-        $abbs = session('abbs');
-        $jsonArray = '';
-        $journal_id = '';
-        $journal_path = '';
-        $editorialTeam = '';
-    @endphp
-    @foreach ($journals as $journal)
-        @php
-            if ($journal->path == $abbs) {
-                $journal_path = $journal->path;
-                $journal_id = $journal->journal_id;
-                foreach ($journal->settings as $detail) {
-                    if ($detail->setting_name == 'acronym' && $detail->locale == 'en') {
-                        $journalname = $detail->setting_value;
-                    }
-                    if ($detail->setting_name == 'description' && $detail->locale == 'en') {
-                        $short_description = $detail->setting_value;
-                    }
-                    if ($detail->setting_name == 'journalThumbnail') {
-                        $jsonArray = json_decode($detail->setting_value, true);
-                    }
-                    if ($detail->setting_name == 'editorialTeam') {
-                        $editorialTeam = $detail->setting_value;
-                    }
-                }
-            }
-        @endphp
-    @endforeach
     <section class="detail_bread_crumb">
         <div class="container">
             <div class="row">
@@ -47,18 +16,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2 col-sm-12">
-                    <img src="https://newversion.guinnesspress.org/ojs/public/journals/{{ $journal_id }}/{{ $jsonArray['uploadName'] }}"
-                        class="img-fluid" alt="">
+                    <img src="{{ asset($journal->image) }}" class="img-fluid" alt="">
                 </div>
                 <div class="col-md-10 col-sm-12">
                     <div class="details_content">
                         <h3 class="cocogoose_light text-uppercase">
-                            {{ $journalname }}
+                            {{ $journal->name }}
                         </h3>
                         <div class="access_type">
                             <div class="left_access">
                                 <h5 class="text-uppercase">
-                                    ISSN NO : {{ $array['journal_issn'] }}
+                                    ISSN NO : {{ $journal->issn_no }}
                                 </h5>
                             </div>
                             <div class="right_access">
@@ -66,19 +34,20 @@
                                     class="img-fluid" />
                             </div>
                         </div>
-                        {!! $short_description !!}
+                        <p class="mb-4">
+                            {{ $journal->description }}
+                        </p>
                     </div>
                     <div class="btn-group">
                         <a href="javascript:;" data-fancybox="" data-src="#submitArticlePopup"
                             class="btn btn-light btn-blue red-btn">Submit Your Article</a>
-                        <a href="{{ url('/publication/journal', ['journal_name' => $journal_path]) }}"
+                        <a href="{{ url('/publication/journal', ['journal_name' => $journal->acronym]) }}"
                             class="btn btn-light btn-blue">Journal Home</a>
-                        <a href="{{ url('/journal', ['journal_name' => $journal_path, 'journal_p' => 'join-board']) }}"
+                        <a href="{{ url('/journal', ['journal_name' => $journal->acronym, 'journal_p' => 'join-board']) }}"
                             class="btn btn-light btn-blue">Join Our Editors Board</a>
                     </div>
                 </div>
                 <div class="col-6 col-lg-2">
-
                     <!--<a href="{{ url('/submit-articles') }}" class="btn btn-light btn-blue">Submit your Article</a>-->
                 </div>
                 <div class="col-6 col-lg-2">
@@ -181,7 +150,6 @@
     </section>
 @endsection
 @section('body')
-
     <section class="editorial_boardsec">
         <div class="container-fluid">
             <div class="container">
@@ -190,28 +158,22 @@
                     <div class="sectionhead">
                         <h4>Editorial Board</h4>
                     </div>
-
                     <div class="rowdiv">
-
-
-                        @foreach ($array['board_members'] as $board_member)
+                        @foreach ($journal->board_member as $board_member)
                             <div class="coldiv">
                                 <div class="card member_box">
                                     <div class="imag_member">
                                         <img style="object-fit: cover;" class="card-img-top"
-                                            src="@if ($board_member['profile_pic'] != '') {{ URL::asset('bkp/assets/members/') }}/{{ $array['journal_abbr'] }}/{{ $board_member['profile_pic'] }} @else  {{ URL::asset('assets/members/') }}/dummy450x450.jpg @endif"
+                                            src="{{ asset('board-member-image/' . $journal->acronym . '/' . $board_member->image) ?? asset('board-member-image/dummy450x450') }}"
                                             alt="Member">
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title member_name">{{ $board_member['name'] }}</h5>
-                                        <h6 class="member_affiliation">{{ $board_member['affilation'] }}</h6>
-                                        <h6 class="member_city">{{ $board_member['city'] }}
-                                            {{ $board_member['country'] }}</h6>
-                                        <!--<h6 class="member_country"></h6>-->
+                                        <h5 class="card-title member_name">{{ $board_member->name }}</h5>
+                                        <h6 class="member_affiliation">{{ $board_member->affliation }}</h6>
+                                        <h6 class="member_city">
+                                            {{ $board_member->country }}</h6>
                                         <p class="card-text"></p>
-                                        <!-- Small modal -->
-
-                                        @isset($board_member['biography'])
+                                        @isset($board_member->biography)
                                             <a type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target=".biography_modal_{{ $loop->index }}">Biography</a>
                                             <div class="modal fade biography_modal biography_modal_{{ $loop->index }}"
@@ -219,26 +181,19 @@
                                                 aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                                     <div class="modal-content">
-
                                                         <div class="modal-header">
                                                             <h5 class="modal-title">
                                                                 Biography
                                                             </h5>
                                                         </div>
-
                                                         <div class="modal-body">
-
-                                                            {!! $board_member['biography'] !!}
-
+                                                            {!! $board_member->biography !!}
                                                         </div>
-
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn" data-bs-dismiss="modal">
                                                                 Close
                                                             </button>
                                                         </div>
-
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -247,14 +202,9 @@
                                 </div>
                             </div>
                         @endforeach
-
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-
 @endsection

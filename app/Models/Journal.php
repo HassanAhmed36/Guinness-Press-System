@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\Admin\JournalBoardMemberController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Journal extends Model
 {
@@ -26,5 +28,15 @@ class Journal extends Model
     public function journal_overview()
     {
         return $this->hasOne(JournalOverview::class, 'journal_id');
+    }
+
+    public function board_member(): HasMany
+    {
+        return $this->hasMany(JournalBoardMember::class, 'journal_id');
+    }
+
+    public function volume(): HasMany
+    {
+        return $this->hasMany(JournalVolume::class, 'journal_id');
     }
 }

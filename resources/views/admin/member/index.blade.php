@@ -22,36 +22,38 @@
                     </div>
                     <hr>
                     <br>
-                    <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
-                        <thead>
-                            <tr>
-                                <th>S.No</th>
-                                <th>Name</th>
-                                <th>Affiliation</th>
-                                <th>Country</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($members as $m)
+                    <div class="table-responsive">
+                        <table id="responsive-datatable" class="table table-bordered  nowrap w-100">
+                            <thead>
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $m->name }}</td>
-                                    <td>{{ $m->affliation }}</td>
-                                    <td>{{ $m->country }}</td>
-                                    <td>
-                                        <button class="btn btn-primary btn-sm edit-btn" data-bs-toggle="modal"
-                                            data-bs-target="#editModal" data-id="{{ $m->id }}">
-                                            <i class="fa fa-edit"></i></button>
-                                        <a class="btn btn-danger btn-sm"
-                                            href="{{ route('editorial.member.delete', ['id' => $m->id]) }}">
-                                            <i class="fa fa-trash"></i></a>
-                                        </a>
-                                    </td>
+                                    <th>S.No</th>
+                                    <th>Name</th>
+                                    <th>Affiliation</th>
+                                    <th>Country</th>
+                                    <th>Action</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($members as $m)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $m->name }}</td>
+                                        <td>{{ $m->affliation }}</td>
+                                        <td>{{ $m->country }}</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm edit-btn" data-bs-toggle="modal"
+                                                data-bs-target="#editModal" data-id="{{ $m->id }}">
+                                                <i class="fa fa-edit"></i></button>
+                                            <a class="btn btn-danger btn-sm"
+                                                href="{{ route('editorial.member.delete', ['id' => $m->id]) }}">
+                                                <i class="fa fa-trash"></i></a>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -122,12 +124,12 @@
         <div id="editModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" id="modal-body">
-                  
+
                 </div>
             </div>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $('.edit-btn').click(function(e) {
             $('#modal-body').html(

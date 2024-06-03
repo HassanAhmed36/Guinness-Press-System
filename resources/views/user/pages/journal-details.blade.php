@@ -42,9 +42,9 @@
                     <div class="btn-group">
                         <a href="javascript:;" data-fancybox="" data-src="#submitArticlePopup"
                             class="btn btn-light btn-blue red-btn">Submit Your Article</a>
-                        <a href="{{ url('/journal', ['journal_name' => '', 'journal_p' => 'editorial-board']) }}"
+                        <a href="{{ url('/journal', ['journal_name' => $journal->acronym, 'journal_p' => 'editorial-board']) }}"
                             class="btn btn-light btn-blue">Editorial Board</a>
-                        <a href="{{ url('/journal', ['journal_name' => '', 'journal_p' => 'join-board']) }}"
+                        <a href="{{ url('/journal', ['journal_name' => $journal->acronym, 'journal_p' => 'join-board']) }}"
                             class="btn btn-light btn-blue">Join Our Editors Board</a>
                     </div>
                 </div>
@@ -272,7 +272,7 @@
                             <div class="tab-pane fade" id="eic" role="tabpanel"
                                 aria-labelledby="instructions-tab">
                                 <ul class="search-results">
-                                  {!! $journal->journal_overview->role_of_eic!!}
+                                    {!! $journal->journal_overview->role_of_eic !!}
                                 </ul>
                             </div>
                             <div class="tab-pane fade show" id="eb" role="tabpanel"
@@ -294,42 +294,44 @@
                             <div class="col-md-11 col-xl-11 col-sm-12 m-xl-auto m-md-auto">
                                 <h1 class="explore-h">Explore articles</h1>
                             </div>
-
                         </div>
                         <div class="row search-journal-row">
-                            <div class="col-md-11 col-xl-11 col-sm-12 m-xl-auto m-md-auto">
-                                <div id="explore_jaccourdian" class="py-5 explore_jaccourdian">
-                                    <div class="card border-0">
-                                        <div class="card-header p-0 border-0" id="heading-240">
-                                            <button class="btn btn-link accordion-title border-0 collapse"
-                                                data-bs-toggle="collapse" data-bs-target="#collapse-240"
-                                                aria-expanded="true" aria-controls="#collapse-240"> <span class"vol_no">
-                                                    Volume: 02 (2024) </span> <i
-                                                    class="fas fa-minus text-center d-flex align-items-center justify-content-center h-100"></i>
-                                            </button>
-                                        </div>
-                                        <div id="collapse-240" class="collapse show" aria-labelledby="heading-240"
-                                            data-bs-parent="#explore_jaccourdian">
-                                            <div class="card-body accordion-body">
-                                                <div class="issues_ofvolume">
-                                                    <a href="{{ url('') }}/publication/journal/{{ 'abs' }}/issue/2001"
-                                                        class="issue_link">Issue 1:</a>
-                                                </div>
+                            <div class="col-md-11 col-xl-11 col-sm-12 m-xl-auto m-md-auto pt-5">
+                                @forelse ($journal->volume as $volume)
+                                    <div id="explore_jaccourdian" class="explore_jaccourdian">
+                                        <div class="card border-0">
+                                            <div class="card-header p-0 border-0" id="heading-{{ $volume->id }}">
+                                                <button class="btn btn-link accordion-title border-0 collapse"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#collapse-{{ $volume->id }}" aria-expanded="true"
+                                                    aria-controls="collapse-{{ $volume->id }}">
+                                                    <span class="vol_no">
+                                                        Volume {{ $volume->name }}
+                                                        ({{ \Carbon\Carbon::parse($volume->created_at)->format('Y') }})
+                                                    </span>
+                                                    <i
+                                                        class="fas fa-minus text-center d-flex align-items-center justify-content-center h-100"></i>
+                                                </button>
                                             </div>
-                                        </div>
-                                        <div id="collapse-241" class="collapse show" aria-labelledby="heading-240"
-                                            data-bs-parent="#explore_jaccourdian">
-                                            <div class="card-body accordion-body">
-                                                <div class="issues_ofvolume">
-                                                    <a href="{{ url('') }}/publication/journal/{{ '' }}/issue/2002"
-                                                        class="issue_link">Issue 2:</a>
-                                                </div>
+                                            <div id="collapse-{{ $volume->id }}" class="collapse show"
+                                                aria-labelledby="heading-{{ $volume->id }}"
+                                                data-bs-parent="#explore_jaccourdian">
+                                                @foreach ($volume->issue as $issue)
+                                                    <div class="card-body accordion-body">
+                                                        <div class="issues_ofvolume">
+                                                            <a href="{{ url('publication/journal/' . $journal->acronym . '/issue/' . $issue->issue_id) }}"
+                                                                class="issue_link">Issue {{ $issue->name }}:</a>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                {{-- <h5>No Articles</h5> --}}
+                                @empty
+                                    <h5>No Articles</h5>
+                                @endforelse
                             </div>
+
                         </div>
                     </div>
                 </div>

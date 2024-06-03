@@ -12,11 +12,11 @@ class VolumeIssue extends Model
     protected $fillable = [
         'name',
         'volume_id',
+        'issue_id',
         'journal_id',
         'is_active',
     ];
-
-
+    
     public function journal(): BelongsTo
     {
         return $this->belongsTo(Journal::class);

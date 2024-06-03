@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DoiGeneratorController;
 use App\Http\Controllers\Admin\JournalBoardMemberController;
 use App\Http\Controllers\Admin\JournalController;
 use App\Http\Controllers\Admin\JournalVolumeController;
+use App\Http\Controllers\Admin\SubmissionController;
 use App\Http\Controllers\Admin\VolumeIssueController;
 use App\Services\CustomService;
 use Illuminate\Support\Facades\Route;
@@ -68,6 +69,9 @@ Route::prefix('/admin')->group(function () {
         //DOI Generator
         Route::get('/DOI-Generator', [DoiGeneratorController::class, 'index'])->name('doi.index');
         Route::post('/DOI-Generator-Save', [DoiGeneratorController::class, 'store'])->name('doi.store');
+
+
+        Route::get('/submissions', [SubmissionController::class, 'index'])->name('admin.submission.index');
 
         Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });

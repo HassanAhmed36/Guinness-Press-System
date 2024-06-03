@@ -22,7 +22,7 @@
         <meta name="citation_publisher" content="Guinness Press">
         <meta name="citation_issn" content="@yield('issn')">
         <meta name="citation_pdf_url" content="{{URL::current();}}">
-        <link rel="canonical" href="{{ url()->current() }}"> 
+        <link rel="canonical" href="{{ url()->current() }}">
         <meta name="robots" content="index,follow">
         <meta name="dc.identifier" content ="doi:@yield('articledoi')">
         <meta name="google-site-verification" content="GEDfJNdAWrE28DNjaW_qM8nEv8aqs8wth6M8h-TBn3Y" />
@@ -33,17 +33,17 @@
         <link rel="mask-icon" href="https://guinnesspress.org/lp/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"  />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.6.1/css/iziModal.min.css" integrity="sha512-3c5WiuZUnVWCQGwVBf8XFg/4BKx48Xthd9nXi62YK0xnf39Oc2FV43lIEIdK50W+tfnw2lcVThJKmEAOoQG84Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.6.1/css/iziModal.min.css"  />
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('assets/owl-carousel/owl.carousel.css') }}">
         <link rel="stylesheet" href="{{asset('assets/owl-carousel/owl.theme.css') }}">
         <link rel="stylesheet" href="{{asset('assets/css/style.css') }}">
         <link rel="stylesheet" href="{{asset('assets/css/responsive.css') }}">
-    
+
     <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -253,7 +253,7 @@ src="https://www.facebook.com/tr?id=362843969490645&ev=PageView&noscript=1"
                                             <li class="nav-item">
                                                 <a class="nav-link" aria-current="page" href="{{url('/services')}}">Services</a>
                                             </li>
-                                            
+
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="https://www.guinnesspress.org/about-us">Resources</a>
                                                 <div class="dropdown-menu dropdown-menu-single" aria-labelledby="navbarDropdown">
@@ -376,7 +376,7 @@ src="https://www.facebook.com/tr?id=362843969490645&ev=PageView&noscript=1"
                             </ul>
                      </div>
                      <div class="col col-12 col-xl-3 fcol2">
-                           <h6>Browse</h6>  
+                           <h6>Browse</h6>
                            <ul>
                              <!--<li>-->
                              <!--    <a href="/book-publishing-services"><i class="fa fa-check"></i><span>Books</span></a>-->
@@ -384,11 +384,11 @@ src="https://www.facebook.com/tr?id=362843969490645&ev=PageView&noscript=1"
                              <li>
                                  <a href="{{url('/journals')}}"><i class="fa fa-check"></i><span>Journals</span></a>
                              </li>
-                             
+
                            </ul>
                      </div>
                     <div class="col col-12 col-xl-3 fcol2">
-                           <h6>Resources</h6>  
+                           <h6>Resources</h6>
                            <ul>
                              <!--<li>-->
                              <!--    <a href="/instructors"><i class="fa fa-check"></i><span>Instructors Book Authors/Editors</span></a>-->
@@ -435,7 +435,7 @@ src="https://www.facebook.com/tr?id=362843969490645&ev=PageView&noscript=1"
                            </ul>
                      </div>
                      <div class="col col-12 col-xl-3 fcol2">
-                           <h6>About</h6>  
+                           <h6>About</h6>
                            <ul>
                              <li>
                                  <a href="{{url('/about-us')}}"><i class="fa fa-check"></i><span>About Guinness</span></a>
@@ -530,8 +530,8 @@ src="https://www.facebook.com/tr?id=362843969490645&ev=PageView&noscript=1"
         <!-- Include js plugin -->
         <script src="{{asset('assets/owl-carousel/owl.carousel.js')}}"></script>
         <script>
-            
-            
+
+
             $("#slider_1").owlCarousel({
                 items : 10,
                 itemsDesktop:[1500,6],
@@ -570,48 +570,48 @@ src="https://www.facebook.com/tr?id=362843969490645&ev=PageView&noscript=1"
             /*Megamenu DropDown*/
             jQuery(document).ready(function(){
                 $(".dropdown").hover(
-                    function() { 
+                    function() {
                         $('.dropdown-menu-single', this).addClass("show-mega");
                         $('.dropdown-show-mega').removeClass("show-mega-main");
                     },
-                    function() { 
+                    function() {
                         $('.dropdown-menu-single', this).removeClass("show-mega");
                         $('.dropdown-menu-double').removeClass("show-mega");
                     });
                         $(".dropdown-nested").hover(
-                            
-                            function() { 
+
+                            function() {
                                 $('.dropdown-menu-double').addClass("show-mega");
                             }
-                            
+
                         );
                         $(".dropdown-main-mega").hover(
-                            function() { 
+                            function() {
                                 $('.dropdown-show-mega').addClass("show-mega-main");
                             }
-                            
+
                         );
                        $(".banner").hover(
-                            function() { 
+                            function() {
                                 $('.dropdown-show-mega').removeClass("show-mega-main");
                             }
-                            
+
                         );
                     });
-                    
-            
+
+
       </script>
       <script>
       function copydoi() {
               let copyText = document.getElementById("copyDoiToClipboard");
               let copySuccess = document.getElementById("copieddoi-success");
               let text = copyText.getAttribute("href");
-              //copyText.setSelectionRange(0, 99999); 
+              //copyText.setSelectionRange(0, 99999);
               navigator.clipboard.writeText(text);
-              
+
              copySuccess.style.opacity = "1";
              setTimeout(function(){ copySuccess.style.opacity = "0" }, 500);
-            } 
+            }
          $(document).ready(function() {
              $('#search').on('keyup', function() {
                  var query = $(this).val();
@@ -628,13 +628,13 @@ src="https://www.facebook.com/tr?id=362843969490645&ev=PageView&noscript=1"
                          else{
                            $('#search_result_list').html('');
                              $.each(data, function(index, post) {
-                                 
+
                                  console.log(post.setting_value);
                                  $('#search_result_list').append('<li><a href="journal-details/'+post.path+'">' + post.setting_value + '</a></li>');
                                  $(".search_result").css({"display":"block"});
-                             });  
+                             });
                          }
-                         
+
                      }
                  })
              });
@@ -764,14 +764,14 @@ src="https://www.facebook.com/tr?id=362843969490645&ev=PageView&noscript=1"
             </div>
          </form>
       </div>
-      
+
       <script>
       const dt = new DataTransfer(); // Permet de manipuler les fichiers de l'input file
 
             jQuery("#article_fileattachment").on('change', function(e){
                   const maxFileSizeInMB = 2;
                  const maxFileSizeInKB = 1024 * 1024 * maxFileSizeInMB;
-            
+
             // this.files.forEach(
             //     function(singlefile){
             //       if (singlefile.size > maxFileSizeInKB) {
@@ -779,7 +779,7 @@ src="https://www.facebook.com/tr?id=362843969490645&ev=PageView&noscript=1"
             //       }
             //     }
             //     );
-              
+
                 if (parseInt(this.files.length) > 3){
                       alert("You can only upload a maximum of 3 files");
                 }
@@ -816,7 +816,7 @@ src="https://www.facebook.com/tr?id=362843969490645&ev=PageView&noscript=1"
             	});
             });
       </script>
-      
+
         <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -829,6 +829,6 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
-<!--End of Tawk.to Script-->  
+<!--End of Tawk.to Script-->
    </body>
 </html>
