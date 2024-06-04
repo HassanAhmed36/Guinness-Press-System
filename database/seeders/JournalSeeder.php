@@ -77,7 +77,7 @@ class JournalSeeder extends Seeder
 
         $journal_six = Journal::create([
             'name' => 'RECENT EDUCATIONAL RESEARCH',
-            'acronym' => 'reer',
+            'acronym' => 'rer',
             'issn_no' => '2996-2366', 'image' => 'journal-images/6.png',
             'description' => 'The aim of the journal "Recent Educational Research" is to provide a platform for scholars, researchers, educators, and practitioners to disseminate high-quality, original research findings and innovative educational practices. The journal strives to advance the understanding of contemporary educational issues and contribute to the enhancement of teaching, learning, and educational policy development.',
             'is_active' => true,

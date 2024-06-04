@@ -34,15 +34,17 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
 
         $authors = json_decode($request->input('author_array'), true);
         $affiliations = json_decode($request->input('affiliation_array'), true);
-        // dd($authors);
-        // dd($affiliations);
+        dd($authors);
+        dd($affiliations);
         dd($request->toArray());
         dd($request->toArray());
+
+        
     }
 
     /**

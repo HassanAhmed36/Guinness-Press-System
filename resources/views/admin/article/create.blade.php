@@ -82,6 +82,13 @@
                                         value="{{ old('dio') }}" required>
                                 </div>
                             </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="mb-4">
+                                    <label for="" class="form-label">Published Date</label>
+                                    <input type="date" class="form-control" placeholder="" name="published_date"
+                                        value="{{ old('published_date') }}" required>
+                                </div>
+                            </div>
                             <div class="col-md-6 mb-4">
                                 <div class="mb-4">
                                     <label for="" class="form-label">Keywords Comma Seprated</label>
@@ -303,7 +310,6 @@
                     console.log(affiliations);
                     $('#affiliation_array').val(JSON.stringify(affiliations))
                 });
-
                 // Update all affiliation dropdowns
                 $('.affiliation_dropdown').each(function() {
                     $(this).empty().append('<option selected disabled>Choose Affiliation</option>');
@@ -342,14 +348,20 @@
 
             $('#affiliation-container').on('click', '.add-affiliation', function() {
                 let newAffiliationRow = $(`
-                    <div class="row affiliation-entry"><div class="col-7"><div class="mb-4"><label for="affiliation_name" class="form-label">Affiliation</label> <input type="text" class="form-control" name="affiliation[name]" placeholder="Enter Affiliation" required></div></div><div class="col-3"><label for="" class="form-label">Country</label><select class="form-select custom-select select2 select2-show-search" name="affiliation[country]"><option selected disabled>Choose Country</option>
+                    <div class="row affiliation-entry"><div class="col-7">
+                        <div class="mb-4">
+                            <label for="affiliation_name" class="form-label">Affiliation</label>
+                             <input type="text" class="form-control" name="affiliation[name]" placeholder="Enter Affiliation" required></div></div>
+                             <div class="col-3"><label for="" class="form-label">Country</label>
+                            <select class="form-select custom-select select2 select2-show-search" name="affiliation[country]">
+                            <option selected disabled>Choose Country</option>
                                 @foreach ($countries as $c)
                                     <option value="{{ $c['name'] }}">{{ $c['name'] }}</option>
                                 @endforeach
                             </select>
                         </div><div class="col-2 mt-5"><button type="button" class="btn btn-success save-affiliation">Save</button><button type="button" class="btn btn-danger remove-affiliation">Remove</button> </div>
                     </div>
-        `);
+                `);
                 $('#affiliation-container').append(newAffiliationRow);
                 $('.select2').select2();
             });
@@ -371,48 +383,48 @@
             });
             $('#author-box').on('click', '.add-author', function() {
                 let authorHtml = `
-            <div class="row author-form">
-                <div class="col-3">
-                    <div class="mb-4">
-                        <label for="author_firstname" class="form-label">Author's First Name</label>
-                        <input type="text" class="form-control" name="authors[][firstname]" placeholder="Enter First Author" required>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="mb-4">
-                        <label for="author_middlename" class="form-label">Author's Middle Name</label>
-                        <input type="text" class="form-control" name="authors[][middlename]" placeholder="Enter Middle Name" required>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="mb-4">
-                        <label for="author_lastname" class="form-label">Author's Last Name</label>
-                        <input type="text" class="form-control" name="authors[][lastname]" placeholder="Enter Last Name" required>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <label for="affiliation_dropdown" class="form-label">Affiliation</label>
-                    <select class="form-select select2 affiliation_dropdown" name="authors[][affiliation][]" multiple>
-                        <option selected disabled>Choose Affiliation</option>
-                    </select>
-                </div>
-                <div class="col-3">
-                    <div class="mb-4">
-                        <label for="author_email" class="form-label">Author's Email</label>
-                        <input type="text" class="form-control" name="authors[][email]" placeholder="Enter Email" required>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="mb-4">
-                        <label for="author_orcid" class="form-label">Author's ORCID ID</label>
-                        <input type="text" class="form-control" name="authors[][orchid_id]" placeholder="Enter Author's ORCID ID" required>
-                    </div>
-                </div>
-                <div class="col-2 mt-5">
-                    <button type="button" class="btn btn-primary save-author">Save</button>
-                    <button type="button" class="btn btn-danger remove-author">Remove Author</button>
-                </div>
-            </div>`;
+                    <div class="row author-form">
+                        <div class="col-3">
+                            <div class="mb-4">
+                                <label for="author_firstname" class="form-label">Author's First Name</label>
+                                <input type="text" class="form-control" name="authors[][firstname]" placeholder="Enter First Author" required>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mb-4">
+                                <label for="author_middlename" class="form-label">Author's Middle Name</label>
+                                <input type="text" class="form-control" name="authors[][middlename]" placeholder="Enter Middle Name" required>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mb-4">
+                                <label for="author_lastname" class="form-label">Author's Last Name</label>
+                                <input type="text" class="form-control" name="authors[][lastname]" placeholder="Enter Last Name" required>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label for="affiliation_dropdown" class="form-label">Affiliation</label>
+                            <select class="form-select select2 affiliation_dropdown" name="authors[][affiliation][]" multiple>
+                                <option selected disabled>Choose Affiliation</option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <div class="mb-4">
+                                <label for="author_email" class="form-label">Author's Email</label>
+                                <input type="text" class="form-control" name="authors[][email]" placeholder="Enter Email" required>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mb-4">
+                                <label for="author_orcid" class="form-label">Author's ORCID ID</label>
+                                <input type="text" class="form-control" name="authors[][orchid_id]" placeholder="Enter Author's ORCID ID" required>
+                            </div>
+                        </div>
+                        <div class="col-2 mt-5">
+                            <button type="button" class="btn btn-primary save-author">Save</button>
+                            <button type="button" class="btn btn-danger remove-author">Remove Author</button>
+                        </div>
+                    </div>`;
                 let newAuthorForm = $(authorHtml);
                 $('#author-box').append(newAuthorForm);
                 newAuthorForm.find('.select2').select2();

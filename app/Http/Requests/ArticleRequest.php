@@ -23,8 +23,6 @@ class ArticleRequest extends FormRequest
     {
         return [
             "title" => "required",
-            "author_name" => "required",
-            "affiliation" => "required",
             "page" => "required",
             "published_date" => "required",
             "dio" => "required",
@@ -33,9 +31,6 @@ class ArticleRequest extends FormRequest
             "issue_id" => "required",
             "abstract" => "required",
             "references" => "required",
-            "citation" => "required",
-            "metrics" => "required",
-            "copyright_and_permission" => "required",
             "file" => "",
         ];
     }

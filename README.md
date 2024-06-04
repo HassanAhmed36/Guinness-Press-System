@@ -1,1 +1,0 @@
-Guinness Press System is a publication platform for managing research papers, journal articles, volumes, and issues. It includes an admin dashboard for reviewing submissions, approving or rejecting publication requests, and adding journal articles. The system facilitates a smooth workflow from user submission to final publication.

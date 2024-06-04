@@ -11,8 +11,6 @@ class Article extends Model
     use HasFactory;
     protected $fillable = [
         'title',
-        'author_name',
-        'author_affiliation',
         'page',
         'published_date',
         'doi',
