@@ -14,7 +14,7 @@ class Submission extends Model
         'menuscript_id',
         'title',
         'abstract',
-        'journal',
+        'journal_id',
         'manuscript_name',
         'manuscript_path',
         'cover_letter_name',
@@ -41,5 +41,10 @@ class Submission extends Model
     public function reviewer(): BelongsTo
     {
         return $this->belongsTo(User::class, 'reviewer_id');
+    }
+
+    public function journal(): BelongsTo
+    {
+        return $this->belongsTo(Journal::class, 'journal_id');
     }
 }

@@ -71,7 +71,7 @@ class SubmissionController extends Controller
                 'menuscript_id' => $this->create_menuscript_id(),
                 'title' => $request->title,
                 'abstract' => $request->abstract,
-                'journal' => $request->journal,
+                'journal_id' => $request->journal,
                 'manuscript_name' => $manuscript_name,
                 'manuscript_path' => $manuscript_path,
                 'cover_letter_name' => $cover_letter_name ?? null,

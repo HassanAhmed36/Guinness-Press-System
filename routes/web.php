@@ -10,8 +10,14 @@ use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\UserController;
 use App\Models\Journal;
 use App\Models\Submission;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+
+Route::get('/clear' , function(){
+   Artisan::call('optimize:clear');
+});
 
 
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
@@ -85,7 +91,9 @@ Route::get('/submit-manuscripts', [SubmissionController::class, 'create'])->name
 Route::get('/login', [AuthController::class, 'loginAfterSubmission'])->name('login.after.submission');
 Route::post('/submit-login', [AuthController::class, 'submitLoginAfterSubmission'])->name('submit.login.after.submission');
 Route::get('/verify-email/{token}', [AuthController::class, 'VerifyEmail'])->name('verify.email');
-Route::view('/verification-email', 'user.auth.verification')->name('after.verify.email');
+Route::get('/verification-email', function () {
+    return Auth::check() ? redirect('home') : view('user.auth.verification');
+})->name('after.verify.email');
 Route::get('/login-password', [AuthController::class, 'VerifyEmail'])->name('login.password');
 Route::post('/submit-login-password', [AuthController::class, 'submitLoginAfterSubmissionPassword'])->name('submit.login.after.submission.password');
 

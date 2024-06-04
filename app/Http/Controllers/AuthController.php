@@ -23,7 +23,6 @@ class AuthController extends Controller
         request()->validate([
             'email' => 'required|email'
         ]);
-
         $user = User::create([
             'email' => request('email'),
             'password' => '',
@@ -60,7 +59,8 @@ class AuthController extends Controller
             'password' => Hash::make(request('password')),
             'is_active' => 1
         ]);
-        Submission::where('menuscript_id', session()->get('manuscript_id'))->update([
+        $submission = Submission::where('menuscript_id', session()->get('manuscript_id'))->first();
+        $submission->update([
             'user_id' => $user->id
         ]);
         session()->forget('manuscript_id');

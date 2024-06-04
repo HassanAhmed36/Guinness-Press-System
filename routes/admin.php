@@ -20,7 +20,6 @@ Route::prefix('/admin')->group(function () {
     //journals
 
     Route::middleware('check.dashboard.auth')->group(function () {
-
         Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
         Route::get('/journals', [JournalController::class, 'index'])->name('admin.journal.index');
         Route::get('/create-journals', [JournalController::class, 'create'])->name('admin.journal.create');

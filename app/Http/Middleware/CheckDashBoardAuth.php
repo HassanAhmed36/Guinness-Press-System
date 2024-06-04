@@ -16,9 +16,10 @@ class CheckDashBoardAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!in_array(Auth::user()->role->id, [1, 2])) {
-            return redirect()->route('home');
+        if (Auth::check() && in_array(Auth::user()->role->id, [1, 2])) {
+            return $next($request);
         }
-        return $next($request);
+
+        return redirect()->route('admin.login');
     }
 }

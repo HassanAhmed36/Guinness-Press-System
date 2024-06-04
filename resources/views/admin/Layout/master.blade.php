@@ -26,9 +26,9 @@
     <link href="{{ asset('admin_assets/plugins/wysiwyag/richtext.css') }}" rel="stylesheet" />
 
     <style>
-        .form-control::placeholder {
-            color: rgba(0, 0, 0, 0.820) !important;
-        }
+    .form-control::placeholder {
+        color: rgba(0, 0, 0, 0.820) !important;
+    }
     </style>
 
 </head>
@@ -53,21 +53,11 @@
             </div>
         </div>
         <!--Footer-->
-        <footer class="footer">
-            <div class="container">
-                <div class="row align-items-center flex-row-reverse">
-                    <div class="col-md-12 col-sm-12 mt-3 mt-lg-0 text-center">
-                        Copyright © 2021 <a href="#">Dayone</a>. Designed with <span
-                            class="fa fa-heart text-danger"></span> by <a href="#">Spruko Technologies
-                            Pvt.Ltd</a> All rights reserved.
-                    </div>
-                </div>
-            </div>
-        </footer>
+
         <!-- End Footer-->
 
         <!--sidebar-right-->
-        <div class="sidebar sidebar-right sidebar-animate">
+        <!-- <div class="sidebar sidebar-right sidebar-animate">
             <div class="card-header border-bottom pb-5">
                 <h4 class="card-title">Notifications </h4>
                 <div class="card-options">
@@ -103,7 +93,7 @@
                 </div>
 
             </div>
-        </div>
+        </div> -->
         <!--/sidebar-right-->
     </div>
 
@@ -132,37 +122,37 @@
     <script src="{{ asset('admin_assets/js/form-elements.js') }}"></script>
     <script src="{{ asset('admin_assets/js/select2.js') }}"></script>
     <script>
-        $(document).ready(function() {
-            $('.content').each(function() {
-                $(this).richText({
-                    bold: true,
-                    italic: true,
-                    underline: false,
-                    strikeThrough: false,
-                    ol: false,
-                    ul: false,
-                    heading: false,
-                    fontColor: false,
-                    fontSize: true,
-                    imageUpload: false,
-                    fileUpload: false,
-                    videoEmbed: false,
-                    urls: false,
-                    table: false,
-                    removeStyles: false,
-                    code: false,
-                    youtube: false,
-                    align: true,
-                    leftAlign: true,
-                    centerAlign: true,
-                    rightAlign: true,
-                    justify: true,
-                });
+    $(document).ready(function() {
+        $('.content').each(function() {
+            $(this).richText({
+                bold: true,
+                italic: true,
+                underline: false,
+                strikeThrough: false,
+                ol: false,
+                ul: false,
+                heading: false,
+                fontColor: false,
+                fontSize: true,
+                imageUpload: false,
+                fileUpload: false,
+                videoEmbed: false,
+                urls: false,
+                table: false,
+                removeStyles: false,
+                code: false,
+                youtube: false,
+                align: true,
+                leftAlign: true,
+                centerAlign: true,
+                rightAlign: true,
+                justify: true,
             });
+        });
 
-            $('#datatable').DataTable();
-            $('#responsive-datatable').DataTable();
-        })
+        $('#datatable').DataTable();
+        $('#responsive-datatable').DataTable();
+    })
     </script>
 
 

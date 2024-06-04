@@ -11,8 +11,8 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-title">
-                    <h3 class="">Author Submissions</h3>
+                <div class="card-header">
+                    <h3 class="card-title">Author Submissions</h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -20,30 +20,48 @@
                             <thead>
                                 <tr>
                                     <th>S.No</th>
-                                    <th>Name</th>
-                                    <th>Affiliation</th>
-                                    <th>Country</th>
+                                    <th>ManuScript ID</th>
+                                    <th>Journal name</th>
+                                    <th>Author Email</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($members as $m)
+                                @foreach ($submissions as $s)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $m->name }}</td>
-                                        <td>{{ $m->affliation }}</td>
-                                        <td>{{ $m->country }}</td>
+                                        <td>{{ $s->menuscript_id }}</td>
+                                        <td>{{ $s->journal->name }}</td>
+                                        <td>{{ $s->user->email }}</td>
                                         <td>
-                                            <button class="btn btn-primary btn-sm edit-btn" data-bs-toggle="modal"
-                                                data-bs-target="#editModal" data-id="{{ $m->id }}">
-                                                <i class="fa fa-edit"></i></button>
-                                            <a class="btn btn-danger btn-sm"
-                                                href="{{ route('editorial.member.delete', ['id' => $m->id]) }}">
-                                                <i class="fa fa-trash"></i></a>
+                                            <!-- View Button -->
+                                            <button class="btn btn-warning btn-sm edit-btn" data-bs-toggle="modal"
+                                                data-bs-target="#viewModal" data-id="{{ $s->id }}">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+
+                                            <!-- Approve Button -->
+                                            <button class="btn btn-success btn-sm edit-btn" data-bs-toggle="modal"
+                                                data-bs-target="#approveModal" data-id="{{ $s->id }}">
+                                                <i class="fa fa-check"></i>
+                                            </button>
+
+                                            <!-- Reject Button -->
+                                            <button class="btn btn-danger btn-sm edit-btn" data-bs-toggle="modal"
+                                                data-bs-target="#rejectModal" data-id="{{ $s->id }}">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+
+                                            <!-- Download Button -->
+                                            <a href="{{ asset($s->manuscript_path) }}" target class="btn btn-info btn-sm edit-btn"
+                                                download="{{ $s->manuscript_name }}" sda>
+                                                <i class="fa fa-download"></i>
                                             </a>
+
                                         </td>
+
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
