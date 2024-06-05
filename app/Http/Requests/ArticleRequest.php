@@ -23,7 +23,8 @@ class ArticleRequest extends FormRequest
     {
         return [
             "title" => "required",
-            "page" => "required",
+            "first_page" => "required",
+            "last_page" => "required",
             "published_date" => "required",
             "dio" => "required",
             "journal_id" => "required",
@@ -31,7 +32,9 @@ class ArticleRequest extends FormRequest
             "issue_id" => "required",
             "abstract" => "required",
             "references" => "required",
-            "file" => "",
+            "file" => "required",
+            'article_type' => 'required',
+            'extra_meta_tag' => 'required',
         ];
     }
 }

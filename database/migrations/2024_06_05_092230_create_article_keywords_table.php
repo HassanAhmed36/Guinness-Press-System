@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('authors', function (Blueprint $table) {
+        Schema::create('article_keywords', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('middle_name');
-            $table->string('last_name');
-            $table->json('author_affiliation');
-            $table->string('email');
-            $table->string('orchid_id');
+            $table->string('keyword');
             $table->foreignId('article_id')->constrained('articles')->cascadeOnDelete();
             $table->timestamps();
         });
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('authors');
+        Schema::dropIfExists('article_keywords');
     }
 };

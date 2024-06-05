@@ -81,7 +81,10 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             request()->session()->regenerate();
-
+            if (Auth::user()->role_id == 1) {
+                Auth::logout();
+                return redirect()->route('admin.login');
+            }
             if (auth()->user()->user_basic_info()->exists()) {
                 return redirect()->intended('/');
             } else {

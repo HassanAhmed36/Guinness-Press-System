@@ -11,9 +11,7 @@ class ArticleDetail extends Model
     protected $fillable = [
         'abstract',
         'references',
-        'citation',
-        'metrics',
-        'copyright_and_permission',
+        'extra_meta_tag',
         'article_id',
     ];
 }

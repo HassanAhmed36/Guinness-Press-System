@@ -13,14 +13,18 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->string('article_code');
             $table->string('title');
-            $table->string('page');
+            $table->string('first_page');
+            $table->string('last_page');
+            $table->string('article_type');
             $table->string('published_date');
-            $table->string('doi');
+            $table->string('dio');
             $table->integer('views_count');
             $table->integer('download_count');
             $table->boolean('is_active');
-            $table->string('file');
+            $table->string('file_name');
+            $table->string('file_path');
             $table->foreignId('issue_id')->constrained('volume_issues')->cascadeOnDelete();
             $table->foreignId('volume_id')->constrained('journal_volumes')->cascadeOnDelete();
             $table->foreignId('journal_id')->constrained('journals')->cascadeOnDelete();

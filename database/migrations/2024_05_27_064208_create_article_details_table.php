@@ -14,10 +14,8 @@ return new class extends Migration
         Schema::create('article_details', function (Blueprint $table) {
             $table->id();
             $table->longText('abstract');
-            $table->longText('references');
-            $table->longText('citation');
-            $table->longText('metrics');
-            $table->longText('copyright_and_permission');
+            $table->longText('references'); 
+            $table->longText('extra_meta_tag'); 
             $table->foreignId('article_id')->constrained('articles')->cascadeOnDelete();
             $table->timestamps();
         });

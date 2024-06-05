@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('affiliations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('country');
+            $table->json('full_affiliation');
+            $table->foreignId('article_id')->constrained('articles')->cascadeOnDelete();
             $table->timestamps();
         });
     }

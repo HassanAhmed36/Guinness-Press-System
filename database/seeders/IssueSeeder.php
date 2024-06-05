@@ -42,7 +42,7 @@ class IssueSeeder extends Seeder
                 'journal_id' => '1',
                 'is_active' => true,
             ], [
-                'name' => '2',
+                'name' => '1',
                 'volume_id' => '2',
                 'issue_id' => '2001',
                 'journal_id' => '1',

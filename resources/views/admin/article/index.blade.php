@@ -28,34 +28,38 @@
                         <thead>
                             <tr>
                                 <th>S.No</th>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>ISSN No</th>
+                                <th>Article ID</th>
+                                <th>title</th>
+                                <th>DIO</th>
+                                <th>Published Date</th>
+                                <th>Journal</th>
+                                <th>Issue</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{--                        @foreach ($journals as $j) --}}
-                            {{--                            <tr> --}}
-                            {{--                                <td>{{ $loop->iteration }}</td> --}}
-                            {{--                                <td> --}}
-                            {{--                                        <span class="avatar avatar-lg bradius me-3 bg-transparent w-50 " --}}
-                            {{--                                              style="background-image: url({{ asset($j->image) }});"></span> --}}
-                            {{--                                </td> --}}
-                            {{--                                <td class="w-50">{{ $j->name }}</td> --}}
-                            {{--                                <td class="">{{ $j->issn_no }}</td> --}}
-                            {{--                                <td> --}}
-                            {{--                                    <a class="btn btn-primary btn-sm edit-department" --}}
-                            {{--                                       href="{{ route('admin.journal.edit', ['id' => $j->id]) }}" --}}
-                            {{--                                       data-id="{{ $j->id }}"> --}}
-                            {{--                                        <i class="fa fa-edit"></i></a> --}}
-                            {{--                                    <a class="btn btn-danger btn-sm" --}}
-                            {{--                                       href="{{ route('admin.journal.delete', ['id' => $j->id]) }}"> --}}
-                            {{--                                        <i class="fa fa-trash"></i></a> --}}
-                            {{--                                    </a> --}}
-                            {{--                                </td> --}}
-                            {{--                            </tr> --}}
-                            {{--                        @endforeach --}}
+                            @foreach ($articles as $a)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>
+                                        {{ $a->article_code }}
+                                    </td>
+                                    <td>{{ $a->title }}</td>
+                                    <td>{{ $a->dio }}</td>
+                                    <td>{{ $a->published_date }}</td>
+                                    <td>{{ $a->journal->acronym }}</td>
+                                    <td>Issue {{ $a->issue->name }}</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm edit-department" href="{{ asset($a->file_path) }}"
+                                            download="{{ $a->file_name }}">
+                                            <i class="fa fa-download"></i></a>
+                                        <a class="btn btn-danger btn-sm"
+                                            href="{{ route('admin.article.delete', ['id' => $a->id]) }}">
+                                            <i class="fa fa-trash"></i></a>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
