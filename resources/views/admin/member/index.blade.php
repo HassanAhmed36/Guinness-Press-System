@@ -11,23 +11,25 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="card-title fs-4 fw-semibold">Editorial Board Member</h3>
-                        <div>
-                            <button data-bs-toggle="modal" data-bs-target="#myModal"
-                                class="btn btn-primary waves-effect waves-light">
-                                <i class="fa fa-plus-circle me-2"></i>Add new Board Member</button>
-                        </div>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="card-title fs-5 ">Editorial Board Member</h3>
                     </div>
-                    <hr>
-                    <br>
+                    <div>
+                        <button data-bs-toggle="modal" data-bs-target="#myModal"
+                            class="btn btn-primary waves-effect waves-light">
+                            <i class="fa fa-plus-circle me-2"></i>Add new Board Member</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                   
                     <div class="table-responsive">
                         <table id="responsive-datatable" class="table table-bordered  nowrap w-100">
                             <thead>
                                 <tr>
                                     <th>S.No</th>
                                     <th>Name</th>
+                                    <th>Image</th>
                                     <th>Affiliation</th>
                                     <th>Country</th>
                                     <th>Action</th>
@@ -37,6 +39,13 @@
                                 @foreach ($members as $m)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                            <div class="col-12 mb-4 ">
+                                                <img id="imagePreview"
+                                                    style="object-fit: cover; width:80px; height:70px;  border-radius:50%"
+                                                    alt="Member" src="{{ asset($m->image) }}">
+                                            </div>
+                                        </td>
                                         <td>{{ $m->name }}</td>
                                         <td>{{ $m->affliation }}</td>
                                         <td>{{ $m->country }}</td>
@@ -72,8 +81,7 @@
                         <div class="modal-body row">
                             <div class="col-6 mb-4">
                                 <label for="" class="form-label">Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Department name"
-                                    name="name" required>
+                                <input type="text" class="form-control" placeholder="Enter name" name="name" required>
                             </div>
                             <div class="col-6 mb-4">
                                 <label for="" class="form-label">Country</label>
@@ -95,8 +103,7 @@
                             </div>
                             <div class="col-6 mb-4">
                                 <label for="" class="form-label">Image</label>
-                                <input type="file" class="form-control" placeholder="Enter Department name"
-                                    name="image" required>
+                                <input type="file" class="form-control" name="image" id="imageInput" required>
                             </div>
                             <div class="col-12 mb-4">
                                 <label for="" class="form-label">Affliation</label>
@@ -108,6 +115,19 @@
                                 <label for="" class="form-label">Biography</label>
                                 <textarea id="" cols="30" rows="10" name="biography" class="form-control"
                                     placeholder="Enter Biography"></textarea>
+                            </div>
+                            <style>
+                                .card-img-top {
+                                    width: 100px;
+                                    height: auto;
+                                    object-fit: cover;
+                                    aspect-ratio: 1;
+                                    border-radius: 50%;
+
+                                }
+                            </style>
+                            <div class="col-12 mb-4 imag_member">
+                                <img id="imagePreview" style="object-fit: cover;" class="card-img-top" alt="Member">
                             </div>
 
                         </div>
@@ -156,6 +176,15 @@
                     console.error(xhr.responseText);
                 }
             });
+        });
+
+        document.getElementById('imageInput').addEventListener('change', function(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('imagePreview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
         });
     </script>
 @endsection

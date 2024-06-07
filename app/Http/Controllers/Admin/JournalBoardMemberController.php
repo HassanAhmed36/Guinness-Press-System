@@ -94,7 +94,6 @@ class JournalBoardMemberController extends Controller
             'journal_id' => 'required'
         ]);
         try {
-
             $member = JournalBoardMember::find($id);
             $member->update([
                 'name' => $request->name,

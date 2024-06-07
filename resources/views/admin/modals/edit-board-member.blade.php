@@ -2,7 +2,7 @@
     <h5 class="modal-title" id="myModalLabel">Edit Board Member</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
-<form action="{{ route('editorial.member.update', ['id' => $m->id]) }}" method="POST">
+<form action="{{ route('editorial.member.update', ['id' => $m->id]) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="modal-body row">
         <div class="row">
@@ -31,8 +31,9 @@
                 </select>
             </div>
             <div class="col-6 mb-4">
-                <label for="" class="form-label">Image</label>
-                <input type="file" class="form-control" placeholder="Enter Department name" name="image">
+                <label for="imageInput" class="form-label">Image</label>
+                <input type="file" class="form-control" name="image" id="imageInput1"
+                    placeholder="Select an image">
             </div>
             <div class="col-12 mb-4">
                 <label for="" class="form-label">Affliation</label>
@@ -44,6 +45,20 @@
                 <textarea id="" cols="30" rows="10" name="biography" class="form-control"
                     placeholder="Enter Biography">{{ $m->biography }}</textarea>
             </div>
+            <style>
+                .card-img-top {
+                    width: 100px;
+                    height: auto;
+                    object-fit: cover;
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+
+                }
+            </style>
+            <div class="col-12 mb-4 imag_member">
+                <img id="imagePreview1" style="object-fit: cover;" class="card-img-top" src="{{ asset($m->image) }}"
+                    alt="Member">
+            </div>
         </div>
     </div>
     <div class="modal-footer">
@@ -51,3 +66,14 @@
         <button class="btn btn-primary waves-effect waves-light" type="submit">Save</button>
     </div>
 </form>
+
+<script>
+    document.getElementById('imageInput1').addEventListener('change', function(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('imagePreview1');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    });
+</script>

@@ -11,6 +11,7 @@ class JournalVolume extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'year',
         'journal_id',
         'is_active',
     ];
@@ -19,7 +20,7 @@ class JournalVolume extends Model
     {
         return $this->belongsTo(Journal::class, 'journal_id');
     }
-    
+
     public function issue(): HasMany
     {
         return $this->hasMany(VolumeIssue::class, 'volume_id');

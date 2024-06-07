@@ -5,16 +5,24 @@
 <form action="{{ route('admin.volume.update', ['id' => $volums->id]) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="modal-body row">
-        <div class="col-6 mb-4">
+        <div class="col-4 mb-4">
             <label for="" class="form-label">Name</label>
             <input type="text" class="form-control" placeholder="Enter Volume name" name="name" required
                 value="{{ $volums->name }}">
         </div>
-        <div class="col-6 mb-4 pt-4">
-            <div class="form-check form-switch form-switch-lg mb-3" dir="ltr">
-                <input class="form-check-input" type="checkbox" id="SwitchCheckSizemd"  name="is_active"
-                    @checked($volums->is_active == 1)>
-                <label class="form-check-label" for="SwitchCheckSizemd">is active</label>
+        <div class="col-4 mb-4">
+            <label for="yearInput" class="form-label">Year</label>
+            <input type="number" class="form-control" placeholder="Enter Volume Year" name="year" id="yearInput"
+                required min="1900" max="2100" value="{{ $volums->year }}">
+        </div>
+        <div class="col-3 mb-4 pt-4">
+            <div class="form-group pt-4">
+                <label class="custom-switch">
+                    <input type="checkbox" class="custom-switch-input" name="is_active" value="1"
+                        @checked($volums->is_active)>
+                    <span class="custom-switch-indicator custom-switch-indicator-lg"></span>
+                    <span class="custom-switch-description me-2">Is Active</span>
+                </label>
             </div>
         </div>
         <div class="col-12 mb-4">

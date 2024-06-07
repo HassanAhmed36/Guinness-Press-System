@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('menuscript_id')->unique();
             $table->string('title');
             $table->text('abstract');
-            $table->foreignId('journal_id')->nullable()->constrained('journals');
+            $table->foreignId('journal_id')->nullable()->constrained('journals')->cascadeOnDelete();
             $table->string('manuscript_name');
             $table->string('manuscript_path');
             $table->string('cover_letter_name')->nullable();

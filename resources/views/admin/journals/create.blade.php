@@ -1,10 +1,11 @@
 @extends('admin.Layout.master')
 @section('main_section')
+    <script src=”https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js”></script>
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ $error }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button type="button" class="btn-close text-white" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endforeach
     @endif
@@ -38,19 +39,12 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-4">
-                                    <label for="" class="form-label">Journal Image</label>
-                                    <input type="file" class="form-control" placeholder="Enter Your Email" name="image"
-                                        value="{{ old('image') }}">
+                                    <label for="acronym" class="form-label">Acronym</label>
+                                    <input type="text" class="form-control" id="acronym"
+                                        placeholder="Enter Your acronym" name="acronym" value="{{ old('acronym') }}">
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="mb-4">
-                                    <label for="" class="form-label">Acronym</label>
-                                    <input type="text" class="form-control" placeholder="Enter Your acronym"
-                                        name="acronym" value="{{ old('acronym') }}">
-                                </div>
-                            </div>
-                            <div class="col-4 mb-4 pt-4">
+                            <div class="col-3 mb-4 pt-4">
                                 <div class="form-group pt-4">
                                     <label class="custom-switch">
                                         <input type="checkbox" class="custom-switch-input" name="is_active" value="1"
@@ -60,6 +54,14 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="col-md-3">
+                                <div class="mb-4">
+                                    <label for="" class="form-label">Journal Image</label>
+                                    <input type="file" class="form-control" placeholder="Enter Your Email" name="image"
+                                        value="{{ old('image') }}">
+                                </div>
+                            </div>
+
                             <div class="col-md-12 mt-1">
                                 <div class="mb-4">
                                     <label for="" class="form-label">Description</label>
@@ -73,14 +75,14 @@
                             <div class="col-md-3">
                                 <div class="mb-4">
                                     <label for="" class="form-label">Acceptance Rate</label>
-                                    <input type="text" class="form-control" placeholder="Enter Acceptance Rate"
+                                    <input type="number" class="form-control" placeholder="Enter Acceptance Rate"
                                         name="acceptance_rate" value="{{ old('acceptance_rate') }}">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-4">
                                     <label for="" class="form-label">Submission to Final Decision</label>
-                                    <input type="text" class="form-control"
+                                    <input type="number" class="form-control"
                                         placeholder="Enter Submission to Final Decision" name="submission_to_final_decision"
                                         value="{{ old('submission_to_final_decision') }}">
                                 </div>
@@ -88,7 +90,7 @@
                             <div class="col-md-3">
                                 <div class="mb-4">
                                     <label for="" class="form-label">Acceptance To Publication</label>
-                                    <input type="text" class="form-control" placeholder="Enter Acceptance to publication"
+                                    <input type="number" class="form-control" placeholder="Enter Acceptance to publication"
                                         name="acceptance_to_publication" value="{{ old('acceptance_to_publication') }}">
                                 </div>
                             </div>
@@ -101,88 +103,43 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-4">
-                                    <label for="formrow-inputState" class="form-label">Publication Type</label>
-                                    <select class="form-select" name="publication_type">
+                                    <label for="publishing_model" class="form-label">Publication Model</label>
+                                    <select class="form-select" name="publishing_model" id="publishing_model">
                                         <option selected disabled>Choose...</option>
-                                        <option value="1" @selected(old('publication_type') == 1)>Option 1</option>
-                                        <option value="2" @selected(old('publication_type') == 2)>Option 2</option>
+                                        <option value="Open Access" @selected(old('publishing_model') == 'Open Access')>Open Access</option>
+                                        <option value="Paid" @selected(old('publishing_model') == 'Paid')>Paid</option>
                                     </select>
                                 </div>
-
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-4">
-                                    <label for="formrow-inputState" class="form-label">Publication Model</label>
-                                    <select class="form-select" name="publishing_model">
+                                    <label for="formrow-inputState" class="form-label">Index Bodies</label>
+                                    <select class="form-select select" name="indexing_bodies">
                                         <option selected disabled>Choose...</option>
-                                        <option value="Open Access">Open Access</option>
-                                        <option value="Paid">Paid</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-4">
                                     <label for="formrow-inputState" class="form-label">Publication Category</label>
-                                    <select class="form-select" name="journal_category">
-                                        <option selected disabled>Choose...</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="journal_category"
+                                        placeholder="Enter Publication Category" required
+                                        value="{{ old('journal_category') }}">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-4">
                                     <label for="" class="form-label">ACP</label>
                                     <input type="text" class="form-control" placeholder="Enter ACP" name="acp"
-                                        value="{{ old('salary') }}">
+                                        value="{{ old('acp') }}">
                                 </div>
                             </div>
-                            <div class="col-12 row" id="leave_box">
-                                <div class="col-12">
-                                    <h5 class="my-3">Journal Overview</h5>
-                                    <hr>
-                                </div>
-                                <div class="col-md-6 mt-1">
-                                    <div class="mb-4">
-                                        <label for="" class="form-label">Manuscript Prepation Guideline</label>
-                                        <textarea rows="4" class="form-control content" name="manuscript_prepation_guideline"
-                                            placeholder="Enter Manuscript Prepation Guideline..">{{ old('address') }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1">
-                                    <div class="mb-4">
-                                        <label for="" class="form-label">Aims & Scope</label>
-                                        <textarea rows="4" class="form-control content" name="aims_and_scope" placeholder="Enter Aims & Scope..">{{ old('address') }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1">
-                                    <div class="mb-4">
-                                        <label for="" class="form-label">Editorial Polices</label>
-                                        <textarea rows="4" class="form-control content" name="editorial_polices" placeholder="Enter Editorial Polices..">{{ old('address') }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1">
-                                    <div class="mb-4">
-                                        <label for="" class="form-label">Author Guideline</label>
-                                        <textarea rows="4" class="form-control content" name="author_guideline" placeholder="Enter Author Guideline..">{{ old('address') }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1">
-                                    <div class="mb-4">
-                                        <label for="" class="form-label">Role of EIC</label>
-                                        <textarea rows="4" class="form-control content" name="role_of_eic" placeholder="Enter Role of EIC..">{{ old('address') }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1">
-                                    <div class="mb-4">
-                                        <label for="" class="form-label">Role Of EBM</label>
-                                        <textarea rows="4" class="form-control content" name="role_of_ebm" placeholder="Enter Role of EBM..">{{ old('address') }}</textarea>
-                                    </div>
-                                </div>
-                            </div>
+                            
+
                         </div>
-                        <hr>
-                        <div>
+                        <div class="mt-4">
                             <button type="submit" class="btn btn-primary">Add New Journals</button>
                         </div>
                     </form>
@@ -190,4 +147,7 @@
             </div>
         </div>
     </div>
+    <script>
+        Inputmask("999-9999").mask(document.getElementById("acronym"));
+    </script>
 @endsection

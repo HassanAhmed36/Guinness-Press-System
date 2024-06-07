@@ -16,6 +16,7 @@ class JournalMatrix extends Model
         'publication_type',
         'publishing_model',
         'journal_category',
+        'indexing_bodies',
         'acp',
         'journal_id',
     ];

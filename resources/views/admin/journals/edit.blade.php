@@ -11,9 +11,10 @@
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
+                <div class="card-header mb-2">
+                    <h4 class="card-title fs-5">Edit Journals</h4>
+                </div>
                 <div class="card-body">
-                    <h4 class="card-title fs-4 mb-3">Edit Journals</h4>
-                    <hr>
                     <form action="{{ route('admin.journal.update', ['id' => $journal->id]) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
@@ -38,25 +39,31 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Journal Image</label>
-                                    <input type="file" class="form-control" placeholder="Enter Your Email" name="image"
-                                        value="{{ old('image') }}">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
                                     <label for="" class="form-label">Acronym</label>
                                     <input type="text" class="form-control" placeholder="Enter Your acronym"
                                         value="{{ $journal->acronym }}" name="acronym" value="{{ old('acronym') }}">
                                 </div>
                             </div>
-                            <div class="col-md-3 pt-4 mt-1">
-                                <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
-                                    <input class="form-check-input" type="checkbox" id="SwitchCheckSizemd" name="is_active"
-                                        @checked($journal->is_active)>
-                                    <label class="form-check-label" for="SwitchCheckSizemd">is active</label>
+                            <div class="col-3 mb-4 pt-4">
+                                <div class="form-group pt-4">
+                                    <label class="custom-switch">
+                                        <input type="checkbox" class="custom-switch-input" name="is_active" value="1"
+                                            @checked($journal->is_active)>
+                                        <span class="custom-switch-indicator custom-switch-indicator-lg"></span>
+                                        <span class="custom-switch-description me-2">Is Active</span>
+                                    </label>
                                 </div>
                             </div>
+
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Journal Image</label>
+                                    <input type="file" class="form-control" placeholder="Enter Your Email" name="image"
+                                        value="{{ old('image') }}">
+                                </div>
+                            </div>
+
+
                             <div class="col-md-12 mt-1">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Description</label>
@@ -100,15 +107,14 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="formrow-inputState" class="form-label">Publication Type</label>
-                                    <select class="form-select" name="publication_type">
+                                <div class="mb-4">
+                                    <label for="formrow-inputState" class="form-label">Index Bodies</label>
+                                    <select class="form-select select" name="indexing_bodies">
                                         <option selected disabled>Choose...</option>
-                                        <option value="1" @selected($journal->journal_matrix->publication_type == 1)>Option 1</option>
-                                        <option value="2" @selected($journal->journal_matrix->publication_type == 2)>Option 2</option>
+                                        <option value="1" @selected($journal->journal_matrix->indexing_bodies == 1)>1</option>
+                                        <option value="2" @selected($journal->journal_matrix->indexing_bodies == 2)>2</option>
                                     </select>
                                 </div>
-
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
@@ -121,13 +127,11 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="mb-3">
+                                <div class="mb-4">
                                     <label for="formrow-inputState" class="form-label">Publication Category</label>
-                                    <select class="form-select" name="journal_category">
-                                        <option selected disabled>Choose...</option>
-                                        <option value="1" @selected($journal->journal_matrix->journal_category == '1')>Option 1</option>
-                                        <option value="2" @selected($journal->journal_matrix->journal_category == '2')>Option 2</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="journal_category"
+                                        placeholder="Enter Publication Category" required
+                                        value="{{ $journal->journal_matrix->journal_category ?? old('journal_category') }}">
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -137,53 +141,7 @@
                                         value="{{ old('salary') ?? $journal->journal_matrix->acp }}">
                                 </div>
                             </div>
-                            <div class="col-12 row" id="leave_box">
-                                <div class="col-12">
-                                    <h5 class="my-3">Journal Overview</h5>
-                                    <hr>
-                                </div>
-                                <div class="col-md-6 mt-1">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Manuscript Prepation Guideline</label>
-                                        <textarea rows="4" class="form-control content" name="manuscript_prepation_guideline"
-                                            placeholder="Enter Manuscript Prepation Guideline..">{{ old('manuscript_prepation_guideline') ?? $journal->journal_overview->manuscript_prepation_guideline }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Aims & Scope</label>
-                                        <textarea rows="4" class="form-control content" name="aims_and_scope" placeholder="Enter Aims & Scope..">{{ old('aims_and_scope') ?? $journal->journal_overview->aims_and_scope }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Editorial Polices</label>
-                                        <textarea rows="4" class="form-control content" name="editorial_polices"
-                                            placeholder="Enter Editorial Polices..">{{ old('address') ?? $journal->journal_overview->editorial_polices }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Author Guideline</label>
-                                        <textarea rows="4" class="form-control content" name="author_guideline"
-                                            placeholder="Enter Author Guideline..">{{ old('address') ?? $journal->journal_overview->author_guideline }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Role of EIC</label>
-                                        <textarea rows="4" class="form-control content" name="role_of_eic" placeholder="Enter Role of EIC..">{{ old('address') ?? $journal->journal_overview->role_of_eic }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-1">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Role Of EBM</label>
-                                        <textarea rows="4" class="form-control content" name="role_of_ebm" placeholder="Enter Role of EBM..">{{ old('address') ?? $journal->journal_overview->role_of_ebm }}</textarea>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                        <hr>
                         <div>
                             <button type="submit" class="btn btn-primary">Update Journals</button>
                         </div>

@@ -16,23 +16,17 @@ class JournalRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'issn_no' => 'required|string|max:255',
+            'issn_no' => 'required|string|regex:/^\d{4}-\d{4}$/|max:255',
             'is_active' => 'nullable',
             'description' => 'required|string',
             'acceptance_rate' => 'required',
             'submission_to_final_decision' => 'required',
             'acceptance_to_publication' => 'required',
-            'dio_prefix' => 'required|',
-            'publication_type' => 'required',
+            'dio_prefix' => 'required',
             'publishing_model' => 'required',
             'journal_category' => 'required',
             'image' => 'required',
-            'manuscript_prepation_guideline' => 'required',
-            'aims_and_scope' => 'required',
-            'editorial_polices' => 'required',
-            'author_guideline' => 'required',
-            'role_of_eic' => 'required',
-            'role_of_ebm' => 'required',
+            'acp' => 'required'
         ];
     }
 }

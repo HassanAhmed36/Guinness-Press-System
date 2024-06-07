@@ -39,7 +39,7 @@
                                     {{-- <td>{{ $v->id }}</td> --}}
                                     <td>volume {{ $v->name }}</td>
                                     <td>{{ $v->journal->name }}</td>
-                                    <td>{{ $v->created_at->format('Y') }}</td>
+                                    <td>{{ $v->year }}</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm edit-btn" data-bs-toggle="modal"
                                             data-bs-target="#editModal" data-id="{{ $v->id }}">
@@ -71,16 +71,24 @@
                     <form action="{{ route('admin.volume.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body row">
-                            <div class="col-6 mb-4">
+                            <div class="col-5 mb-4">
                                 <label for="" class="form-label">Name</label>
                                 <input type="text" class="form-control" placeholder="Enter Volume name" name="name"
                                     required>
                             </div>
-                            <div class="col-6 mb-4 pt-4">
-                                <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
-                                    <input class="form-check-input" type="checkbox" id="SwitchCheckSizemd" checked
-                                        name="is_active" value="1">
-                                    <label class="form-check-label" for="SwitchCheckSizemd">is active</label>
+                            <div class="col-4 mb-4">
+                                <label for="yearInput" class="form-label">Year</label>
+                                <input type="number" class="form-control" placeholder="Enter Volume Year" name="year"
+                                    id="yearInput" required min="1900" max="2100">
+                            </div>
+                            <div class="col-3 mb-4 pt-4">
+                                <div class="form-group pt-4">
+                                    <label class="custom-switch">
+                                        <input type="checkbox" class="custom-switch-input" name="is_active" value="1"
+                                            checked="">
+                                        <span class="custom-switch-indicator custom-switch-indicator-lg"></span>
+                                        <span class="custom-switch-description me-2">Is Active</span>
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-12 mb-4">
@@ -140,6 +148,13 @@
                     console.error(xhr.responseText);
                 }
             });
+        });
+    </script>
+    <script>
+        document.getElementById('yearInput').addEventListener('input', function(e) {
+            var value = e.target.value;
+            value = value.replace(/[^0-9]/g, '');
+            e.target.value = value;
         });
     </script>
 @endsection

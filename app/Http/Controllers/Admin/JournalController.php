@@ -35,16 +35,13 @@ class JournalController extends Controller
      */
     public function store(JournalRequest $request)
     {
-        // dd($request->toArray());
         DB::beginTransaction();
         try {
-
             if ($request->hasFile('image')) {
                 $name = uniqid() . '.' . $request->image->getClientOriginalName();
                 $request->image->move(public_path('journal-images/'), $name);
                 $image_path = 'journal-images/' . $name;
             }
-
             $journal =  Journal::create([
                 'name' => $request->name,
                 'acronym' => $request->acronym,
@@ -59,23 +56,13 @@ class JournalController extends Controller
                 'submission_to_final_decision' => $request->submission_to_final_decision,
                 'acceptance_to_publication' => $request->acceptance_to_publication,
                 'dio_prefix' => $request->dio_prefix,
-                'publication_type' => $request->publication_type,
+                'publication_type' => 'Peer Reviewd',
                 'publishing_model' => $request->publishing_model,
                 'journal_category' => $request->journal_category,
+                 'indexing_bodies' => $request->indexing_bodies,
                 'acp' => $request->acp,
                 'journal_id' => $journal->id,
             ]);
-
-            JournalOverview::create([
-                'manuscript_prepation_guideline' => $request->manuscript_prepation_guideline,
-                'aims_and_scope' => $request->aims_and_scope,
-                'editorial_polices' => $request->editorial_polices,
-                'author_guideline' => $request->author_guideline,
-                'role_of_eic' => $request->role_of_eic,
-                'role_of_ebm' => $request->role_of_ebm,
-                'journal_id' =>  $journal->id,
-            ]);
-
             DB::commit();
             return redirect()->route('admin.journal.index')->with('success', 'Journal Added Successfully!');
         } catch (\Exception $e) {
@@ -137,19 +124,11 @@ class JournalController extends Controller
                 'submission_to_final_decision' => $request->submission_to_final_decision,
                 'acceptance_to_publication' => $request->acceptance_to_publication,
                 'dio_prefix' => $request->dio_prefix,
-                'publication_type' => $request->publication_type,
+                'publication_type' => 'Peer Reviewd',
+                'indexing_bodies' => $request->indexing_bodies,
                 'publishing_model' => $request->publishing_model,
                 'journal_category' => $request->journal_category,
                 'acp' => $request->acp,
-            ]);
-
-            $journal->journal_overview()->update([
-                'manuscript_prepation_guideline' => $request->manuscript_prepation_guideline,
-                'aims_and_scope' => $request->aims_and_scope,
-                'editorial_polices' => $request->editorial_polices,
-                'author_guideline' => $request->author_guideline,
-                'role_of_eic' => $request->role_of_eic,
-                'role_of_ebm' => $request->role_of_ebm,
             ]);
 
             DB::commit();

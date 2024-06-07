@@ -35,6 +35,7 @@ class JournalVolumeController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'year' => 'required',
             'journal_id' => 'required',
         ]);
         $journal_volume = JournalVolume::orderByDesc('id')->where('journal_id', $request->journal_id)->first();
@@ -44,6 +45,7 @@ class JournalVolumeController extends Controller
         try {
             JournalVolume::create([
                 'name' => $request->name,
+                'year' => $request->year,
                 'journal_id' => $request->journal_id,
                 'is_active' => $request->filled('is_active') ? true : false,
             ]);
@@ -79,6 +81,7 @@ class JournalVolumeController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'year' => 'required',
             'journal_id' => 'required',
         ]);
         $journal_volume = JournalVolume::orderByDesc('id')->whereNot('id', $id)->where('journal_id', $request->journal_id)->first();
@@ -89,6 +92,7 @@ class JournalVolumeController extends Controller
             JournalVolume::find($id)->update([
                 'name' => $request->name,
                 'journal_id' => $request->journal_id,
+                'year' => $request->year,
                 'is_active' => $request->filled('is_active') ? true : false,
             ]);
             return back()->with('success', 'Volume Updated Successfully!');

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
+use App\Models\Journal;
+use App\Models\Submission;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +41,10 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $journal_count  = Journal::count();
+        $submission_count  = Submission::count();
+        $user_count  = User::where('role_id', 3)->count();
+        $article_count  = Article::count();
+        return view('admin.dashboard', compact('journal_count', 'submission_count', 'user_count', 'article_count'));
     }
 }

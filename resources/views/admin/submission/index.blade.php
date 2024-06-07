@@ -33,7 +33,8 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $s->menuscript_id }}</td>
                                         <td>{{ $s->journal->name }}</td>
-                                        <td>{{ $s->user->email }}</td>
+                                        <td>{!! $s->user->email ?? '<span class="badge badge-warning">Guest User</span>' !!}
+                                        </td>
                                         <td>{{ $s->admin_status == 0 ? 'submitted' : ($s->admin_status == 1 ? 'approved' : 'rejected') }}
                                         </td>
                                         <td>
@@ -64,7 +65,6 @@
             </div>
         </div>
     </div>
-
     <!-- Edit Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">

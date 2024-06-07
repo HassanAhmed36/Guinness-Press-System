@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('publication_type');
             $table->string('publishing_model');
             $table->string('journal_category');
+            $table->string('indexing_bodies')->nullable();
             $table->string('acp');
             $table->foreignId('journal_id')->constrained('journals')->cascadeOnDelete();
             $table->timestamps();

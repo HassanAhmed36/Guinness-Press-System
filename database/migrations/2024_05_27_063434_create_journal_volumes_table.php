@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('journal_volumes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('year');
             $table->foreignId('journal_id')->constrained('journals')->cascadeOnDelete();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
