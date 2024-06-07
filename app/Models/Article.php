@@ -52,4 +52,14 @@ class Article extends Model
     {
         return $this->hasOne(ArticleDetail::class, 'article_id');
     }
+
+    public function volume()
+    {
+        return $this->belongsTo(JournalVolume::class, 'journal_id');
+    }
+
+    public function affiliation(): HasMany
+    {
+        return $this->HasMany(Affiliation::class, 'article_id');
+    }
 }

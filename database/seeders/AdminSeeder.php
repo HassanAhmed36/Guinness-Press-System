@@ -19,7 +19,7 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         Role::insert([
-            ['name' => 'Administrator'],
+            ['name' => 'Administrator'], //
             ['name' => 'Editorial Board Member'],
             ['name' => 'Author'],
         ]);

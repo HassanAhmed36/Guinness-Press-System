@@ -164,7 +164,7 @@
                                 <div class="card member_box">
                                     <div class="imag_member">
                                         <img style="object-fit: cover;" class="card-img-top"
-                                            src="{{ asset('board-member-image/' . $journal->acronym . '/' . $board_member->image) ?? asset('board-member-image/dummy450x450') }}"
+                                            src="{{ asset($board_member->image) ?? asset('board-member-image/' . $journal->acronym . '/' . $board_member->image) }}"
                                             alt="Member">
                                     </div>
                                     <div class="card-body">

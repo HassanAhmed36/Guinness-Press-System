@@ -14,9 +14,19 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/clear-cache', function () {
+    Artisan::call('optimize:clear');
+    Artisan::call('route:clear');
+    return 'Cache cleared successfully.';
+});
 
-Route::get('/clear' , function(){
-   Artisan::call('optimize:clear');
+Route::get('/optimize', function () {
+    Artisan::call('optimize');
+    Artisan::call('route:cache');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    Artisan::call('queue:restart');
+    return 'Application optimized successfully.';
 });
 
 

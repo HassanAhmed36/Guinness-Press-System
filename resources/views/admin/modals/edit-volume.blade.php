@@ -11,9 +11,9 @@
                 value="{{ $volums->name }}">
         </div>
         <div class="col-6 mb-4 pt-4">
-            <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
-                <input class="form-check-input" type="checkbox" id="SwitchCheckSizemd" checked name="is_active"
-                    @checked($volums->is_active)>
+            <div class="form-check form-switch form-switch-lg mb-3" dir="ltr">
+                <input class="form-check-input" type="checkbox" id="SwitchCheckSizemd"  name="is_active"
+                    @checked($volums->is_active == 1)>
                 <label class="form-check-label" for="SwitchCheckSizemd">is active</label>
             </div>
         </div>

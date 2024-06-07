@@ -54,18 +54,22 @@ class AuthController extends Controller
         request()->validate([
             'password' => 'required'
         ]);
-        $user = User::where('id', request('user_id'))->first();
-        $user->update([
-            'password' => Hash::make(request('password')),
-            'is_active' => 1
-        ]);
-        $submission = Submission::where('menuscript_id', session()->get('manuscript_id'))->first();
-        $submission->update([
-            'user_id' => $user->id
-        ]);
-        session()->forget('manuscript_id');
-        Auth::login($user);
-        return redirect('/')->with('message', 'Please complete your Profile');
+        try {
+            $user = User::where('id', request('user_id'))->first();
+            $user->update([
+                'password' => Hash::make(request('password')),
+                'is_active' => 1
+            ]);
+            $submission = Submission::where('menuscript_id', session()->get('manuscript_id'))->first();
+            $submission->update([
+                'user_id' => $user->id
+            ]);
+            session()->forget('manuscript_id');
+            Auth::login($user);
+            return redirect('/')->with('message', 'Please complete your Profile');
+        } catch (\Throwable $th) {
+            return back()->with('message', 'Please copy a link and open htis page in sabe browser');
+        }
     }
 
     public function login()

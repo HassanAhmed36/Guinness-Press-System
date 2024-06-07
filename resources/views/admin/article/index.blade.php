@@ -20,21 +20,18 @@
                             <i class="fa fa-plus-circle me-2"></i>Add new Articles</a>
                     </div>
                 </div>
-                <div class="card-body">
-
-                    <hr>
-                    <br>
-                    <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
+                <div class="card-body responsive">
+                    <table id="datatable" class="table table-bordered w-100">
                         <thead>
                             <tr>
                                 <th>S.No</th>
-                                <th>Article ID</th>
+                                <th style="width:10%">Article ID</th>
                                 <th>title</th>
                                 <th>DIO</th>
-                                <th>Published Date</th>
+                                <th style="width:10%">Published Date</th>
                                 <th>Journal</th>
-                                <th>Issue</th>
-                                <th>Action</th>
+                                <th style="width:8%">Issue</th>
+                                <th style="width:12%">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,6 +50,9 @@
                                         <a class="btn btn-primary btn-sm edit-department" href="{{ asset($a->file_path) }}"
                                             download="{{ $a->file_name }}">
                                             <i class="fa fa-download"></i></a>
+                                        <a class="btn btn-warning btn-sm edit-department"
+                                            href="{{ route('admin.article.edit', ['id' => $a->id]) }}">
+                                            <i class="fa fa-pencil"></i></a>
                                         <a class="btn btn-danger btn-sm"
                                             href="{{ route('admin.article.delete', ['id' => $a->id]) }}">
                                             <i class="fa fa-trash"></i></a>

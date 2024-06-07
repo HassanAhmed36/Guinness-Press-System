@@ -23,6 +23,7 @@
                                     <th>ManuScript ID</th>
                                     <th>Journal name</th>
                                     <th>Author Email</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -33,33 +34,27 @@
                                         <td>{{ $s->menuscript_id }}</td>
                                         <td>{{ $s->journal->name }}</td>
                                         <td>{{ $s->user->email }}</td>
+                                        <td>{{ $s->admin_status == 0 ? 'submitted' : ($s->admin_status == 1 ? 'approved' : 'rejected') }}
+                                        </td>
                                         <td>
                                             <!-- View Button -->
                                             <button class="btn btn-warning btn-sm edit-btn" data-bs-toggle="modal"
-                                                data-bs-target="#viewModal" data-id="{{ $s->id }}">
+                                                data-bs-target="#editModal" data-id="{{ $s->id }}">
                                                 <i class="fa fa-eye"></i>
                                             </button>
-
-                                            <!-- Approve Button -->
-                                            <button class="btn btn-success btn-sm edit-btn" data-bs-toggle="modal"
-                                                data-bs-target="#approveModal" data-id="{{ $s->id }}">
+                                            <a class="btn btn-success btn-sm"
+                                                href="{{ route('admin.approve.submission', ['id' => $s->id]) }}">
                                                 <i class="fa fa-check"></i>
-                                            </button>
-
-                                            <!-- Reject Button -->
-                                            <button class="btn btn-danger btn-sm edit-btn" data-bs-toggle="modal"
-                                                data-bs-target="#rejectModal" data-id="{{ $s->id }}">
+                                            </a>
+                                            <a class="btn btn-danger btn-sm"
+                                                href="{{ route('admin.reject.submission', ['id' => $s->id]) }}">
                                                 <i class="fa fa-times"></i>
-                                            </button>
-
-                                            <!-- Download Button -->
-                                            <a href="{{ asset($s->manuscript_path) }}" target class="btn btn-info btn-sm edit-btn"
-                                                download="{{ $s->manuscript_name }}" sda>
+                                            </a>
+                                            <a href="{{ asset($s->manuscript_path) }}" target="_blank"
+                                                class="btn btn-info btn-sm" download="{{ $s->manuscript_name }}">
                                                 <i class="fa fa-download"></i>
                                             </a>
-
                                         </td>
-
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -69,38 +64,35 @@
             </div>
         </div>
     </div>
-    <div>
 
-
-        <div id="editModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content" id="modal-body">
-
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Submission</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Modal content will be loaded dynamically -->
                 </div>
             </div>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $('.edit-btn').click(function(e) {
-            $('#modal-body').html(
-                `<div class="d-flex justify-content-center">
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>`
-            );
+        $(document).on('click', '.edit-btn', function(e) {
             e.preventDefault();
-            var Member = $(this).data('id');
-            var url = "{{ route('editorial.member.edit') }}";
+            $('#modal-body').html('<div class="text-center"><div class="spinner-border"></div></div>');
+            let id = $(this).data('id');
             $.ajax({
-                url: url,
-                method: "GET",
+                type: "GET",
+                url: "{{ route('view.submission') }}",
                 data: {
-                    id: Member
+                    id: id
                 },
                 success: function(response) {
-                    $('#modal-body').html('');
                     $('#modal-body').html(response);
                 },
                 error: function(xhr, status, error) {

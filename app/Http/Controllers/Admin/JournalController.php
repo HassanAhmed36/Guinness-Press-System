@@ -51,7 +51,7 @@ class JournalController extends Controller
                 'issn_no' => $request->issn_no,
                 'image' => $image_path,
                 'description' => $request->description,
-                'is_active' => $request->is_active ? true : false,
+                'is_active' => $request->has('is_active') ? true : false,
             ]);
 
             JournalMatrix::create([

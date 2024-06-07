@@ -54,15 +54,13 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Email Verification</h1>
+            <h1>Submission Reject</h1>
         </div>
         <div class="content">
             <p>Hello,</p>
-            <p style="margin-bottom: 20px">Please verify your email address by clicking the link below:</p>
-            <a href="{{ url(route('verify.email', ['token' => $user->remember_token], false)) }}" class="button"
-                style="color:white;">Verify
-                Email</a>
-
+            <p>Your manuscript ID <strong>{{ $submission->menuscript_id }}</strong> has been rejected.</p>
+            <p>If you have any questions, please feel free to contact us.</p>
+            <p>Best regards,<br>The Guinness Press Team</p>
         </div>
 
     </div>

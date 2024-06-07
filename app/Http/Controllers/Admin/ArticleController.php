@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
+use App\Http\Requests\UpdateArticle;
 use App\Models\Affiliation;
 use App\Models\Article;
 use App\Models\ArticleDetail;
@@ -140,18 +141,110 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
-        //
+        // dd($id);
+        $iso3166 = new ISO3166();
+        $countries = $iso3166->all();
+        $journals = Journal::select('id', 'name')->get();
+        $article = Article::with(['journal', 'issue', 'volume', 'article_details', 'affiliation', 'author' => function ($q) {
+            $q->with('affiliations');
+        }])->find($id);
+
+        return view('admin.article.edit', compact('journals', 'countries', 'article'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Article $article)
+    public function update(UpdateArticle $request, $id)
     {
-        //
+        $authors = json_decode($request->input('author_array'), true);
+        $affiliations = json_decode($request->input('affiliation_array'), true);
+
+        DB::beginTransaction();
+        try {
+            $article = Article::findOrFail($id);
+
+            if ($request->hasFile('file')) {
+                // Remove the old file if it exists
+                if ($article->file_path && file_exists(public_path($article->file_path))) {
+                    unlink(public_path($article->file_path));
+                }
+
+                $file_name = $request->file->getClientOriginalName();
+                $name = uniqid() . '.' . $request->file->getClientOriginalName();
+                $request->file->move(public_path('articles/'), $file_name);
+                $file_path = 'articles/' . $file_name;
+
+                $article->file_path = $file_path;
+                $article->file_name = $file_name;
+            }
+
+            $article->update([
+                'title' => $request->input('title'),
+                'first_page' => $request->input('first_page'),
+                'last_page' => $request->input('last_page'),
+                'article_type' => $request->input('article_type'),
+                'published_date' => $request->input('published_date'),
+                'dio' => $request->input('dio'),
+                'is_active' => $request->has('is_active'),
+                'issue_id' => $request->input('issue_id'),
+                'volume_id' => $request->input('volume_id'),
+                'journal_id' => $request->input('journal_id'),
+            ]);
+
+            $article->article_details()->updateOrCreate(
+                ['article_id' => $article->id],
+                [
+                    'abstract' => $request->input('abstract'),
+                    'references' => $request->input('references'),
+                    'extra_meta_tag' => $request->input('extra_meta_tag'),
+                ]
+            );
+
+            $article->keywords()->delete();
+            $keywords = explode(',', $request->input('keywords'));
+            foreach ($keywords as $keyword) {
+                ArticleKeyword::create([
+                    'keyword' => $keyword,
+                    'article_id' => $article->id,
+                ]);
+            }
+            $article->affiliation()->delete();
+            $affiliations_id = [];
+            foreach ($affiliations as $affiliation) {
+                $createdAffiliation = Affiliation::create([
+                    'name' => $affiliation['name'],
+                    'country' => $affiliation['country'],
+                    'full_affiliation' => json_encode([$affiliation['name'], $affiliation['country']]),
+                    'article_id' => $article->id,
+                ]);
+                $affiliations_id[] = $createdAffiliation->id;
+            }
+
+            $article->author()->delete();
+            foreach ($authors as $authorData) {
+                $author = Author::create([
+                    'first_name' => $authorData['firstname'],
+                    'middle_name' => $authorData['middlename'],
+                    'last_name' => $authorData['lastname'],
+                    'author_affiliation' => json_encode($authorData['affiliations']),
+                    'email' => $authorData['email'],
+                    'orchid_id' => $authorData['orchid_id'],
+                    'article_id' => $article->id
+                ]);
+                $author->affiliations()->attach($affiliations_id);
+            }
+
+            DB::commit();
+            return redirect()->route('admin.article.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e->getMessage());
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.

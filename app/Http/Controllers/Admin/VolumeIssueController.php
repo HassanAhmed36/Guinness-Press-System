@@ -48,20 +48,37 @@ class VolumeIssueController extends Controller
             'name' => 'required',
             'volume_id' => 'required',
             'journal_id' => 'required',
-            'is_active' => 'required',
         ]);
 
         try {
+            $lastIssue = VolumeIssue::with('volume')
+                ->where('volume_id', $request->volume_id)
+                ->where('journal_id', $request->journal_id)
+                ->orderByDesc('id')
+                ->first();
+
+            if ($lastIssue) {
+                $volumeNumber = $lastIssue->volume->name;
+                $lastIssueNumber = intval($lastIssue->name);
+                $newIssueNumber = $lastIssueNumber + 1;
+            } else {
+                $volumeNumber = JournalVolume::find($request->volume_id)->name;
+                $newIssueNumber = 1;
+            }
+
+            $newIssueId = intval($volumeNumber . str_pad($newIssueNumber, 3, '0', STR_PAD_LEFT));
+
             VolumeIssue::create([
                 'name' => $request->name,
                 'volume_id' => $request->volume_id,
+                'issue_id' => $newIssueId,
                 'journal_id' => $request->journal_id,
                 'is_active' => $request->filled('is_active') ? true : false,
             ]);
+
             return back()->with('success', 'Issue Added Successfully!');
         } catch (\Exception $e) {
-            dd($e->getMessage());
-            return back()->with('error', 'Issue Added Failed!');
+            return back()->with('error', 'Issue Addition Failed!')->with('errorMessage', $e->getMessage());
         }
     }
 
@@ -91,7 +108,6 @@ class VolumeIssueController extends Controller
             'name' => 'required',
             'volume_id' => 'required',
             'journal_id' => 'required',
-            'is_active' => 'required',
         ]);
 
         try {

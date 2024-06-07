@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li class="side-item side-item-category">Apps</li>
-            <li class="slide">
+            {{-- <li class="slide">
                 <a class="side-menu__item" data-bs-toggle="slide" href="#">
                     <i class="feather  feather-users sidemenu_icon"></i>
                     <span class="side-menu__label">Users <span class="nav-list"></span></span><i
@@ -41,9 +41,13 @@
                 </a>
                 <ul class="slide-menu">
                     <li><a href="#" class="slide-item">Users</a></li>
-                    <li><a href="#" class="slide-item">Admin</a></li>
-                    <li><a href="#" class="slide-item">Roles & Permission</a></li>
                 </ul>
+            </li> --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.user.index') }}">
+                    <i class="feather feather-user sidemenu_icon"></i>
+                    <span class="side-menu__label">Users</span>
+                </a>
             </li>
             <li class="slide">
                 <a class="side-menu__item" href="{{ route('admin.journal.index') }}">
