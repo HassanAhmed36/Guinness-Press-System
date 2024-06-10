@@ -12,20 +12,12 @@ class Submission extends Model
     use HasFactory;
     protected $fillable = [
         'menuscript_id',
-        'title',
-        'abstract',
         'journal_id',
         'manuscript_name',
         'manuscript_path',
-        'cover_letter_name',
-        'cover_letter_path',
-        'author_message',
-        'reviewer_message',
         'admin_message',
-        'reviewer_status',
         'admin_status',
         'user_id',
-        'reviewer_id',
     ];
 
     public function user(): BelongsTo

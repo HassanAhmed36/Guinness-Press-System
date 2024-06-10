@@ -18,6 +18,7 @@ class SubmissionController extends Controller
         }, 'user' => function ($q) {
             $q->select('id', 'email');
         }])->get();
+        // dd($submissions->toArray());
         return view('admin.submission.index', compact('submissions'));
     }
 

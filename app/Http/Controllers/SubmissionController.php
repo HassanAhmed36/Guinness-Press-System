@@ -40,53 +40,27 @@ class SubmissionController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'title' => 'required|string',
-            'abstract' => 'required|string',
-            'keywords' => 'string',
-            'journal' => 'required|string',
-            'manuscript' => 'required|file',
-            'cover_letter' => 'sometimes',
-            'author_message' => 'sometimes'
-        ]);
+        // session()->put('user_info', $request->all());
+        session()->put('user_email', $request->email_address);
         DB::beginTransaction();
         try {
-            $keywordsArray = explode(',', $data['keywords']);
-            $keywordsArray = array_map('trim', $keywordsArray);
-
-            if ($request->hasFile('manuscript')) {
-                $name = uniqid() . '.' . $request->manuscript->getClientOriginalName();
-                $manuscript_name = $request->manuscript->getClientOriginalName();
-                $request->manuscript->move(public_path('manuscripts/'), $name);
-                $manuscript_path = 'manuscripts/' . $name;
-            }
-            if ($request->hasFile('cover_letter')) {
-                $name = uniqid() . '.' . $request->cover_letter->getClientOriginalName();
-                $cover_letter_name = $request->cover_letter->getClientOriginalName();
-                $request->cover_letter->move(public_path('cover_letter/'), $name);
-                $cover_letter_path = 'cover_letter/' . $name;
-            }
+            $name = uniqid() . '.' . $request->manuscript->getClientOriginalExtension();
+            $manuscript_name = $request->manuscript->getClientOriginalName();
+            $request->manuscript->move(public_path('manuscripts/'), $name);
+            $manuscript_path = 'manuscripts/' . $name;
 
             $submission = Submission::create([
                 'menuscript_id' => $this->create_menuscript_id(),
-                'title' => $request->title,
-                'abstract' => $request->abstract,
-                'journal_id' => $request->journal,
+                'journal_id' => $request->journal_id, // or set an appropriate value
                 'manuscript_name' => $manuscript_name,
                 'manuscript_path' => $manuscript_path,
-                'cover_letter_name' => $cover_letter_name ?? null,
-                'cover_letter_path' => $cover_letter_path ?? null,
-                'author_message' => $request->author_message ?? null,
-                'status' => 0,
-                'user_id' => Auth::id() ?? null
+                'admin_message' => null,
+                'admin_status' => 0,
+                'user_id' => auth()->id() ?? null,
             ]);
+
             session()->push('manuscript_id', $submission->menuscript_id);
-            foreach ($keywordsArray as $key => $value) {
-                SubmissionKeyword::create([
-                    'keyword' => $value,
-                    'submission_id' => $submission->id
-                ]);
-            }
+
             DB::commit();
             if (!Auth::check()) {
                 return redirect()->route('login.after.submission');

@@ -19,7 +19,7 @@
                             <div class="col-12 mb-4">
                                 <label for="" class="form-label">Email</label>
                                 <input type="email" class="form-control" name="email" placeholder="Enter your email"
-                                    required>
+                                    required value="{{ session()->get('user_email') }}">
                                 @error('email')
                                     <div class="invalid-feedback"> {{ $message }} </div>
                                 @enderror

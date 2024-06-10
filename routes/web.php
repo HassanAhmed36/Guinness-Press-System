@@ -25,7 +25,6 @@ Route::get('/optimize', function () {
     Artisan::call('route:cache');
     Artisan::call('config:cache');
     Artisan::call('view:clear');
-    Artisan::call('queue:restart');
     return 'Application optimized successfully.';
 });
 
@@ -89,7 +88,7 @@ Route::get('/blogs', [MainController::class, 'blogs']);
 Route::get('/user-information', [MainController::class, 'user_information']);
 Route::get('/dashboard', [MainController::class, 'dashboard']);
 Route::get('/search', [MainController::class, 'search'])->name('search');
-Route::view('/submit-your-article', 'user.pages.submit_articles');
+Route::view('/submit-your-article', 'user.pages.submit_articles', ['journals' => Journal::all()]);
 
 Route::post('/form-submission', [MainController::class, 'sendEmail'])->name('send.email');
 Route::post('/article-submission', [MainController::class, 'sendArticleEmail'])->name('send.articlemail');

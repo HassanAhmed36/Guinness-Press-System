@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(AdminSeeder::class);
-        // $this->call(JournalSeeder::class);
+        $this->call(JournalSeeder::class);
         // $this->call(VolumeSeeder::class);
         // $this->call(IssueSeeder::class);
         // $this->call(EditorialBoardMemberSeeder::class);

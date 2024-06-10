@@ -89,11 +89,11 @@ class AuthController extends Controller
                 Auth::logout();
                 return redirect()->route('admin.login');
             }
-            if (auth()->user()->user_basic_info()->exists()) {
-                return redirect()->intended('/');
-            } else {
-                return redirect()->intended('/')->with('message', 'Please complete your profile first');
-            }
+            // if (auth()->user()->user_basic_info()->exists()) {
+            return redirect()->intended('/');
+            // } else {
+            //     return redirect()->intended('/')->with('message', 'Please complete your profile first');
+            // }
         }
 
         return back()->withErrors([

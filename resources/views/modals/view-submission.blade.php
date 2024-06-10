@@ -1,11 +1,5 @@
-<div class="mb-4  border-light-subtle pb-1 ">
-    <h4 class="cocogoose_light">{{ $submission->title }}</h4>
-</div>
 
-<div class="mb-3  border-light-subtle pb-1 poppins_fonts">
-    <h5 class="mb-2">Abstract</h5>
-    <p>{{ $submission->abstract }}</p>
-</div>
+
 <div class="mb-3  border-light-subtle pb-1 poppins_fonts">
     <h5 class="mb-2">Author Information</h5>
 
@@ -39,12 +33,7 @@
     </div>
 </div>
 
-<div class="mb-3  border-light-subtle pb-1 poppins_fonts">
-    <h5 class="mb-4">Keywords</h5>
-    @foreach ($submission->submision_keywords as $k)
-    <span class="badge bg-light text-dark " style="font-size: 14px">{{ $k->keyword }}</span>
-    @endforeach
-</div>
+
 
 <div class="mb-3  border-light-subtle pb-1 poppins_fonts">
     <h5 class="mb-4">Author Files</h5>
