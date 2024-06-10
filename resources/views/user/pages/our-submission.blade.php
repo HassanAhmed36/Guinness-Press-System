@@ -37,11 +37,6 @@
                                             data-bs-target="#exampleModal">
                                             view
                                         </button>
-                                        @if ($submission->admin_status == 1)
-                                            <button type="button" class="btn btn-primary btn-sm ">
-                                                Pay ACP
-                                            </button>
-                                        @endif
                                     </td>
                                 </tr>
                             @empty
@@ -74,7 +69,8 @@
 
     <!-- Modal -->
     <!-- Modal -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+    </script>
     <script>
         $(document).on('click', '.view_btn', function(e) {
             e.preventDefault();

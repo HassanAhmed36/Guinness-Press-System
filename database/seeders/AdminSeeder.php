@@ -23,25 +23,17 @@ class AdminSeeder extends Seeder
             ['name' => 'Editorial Board Member'],
             ['name' => 'Author'],
         ]);
+
         $user = User::create([
+            'name' => 'Admin',
             'email' => 'admin@gmail.com',
-            'email_verified_at' => now(),
             'password' => Hash::make('password'),
-            'remember_token' => Str::random(10),
             'role_id' => 1,
-            'created_at' => now(),
-            'updated_at' => now(),
+            'remember_token' => Str::random(10),
+            'phone_number' => '123465789',
+            'country' => 'USA',
+            'is_active' => true
         ]);
-        UserBasicInfo::create([
-            'title' => 'Mr.',
-            'first_name' => 'Admin',
-            'last_name' => '.',
-            'current_job_title' => 'Software Developer',
-            'department' => 'Engineering',
-            'institution' => 'Example Institution',
-            'country' => 'UK',
-            'contact_number' => '+1234567890',
-            'user_id' => $user->id
-        ]);
+
     }
 }

@@ -22,19 +22,18 @@ class ArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title" => "required",
-            "first_page" => "required",
-            "last_page" => "required",
-            "published_date" => "required",
-            "dio" => "required",
-            "journal_id" => "required",
-            "volume_id" => "required",
-            "issue_id" => "required",
-            "abstract" => "required",
-            "references" => "required",
-            "file" => "required",
-            'article_type' => 'required',
-            'extra_meta_tag' => 'required',
+            'title' => 'required',
+            'first_page' => 'required',
+            'last_page' => 'required|gte:first_page',
+            'article_type' => 'sometimes',
+            'recived_date' => 'nullable|date',
+            'revised_date' => 'nullable|date|after_or_equal:recived_date',
+            'accepted_date' => 'nullable|date|after_or_equal:revised_date',
+            'published_date' => 'nullable|date|after_or_equal:accepted_date',
+            'dio' => 'required',
+            'issue_id' => 'required',
+            'volume_id' => 'required',
+            'journal_id' => 'required',
         ];
     }
 }

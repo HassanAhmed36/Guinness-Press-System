@@ -26,9 +26,9 @@
     <link href="{{ asset('admin_assets/plugins/wysiwyag/richtext.css') }}" rel="stylesheet" />
 
     <style>
-    .form-control::placeholder {
-        color: rgba(0, 0, 0, 0.820) !important;
-    }
+        .form-control::placeholder {
+            color: rgba(0, 0, 0, 0.820) !important;
+        }
     </style>
 
 </head>
@@ -102,10 +102,7 @@
     <script src="{{ asset('admin_assets/plugins/bootstrap/js/popper.min.js') }}"></script>
     <script src="{{ asset('admin_assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('admin_assets/plugins/othercharts/jquery.sparkline.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/plugins/circle-progress/circle-progress.min.js') }}"></script>
     <script src="{{ asset('admin_assets/plugins/sidemenu/sidemenu.js') }}"></script>
-    <script src="{{ asset('admin_assets/plugins/p-scrollbar/p-scrollbar.js') }}"></script>
-    <script src="{{ asset('admin_assets/plugins/p-scrollbar/p-scroll1.js') }}"></script>
     <script src="{{ asset('admin_assets/plugins/sidebar/sidebar.js') }}"></script>
     <script src="{{ asset('admin_assets/plugins/select2/select2.full.min.js') }}"></script>
     <script src="{{ asset('admin_assets/js/custom.js') }}"></script>
@@ -122,39 +119,40 @@
     <script src="{{ asset('admin_assets/js/form-elements.js') }}"></script>
     <script src="{{ asset('admin_assets/js/select2.js') }}"></script>
     <script>
-    $(document).ready(function() {
-        $('.content').each(function() {
-            $(this).richText({
-                bold: true,
-                italic: true,
-                underline: false,
-                strikeThrough: false,
-                ol: false,
-                ul: false,
-                heading: false,
-                fontColor: false,
-                fontSize: true,
-                imageUpload: false,
-                fileUpload: false,
-                videoEmbed: false,
-                urls: false,
-                table: false,
-                removeStyles: false,
-                code: false,
-                youtube: false,
-                align: true,
-                leftAlign: true,
-                centerAlign: true,
-                rightAlign: true,
-                justify: true,
+        $(document).ready(function() {
+            $('.content').each(function() {
+                $(this).richText({
+                    bold: true,
+                    italic: true,
+                    underline: false,
+                    strikeThrough: false,
+                    ol: false,
+                    ul: true,
+                    heading: true,
+                    fontColor: false,
+                    fontSize: true,
+                    imageUpload: false,
+                    fileUpload: false,
+                    videoEmbed: false,
+                    urls: true,
+                    table: false,
+                    removeStyles: false,
+                    code: false,
+                    youtube: false,
+                    align: true,
+                    leftAlign: true,
+                    centerAlign: true,
+                    rightAlign: true,
+                    justify: true,
+                });
             });
-        });
 
-        $('#datatable').DataTable();
-        $('#responsive-datatable').DataTable();
-    })
+
+            $('#datatable').DataTable();
+            $('#responsive-datatable').DataTable();
+        })
     </script>
-
+  
 
 </body>
 

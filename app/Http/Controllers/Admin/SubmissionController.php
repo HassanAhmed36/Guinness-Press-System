@@ -18,34 +18,29 @@ class SubmissionController extends Controller
         }, 'user' => function ($q) {
             $q->select('id', 'email');
         }])->get();
-        // dd($submissions->toArray());
         return view('admin.submission.index', compact('submissions'));
     }
 
-    public function approveSubmission($id)
+    public function approveSubmission(Request $request, $id)
     {
         $submission = Submission::with('user')->find($id);
         $submission->update([
-            'admin_status' => 1
+            'admin_status' => 1,
+            'admin_message' => $request->review_comments
         ]);
 
-        Mail::to($submission->user->email)->send(
-            new ApproveSubmission($submission)
-        );
-
+        Mail::to($submission->user->email)->send(new ApproveSubmission($submission));
         return back()->with('success', 'Submission Approved Successfully');
     }
-    public function rejectSubmission($id)
+    public function rejectSubmission(Request $request, $id)
     {
         $submission = Submission::with('user')->find($id);
         $submission->update([
-            'admin_status' => 3
+            'admin_status' => 3,
+            'admin_message' => $request->review_comments
         ]);
 
-        Mail::to($submission->user->email)->send(
-            new RejectSubmission($submission)
-        );
-
+        Mail::to($submission->user->email)->send(new RejectSubmission($submission));
         return back()->with('success', 'Submission Reject Successfully');
     }
 }

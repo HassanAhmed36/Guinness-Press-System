@@ -17,12 +17,15 @@ return new class extends Migration
             $table->string('title');
             $table->string('first_page');
             $table->string('last_page');
-            $table->string('article_type');
-            $table->string('published_date');
+            $table->string('article_type')->nullable();
+            $table->date('recived_date')->nullable();
+            $table->date('revised_date')->nullable();  // Corrected from `data` to `date`
+            $table->date('accepted_date')->nullable(); // Changed to `date` for consistency
+            $table->date('published_date')->nullable(); // Changed to `date` for consistency
             $table->string('dio');
-            $table->integer('views_count');
-            $table->integer('download_count');
-            $table->boolean('is_active');
+            $table->integer('views_count')->default(0);
+            $table->integer('download_count')->default(0);
+            $table->boolean('is_active')->default(true);
             $table->string('file_name');
             $table->string('file_path');
             $table->foreignId('issue_id')->constrained('volume_issues')->cascadeOnDelete();

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\JournalController;
 use App\Http\Controllers\MainController;
@@ -8,24 +9,16 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewerController;
 use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\UserController;
+use App\Models\Article;
 use App\Models\Journal;
 use App\Models\Submission;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/clear-cache', function () {
-    Artisan::call('optimize:clear');
-    Artisan::call('route:clear');
-    return 'Cache cleared successfully.';
-});
 
-Route::get('/optimize', function () {
-    Artisan::call('optimize');
-    Artisan::call('route:cache');
-    Artisan::call('config:cache');
-    Artisan::call('view:clear');
-    return 'Application optimized successfully.';
+Route::get('/clear', function () {
+    Artisan::call('optimize:clear');
 });
 
 
@@ -92,7 +85,7 @@ Route::view('/submit-your-article', 'user.pages.submit_articles', ['journals' =>
 
 Route::post('/form-submission', [MainController::class, 'sendEmail'])->name('send.email');
 Route::post('/article-submission', [MainController::class, 'sendArticleEmail'])->name('send.articlemail');
-Route::get('/publication/journal/{id}/{code}', [MainController::class, 'article']);
+Route::get('/publication/journal/{id}/{code}', [ArticleController::class, 'article']);
 Route::view('/thank-you', 'user.pages.thanku');
 Route::get('/journal/{journal_name}/join-board', [MainController::class, 'join_board']);
 Route::post('/joinboard', [MainController::class, 'sendBoardEmail'])->name('send.joinboard');
@@ -112,6 +105,8 @@ Route::post('/submit-user-login', [AuthController::class, 'SubmitLogin'])->name(
 Route::get('/user-logout', [AuthController::class, 'logout'])->name('user.logout');
 Route::get('/register', [AuthController::class, 'register'])->name('user.register');
 Route::post('/submit-register', [AuthController::class, 'SubmitRegister'])->name('submit.register');
+
+Route::post('/resend-verify-email', [AuthController::class, 'resend'])->name('resend.verify.email');
 
 Route::view('/test', 'mail.send-verification-mail');
 

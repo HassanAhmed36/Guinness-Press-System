@@ -18,15 +18,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2 col-sm-12">
-                    <img src="{{ asset($journal->image) }}" class="img-fluid" alt="">
+                    <img src="{{asset($journal->image)}}"
+                        class="img-fluid" alt="">
                 </div>
                 <div class="col-md-10 col-sm-12">
                     <div class="details_content">
-                        <h3 class=" cocogoose_light my-4 text-uppercase">
+                        <h3 class="cocogoose_light text-uppercase">
                             {{ $journal->name }}
                         </h3>
 
-                        <p>{{ $journal->description }}</p>
+                        {!! $journal->description !!}
                     </div>
                     <div class="btn-group">
                         <a href="javascript:;" data-fancybox="" data-src="#submitArticlePopup"
@@ -51,6 +52,94 @@
             </div>
         </div>
     </section>
+    <section class="slider_bar">
+        <div class="slider_bar_header">
+            <h3>INDEXING BODIES</h3>
+        </div>
+        <div class="owl-carousel" id="slider_1">
+            <div class="item">
+                <a href="https://www.doi.org/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_1.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://www.researchgate.net/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_2.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://www.crossref.org/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_3.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://www.dimensions.ai/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_4.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://www.academia.edu/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_5.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://www.mendeley.com/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_6.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://scholar.google.com/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_7.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://www.crossref.org/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_8.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://jgateplus.com/home/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_9.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://europub.co.uk/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_10.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://www.semanticscholar.org/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_11.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://www.lens.org/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_12.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://www.scilit.net/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_13.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://discovery.researcher.life/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_14.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://ouci.dntb.gov.ua/en/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_15.png" class="img-fluid">
+                </a>
+            </div>
+            <div class="item">
+                <a href="https://www.connectedpapers.com/">
+                    <img src="https://www.guinnesspress.org/lp/assets/images/index_16.png" class="img-fluid">
+                </a>
+            </div>
+
+        </div>
+    </section>
 @endsection
 @section('body')
     <section class="sec_3">
@@ -58,7 +147,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="sec_3_content">
-                        <h2 class=" cocogoose_light my-4 text-uppercase">
+                        <h2 class="cocogoose_light text-uppercase">
                             Join Our Editor's Board
                         </h2>
                         <p class="poppins_fonts">
@@ -69,7 +158,7 @@
                             ones who help us keep our commitment to excellence and honesty in academic publishing alive and
                             well.
                         </p>
-                        <h1 class=" cocogoose_light my-4">
+                        <h1 class="cocogoose_light">
                             I. Editorial Board Diversity
                         </h1>
                         <p class="poppins_fonts"> Diversity is crucial within an Editorial Board, especially in scientific
@@ -84,7 +173,7 @@
                             In line with our dedication to diversity, Guinness Press adheres to COPE guidelines, further
                             bolstering the breadth and depth of our Editorial Boards.
                         </p>
-                        <h1 class=" cocogoose_light my-4">
+                        <h1 class="cocogoose_light">
                             II. Editorial Board Criteria
                         </h1>
                         <p class="poppins_fonts"> To join our Editorial Board, candidates should:</p>
@@ -95,7 +184,7 @@
                         <p class="poppins_fonts"> • Exhibit a commitment to research integrity and ethical publishing
                             practices.</p>
 
-                        <h1 class=" cocogoose_light my-4"> III. Responsibilities of the Editorial Board</h1>
+                        <h1 class="cocogoose_light"> III. Responsibilities of the Editorial Board</h1>
                         <p class="poppins_fonts"> • Editorial Standards: Ensuring top-tier articles through rigorous
                             editorial standards.</p>
                         <p class="poppins_fonts"> • Special Issue Topics: Proposing diverse topics to enrich the journal's
@@ -112,10 +201,10 @@
                             researchers, institutions, and scientific communities to encourage submissions and readership.
                         </p>
 
-                        <h1 class=" cocogoose_light my-4"> IV. Contract Term: </h1>
+                        <h1 class="cocogoose_light"> IV. Contract Term: </h1>
                         <p class="poppins_fonts">Initial term of 2 years, renewable upon mutual agreement.</p>
 
-                        <h1 class=" cocogoose_light my-4"> V. Benefits of Editorial Board Membership</h1>
+                        <h1 class="cocogoose_light"> V. Benefits of Editorial Board Membership</h1>
                         <p class="poppins_fonts"> Building Connections: Being part of the journal's board isn't just about
                             titles; it's about connecting with fellow academics, researchers, and professionals who share
                             your passions. These connections can blossom into collaborations, research ventures, and
@@ -160,9 +249,16 @@
                         <div class="col-md-12">
                             <select class="form-control detail_form" name="journal_name">
                                 <option>Select Journal</option>
-                                @foreach ($journals as $j)
-                                    <option value="{{ $j->id }}">{{ $j->name }}</option>
-                                @endforeach
+                                <option>International Journal of Empirical Research Methods</option>
+                                <option>Cultural Landscapes Insights</option>
+                                <option>Advanced Chemistry Insights</option>
+                                <option>Sustainable Energy and Environment Review</option>
+                                <option>Strategic Financial Reviews</option>
+                                <option>Journal of Business Leadership and Management</option>
+                                <option>Current Integrative Engineering</option>
+                                <option>Medical Spectrum Review</option>
+                                <option>Pharmaceutical Breakthroughs</option>
+                                <option>Recent Educational Research</option>
                             </select>
                         </div>
                         <div class="col-md-4">
@@ -184,12 +280,12 @@
                         <!--	<input type="text" class="form-control detail_form" name="scholar_id" placeholder="GOOGLE SCHOLAR ID">-->
                         <!--</div>-->
                         <div class="col-md-12">
-                            <label class="form-label">Upload Picture</label>
+                            <label>Upload Picture</label>
                             <input type="file" class="form-control detail_form" name="picture[]"
                                 placeholder="UPLOAD PICTURE *" required>
                         </div>
                         <div class="col-md-12">
-                            <label class="form-label">Enter Biography (250-300 Words)</label>
+                            <label>Enter Biography (250-300 Words)</label>
                             <textarea rows="5" class="form-control detail_form" name="biography"
                                 placeholder="Enter Biography (250-300 Words) *"></textarea>
                         </div>

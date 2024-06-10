@@ -7,7 +7,6 @@ use App\Http\Controllers\Admin\JournalBoardMemberController;
 use App\Http\Controllers\Admin\JournalController;
 use App\Http\Controllers\Admin\JournalVolumeController;
 use App\Http\Controllers\Admin\SubmissionController;
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VolumeIssueController;
 use App\Services\CustomService;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +18,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('admin.login');
     Route::post('/submit-login', [AuthController::class, 'Submitlogin'])->name('admin.submit.login');
     //journals
+
     Route::middleware('check.dashboard.auth')->group(function () {
         Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
         Route::get('/journals', [JournalController::class, 'index'])->name('admin.journal.index');
@@ -27,6 +27,7 @@ Route::prefix('/admin')->group(function () {
         Route::get('/edit-journal/{id}', [JournalController::class, 'edit'])->name('admin.journal.edit');
         Route::post('/update-journal/{id}', [JournalController::class, 'update'])->name('admin.journal.update');
         Route::get('/delete-journal/{id}', [JournalController::class, 'destroy'])->name('admin.journal.delete');
+
         //members
         Route::get('/editorial-member', [JournalBoardMemberController::class, 'index'])->name('editorial.member.index');
         Route::post('/store-editorial-member', [JournalBoardMemberController::class, 'store'])->name('editorial.member.store');
@@ -68,13 +69,10 @@ Route::prefix('/admin')->group(function () {
         Route::get('/DOI-Generator', [DoiGeneratorController::class, 'index'])->name('doi.index');
         Route::post('/DOI-Generator-Save', [DoiGeneratorController::class, 'store'])->name('doi.store');
 
+        Route::post('/admin-approve-submission/{id}', [SubmissionController::class, 'approveSubmission'])->name('admin.approve.submission');
+        Route::post('/admin-reject-submission/{id}', [SubmissionController::class, 'rejectSubmission'])->name('admin.reject.submission');
 
         Route::get('/submissions', [SubmissionController::class, 'index'])->name('admin.submission.index');
-
-        Route::get('/users', [UserController::class, 'index'])->name('admin.user.index');
-
-        Route::get('/admin-approve-submission/{id}', [SubmissionController::class, 'approveSubmission'])->name('admin.approve.submission');
-        Route::get('/admin-reject-submission/{id}', [SubmissionController::class, 'rejectSubmission'])->name('admin.reject.submission');
 
         Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });

@@ -34,7 +34,6 @@
         .content p {
             margin: 0 0 10px;
             line-height: 1.6;
-            font-size: 14px;
         }
 
         .button {

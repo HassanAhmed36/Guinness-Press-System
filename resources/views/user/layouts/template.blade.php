@@ -391,7 +391,7 @@
     @session('message')
         <div class="container">
             <div class="alert alert-info alert-dismissible fade show my-3" role="alert">
-                <strong>Message</strong>{{ $value }}
+                <strong>Message</strong> Pleae compelete your profile Information
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>
@@ -990,3 +990,4 @@
 </body>
 
 </html>
+

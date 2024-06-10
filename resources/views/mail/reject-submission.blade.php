@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Verification Email</title>
+    <title>Reject Email</title>
     <style>
         .container {
             width: 100%;
@@ -58,7 +58,8 @@
         </div>
         <div class="content">
             <p>Hello,</p>
-            <p>Your manuscript ID <strong>{{ $submission->menuscript_id }}</strong> has been rejected.</p>
+            <p>Your manuscript ID <strong>{{ $submission->menuscript_id }}</strong> has been rejected. Check the review
+                message our website</p>
             <p>If you have any questions, please feel free to contact us.</p>
             <p>Best regards,<br>The Guinness Press Team</p>
         </div>

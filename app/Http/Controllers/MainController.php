@@ -3,66 +3,328 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
+use App\Mail\ArticleMail;
+use App\Mail\ContactMail;
+use App\Mail\JoinMail;
 use App\Models\Journal;
-use App\Models\VolumeIssue;
+use App\Models\Journal_settings;
+use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MainController extends Controller
 {
 
     public function index()
     {
-        $journals = Journal::where('is_active', 1)->get();
-        return view('user.pages.index', compact('journals'));
+        $journals = Journal::all();
+        return view('user.pages.index', compact('journals') );
     }
 
     public function journal()
     {
-        $journals = Journal::where('is_active', 1)->get();
+        $journals = Journal::all();
         return view('user.pages.journal', compact('journals'));
     }
 
     public function journal_details($journal_name)
     {
-        $journal = Journal::with(['journal_overview', 'journal_matrix', 'volume' => function ($q) {
-            $q->OrderByDesc('id')->where('is_active', 1);
-        }, 'volume.issue' => function ($q) {
-            $q->OrderByDesc('id')->where('is_active', 1);
-        }])->where('acronym', $journal_name)->first();
+        $journal = Journal::with(['journal_overview','journal_matrix' , 'volume' => function($q){
+            $q->OrderByDesc('id');
+        } ,'volume.issue' => function($q){
+            $q->OrderByDesc('id');
+        }])->where('acronym' , $journal_name)->first();
+        // dd($journal->toArray());
         return view('user.pages.journal-details', compact('journal'));
+    }
+
+    public function sendEmail(Request $req)
+    {
+
+        $datas = [
+            'name' => $req->name,
+            'email' => $req->email,
+            'number' => $req->number,
+            'query_type' => $req->query_type,
+            'message' => $req->contact_msgbox,
+            'thankyou_msg' => 'Thank you for reaching out to us! Your message has been received. Our team will review your inquiry and get back to you shortly. If you have any urgent matters, feel free to contact us directly at submission@guinnesspress.org.'
+        ];
+        $data = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->where(['parent_id' => null, 'setting_name' => 'title'])
+            ->orderBy('categories.category_id', 'desc')
+            ->limit(6)
+            ->get();
+        $subcategories = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->orderBy('categories.category_id', 'desc')
+            ->get();
+        Mail::to('submission@guinnesspress.org')->send(new ContactMail($data));
+        return view('front-end/thanku', 'datas', 'data', 'subcategories');
+
+    }
+
+    public function sendArticleEmail(Request $req)
+    {
+
+        // dd($req->file('article_fileattachment'));
+
+
+        //  if ($fileattachment->getError() == 1) {
+        //         $max_size = $data['fileattachment']->getMaxFileSize() / 1024 / 1024;  // Get size in Mb
+        //         $error = 'The document size must be less than ' . $max_size . 'Mb.';
+        //         return redirect()->back()->with('flash_danger', $error);
+        //     }
+        $fileattachment = array();
+        $files = $req->file('article_fileattachment');
+        foreach ($files as $file) {
+            $fileattachment[] = $file->store('public/article-files');
+        }
+
+        $datas = [
+
+            'manuscript_title' => $req->manuscript_title,
+            'journal' => $req->journal,
+            'fileattachment' => $fileattachment,
+            'author_name' => $req->author_name,
+            'author_number' => $req->author_number,
+            'author_email' => $req->author_email,
+            'author_country' => $req->author_country,
+            'affiliation' => $req->affiliation,
+            'thankyou_msg' => 'Thank you for submitting your article to Guinness Press! Your contribution is important to us. Our team will carefully review your work, and we will be in touch shortly. If you have any urgent inquiries, feel free to contact us at info@guinnesspress.org. We appreciate your interest in Guinness Press!'
+
+        ];
+
+
+        $data = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->where(['parent_id' => null, 'setting_name' => 'title'])
+            ->orderBy('categories.category_id', 'desc')
+            ->limit(6)
+            ->get();
+        $subcategories = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->orderBy('categories.category_id', 'desc')
+            ->get();
+        Mail::to('submission@guinnesspress.org')->send(new ArticleMail($datas));
+        return view('front-end/thanku', compact('datas', 'data', 'subcategories'));
+
     }
 
     public function editorial_board($journal_name)
     {
-        $journal =  Journal::with('board_member')->where('acronym', $journal_name)->first();
+       $journal=  Journal::with('board_member')->where('acronym' , $journal_name)->first();
         return view('user.pages.editorial-board', compact('journal'));
     }
 
+    public function article_details()
+    {
+        $data = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->where(['parent_id' => null, 'setting_name' => 'title'])
+            ->orderBy('categories.category_id', 'desc')
+            ->limit(6)
+            ->get();
+        $subcategories = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->orderBy('categories.category_id', 'desc')
+            ->get();
+        return view('front-end/article-details', compact('data', 'subcategories'));
+    }
+
+    public function issue_details()
+    {
+        $data = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->where(['parent_id' => null, 'setting_name' => 'title'])
+            ->orderBy('categories.category_id', 'desc')
+            ->limit(6)
+            ->get();
+        $subcategories = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->orderBy('categories.category_id', 'desc')
+            ->get();
+        return view('front-end/issue-details', 'data', 'subcategories');
+    }
+
+    public function download_citation()
+    {
+        $data = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->where(['parent_id' => null, 'setting_name' => 'title'])
+            ->orderBy('categories.category_id', 'desc')
+            ->limit(6)
+            ->get();
+        $subcategories = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->orderBy('categories.category_id', 'desc')
+            ->get();
+        return view('front-end/download-citation', 'data', 'subcategories');
+    }
+
+
+
+
+
+    public function article_processing_charges()
+    {
+        $data = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->where(['parent_id' => null, 'setting_name' => 'title'])
+            ->orderBy('categories.category_id', 'desc')
+            ->limit(6)
+            ->get();
+        $subcategories = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->orderBy('categories.category_id', 'desc')
+            ->get();
+        return view('front-end/article-processing-charges', compact('data', 'subcategories'));
+    }
+
+
+
+    public function refund_policy()
+    {
+        $data = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->where(['parent_id' => null, 'setting_name' => 'title'])
+            ->orderBy('categories.category_id', 'desc')
+            ->limit(6)
+            ->get();
+        $subcategories = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->orderBy('categories.category_id', 'desc')
+            ->get();
+        return view('front-end/refund-policy', compact('data', 'subcategories'));
+    }
+
+    public function payment_options()
+    {
+        $data = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->where(['parent_id' => null, 'setting_name' => 'title'])
+            ->orderBy('categories.category_id', 'desc')
+            ->limit(6)
+            ->get();
+        $subcategories = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->orderBy('categories.category_id', 'desc')
+            ->get();
+        return view('front-end/payment-options', compact('data', 'subcategories'));
+    }
+
+    public function blogs()
+    {
+        $data = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->where(['parent_id' => null, 'setting_name' => 'title'])
+            ->orderBy('categories.category_id', 'desc')
+            ->limit(6)
+            ->get();
+        $subcategories = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->orderBy('categories.category_id', 'desc')
+            ->get();
+        return view('front-end/blogs', compact('data', 'subcategories'));
+    }
+
+    public function user_information()
+    {
+        $data = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->where(['parent_id' => null, 'setting_name' => 'title'])
+            ->orderBy('categories.category_id', 'desc')
+            ->limit(6)
+            ->get();
+        $subcategories = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->orderBy('categories.category_id', 'desc')
+            ->get();
+        return view('front-end/user-information', compact('data', 'subcategories'));
+    }
+
+    public function dashboard()
+    {
+        $data = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->where(['parent_id' => null, 'setting_name' => 'title'])
+            ->orderBy('categories.category_id', 'desc')
+            ->limit(6)
+            ->get();
+        $subcategories = DB::table('categories')
+            ->select('*')
+            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
+            ->orderBy('categories.category_id', 'desc')
+            ->get();
+        return view('front-end/dashboard', compact('data', 'subcategories'));
+    }
 
     public function journal_issue($id, $issue, $issue_no)
     {
-        $journal = Journal::with('volume')->where('acronym', $id)->first();
-        $issue = VolumeIssue::where('issue_id', $issue_no)->where('journal_id', $journal->id)->first();
-        $articles = Article::with('author')->where('is_active', 1)->where('journal_id', $journal->id)->where('issue_id', $issue->id)->get();
-        // dd($articles->toArray());
-        return view('user.pages.issue', compact('journal', 'articles', 'issue'));
+        $journal = Journal::with(['volume' => function ($query) use ($issue_no) {
+            $query->whereHas('issue', function ($query) use ($issue_no) {
+                $query->where('issue_id', $issue_no);
+            });
+        }, 'volume.issue' => function ($query) use ($issue_no) {
+            $query->where('issue_id', $issue_no);
+        }])->whereHas('volume.issue', function ($query) use ($issue_no) {
+            $query->where('issue_id', $issue_no);
+        })->first();
+        return view('user.pages.issue', compact('journal'));
     }
 
-
-    public function article($id, $code)
-    {
-        $journal = Journal::where('acronym', $id)->first();
-        $article = Article::with('author', 'keywords', 'journal', 'issue', 'article_details', 'affiliation')->where('article_code', $code)->first();
-        $article->views_count = ($article->views_count  ?? 0) + 1;
-        $article->save();
-        // dd($article->toArray());
-        return view('user.pages.article', compact('journal', 'article'));
-    }
 
     public function join_board($journal_name)
     {
-        $journal = Journal::where('acronym', $journal_name)->first();
-        $journals = Journal::all();
-        return view('user.pages.join-board', compact('journal', 'journals'));
+        $journal = Journal::where('acronym' , $journal_name)->first();
+        return view('user.pages.join-board', compact('journal'));
+    }
+
+    public function sendBoardEmail(Request $req)
+    {
+
+        $fileattachment = array();
+        $files = $req->file('picture');
+        foreach ($files as $file) {
+            $fileattachment[] = $file->store('public/article-files');
+        }
+
+        $datas = [
+            'name' => $req->name,
+            'journal_name' => $req->journal_name,
+            'picture' => $fileattachment,
+            'email' => $req->email,
+            'affiliation' => $req->affiliation,
+            'scopus_id' => $req->scopus_id,
+            'scholar_id' => $req->scholar_id,
+            'biography' => $req->biography,
+            'thankyou_msg' => 'Thank you for submitting your article to Guinness Press! Your contribution is important to us. Our team will carefully review your work, and we will be in touch shortly. If you have any urgent inquiries, feel free to contact us at info@guinnesspress.org. We appreciate your interest in Guinness Press!'
+
+        ];
+
+        Mail::to('saifuddin@guinnesspress.org')->send(new JoinMail($datas));
+
+        return view('user.pages.thanku', compact('datas'));
     }
 }

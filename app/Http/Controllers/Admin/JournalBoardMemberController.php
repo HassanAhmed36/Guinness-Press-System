@@ -20,7 +20,7 @@ class JournalBoardMemberController extends Controller
         $iso3166 = new ISO3166();
         $countries = $iso3166->all();
         $journals = Journal::select('id', 'name')->get();
-        $members = JournalBoardMember::all();
+        $members = JournalBoardMember::with('journal')->get();
         return view('admin.member.index', compact('countries', 'journals', 'members'));
     }
 
@@ -39,10 +39,11 @@ class JournalBoardMemberController extends Controller
             'journal_id' => 'required'
         ]);
         try {
+           $journal =  Journal::find($request->journal_id);
             if ($request->hasFile('image')) {
                 $name = uniqid() . '.' . $request->image->getClientOriginalName();
-                $request->image->move(public_path('board-member-image/'), $name);
-                $image_path = 'board-member-image/' . $name;
+                $request->image->move(public_path('board-member-image/' . $journal->acronym .'/'), $name);
+                $image_path = 'board-member-image/' . $journal->acronym . '/' . $name;
             }
             JournalBoardMember::create([
                 'name' => $request->name,

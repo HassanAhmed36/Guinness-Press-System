@@ -414,21 +414,23 @@
                                             <div class="form-group">
                                                 <label>Full Name</label>
                                                 <input type="text" class="form-control banner_txt_box" required
-                                                    name="first_name">
+                                                    name="first_name" value="{{ auth()->user()->name ?? '' }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Phone Number</label>
                                                 <input type="number" class="form-control banner_txt_box" required
-                                                    name="phone_number">
+                                                    name="phone_number"
+                                                    value="{{ auth()->user()->phone_number ?? '' }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Email Address</label>
                                                 <input type="email" class="form-control banner_txt_box" required
-                                                    name="email_address">
+                                                    name="email_address"
+                                                    value="{{ auth()->user()->email_address ?? '' }}">
                                             </div>
                                         </div>
 
@@ -439,7 +441,8 @@
                                                     class="form-control banner_txt_box" required>
                                                     <option selected disabled>Select Country</option>
                                                     <?php foreach($countryList as $country): ?>
-                                                    <option value="<?= htmlspecialchars($country) ?>">
+                                                    <option @selected(auth()->user()->country == htmlspecialchars($country))
+                                                        value="<?= htmlspecialchars($country) ?>">
                                                         <?= ucwords(strtolower(htmlspecialchars($country))) ?></option>
                                                     <?php endforeach; ?>
                                                 </select>

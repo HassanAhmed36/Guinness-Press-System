@@ -22,15 +22,14 @@
                     </div>
                 </div>
                 <div class="card-body">
-                   
+
                     <div class="table-responsive">
                         <table id="responsive-datatable" class="table table-bordered  nowrap w-100">
                             <thead>
                                 <tr>
                                     <th>S.No</th>
                                     <th>Name</th>
-                                    <th>Image</th>
-                                    <th>Affiliation</th>
+                                    <th>Journal name</th>
                                     <th>Country</th>
                                     <th>Action</th>
                                 </tr>
@@ -39,15 +38,9 @@
                                 @foreach ($members as $m)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>
-                                            <div class="col-12 mb-4 ">
-                                                <img id="imagePreview"
-                                                    style="object-fit: cover; width:80px; height:70px;  border-radius:50%"
-                                                    alt="Member" src="{{ asset($m->image) }}">
-                                            </div>
-                                        </td>
+
                                         <td>{{ $m->name }}</td>
-                                        <td>{{ $m->affliation }}</td>
+                                        <td>{{ $m->journal->acronym }}</td>
                                         <td>{{ $m->country }}</td>
                                         <td>
                                             <button class="btn btn-primary btn-sm edit-btn" data-bs-toggle="modal"

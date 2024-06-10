@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div>
-                        <h3 class="card-title fs-5">Journal Volums</h3>
+                        <h3 class="card-title fs-5">Volums</h3>
                     </div>
                     <div>
                         <button data-bs-toggle="modal" data-bs-target="#myModal"
@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                   
+                 
                     <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
                         <thead>
                             <tr>

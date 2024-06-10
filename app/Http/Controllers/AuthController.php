@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
+use League\ISO3166\ISO3166;
 
 class AuthController extends Controller
 {
@@ -31,10 +32,7 @@ class AuthController extends Controller
             'remember_token' => Str::random(10),
         ]);
 
-        Mail::to(request('email'))->send(
-            new SendVerificationMail($user)
-        );
-
+        Mail::to(request('email'))->send(new SendVerificationMail($user));
         return redirect()->route('after.verify.email')->with('success', 'Verification email sent successfully. Please check your inbox and verify your email address.');
     }
 
@@ -54,22 +52,16 @@ class AuthController extends Controller
         request()->validate([
             'password' => 'required'
         ]);
-        try {
-            $user = User::where('id', request('user_id'))->first();
-            $user->update([
-                'password' => Hash::make(request('password')),
-                'is_active' => 1
-            ]);
-            $submission = Submission::where('menuscript_id', session()->get('manuscript_id'))->first();
-            $submission->update([
-                'user_id' => $user->id
-            ]);
-            session()->forget('manuscript_id');
-            Auth::login($user);
-            return redirect('/')->with('message', 'Please complete your Profile');
-        } catch (\Throwable $th) {
-            return back()->with('message', 'Please copy a link and open htis page in sabe browser');
-        }
+        $user = User::where('id', request('user_id'))->first();
+        $user->update([
+            'email_verified_at' => now(),
+            'password' => Hash::make(request('password')),
+            'is_active' => 1
+        ]);
+
+        session()->forget('user_id');
+        Auth::login($user);
+        return redirect('/');
     }
 
     public function login()
@@ -85,15 +77,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             request()->session()->regenerate();
-            if (Auth::user()->role_id == 1) {
-                Auth::logout();
-                return redirect()->route('admin.login');
-            }
-            // if (auth()->user()->user_basic_info()->exists()) {
             return redirect()->intended('/');
-            // } else {
-            //     return redirect()->intended('/')->with('message', 'Please complete your profile first');
-            // }
         }
 
         return back()->withErrors([
@@ -109,42 +93,51 @@ class AuthController extends Controller
 
     public function register()
     {
-        return view('user.auth.register');
+        $iso3166 = new ISO3166();
+        $countries = $iso3166->all();
+        return view('user.auth.register', compact('countries'));
     }
 
     public function SubmitRegister()
     {
         request()->validate([
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed'],
-            'title' => ['required', 'string', 'max:255'],
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'current_job_title' => ['required', 'string', 'max:255'],
-            'department' => ['required', 'string', 'max:255'],
-            'institution' => ['required', 'string', 'max:255'],
-            'country' => ['required', 'string', 'max:255'],
-            'contact_number' => ['required', 'string', 'max:255'],
+            'name' => 'required',
+            'email' => 'email|required|unique:users,email',
+            'password' => 'required|confirmed',
+            'phone_number' => 'required',
+            'country' => 'required',
         ]);
         try {
             $user =  User::create([
-                'email' => request()->email,
-                'password' => Hash::make(request()->password),
-                'title' => request()->title,
-                'first_name' => request()->first_name,
-                'last_name' => request()->last_name,
-                'current_job_title' => request()->current_job_title,
-                'department' => request()->department,
-                'institution' => request()->institution,
-                'country' => request()->country,
-                'contact_number' => request()->contact_number,
-                'role_id' => 3
+                'name' => request('name'),
+                'email' => request('email'),
+                'password' => Hash::make(request('password')),
+                'role_id' => 3,
+                'phone_number' => request('phone_number'),
+                'country' => request('country'),
+                'is_active' => true
             ]);
             Auth::login($user);
             return redirect('/')->with('success', 'user login successfully');
         } catch (\Exception $e) {
             dd($e->getMessage());
             return back()->with('error', 'User Created Failed');
+        }
+    }
+
+
+    public function resend(Request $request)
+    {
+        try {
+            $user =  User::find($request->user_id);
+            $user->update([
+                'remember_token' => Str::random(10),
+            ]);
+            Mail::to($user->email)->send(new SendVerificationMail($user));
+            return redirect()->route('after.verify.email')->with('success', 'Verification email sent successfully. Please check your inbox and verify your email address.');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return back()->with('error', 'something wents wrong, Please try again letter');
         }
     }
 }

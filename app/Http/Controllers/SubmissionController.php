@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendVerificationMail;
 use App\Models\Journal;
 use App\Models\Submission;
 use App\Models\SubmissionKeyword;
@@ -11,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Number;
+use Illuminate\Support\Str;
+
 
 class SubmissionController extends Controller
 {
@@ -40,35 +43,44 @@ class SubmissionController extends Controller
      */
     public function store(Request $request)
     {
-        // session()->put('user_info', $request->all());
-        session()->put('user_email', $request->email_address);
         DB::beginTransaction();
         try {
             $name = uniqid() . '.' . $request->manuscript->getClientOriginalExtension();
             $manuscript_name = $request->manuscript->getClientOriginalName();
             $request->manuscript->move(public_path('manuscripts/'), $name);
             $manuscript_path = 'manuscripts/' . $name;
-
+            $user = Auth::user();
+            if (!Auth::check()) {
+                $user =  User::create([
+                    'name' => $request->first_name,
+                    'email' => $request->email_address,
+                    'password' => "",
+                    'role_id' => 3,
+                    'remember_token' => Str::random(10),
+                    'phone_number' => $request->phone_number,
+                    'country' => $request->country,
+                    'is_active' => false
+                ]);
+            }
             $submission = Submission::create([
                 'menuscript_id' => $this->create_menuscript_id(),
-                'journal_id' => $request->journal_id, // or set an appropriate value
+                'journal_id' => $request->journal_id,
                 'manuscript_name' => $manuscript_name,
                 'manuscript_path' => $manuscript_path,
                 'admin_message' => null,
                 'admin_status' => 0,
-                'user_id' => auth()->id() ?? null,
+                'user_id' => $user->id,
             ]);
-
-            session()->push('manuscript_id', $submission->menuscript_id);
-
+            session()->put('user_id', $user->id);
             DB::commit();
             if (!Auth::check()) {
-                return redirect()->route('login.after.submission');
+                Mail::to($user->email)->send(new SendVerificationMail($user));
+                return redirect()->route('after.verify.email')->with('success', 'Verification email sent successfully. Please check your inbox and verify your email address.');
             }
             return redirect()->route('submission.index')->with('success', 'Submitted Successfully!');
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e->getMessage());
+            // dd($e->getMessage());
             return back()->with('error', 'Submission Failed!');
         }
     }

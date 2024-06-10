@@ -106,7 +106,7 @@
                             <button type="button" class="btn btn-secondary waves-effect"
                                 data-bs-dismiss="modal">Close</button>
                             <button class="btn btn-primary waves-effect waves-light" type="submit">Add
-                                Volume</button>
+                                Issue</button>
                         </div>
                     </form>
                 </div>

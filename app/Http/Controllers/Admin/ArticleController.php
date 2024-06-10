@@ -51,11 +51,38 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ArticleRequest $request)
+    public function store(Request $request)
     {
-        $authors = json_decode($request->input('author_array'), true);
-        $affiliations = json_decode($request->input('affiliation_array'), true);
+        $affiliation_array = [];
+        foreach ($request->affiliation as $affiliation) {
+            if (!empty($affiliation['name']) && !empty($affiliation['country'])) {
+                $affiliation_array[] = [
+                    'name' => $affiliation['name'],
+                    'country' => $affiliation['country']
+                ];
+            }
+        }
+        $author_array = [];
+        foreach ($request->authors as $author) {
+            if (
+                !empty($author['firstname']) &&
+                !empty($author['middlename']) &&
+                !empty($author['lastname']) &&
+                !empty($author['affiliation']) &&
+                !empty($author['email']) &&
+                !empty($author['orchid_id'])
+            ) {
 
+                $author_array[] = [
+                    "firstname" => $author['firstname'],
+                    "middlename" => $author['middlename'],
+                    "lastname" => $author['lastname'],
+                    "affiliation" => $author['affiliation'],
+                    "email" => $author['email'],
+                    "orchid_id" => $author['orchid_id'],
+                ];
+            }
+        }
         DB::beginTransaction();
         try {
             if ($request->hasFile('file')) {
@@ -67,26 +94,31 @@ class ArticleController extends Controller
 
             $article = Article::create([
                 'article_code' => $this->create_article_code(),
-                'title' => $request->input('title'),
-                'first_page' => $request->input('first_page'),
-                'last_page' => $request->input('last_page'),
-                'article_type' => $request->input('article_type'),
-                'published_date' => $request->input('published_date'),
-                'dio' => $request->input('dio'),
+                'title' => $request->title,
+                'first_page' => $request->first_page,
+                'last_page' => $request->last_page,
+                'article_type' => $request->article_type,
+                'recived_date' => $request->recived_date,
+                'revised_date' => $request->revised_date,
+                'accepted_date' => $request->accepted_date,
+                'published_date' => $request->published_date,
+                'dio' => $request->dio,
                 'views_count' => 0,
                 'download_count' => 0,
-                'is_active' => $request->has('is_active'),
-                'file_path' => $file_path ?? null,
-                'file_name' => $file_name ?? null,
-                'issue_id' => $request->input('issue_id'),
-                'volume_id' => $request->input('volume_id'),
-                'journal_id' => $request->input('journal_id'),
+                'is_active' => $request->has('is_active') ? true : false,
+                'file_name' => $name,
+                'file_path' => $file_path,
+                'issue_id' => $request->issue_id,
+                'volume_id' => $request->volume_id,
+                'journal_id' => $request->journal_id,
             ]);
 
             ArticleDetail::create([
                 'abstract' => $request->input('abstract'),
                 'references' => $request->input('references'),
                 'extra_meta_tag' => $request->input('extra_meta_tag'),
+                'authors' => $author_array,
+                'affiliation' => $affiliation_array,
                 'article_id' => $article->id,
             ]);
 
@@ -96,30 +128,6 @@ class ArticleController extends Controller
                     'keyword' => $keyword,
                     'article_id' => $article->id,
                 ]);
-            }
-
-            $affiliations_id = [];
-            foreach ($affiliations as $affiliation) {
-                $createdAffiliation = Affiliation::create([
-                    'name' => $affiliation['name'],
-                    'country' => $affiliation['country'],
-                    'full_affiliation' => json_encode([$affiliation['name'], $affiliation['country']]),
-                    'article_id' => $article->id,
-                ]);
-                $affiliations_id[] = $createdAffiliation->id;
-            }
-
-            foreach ($authors as $authorData) {
-                $author = Author::create([
-                    'first_name' => $authorData['firstname'],
-                    'middle_name' => $authorData['middlename'],
-                    'last_name' => $authorData['lastname'],
-                    'author_affiliation' => json_encode($authorData['affiliations']),
-                    'email' => $authorData['email'],
-                    'orchid_id' => $authorData['orchid_id'],
-                    'article_id' => $article->id
-                ]);
-                $author->affiliations()->attach($affiliations_id);
             }
 
             DB::commit();
@@ -167,7 +175,6 @@ class ArticleController extends Controller
             $article = Article::findOrFail($id);
 
             if ($request->hasFile('file')) {
-                // Remove the old file if it exists
                 if ($article->file_path && file_exists(public_path($article->file_path))) {
                     unlink(public_path($article->file_path));
                 }

@@ -59,7 +59,7 @@ class JournalController extends Controller
                 'publication_type' => 'Peer Reviewd',
                 'publishing_model' => $request->publishing_model,
                 'journal_category' => $request->journal_category,
-                 'indexing_bodies' => $request->indexing_bodies,
+                'indexing_bodies' => $request->indexing_bodies,
                 'acp' => $request->acp,
                 'journal_id' => $journal->id,
             ]);

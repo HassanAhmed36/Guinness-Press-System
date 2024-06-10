@@ -16,4 +16,8 @@ class JournalBoardMember extends Model
         'biography',
         'journal_id',
     ];
+    
+    public function journal(){
+        return $this->belongsTo(Journal::class , 'journal_id');
+    }
 }

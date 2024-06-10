@@ -12,6 +12,13 @@ class ArticleDetail extends Model
         'abstract',
         'references',
         'extra_meta_tag',
+        'authors',
+        'affiliations',
         'article_id',
+    ];
+
+    protected $casts = [
+        'affiliations' => 'json',
+        'authors' => 'json'
     ];
 }
