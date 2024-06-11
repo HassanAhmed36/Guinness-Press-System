@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->longText('abstract');
             $table->longText('references');
-            $table->longText('extra_meta_tag');
+            $table->longText('extra_meta_tag')->nullable();
             $table->json('authors');
             $table->json('affiliations');
             $table->foreignId('article_id')->constrained('articles')->cascadeOnDelete();

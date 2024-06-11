@@ -29,6 +29,8 @@ class Article extends Model
         'issue_id',
         'volume_id',
         'journal_id',
+        'supplementary_file_path',
+        'supplementary_file_name'
     ];
 
     public function issue(): BelongsTo

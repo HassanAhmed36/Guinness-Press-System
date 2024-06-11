@@ -44,14 +44,16 @@ class ArticleController extends Controller
     {
         $latestArticle = Article::latest()->first();
         $articleCode = optional($latestArticle)->article_code + 1 ?? 1;
-        return $articleCode;
+        $formattedArticleCode = str_pad($articleCode, 5, '0', STR_PAD_LEFT);
+        return $formattedArticleCode;
+
     }
 
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         $affiliation_array = [];
         foreach ($request->affiliation as $affiliation) {
@@ -112,13 +114,25 @@ class ArticleController extends Controller
                 'volume_id' => $request->volume_id,
                 'journal_id' => $request->journal_id,
             ]);
+            if ($request->hasFile('supplementary_file')) {
+                $file_name = $request->supplementary_file->getClientOriginalName();
+                $supplementary_file_name = uniqid() . '.' . $request->supplementary_file->getClientOriginalName();
+                $request->supplementary_file->move(public_path('supplementary_file/'), $file_name);
+                $supplementary_file_path = 'articles/' . $file_name;
+                $article->supplementary_file_name = $supplementary_file_name;
+                $article->supplementary_file_path = $supplementary_file_path;
+                $article->save();
+            }
+
+
+
 
             ArticleDetail::create([
                 'abstract' => $request->input('abstract'),
                 'references' => $request->input('references'),
-                'extra_meta_tag' => $request->input('extra_meta_tag'),
-                'authors' => $author_array,
-                'affiliation' => $affiliation_array,
+                'extra_meta_tag' => $request->input('extra_meta_tag') ?? '',
+                'authors' =>  $author_array,
+                'affiliations' => $affiliation_array,
                 'article_id' => $article->id,
             ]);
 
@@ -155,10 +169,7 @@ class ArticleController extends Controller
         $iso3166 = new ISO3166();
         $countries = $iso3166->all();
         $journals = Journal::select('id', 'name')->get();
-        $article = Article::with(['journal', 'issue', 'volume', 'article_details', 'affiliation', 'author' => function ($q) {
-            $q->with('affiliations');
-        }])->find($id);
-
+        $article = Article::with('journal' ,'volume' , 'issue' , 'keywords' , 'article_details')->find($id);
         return view('admin.article.edit', compact('journals', 'countries', 'article'));
     }
 
@@ -167,83 +178,97 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticle $request, $id)
     {
-        $authors = json_decode($request->input('author_array'), true);
-        $affiliations = json_decode($request->input('affiliation_array'), true);
 
+        $affiliation_array = [];
+        foreach ($request->affiliation as $affiliation) {
+            if (!empty($affiliation['name']) && !empty($affiliation['country'])) {
+                $affiliation_array[] = [
+                    'name' => $affiliation['name'],
+                    'country' => $affiliation['country']
+                ];
+            }
+        }
+
+        $author_array = [];
+        foreach ($request->authors as $author) {
+            if (
+                !empty($author['firstname']) &&
+                !empty($author['middlename']) &&
+                !empty($author['lastname']) &&
+                !empty($author['affiliation']) &&
+                !empty($author['email']) &&
+                !empty($author['orchid_id'])
+            ) {
+                $author_array[] = [
+                    "firstname" => $author['firstname'],
+                    "middlename" => $author['middlename'],
+                    "lastname" => $author['lastname'],
+                    "affiliation" => $author['affiliation'],
+                    "email" => $author['email'],
+                    "orchid_id" => $author['orchid_id'],
+                ];
+            }
+        }
         DB::beginTransaction();
         try {
             $article = Article::findOrFail($id);
 
             if ($request->hasFile('file')) {
-                if ($article->file_path && file_exists(public_path($article->file_path))) {
-                    unlink(public_path($article->file_path));
-                }
-
                 $file_name = $request->file->getClientOriginalName();
                 $name = uniqid() . '.' . $request->file->getClientOriginalName();
                 $request->file->move(public_path('articles/'), $file_name);
                 $file_path = 'articles/' . $file_name;
 
+                // Update file details
+                $article->file_name = $name;
                 $article->file_path = $file_path;
-                $article->file_name = $file_name;
             }
 
-            $article->update([
-                'title' => $request->input('title'),
-                'first_page' => $request->input('first_page'),
-                'last_page' => $request->input('last_page'),
-                'article_type' => $request->input('article_type'),
-                'published_date' => $request->input('published_date'),
-                'dio' => $request->input('dio'),
-                'is_active' => $request->has('is_active'),
-                'issue_id' => $request->input('issue_id'),
-                'volume_id' => $request->input('volume_id'),
-                'journal_id' => $request->input('journal_id'),
-            ]);
+            if ($request->hasFile('supplementary_file')) {
+                $file_name = $request->supplementary_file->getClientOriginalName();
+                $supplementary_file_name = uniqid() . '.' . $request->supplementary_file->getClientOriginalName();
+                $request->supplementary_file->move(public_path('supplementary_file/'), $file_name);
+                $supplementary_file_path = 'articles/' . $file_name;
+                $article->supplementary_file_name = $supplementary_file_name;
+                $article->supplementary_file_path = $supplementary_file_path;
+            }
 
-            $article->article_details()->updateOrCreate(
-                ['article_id' => $article->id],
-                [
-                    'abstract' => $request->input('abstract'),
-                    'references' => $request->input('references'),
-                    'extra_meta_tag' => $request->input('extra_meta_tag'),
-                ]
-            );
+            $article->title = $request->title;
+            $article->first_page = $request->first_page;
+            $article->last_page = $request->last_page;
+            $article->article_type = $request->article_type;
+            $article->recived_date = $request->recived_date;
+            $article->revised_date = $request->revised_date;
+            $article->accepted_date = $request->accepted_date;
+            $article->published_date = $request->published_date;
+            $article->dio = $request->dio;
+            $article->is_active = $request->has('is_active') ? true : false;
+            $article->issue_id = $request->issue_id;
+            $article->volume_id = $request->volume_id;
+            $article->journal_id = $request->journal_id;
 
-            $article->keywords()->delete();
+            $article->save();
+
+            $articleDetail = ArticleDetail::where('article_id', $id)->firstOrFail();
+            $articleDetail->delete();
+            $articlenewDetail = new ArticleDetail();
+            $articlenewDetail->abstract = $request->input('abstract');
+            $articlenewDetail->references = $request->input('references');
+            $articlenewDetail->extra_meta_tag = $request->input('extra_meta_tag') ?? '';
+            $articlenewDetail->authors = $author_array;
+            $articlenewDetail->affiliations = $affiliation_array;
+            $articlenewDetail->article_id = $article->id;
+            $articlenewDetail->save();
+
+            // Update keywords
             $keywords = explode(',', $request->input('keywords'));
+            ArticleKeyword::where('article_id', $id)->delete();
             foreach ($keywords as $keyword) {
                 ArticleKeyword::create([
                     'keyword' => $keyword,
-                    'article_id' => $article->id,
+                    'article_id' => $id,
                 ]);
             }
-            $article->affiliation()->delete();
-            $affiliations_id = [];
-            foreach ($affiliations as $affiliation) {
-                $createdAffiliation = Affiliation::create([
-                    'name' => $affiliation['name'],
-                    'country' => $affiliation['country'],
-                    'full_affiliation' => json_encode([$affiliation['name'], $affiliation['country']]),
-                    'article_id' => $article->id,
-                ]);
-                $affiliations_id[] = $createdAffiliation->id;
-            }
-
-            $article->author()->delete();
-            foreach ($authors as $authorData) {
-                $author = Author::create([
-                    'first_name' => $authorData['firstname'],
-                    'middle_name' => $authorData['middlename'],
-                    'last_name' => $authorData['lastname'],
-                    'author_affiliation' => json_encode($authorData['affiliations']),
-                    'email' => $authorData['email'],
-                    'orchid_id' => $authorData['orchid_id'],
-                    'article_id' => $article->id
-                ]);
-                $author->affiliations()->attach($affiliations_id);
-            }
-
             DB::commit();
             return redirect()->route('admin.article.index');
         } catch (\Exception $e) {

@@ -28,6 +28,8 @@ return new class extends Migration
             $table->boolean('is_active')->default(true);
             $table->string('file_name');
             $table->string('file_path');
+            $table->string('supplementary_file_name')->nullable();
+            $table->string('supplementary_file_path')->nullable();
             $table->foreignId('issue_id')->constrained('volume_issues')->cascadeOnDelete();
             $table->foreignId('volume_id')->constrained('journal_volumes')->cascadeOnDelete();
             $table->foreignId('journal_id')->constrained('journals')->cascadeOnDelete();

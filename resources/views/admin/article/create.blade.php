@@ -15,7 +15,7 @@
                     <h4 class="card-title  mb-4">Add New Article</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.article.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.article.store') }}" method="POST" enctype="multipart/form-data" id="myForm">
                         @csrf
                         <div class="row">
                             <div class="col-md-3 mb-4">
@@ -71,7 +71,7 @@
                                 <div class="form-group pt-4">
                                     <label class="custom-switch">
                                         <input type="checkbox" class="custom-switch-input" name="is_active" value="1"
-                                            checked="">
+                                            checked="" >
                                         <span class="custom-switch-indicator custom-switch-indicator-lg"></span>
                                         <span class="custom-switch-description me-2">Is Active</span>
                                     </label>
@@ -145,25 +145,27 @@
                             <div class="col-md-3 mb-4">
                                 <div class="mb-4">
                                     <label for="" class="form-label">Articles Type</label>
-                                    <select class="form-select custom-select select2 select2 select2-show-search "
-                                        name="article_type">
+                                    <select class="form-select custom-select select2 select2-show-search" name="article_type">
                                         <option selected disabled>Choose Article Type</option>
-                                        <option value="Research Articles">Research Articles</option>
-                                        <option value="Review Articles">Review Articles</option>
-                                        <option value="Systematic Reviews">Systematic Reviews</option>
-                                        <option value="Meta-Analyses">Meta-Analyses</option>
-                                        <option value="Short Communications">Short Communications</option>
-                                        <option value="Case Studies">Case Studies</option>
-                                        <option value="Technical Notes">Technical Notes</option>
-                                        <option value="Editorials">Editorials</option>
-                                        <option value="Perspectives">Perspectives</option>
-                                        <option value="Commentaries">Commentaries</option>
-                                        <option value="Literature Reviews">Literature Reviews</option>
-                                        <option value="Survey Articles">Survey Articles</option>
-                                        <option value="Conference Reports">Conference Reports</option>
-                                        <option value="Letters to the Editor">Letters to the Editor</option>
-                                        <option value="Errata/Corrections">Errata/Corrections</option>
+                                        <option value="Research Articles" @selected(old('article_type') == 'Research Articles')>Research Articles</option>
+                                        <option value="Review Articles" @selected(old('article_type') == 'Review Articles')>Review Articles</option>
+                                        <option value="Systematic Reviews" @selected(old('article_type') == 'Systematic Reviews')>Systematic Reviews</option>
+                                        <option value="Meta-Analyses" @selected(old('article_type') == 'Meta-Analyses')>Meta-Analyses</option>
+                                        <option value="Short Communications" @selected(old('article_type') == 'Short Communications')>Short Communications</option>
+                                        <option value="Case Studies" @selected(old('article_type') == 'Case Studies')>Case Studies</option>
+                                        <option value="Technical Notes" @selected(old('article_type') == 'Technical Notes')>Technical Notes</option>
+                                        <option value="Editorials" @selected(old('article_type') == 'Editorials')>Editorials</option>
+                                        <option value="Perspectives" @selected(old('article_type') == 'Perspectives')>Perspectives</option>
+                                        <option value="Commentaries" @selected(old('article_type') == 'Commentaries')>Commentaries</option>
+                                        <option value="Literature Reviews" @selected(old('article_type') == 'Literature Reviews')>Literature Reviews</option>
+                                        <option value="Survey Articles" @selected(old('article_type') == 'Survey Articles')>Survey Articles</option>
+                                        <option value="Conference Reports" @selected(old('article_type') == 'Conference Reports')>Conference Reports</option>
+                                        <option value="Letters to the Editor" @selected(old('article_type') == 'Letters to the Editor')>Letters to the Editor</option>
+                                        <option value="Errata/Corrections" @selected(old('article_type') == 'Errata/Corrections')>Errata/Corrections</option>
                                     </select>
+                                    @error('article_type')
+                                    <div>{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-3 mb-4">
@@ -171,6 +173,13 @@
                                     <label for="" class="form-label">File</label>
                                     <input type="file" class="form-control form-control-sm" name="file"
                                         value="{{ old('file') }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="mb-4">
+                                    <label for="" class="form-label">Supplementary file</label>
+                                    <input type="file" class="form-control form-control-sm" name="supplementary_file"
+                                           value="{{ old('supplementary_file') }}" >
                                 </div>
                             </div>
 
@@ -187,7 +196,8 @@
                                                     <label for="author_name" class="form-label">Affliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[first_affiliation][name]" placeholder="Enter Affliation"
-                                                        required>
+                                                           value="{{ old('affiliation.first_affiliation.name') }}"
+                                                           required>
                                                 </div>
                                             </div>
                                             <div class="col-3">
@@ -196,7 +206,9 @@
                                                     name="affiliation[first_affiliation][country]">
                                                     <option selected disabled>Choose Country</option>
                                                     @foreach ($countries as $c)
-                                                        <option value="{{ $c['name'] }}">{{ $c['name'] }}</option>
+                                                        <option value="{{ $c['name'] }}" @selected(old('affiliation.first_affiliation.country') == $c['name'])>
+                                                            {{ $c['name'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -206,7 +218,8 @@
                                                 <div class="mb-4">
                                                     <label for="author_name" class="form-label">Affliation</label>
                                                     <input type="text" class="form-control"
-                                                        name="affiliation[second_affiliation][name]" placeholder="Enter Affliation"
+                                                        name="affiliation[second_affiliation][name]" placeholder="Enter Affiliation"
+                                                           value="{{ old('affiliation.second_affiliation.name') }}"
                                                         >
                                                 </div>
                                             </div>
@@ -216,7 +229,9 @@
                                                     name="affiliation[second_affiliation][country]">
                                                     <option selected disabled>Choose Country</option>
                                                     @foreach ($countries as $c)
-                                                        <option value="{{ $c['name'] }}">{{ $c['name'] }}</option>
+                                                        <option value="{{ $c['name'] }}" @selected(old('affiliation.second_affiliation.country') == $c['name'])>
+                                                            {{ $c['name'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -228,7 +243,7 @@
                                             <div class="col-7">
                                                 <div class="mb-4">
                                                     <label for="author_name" class="form-label">Affliation</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control" value="{{ old('affiliation.third_affiliation.name') }}"
                                                         name="affiliation[third_affiliation][name]" placeholder="Enter Affliation"
                                                         >
                                                 </div>
@@ -239,7 +254,9 @@
                                                     name="affiliation[third_affiliation][country]">
                                                     <option selected disabled>Choose Country</option>
                                                     @foreach ($countries as $c)
-                                                        <option value="{{ $c['name'] }}">{{ $c['name'] }}</option>
+                                                        <option value="{{ $c['name'] }}" @selected(old('affiliation.third_affiliation.country') == $c['name'])>
+                                                            {{ $c['name'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -253,6 +270,7 @@
                                                     <label for="author_name" class="form-label">Affliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[fourth_affiliation][name]" placeholder="Enter Affliation"
+                                                           value="{{ old('affiliation.fourth_affiliation.name') }}"
                                                         >
                                                 </div>
                                             </div>
@@ -262,7 +280,9 @@
                                                     name="affiliation[fourth_affiliation][country]">
                                                     <option selected disabled>Choose Country</option>
                                                     @foreach ($countries as $c)
-                                                        <option value="{{ $c['name'] }}">{{ $c['name'] }}</option>
+                                                        <option value="{{ $c['name'] }}" @selected(old('affiliation.fourth_affiliation.country') == $c['name'])>
+                                                            {{ $c['name'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -275,17 +295,20 @@
                                                 <div class="mb-4">
                                                     <label for="author_name" class="form-label">Affliation</label>
                                                     <input type="text" class="form-control"
-                                                        name="affiliation[firth_affiliation][name]" placeholder="Enter Affliation"
+                                                        name="affiliation[fifth_affiliation][name]" placeholder="Enter Affliation"
+                                                           value="{{ old('affiliation.fourth_affiliation.name') }}"
                                                         >
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <label for="" class="form-label">Country</label>
                                                 <select class="form-select custom-select select2 select2-show-search"
-                                                    name="affiliation[firth_affiliation][country]">
+                                                    name="affiliation[fifth_affiliation][country]">
                                                     <option selected disabled>Choose Country</option>
                                                     @foreach ($countries as $c)
-                                                        <option value="{{ $c['name'] }}">{{ $c['name'] }}</option>
+                                                        <option value="{{ $c['name'] }}" @selected(old('affiliation.fifth_affiliation.country') == $c['name'])>
+                                                            {{ $c['name'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -299,6 +322,7 @@
                                                     <label for="author_name" class="form-label">Affliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[sixth_affiliation][name]" placeholder="Enter Affliation"
+                                                           value="{{ old('affiliation.sixth_affiliation.name') }}"
                                                         >
                                                 </div>
                                             </div>
@@ -308,7 +332,9 @@
                                                     name="affiliation[sixth_affiliation][country]">
                                                     <option selected disabled>Choose Country</option>
                                                     @foreach ($countries as $c)
-                                                        <option value="{{ $c['name'] }}">{{ $c['name'] }}</option>
+                                                        <option value="{{ $c['name'] }}" @selected(old('affiliation.sixth_affiliation.country') == $c['name'])>
+                                                            {{ $c['name'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -322,6 +348,7 @@
                                                     <label for="author_name" class="form-label">Affliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[seventh_affiliation][name]" placeholder="Enter Affliation"
+                                                           value="{{ old('affiliation.seventh_affiliation.name') }}"
                                                         >
                                                 </div>
                                             </div>
@@ -331,7 +358,9 @@
                                                     name="affiliation[seventh_affiliation][country]">
                                                     <option selected disabled>Choose Country</option>
                                                     @foreach ($countries as $c)
-                                                        <option value="{{ $c['name'] }}">{{ $c['name'] }}</option>
+                                                        <option value="{{ $c['name'] }}" @selected(old('affiliation.seventh_affiliation.country') == $c['name'])>
+                                                            {{ $c['name'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -345,6 +374,7 @@
                                                     <label for="author_name" class="form-label">Affliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[eight_affiliation][name]" placeholder="Enter Affliation"
+                                                           value="{{ old('affiliation.eight_affiliation.name') }}"
                                                         >
                                                 </div>
                                             </div>
@@ -354,7 +384,9 @@
                                                     name="affiliation[eight_affiliation][country]">
                                                     <option selected disabled>Choose Country</option>
                                                     @foreach ($countries as $c)
-                                                        <option value="{{ $c['name'] }}">{{ $c['name'] }}</option>
+                                                        <option value="{{ $c['name'] }}" @selected(old('affiliation.eigth_affiliation.country') == $c['name'])>
+                                                            {{ $c['name'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -368,6 +400,7 @@
                                                     <label for="author_name" class="form-label">Affliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[nine_affiliation][name]" placeholder="Enter Affliation"
+                                                           value="{{ old('affiliation.nine_affiliation.name') }}"
                                                         >
                                                 </div>
                                             </div>
@@ -377,7 +410,9 @@
                                                     name="affiliation[nine_affiliation][country]">
                                                     <option selected disabled>Choose Country</option>
                                                     @foreach ($countries as $c)
-                                                        <option value="{{ $c['name'] }}">{{ $c['name'] }}</option>
+                                                        <option value="{{ $c['name'] }}" @selected(old('affiliation.nine_affiliation.country') == $c['name'])>
+                                                            {{ $c['name'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -391,6 +426,7 @@
                                                     <label for="author_name" class="form-label">Affliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[ten_affiliation][name]" placeholder="Enter Affliation"
+                                                           value="{{ old('affiliation.ten_affiliation.name') }}"
                                                         >
                                                 </div>
                                             </div>
@@ -400,7 +436,9 @@
                                                     name="affiliation[ten_affiliation][country]">
                                                     <option selected disabled>Choose Country</option>
                                                     @foreach ($countries as $c)
-                                                        <option value="{{ $c['name'] }}">{{ $c['name'] }}</option>
+                                                        <option value="{{ $c['name'] }}" @selected(old('affiliation.ten_affiliation.country') == $c['name'])>
+                                                            {{ $c['name'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -430,7 +468,8 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[first_author][firstname]"
-                                                        placeholder="Enter First Author" required>
+                                                        placeholder="Enter First Author" required value="{{ old('authors.first_author.firstname') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3">
@@ -439,6 +478,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[first_author][middlename]"
+                                                           value="{{ old('authors.first_author.middlename') }}"
                                                         placeholder="Enter Middle Name" required>
                                                 </div>
                                             </div>
@@ -448,6 +488,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[first_author][lastname]"
+                                                           value="{{ old('authors.first_author.lastname') }}"
                                                         placeholder="Enter Last Name" required>
                                                 </div>
                                             </div>
@@ -463,6 +504,7 @@
                                                     <label for="author_email" class="form-label">Author's Email</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[first_author][email]" placeholder="Enter Email"
+                                                           value="{{ old('authors.first_author.email') }}"
                                                         required>
                                                 </div>
                                             </div>
@@ -470,7 +512,7 @@
                                                 <div class="mb-4">
                                                     <label for="author_orcid" class="form-label">Author's ORCID ID</label>
                                                     <input type="text" class="form-control"
-                                                        name="authors[first_author][orchid_id]"
+                                                        name="authors[first_author][orchid_id]" value="{{ old('authors.first_author.orchid_id') }}"
                                                         placeholder="Enter Author's ORCID ID" required>
                                                 </div>
                                             </div>
@@ -485,6 +527,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[second_author][firstname]"
+                                                           value="{{ old('authors.second_author.firstname') }}"
                                                         placeholder="Enter First Author">
                                                 </div>
                                             </div>
@@ -494,6 +537,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[second_author][middlename]"
+                                                           value="{{ old('authors.second_author.middlename') }}"
                                                         placeholder="Enter Middle Name">
                                                 </div>
                                             </div>
@@ -503,6 +547,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[second_author][lastname]"
+                                                           value="{{ old('authors.second_author.lastname') }}"
                                                         placeholder="Enter Last Name">
                                                 </div>
                                             </div>
@@ -517,14 +562,16 @@
                                                 <div class="mb-4">
                                                     <label for="author_email" class="form-label">Author's Email</label>
                                                     <input type="text" class="form-control"
-                                                        name="authors[second_author][email]" placeholder="Enter Email">
+                                                        name="authors[second_author][email]" placeholder="Enter Email"
+                                                           value="{{ old('authors.second_author.email') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="mb-4">
                                                     <label for="author_orcid" class="form-label">Author's ORCID ID</label>
-                                                    <input type="text" class="form-control"
-                                                        name="authors[second_author][orchid_id]"
+                                                    <input type="text" class="form-control"  name="authors[second_author][orchid_id]"
+                                                           value="{{ old('authors.second_author.orchid_id') }}"
                                                         placeholder="Enter Author's ORCID ID">
                                                 </div>
                                             </div>
@@ -541,7 +588,7 @@
                                                     <label for="author_firstname" class="form-label">Author's First
                                                         Name</label>
                                                     <input type="text" class="form-control"
-                                                        name="authors[third_author][firstname]"
+                                                        name="authors[third_author][firstname]" value="{{ old('authors.third_author.firstname') }}"
                                                         placeholder="Enter First Author">
                                                 </div>
                                             </div>
@@ -551,6 +598,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[third_author][middlename]"
+                                                           value="{{ old('authors.third_author.middlename') }}"
                                                         placeholder="Enter Middle Name">
                                                 </div>
                                             </div>
@@ -560,6 +608,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[third_author][lastname]"
+                                                           value="{{ old('authors.third_author.lastname') }}"
                                                         placeholder="Enter Last Name">
                                                 </div>
                                             </div>
@@ -574,7 +623,9 @@
                                                 <div class="mb-4">
                                                     <label for="author_email" class="form-label">Author's Email</label>
                                                     <input type="text" class="form-control"
-                                                        name="authors[third_author][email]" placeholder="Enter Email">
+                                                        name="authors[third_author][email]" placeholder="Enter Email"
+                                                           value="{{ old('authors.third_author.email') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3">
@@ -582,7 +633,9 @@
                                                     <label for="author_orcid" class="form-label">Author's ORCID ID</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[third_author][orchid_id]"
-                                                        placeholder="Enter Author's ORCID ID">
+                                                        placeholder="Enter Author's ORCID ID"
+                                                           value="{{ old('authors.third_author.orchid_id') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3 mt-4">
@@ -598,6 +651,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[fourth_author][firstname]"
+                                                           value="{{ old('authors.fourth_author.firstname') }}"
                                                         placeholder="Enter First Author">
                                                 </div>
                                             </div>
@@ -607,6 +661,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[fourth_author][middlename]"
+                                                           value="{{ old('authors.fourth_author.middlename') }}"
                                                         placeholder="Enter Middle Name">
                                                 </div>
                                             </div>
@@ -616,6 +671,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[fourth_author][lastname]"
+                                                           value="{{ old('authors.fourth_author.lastname') }}"
                                                         placeholder="Enter Last Name">
                                                 </div>
                                             </div>
@@ -630,14 +686,16 @@
                                                 <div class="mb-4">
                                                     <label for="author_email" class="form-label">Author's Email</label>
                                                     <input type="text" class="form-control"
-                                                        name="authors[fourth_author][email]" placeholder="Enter Email">
+                                                        name="authors[fourth_author][email]" placeholder="Enter Email"
+                                                           value="{{ old('authors.fourth_author.email') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3">
                                                 <div class="mb-4">
                                                     <label for="author_orcid" class="form-label">Author's ORCID ID</label>
                                                     <input type="text" class="form-control"
-                                                        name="authors[fourth_author][orchid_id]"
+                                                        name="authors[fourth_author][orchid_id]" value="{{ old('authors.fourth_author.orchid_id') }}"
                                                         placeholder="Enter Author's ORCID ID">
                                                 </div>
                                             </div>
@@ -654,6 +712,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[fifth_author][firstname]"
+                                                           value="{{ old('authors.fifth_author.firstname') }}"
                                                         placeholder="Enter First Author">
                                                 </div>
                                             </div>
@@ -662,7 +721,7 @@
                                                     <label for="author_middlename" class="form-label">Author's Middle
                                                         Name</label>
                                                     <input type="text" class="form-control"
-                                                        name="authors[fifth_author][middlename]"
+                                                        name="authors[fifth_author][middlename]" value="{{ old('authors.fifth_author.middlename') }}"
                                                         placeholder="Enter Middle Name">
                                                 </div>
                                             </div>
@@ -672,6 +731,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[fifth_author][lastname]"
+                                                           value="{{ old('authors.fifth_author.lastname') }}"
                                                         placeholder="Enter Last Name">
                                                 </div>
                                             </div>
@@ -686,7 +746,9 @@
                                                 <div class="mb-4">
                                                     <label for="author_email" class="form-label">Author's Email</label>
                                                     <input type="text" class="form-control"
-                                                        name="authors[fifth_author][email]" placeholder="Enter Email">
+                                                        name="authors[fifth_author][email]" placeholder="Enter Email"
+                                                           value="{{ old('authors.fifth_author.email') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3">
@@ -694,6 +756,7 @@
                                                     <label for="author_orcid" class="form-label">Author's ORCID ID</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[fifth_author][orchid_id]"
+                                                           value="{{ old('authors.fifth_author.orchid_id') }}"
                                                         placeholder="Enter Author's ORCID ID">
                                                 </div>
                                             </div>
@@ -710,6 +773,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[sixth_author][firstname]"
+                                                           value="{{ old('authors.sixth_author.firstname') }}"
                                                         placeholder="Enter First Author">
                                                 </div>
                                             </div>
@@ -719,6 +783,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[sixth_author][middlename]"
+                                                           value="{{ old('authors.sixth_author.middlename') }}"
                                                         placeholder="Enter Middle Name">
                                                 </div>
                                             </div>
@@ -728,6 +793,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[sixth_author][lastname]"
+                                                           value="{{ old('authors.sixth_author.lastname') }}"
                                                         placeholder="Enter Last Name">
                                                 </div>
                                             </div>
@@ -742,7 +808,9 @@
                                                 <div class="mb-4">
                                                     <label for="author_email" class="form-label">Author's Email</label>
                                                     <input type="text" class="form-control"
-                                                        name="authors[sixth_author][email]" placeholder="Enter Email">
+                                                        name="authors[sixth_author][email]" placeholder="Enter Email"
+                                                           value="{{ old('authors.sixth_author.email') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3">
@@ -750,7 +818,9 @@
                                                     <label for="author_orcid" class="form-label">Author's ORCID ID</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[sixth_author][orchid_id]"
-                                                        placeholder="Enter Author's ORCID ID">
+                                                        placeholder="Enter Author's ORCID ID"
+                                                           value="{{ old('authors.sixth_author.orchid_id') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3 mt-4">
@@ -766,6 +836,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[seventh_author][firstname]"
+                                                           value="{{ old('authors.seventh_author.firstname') }}"
                                                         placeholder="Enter First Author">
                                                 </div>
                                             </div>
@@ -775,6 +846,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[seventh_author][middlename]"
+                                                           value="{{ old('authors.seventh_author.middlename') }}"
                                                         placeholder="Enter Middle Name">
                                                 </div>
                                             </div>
@@ -784,6 +856,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[seventh_author][lastname]"
+                                                           value="{{ old('authors.seventh_author.lastname') }}"
                                                         placeholder="Enter Last Name">
                                                 </div>
                                             </div>
@@ -798,7 +871,9 @@
                                                 <div class="mb-4">
                                                     <label for="author_email" class="form-label">Author's Email</label>
                                                     <input type="text" class="form-control"
-                                                        name="authors[seventh_author][email]" placeholder="Enter Email">
+                                                        name="authors[seventh_author][email]" placeholder="Enter Email"
+                                                           value="{{ old('authors.seventh_author.email') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3">
@@ -806,7 +881,9 @@
                                                     <label for="author_orcid" class="form-label">Author's ORCID ID</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[seventh_author][orchid_id]"
-                                                        placeholder="Enter Author's ORCID ID">
+                                                        placeholder="Enter Author's ORCID ID"
+                                                           value="{{ old('authors.seventh_author.orchid_id') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3 mt-4">
@@ -822,7 +899,9 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[eight_author][firstname]"
-                                                        placeholder="Enter First Author">
+                                                        placeholder="Enter First Author"
+                                                           value="{{ old('authors.eight_author.firstname') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3">
@@ -831,7 +910,9 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[eight_author][middlename]"
-                                                        placeholder="Enter Middle Name">
+                                                        placeholder="Enter Middle Name"
+                                                           value="{{ old('authors.eight_author.middlename') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3">
@@ -840,6 +921,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[eight_author][lastname]"
+                                                           value="{{ old('authors.eight_author.lastname') }}"
                                                         placeholder="Enter Last Name">
                                                 </div>
                                             </div>
@@ -854,6 +936,7 @@
                                                 <div class="mb-4">
                                                     <label for="author_email" class="form-label">Author's Email</label>
                                                     <input type="text" class="form-control"
+                                                           value="{{ old('authors.eight_author.email') }}"
                                                         name="authors[eight_author][email]" placeholder="Enter Email">
                                                 </div>
                                             </div>
@@ -862,6 +945,7 @@
                                                     <label for="author_orcid" class="form-label">Author's ORCID ID</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[eight_author][orchid_id]"
+                                                           value="{{ old('authors.eight_author.orchid_id') }}"
                                                         placeholder="Enter Author's ORCID ID">
                                                 </div>
                                             </div>
@@ -878,6 +962,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[nine_author][firstname]"
+                                                           value="{{ old('authors.nine_author.firstname') }}"
                                                         placeholder="Enter First Author">
                                                 </div>
                                             </div>
@@ -887,6 +972,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[nine_author][middlename]"
+                                                           value="{{ old('authors.nine_author.middlename') }}"
                                                         placeholder="Enter Middle Name">
                                                 </div>
                                             </div>
@@ -896,6 +982,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[nine_author][lastname]"
+                                                           value="{{ old('authors.nine_author.lastname') }}"
                                                         placeholder="Enter Last Name">
                                                 </div>
                                             </div>
@@ -910,7 +997,9 @@
                                                 <div class="mb-4">
                                                     <label for="author_email" class="form-label">Author's Email</label>
                                                     <input type="text" class="form-control"
-                                                        name="authors[nine_author][email]" placeholder="Enter Email">
+                                                        name="authors[nine_author][email]" placeholder="Enter Email"
+                                                           value="{{ old('authors.nine_author.email') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3">
@@ -918,7 +1007,9 @@
                                                     <label for="author_orcid" class="form-label">Author's ORCID ID</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[nine_author][orchid_id]"
-                                                        placeholder="Enter Author's ORCID ID">
+                                                        placeholder="Enter Author's ORCID ID"
+                                                           value="{{ old('authors.nine_author.orchid_id') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3 mt-4">
@@ -934,7 +1025,9 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[ten_author][firstname]"
-                                                        placeholder="Enter First Author">
+                                                        placeholder="Enter First Author"
+                                                           value="{{ old('authors.ten_author.firstname') }}"
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-3">
@@ -943,6 +1036,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[ten_author][middlename]"
+                                                           value="{{ old('authors.ten_author.middlename') }}"
                                                         placeholder="Enter Middle Name">
                                                 </div>
                                             </div>
@@ -952,6 +1046,7 @@
                                                         Name</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[ten_author][lastname]"
+                                                           value="{{ old('authors.ten_author.lastname') }}"
                                                         placeholder="Enter Last Name">
                                                 </div>
                                             </div>
@@ -966,6 +1061,7 @@
                                                 <div class="mb-4">
                                                     <label for="author_email" class="form-label">Author's Email</label>
                                                     <input type="text" class="form-control"
+                                                           value="{{ old('authors.ten_author.email') }}"
                                                         name="authors[ten_author][email]" placeholder="Enter Email">
                                                 </div>
                                             </div>
@@ -974,6 +1070,7 @@
                                                     <label for="author_orcid" class="form-label">Author's ORCID ID</label>
                                                     <input type="text" class="form-control"
                                                         name="authors[ten_author][orchid_id]"
+                                                           value="{{ old('authors.ten_author.orchid_id') }}"
                                                         placeholder="Enter Author's ORCID ID">
                                                 </div>
                                             </div>
@@ -1170,6 +1267,16 @@
                     ];
                 return ordinals[number - 1];
             }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+
+            $('#myForm').find('input, select').each(function() {
+                var name = $(this).attr('name');
+                $(this).val({{old('name')}});
+            });
         });
     </script>
 @endsection
