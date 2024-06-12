@@ -120,4 +120,5 @@ Route::view('/test', 'mail.send-verification-mail');
 
 
 
+
 require __DIR__ . '/admin.php';

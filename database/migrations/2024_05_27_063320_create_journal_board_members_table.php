@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('country');
             $table->longText('biography')->nullable();
             $table->foreignId('journal_id')->constrained('journals')->cascadeOnDelete();
+            $table->string('google_scholar')->nullable();
+            $table->string('scopus')->nullable();
+            $table->string('orcid')->nullable();
+            $table->string('order_id')->nullable();
             $table->timestamps();
         });
     }

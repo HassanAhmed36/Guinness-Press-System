@@ -82,6 +82,7 @@ Route::prefix('/admin')->group(function () {
         Route::post('/Update-user/{id}', [UserController::class, 'update'])->name('admin.user.update');
         Route::get('/profile', [UserController::class, 'profile'])->name('admin.user.profile');
 
+        Route::get('/editorial/member/update-order', [JournalBoardMemberController::class, 'updateOrder'])->name('editorial.member.updateOrder');
 
 
         Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');

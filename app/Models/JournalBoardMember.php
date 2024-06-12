@@ -15,9 +15,14 @@ class JournalBoardMember extends Model
         'country',
         'biography',
         'journal_id',
+        'order_id',
+        'google_scholar',
+        'scopus',
+        'orcid'
     ];
-    
-    public function journal(){
-        return $this->belongsTo(Journal::class , 'journal_id');
+
+    public function journal()
+    {
+        return $this->belongsTo(Journal::class, 'journal_id');
     }
 }
