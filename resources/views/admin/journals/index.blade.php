@@ -15,9 +15,11 @@
                     <div class="">
                         <h4 class="card-title fs-5 fw-bold">Journals</h4>
                     </div>
-                    <div>
-                        <a href="{{ route('admin.journal.create') }}" class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-plus-circle me-2"></i>Add new Journals</a>
+                    <div class="d-flex align-items-center gap-3">
+                        <div>
+                            <a href="{{ route('admin.journal.create') }}" class="btn btn-primary waves-effect waves-light">
+                                <i class="fa fa-plus-circle me-2"></i>Add new Journals</a>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">

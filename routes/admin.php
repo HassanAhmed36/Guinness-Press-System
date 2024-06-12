@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\JournalBoardMemberController;
 use App\Http\Controllers\Admin\JournalController;
 use App\Http\Controllers\Admin\JournalVolumeController;
 use App\Http\Controllers\Admin\SubmissionController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VolumeIssueController;
 use App\Services\CustomService;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('/admin')->group(function () {
-    Route::redirect('/', '/login');
+    Route::redirect('/', '/admin/login');
     Route::get('/login', [AuthController::class, 'login'])->name('admin.login');
     Route::post('/submit-login', [AuthController::class, 'Submitlogin'])->name('admin.submit.login');
     //journals
@@ -73,6 +74,15 @@ Route::prefix('/admin')->group(function () {
         Route::post('/admin-reject-submission/{id}', [SubmissionController::class, 'rejectSubmission'])->name('admin.reject.submission');
 
         Route::get('/submissions', [SubmissionController::class, 'index'])->name('admin.submission.index');
+
+        Route::get('/users', [UserController::class, 'index'])->name('admin.user.index');
+        Route::post('/store-users', [UserController::class, 'store'])->name('admin.user.store');
+        Route::get('/edit-users', [UserController::class, 'edit'])->name('admin.user.edit');
+        Route::get('/delete-users/{id}', [UserController::class, 'destroy'])->name('admin.user.delete');
+        Route::post('/Update-user/{id}', [UserController::class, 'update'])->name('admin.user.update');
+        Route::get('/profile', [UserController::class, 'profile'])->name('admin.user.profile');
+
+
 
         Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });

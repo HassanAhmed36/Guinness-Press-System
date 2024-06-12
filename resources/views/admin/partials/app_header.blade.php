@@ -72,11 +72,11 @@
                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow animated">
                                            <div class="p-3 text-center border-bottom">
                                                <a href="profile-1.html"
-                                                   class="text-center user pb-0 font-weight-bold">John
-                                                   Thomson</a>
-                                               <p class="text-center user-semi-title">App Developer</p>
+                                                   class="text-center user pb-0 font-weight-bold">{{ auth()->user()->name }}</a>
+                                               <p class="text-center user-semi-title">{{ auth()->user()->role->name }}
+                                               </p>
                                            </div>
-                                           <a class="dropdown-item d-flex" href="profile-1.html">
+                                           <a class="dropdown-item d-flex" href="{{ route('admin.user.profile') }}">
                                                <i class="feather feather-user me-3 fs-16 my-auto"></i>
                                                <div class="mt-1">Profile</div>
                                            </a>

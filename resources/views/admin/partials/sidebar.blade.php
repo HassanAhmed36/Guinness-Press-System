@@ -44,7 +44,7 @@
                 </ul>
             </li> --}}
             <li class="slide">
-                <a class="side-menu__item" href="#">
+                <a class="side-menu__item" href="{{ route('admin.user.index') }}">
                     <i class="feather feather-user sidemenu_icon"></i>
                     <span class="side-menu__label">Users</span>
                 </a>

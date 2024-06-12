@@ -25,6 +25,7 @@
     <link href="{{ asset('admin_assets/plugins/datatable/responsive.bootstrap5.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin_assets/plugins/wysiwyag/richtext.css') }}" rel="stylesheet" />
 
+
     <style>
         .form-control::placeholder {
             color: rgba(0, 0, 0, 0.820) !important;
@@ -152,7 +153,32 @@
             $('#responsive-datatable').DataTable();
         })
     </script>
-  
+
+    @if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                not1({
+                    msg: "{{ session('success') }}",
+                    type: "success"
+                });
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                not1({
+                    msg: "{{ session('error') }}",
+                    type: "error"
+                });
+            });
+        </script>
+    @endif
+
+    <script src="{{ asset('admin_assets/plugins/notify/js/notifIt.js') }}"></script>
+    <link href="{{ asset('admin_assets/plugins/notify/css/jquery.growl.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin_assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 
 </body>
 

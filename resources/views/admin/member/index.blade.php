@@ -15,10 +15,24 @@
                     <div>
                         <h3 class="card-title fs-5 ">Editorial Board Member</h3>
                     </div>
-                    <div>
-                        <button data-bs-toggle="modal" data-bs-target="#myModal"
-                            class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-plus-circle me-2"></i>Add new Board Member</button>
+                    <div class="d-flex align-items-center gap-3">
+                        <div>
+                            <select name="" id="" class="form-select">
+                                <option disabled selected>Select Jouranls</option>
+                                @foreach ($journals as $j)
+                                    <option value="{{ $j->acronym }}">{{ $j->acronym }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div>
+                            <button data-bs-toggle="modal" data-bs-target="#myModal"
+                                class="btn btn-primary waves-effect waves-light">
+                                <i class="fa fa-plus-circle me-2"></i>Add new Board Member</button>
+                        </div>
+                        <div>
+                            <button class="btn btn-secondary waves-effect waves-light">
+                                <i class="fa fa-plus-circle me-2"></i>Clear filter</button>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">

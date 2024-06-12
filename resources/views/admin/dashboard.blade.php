@@ -2,7 +2,8 @@
 @section('main_section')
     <div class="page-header d-xl-flex d-block my-0">
         <div class="page-left header my-0 py-0">
-            <h4 class="page-title"><span class="font-weight-bold ms-2 my-0 py-0">Dashboard</span></h4>
+            <h4 class="page-title">{{ auth()->user()->role->name }}<span
+                    class="font-weight-bold ms-2 my-0 py-0">Dashboard</span></h4>
         </div>
     </div>
     <div class="row">
@@ -75,6 +76,46 @@
                             <div class="icon1 bg-success my-auto float-end"><i class="las la-money-bill-wave"></i></div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="card custom-card overflow-hidden">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4 class="card-title fs-5">Lastest Submission</h4>
+            </div>
+            <div class="card-body pt-2 p-0">
+                <div class="table-responsive ">
+                    <table class="table table-stripe" >
+                        <thead>
+                            <tr>
+                                <th class="">Task</th>
+                                <th class="">Start Date</th>
+                                <th class="">Work Status</th>
+                                <th class="w-5p"></th>
+                                <th class="">Deadline</th>
+                                <th class="">Team Status</th>
+                                <th class="wd-25p">E-mail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="text-dark fw-semibold">Mobile Application</span></td>
+                                <td>14 Jun 2020</td>
+                                <td>
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar bg-primary w-55"></div>
+                                    </div>
+                                </td>
+                                <td><span class="text-primary fs-15">57%</span></td>
+                                <td>16 Jun 2020</td>
+                                <td>
+                                  
+                                </td>
+                                <td><span class="text-primary">Active</span></td>
+                            </tr>
+        
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
