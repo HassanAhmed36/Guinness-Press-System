@@ -20,7 +20,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "United States",
                 "image" => "board-member-image/ijerm/08.png",
                 "biography" => " <p>Kayode Nelson Adeniji is a Ph.D. student in the Department of Integrated Coastal Science at East Carolina University (ECU], NC.research interests lie at the intersection of hurricanes and flood disaster management, exploring novel approaches for mitigatingimpacts of disasters. Specifically, he is interested in household recovery and non-structural mitigation strategies such as propacquisition encompassing community-driven initiatives, policy interventions, and effective risk deduction. Nelson earned his mastdegree in geography at ECU, where he also served as a research assistant researching the dynamics of compound flooding in Eastern NCarolina.</p>",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Galina Kedrova",
@@ -28,7 +28,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "Russia",
                 "image" => "board-member-image/ijerm/09.png",
                 "biography" => "<p>Dr. Galina Kedrova graduated from the Department of Theoretical and Applied Linguistics, Faculty of Philology, Lomonosov Moscow State University (LMSU). Her main areas of interest are Digital Humanities, ICT in education, computer-assisted Russian language learning, phonetics, articulation, MRI in philological research, and the basis of articulation. As the Director of the Center for New Technologies in the Humanities, she is responsible for training faculty and postdoctoral students in the best practices of using digital scholarly resources in research and teaching and for organizing and conducting focused training programs in this area.",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Alessio Ishizaka",
@@ -36,7 +36,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "France",
                 "image" => "board-member-image/ijerm/10.png",
                 "biography" => "<p>Alessio Ishizaka is a Distinguished Professor in Decision Analysis. He was Head of the Information Systems, Supply Chain and Decision making Department from 2019 to 2022. He was also the research lead and Deputy Director of the Centre of Operational Research and Logistics at the University of Portsmouth. Alessio received his PhD from the University of Basel (Switzerland). He worked successively for the University of Exeter (UK], University of York (UK], and Audencia Grande Ecole de Management Nantes (France). He has been a visiting professor in several universities in Italy, France, and Germany. His research is in the area of decision analysis, where he has published more than 120 papers. He is regularly involved in large European-funded projects. He has been the chair, co-organizer, and guest speaker of several conferences on this topic. He wrote the indispensable textbook Multicriteria Decision Analysis: methods and software.</p>",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Caroline Cox",
@@ -44,7 +44,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "United Kingdom",
                 "image" => "board-member-image/ijerm/12.png",
                 "biography" => "<p>Dr. Caroline Cox is an Associate Professor specializing in Wildlife Law & Policy at the University of Portsmouth. As the lead researcher of the Ivory Project, initiated in November 2015, Dr. Cox has been instrumental in analyzing the illegal ivory trade both in the U.K. and internationally. Her research extends to various aspects of illegal wildlife trade, addressing issues such as pangolin trafficking and rhino poaching.</p><p>In collaboration with Dr. Nick Pamment, Dr. Cox launched The Ivory Project at the House of Commons in November 2015. This groundbreaking project focused on investigating the sale of ivory by the British antiques trade and lasted for 18 months. The culmination of their efforts was the release of a comprehensive report titled 'The Elephant in the Sale Room.'</p> <p>Dr. Cox's impactful report played a crucial role in the British Government's Impact Assessment, influencing changes in the law related to ivory sales in the U.K. The Ivory Act 2018, enacted on December 18, 2018, reflected the significant contributions of the Ivory Project team.Over the years, the Ivory Project has expanded its scope, fostering collaborations with partners in the U.K. and abroad. Ongoing projects include the investigation of illegal wildlife trade products online and promoting cross-jurisdictional cooperation in Range States</p><p> She is currently part of the teaching teams for the following undergraduate units: Wildlife Crime: Threats and Responses; Equity and Trusts; The Law of Succession; Trans-national Gang Crime; Environmental Law and The Legal Project.</p>",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Constantine Dimoulas",
@@ -52,7 +52,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "Greece",
                 "image" => "board-member-image/ijerm/15.png",
                 "biography" => "<p> Constantine Dimoulas is a Professor at Panteion University of Social and Political Sciences- ATHENS(GREECE). From 2020-2022, he was the Scientific Director of the Panteion Center for Training and Lifelong Learning. Previously to his Academic career, he worked ( 1993-2010) as a researcher and scientific coordinator in the Labor Institute of General Confederation of Greek Workers (INE/GSEE) in the field of lifelong learning and labor market policies. From 2010-2015, parallel to his academic position he was also a researcher in the  Observatory for Economic and Social Issues(INE/GSEE).</p>",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Ivan Krylov",
@@ -60,7 +60,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "Russia",
                 "image" => "board-member-image/ijerm/14.png",
                 "biography" => "<p>Dr. Ivan Krylov, born in 1996, is a dedicated researcher in Geological and Mineralogical Sciences, specializing in ore deposits and geochemistry. Graduating from the Geological Faculty of Lomonosov Moscow State University in 2019, he quickly established himself as a geologist at the Institute of Geotechnologies. Transitioning to academia, he has been contributing significantly as a researcher at the Faculty of Geology, MSU, since 2019. In 2024, he achieved the esteemed title of Candidate of Geological and Mineralogical Sciences, showcasing his commitment to advancing scientific knowledge in the field. Scientific interests: Geology of ore deposits, geochemistry, methods of studying matter, minerageny, geochemical research methods.</p>",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Ahmadreza Mohebbi",
@@ -68,7 +68,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "New Zealand",
                 "image" => "board-member-image/ijerm/02.png",
                 "biography" => "<p>Ahmadreza Mohebbi has a Ph.D. in Education with a focus on language, culture, and society at the University of Auckland. His research interests include Cultural Linguistics, Linguistic Landscape, Teaching English as an International Language (TEIL], Materials and Curriculum Development for English Language Teaching and Learning, and Mixed methods studies. He has served as a reviewer for the Cogent Arts & humanities, Scientometrics, and Ampersand Journals. He has published several papers in international journals such as the International Journal of Multilingualism, The Reading Matrix, TESL-EJ, and Ampersand.</p>",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Michael Lynch",
@@ -76,7 +76,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "United Kingdom",
                 "image" => "board-member-image/ijerm/11.png",
                 "biography" => "<p>Dr. Michael Lynch is a seasoned educator with over four decades of experience in the field. I spent 11 years as a teacher and principal teacher of Modern Languages, followed by 29 years as a teacher educator, including 18 years as a senior lecturer in language studies at the University of Edinburgh. Throughout his career, he has held numerous senior leadership roles at the Moray House School of Education and Sport (MHSES], including Programme Director and Academic Coordinator.</p><p>Dr. Lynch is also deeply involved in research endeavors. His work on projects like the ERASMUS Plus research project 'Playing Beyond CLIL' has led to innovative approaches in language teaching and curriculum development on an international level. Additionally, his collaboration with Pitch@Palace, initiated by His Royal Highness The Duke of York and the Royal Society of Engineers, has supported engineer entrepreneurs globally, fostering economic growth and job creation.</p>",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Atiqur Rahman Tuhin",
@@ -84,7 +84,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "Japan",
                 "image" => "board-member-image/ijerm/01.png",
                 "biography" => "",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
 
             ],
             [
@@ -93,7 +93,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "United Kingdom",
                 "image" => "board-member-image/ijerm/13.png",
                 "biography" => "<p>Dr. Effie Mitsopoulou holds a PhD from the University of Southampton. Currently, she serves as a full-time tutor at Swansea University, where she mentors students, lectures on Social Psychology and Research Methods, marks dissertations and assignments, and supervises final year projects. She also acts as a reviewer for the Psychology Ethics committee and serves as an Academic Integrity Officer for the Faculty of Medicine, Human and Life Sciences. Additionally, she works as a part-time lecturer at the Neapolis University of Paphos, teaching Research Methods, Statistics, and Personal Identity modules for distance master level psychology students. Previously, as a doctoral student, she served as a teaching assistant at the University of Southampton, marking assignments, delivering tutorials, and providing individual feedback to students. She was nominated for the Doctoral College Director's Award (Education) and awarded an Associate Teaching Fellowship in Higher Education (AFHEA) for her teaching contributions. Mitsopoulou also has experience as a peer reviewer for graduate journals and currently reviews submissions for various academic journals and organizations.</p> ",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Mohammad Tarek Aziz",
@@ -101,7 +101,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "Bangladesh",
                 "image" => "board-member-image/ijerm/03.png",
                 "biography" => "<p> Mohammad Tarek Aziz is a Lecturer of Computer Science and Engineering at the Chittagong Institute of Engineering and Technology. His research interests are:</p><ul class='points'><li>Machine Learning</li><li>Deep Learning</li><li>Digital Image Processing</li><li>Natural Language Processing</li><li>Data Mining</li><li>Robotics</li> </ul>",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Bashir Bello",
@@ -111,7 +111,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "biography" => "
                   <p> Dr. Bashir Bello is a senior lecturer with the Department of Sociology at  Federal University, Gusau. He has an interest in thorganization- industrial Sociology and Social Problems. </p>
                   ",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Lanka Sandeep Raj",
@@ -123,7 +123,7 @@ class EditorialBoardMemberSeeder extends Seeder
                             Lanka Sandeep Raj did his Bachelors and Masters from JNTU Hyderabad. His specialization is Thermal Engineering. He has been teaching the subjects of his specialization for 8 years. Also, he is actively involved in research. The uniqueness of his research is that it proposes empirical correlations for melting and solidification in latent heat storage devices. These contribute significantly to Energy Conservation in various Industries. He is presently working as an Assistant Professor of Mechanical Engineering at VNRVJIET Hyderabad.
                             </p>
                             ",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Sourav Kumar Purohit",
@@ -139,7 +139,7 @@ class EditorialBoardMemberSeeder extends Seeder
                               Sourav Kumar Purohit's dedication to both teaching and research underscores his commitment to fostering a dynamic and forward-thinking academic environment.
                               </p>
                               ",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Valarie Sarah Opollo",
@@ -151,7 +151,7 @@ class EditorialBoardMemberSeeder extends Seeder
                                 Dr. Valarie Sarah Atieno Opollo, is a seasoned professional in health sciences with a diverse academic background, including a PhD from Durban University of Technology, South Africa. Currently serving as the Senior Research Scientist and Laboratory Director at KEMRI/CGHR, Kisumu, Kenya, she provides strategic leadership in HIV research. Dr. Opollo's expertise is recognized internationally, with roles as a WHO-appointed Expert and membership in various scientific bodies.
                                 </p>
                                 ",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Patrick Ho-Tak Tsang",
@@ -163,7 +163,7 @@ class EditorialBoardMemberSeeder extends Seeder
                                   Dr. Patrick TSANG received his B.Eng., M.Phil. and Ph.D. in Industrial Engineering and Logistics Management from The Hong Kong University of Science and Technology (HKUST). Prior to joining The Hong Kong Polytechnic University, he was on the Faculty of Engineering of The Chinese University of Hong Kong (2019-2023) and College of Business of City University of Hong Kong (2018-2019). Patrick’s research interests cover operations management with applications from a broad range of fields such as logistics, supply chain management, transportation, emerging business, applied operations research and data analytics. Patrick has been teaching a wide range of undergraduate and postgraduate courses in the areas of undergraduate engineering mathematics, postgraduate transportation logistics and operations management. He is passionate in teaching and interaction with students. He was the recipient of teaching awards multiple times. He also has industry experiences from the sectors of banking, engineering, healthcare and procurement. Also, he is a certified Carbon Auditor.
                                   </p>
                                   ",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Lilia Psalta",
@@ -175,7 +175,7 @@ class EditorialBoardMemberSeeder extends Seeder
                                   Dr. Lilia Psalta is currently a course Leader at the MSc in Forensic Psychology and a lecturer at the University of Central Lancashire, Cyprus (Since 2015). She is also pursuing her 2nd PhD in Clinical Psychology at the University of Cyprus in the research are of Grief, Attachment and Life Transition. She studied Psychology in the USA, following her postgraduate studies in Cognitive Neuroscience at the University of York, UK. She is a Research Fellow at the University of Cyprus (Since 2013) and the University of Central Lancashire in the UK. She is an active member of the Cognitive Research Group of UCLan, Preston and of the Cognitive and Developmental Lab of UCLan, Cyprus.  She is research active within the area of neuroscience and psychology and participates in the design, development and analysis of experimental protocol for the study of neural and behavioral assemblies that underline emotional judgments and perception. She has long-term participation in research projects funded by national and international bodies, including the Cyprus Research Promotion Foundation (RPF) and the European Union. She has been the principal researcher and coordinator for the development of occupational health and safety policy and psychosocial risk management in Cypriot firefighters. She worked with Police Officials in Cyprus and the FBI to endorse knowledge on issues of Corruption in the law enforcement officers. Other areas of research interests are: Mental Health, Ghosting, Grief, Life Transition, and Internet offending (i.e., revenge porn. Cyber-harassment, stalking). Her recent research has examined: Internet offending; new approaches to the treatment of offenders, and the neurobiological basis of offending. With her research she is using cognitive neuropsychology and psychobiological approach, while interested in investigating psychological interventions to promote mental health and wellbeing. Her research was published in distinguished scientific journals like, Psychological Science, Perception, and Journal of Vision and she has presented her findings in various international conferences (EWIC, EPS, VSS). She is a member of various international research networks and professional bodies like the American Psychological Association (APA], the Association for the Treatment and Prevention of Sexual Abuse (ATSA], the College of Sexual and Relationship Therapists (COSRT)and the British Psychological Society (BPS).
                                     </p>
                                     ",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Wei Zhang",
@@ -187,7 +187,7 @@ class EditorialBoardMemberSeeder extends Seeder
                                       Dr. Wei Zhang, graduated from Shandong University of Science and Technology. He is an associate professor and a master's supervisor. His main research interests include rock burst and prevention, mining rock mechanics, and mining pressure and rock formation control. Also serving as the Deputy Secretary General of the Roof Prevention and Control Professional Committee of the China Mining Safety Society, and a member of the Impact Ground Pressure Professional Committee of the China Rock Mechanics and Engineering Society Int J Min Sci Techno/J Cent South Univ/Geo Mech Youth Editorial Board Adv Civ Eng academic editor and reviewer for over 30 SCI/EI journals. Preside over the National Natural Science Youth Fund, Shandong Natural Science Fund, and State Key Laboratory Fund.
                                       </p>
                                       ",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Tahira Anwar Lashari",
@@ -195,7 +195,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "Pakistan",
                 "image" => "board-member-image/ijerm/tahira-anwar-lashari.jpg",
                 "biography" => "<p>Dr. Tahira A. Lashari did her PhD in educational psychology from Universiti  Tun  Hussein  Onn  Malaysia (UTHM) in 2015. After her PhD, she pursued her  Post‐Doctoral research at UTHM. She did her Master's in Applied Psychology from Punjab University Pakistan. She has published several international peer‐reviewed journals and conference papers. She also continues to contribute as a reviewer to several reputed journals.</p>",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Shooq Altamimi",
@@ -203,7 +203,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "Bahrain",
                 "image" => "board-member-image/ijerm/shooq-altamimi.png",
                 "biography" => "<p>Shooq Altamimi is a distinguished educator with a dynamic career that bridges academia, training, and generative artificial intelligence. Shooq's academic journey began with a Bachelor's in Education from the University of Bahrain, followed by an MA in English Language Teaching with a minor in Applied Linguistics from Coventry University in the UK, where she specialized threshold concepts, hybrid learning, instructional design, and reflective practices. Upon completing her MA, Shooq transitioned into the role of learning and development specialist, in which she provided training, support, and mentorship for in-service English language teachers. Currently, as a Lecturer in English and Curriculum Developer at the Royal College of Surgeons in Ireland – Medical University of Bahrain, Shooq continues to teach and inspire the next generation of nurses and AI professionals. She develops cutting-edge course materials, supervises student research projects, and leads workshops on AI and its applications.</p>",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Qi Sun",
@@ -211,7 +211,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "United States",
                 "image" => "board-member-image/ijerm/qi-sun.jpg",
                 "biography" => "<p>Dr. Qi Sun earned her Ph.D. in Management Science and Engineering from Northeastern University, Shenyang, China, in 2018. Before that, she completed her M.S. in Software Engineering at Kunming University of Science and Technology and her B.S. in Information and Computing Science at Liaoning University. Her research interests include algorithms and experimental methods, logistics supply chain, operations research, game theory, and system optimization. She has had the honor of serving as a postdoctoral researcher at Shanghai Jiao Tong University, focusing on logistics supply chain system optimization</p><p>Currently, Dr. Sun is serving as a Research Assistant in the Department of Electrical Engineering and Computer Science at Cleveland State University, Cleveland, US.</p>",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Laurence Armand French",
@@ -219,7 +219,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "United States",
                 "image" => "board-member-image/ijerm/laurence-armand-french.png",
                 "biography" => "<p>Dr Laurence Armand French has the B.A., M.A., and Ph.D. in sociology (social disorganization/social psychology) from the University of New Hampshire, a Ph.D. in cultural psychology (educational psychology and measurement) from the University of Nebraska-Lincoln, and a M.A. in school psychology from Western New Mexico University. He pursued postdoctoral studies in “minorities and criminal justice education” at the State University of New York-Albany and completed the post-doctoral prescribing psychology program including the national exam. He is professor emeritus of psychology from Western New Mexico University; life-member and Fellow of the American Psychological Association; Fellow of the Society for the Psychological Study of Social Issues; Diplomate/Fellow of the College of Prescribing Psychologists (charter member); life-member of the American Society of Criminology; served honorably in the U.S. Marine Corps and is a life-member of the Veterans of Foreign Wars (VFW Post 2860); the Third Marine Division Association; and Disabled American Veterans (DAV). He is a licensed clinical psychologist (Arizona); a Fulbright Scholar (University of Sarajevo, Bosnia-Herzegovina – 2009-2010); and was a Visiting Endowed Chair of Criminology and Criminal Justice at St. Thomas University, Fredericton, New Brunswick, Canada (fall semester 2010). He completed a Fulbright Specialist project (#6764) on \"war crimes and missing persons,\" for the Republic of Srpska, Minister of Interior, Bosnia-Herzegovina at the Police College, University of Banja Luka, February 22 - April 3, 2016. He won a 2014 McGraw Hill Distinguished Scholar Award and the 2014 Distinguished Career Contribution to Research Award from Division 45 (Society for the Psychological Study of Culture, Ethnicity and Race) of the American Psychological Association. In 2018, he won a Marquis Who's Who Lifetime Achievement Award. He has over 300 publications including 20 books. His major areas of research interest are international and comparative social, human and criminal justice; Native American and minority issues; police and criminal psychology and neuro-, clinical, and forensic psychology.</p>",
-                'order_id' => null ,'journal_id' => 1
+                'journal_id' => 1
             ],
             [
                 "name" => "Yue Zhuo",
@@ -236,7 +236,7 @@ class EditorialBoardMemberSeeder extends Seeder
                         Dr. Zhuo enjoys traveling, reading, films, and music, especially singing Chinese folk songs, but Chinese calligraphy is one of her favorite hobbies. She enjoys giving Chinese calligraphy demonstrations at cultural festivals and helping people appreciate the beauty of traditional Chinese characters.
                         </p>
                         ",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Ahmadreza Mohebbi",
@@ -249,7 +249,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 Ahmadreza Mohebbi has a Ph.D. in Education with a focus on language, culture, and society at the University of Auckland. His research interests include Cultural Linguistics, Linguistic Landscape, Teaching English as an International Language (TEIL], Materials and Curriculum Development for English Language Teaching and Learning, and Mixed methods studies. He has served as a reviewer for the Cogent Arts & humanities, Scientometrics, and Ampersand Journals. He has published several papers in international journals such as the International Journal of Multilingualism, The Reading Matrix, TESL-EJ, and Ampersand.
                 </p>
                 ",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Óscar Cabral",
@@ -268,7 +268,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   Óscar researches gastronomy, cultural diplomacy, identity, gastronomy as heritage and as a touristic asset, political use of gastronomy, nation branding, food promotion, traditional foodways, food products, rituals, techniques, and culinary practices.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Luciano Micali",
@@ -284,7 +284,7 @@ class EditorialBoardMemberSeeder extends Seeder
                     Luciano Micali published several scientific contributions in renowned academic journals and collective volumes. Throughout the years, he disseminated his research in international conferences and research colloquia, as well as invited lecturer in various universities and research institutions.
                     </p>
                     ",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Dionysis Mourelatos",
@@ -297,7 +297,7 @@ class EditorialBoardMemberSeeder extends Seeder
                       Dr. Dionysis Mourelatos read History and Archaeology at the University of Athens. He was awarded an M.A. in Byzantine Art and Archaeology and a Phd (2009) in the same field also at the University of Athens. His PhD Thesis was entitled 'Icon: its placement and function. Developing an electronic thesaurus of terms'. Since 2009 he teaches or has taught in several universities in Greece and Cyprus. He has worked on many research projects for Vrije Universiteit Amsterdam, the University of Athens, the Ionian University, the Mount Sinai Foundation in Athens and the Monastery of Saint Catherine's at Sinai. He has written and presented several papers, mostly on art history and archaeology of Sinai and the Historiography of Byzantine Art and Archaeology. He was the editor of the volume 'Art and Archaeology in Byzantium and Beyond' (B.A.R., Oxford 2021) and the curator of the exhibition “Smyrna in the early 20th century: through the eyes of the Byzantinist Georgios Lampakis” at the Byzantine and Christian Museum in Athens (December 2022-April 2023).
                       </p>
                       ",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Samikshya Madhukullya",
@@ -310,7 +310,7 @@ class EditorialBoardMemberSeeder extends Seeder
                  Graduating with a bachelor's degree in Architecture from Nanjing Tech University and a master's degree in Urban Environmental Design from Hong Kong Polytechnic University, Xie Jiangtao brings a solid educational background to the current role. Currently employed at Yangzhou Architectural Design and Research Institute Co., Ltd., his primary focus lies in urban studies, cultural landscapes, spatial econometrics, and related areas. Alongside his professional commitments, he has founded the XG Research Group, a research studio where he collaborates with esteemed professors from various universities.
                  </p>
                  ",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Jiangtao Xie",
@@ -318,7 +318,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "China",
                 "image" => "board-member-image/cli/02.png",
                 "biography" => "",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
 
             ],
             [
@@ -327,7 +327,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "Egypt",
                 "image" => "board-member-image/cli/14.png",
                 "biography" => "Professor Mohammed Ibrahiem Hassan Mohammed is a renowned figure in Library and Information Science, currently serving as Vice Dean of Education and Students’ Affairs at Ain Shams University. With a career spanning over two decades, they've held key positions in academia, including professorships at Ain Shams University and Umm Al Qura University. Their dedication has been recognized through prestigious awards such as the 'Rightly Guided Son One who praises Al Nuaimi' prizes in Ajman, UAE, and the 'Sharjah for Librarianship Literature' prizes. Dr. Hassan Mohammed's passion for education and scholarly contributions continue to shape the field, earning them admiration and respect within the academic community.",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Penghui Jiang",
@@ -335,7 +335,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "China",
                 "image" => "board-member-image/cli/03.png",
                 "biography" => "",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Yifan Zuo",
@@ -354,7 +354,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   In the realm of academic publishing, Dr. Zuo has an impressive portfolio, contributing to over 30 journal articles, co-authoring a textbook, and co-editing numerous books.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Nurul Huda Hamzah",
@@ -367,7 +367,7 @@ class EditorialBoardMemberSeeder extends Seeder
                     Nurul Huda Hamzah is a Senior Lecturer of Applied Linguistics at Universiti Malaya, Kuala Lumpur. She received her PhD at Newcastle University in the United Kingdom in 2018. As an educator, she has been teaching primarily in the Sociolinguistics area. As an administrator, she has always been enamored with the idea that international collaboration and cooperation are one of the underused tools that promote the linguistic and cultural enhancement of learners. For this reason, she has promoted international teaching exchange programs and committed a great deal of time and effort to start such programs. Her most recent interest involves investigating various ways to enhance the visibility and salience of languages on public and commercial signs around Malaysia.
                     </p>
                     ",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Ngakan Ketut Acwin Dwijendra",
@@ -380,7 +380,7 @@ class EditorialBoardMemberSeeder extends Seeder
                       Dr. Ngakan Ketut Acwin Dwijendra, a lecturer, Architect, Researcher, Author, Urban Planner, Interior Design, Landscaper, Designer, and Yoga Teacher, was born on June 3, 1971, in Bangli Bali, with expertise in architecture, design, urban planning, and yoga teaching. Holds degrees in architecture, art, and philosophy. Joined Udayana University in 1997, published 19 books, and held 56 intellectual property rights. Founder of Goldmonk Architect and Goldmonk Yoga, actively involved in professional associations, with 15 Certificates of Expertise. Completed over 60 design projects, recognized as Asia's Best Architect in 2018. An award-winning yoga teacher since 2003. Champion of Outstanding Lecturer at Udayana University in 2018.
                       </p>
                       ",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Fengyan Wang",
@@ -399,7 +399,7 @@ class EditorialBoardMemberSeeder extends Seeder
                             Throughout his career, Dr. Wang has published over 70 academic papers in internationally renowned journals dedicated to moral education research. His scholarly contributions have garnered recognition, including the prestigious third prize of the Science Research Famous Achievement Award in Higher Institution (Humanities and Social Sciences) awarded by the Ministry of Education.
                             </p>
                             ",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Teiborlang T. Kharsyntiew",
@@ -412,7 +412,7 @@ class EditorialBoardMemberSeeder extends Seeder
                               Dr. Teiborlang T. Kharsyntiew is an Assistant Professor of European Studies at the School of International Studies, Jawaharlal Nehru University. Before Joining JNU, he taught in the Department of International Relations at Sikkim University, Gangtok. In 2017, he was awarded a month-long Research Stay fellowship at the Otto-Suhr-Institute of Political Sciences at Freie Universität Berlin as part of the University Grants Commission, India and the DAAD, Germany’s project on Indo-German Partnership in Higher Education. In 2022, he was awarded the EU visitor programme. Besides research on issues of European Security, his research interest includes borderland studies and India’s north-eastern region. He holds an MA in Politics from JNU, and M.Phil and Ph.D from the Centre for European Studies, JNU.
                               </p>
                               ",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Hamid Zargham Boroujeni",
@@ -425,7 +425,7 @@ class EditorialBoardMemberSeeder extends Seeder
                                   Professor Hamid Zargham Borujeni has been a distinguished faculty member at Allameh Tabatabai University in Tehran since 1982, renowned as the 'father of scientific tourism in Iran.' He has shaped the academic program of tourism management in the country and taught courses such as 'Tourism Policy' and 'Tourism Development Planning.' With over 80 research papers and 16 textbooks to his name, Professor Borujeni's contributions to the field are extensive. He has also consulted on tourism development projects for over 30 years, earning recognition for his practical research achievements. Currently serving as the chief editor of the 'Quarterly Journal of Social Studies in Tourism' and a member of editorial boards for prominent journals, Professor Borujeni continues to influence the scholarly discourse on tourism management.
                                   </p>
                                   ",
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Paraskevi Eleftheriou",
@@ -438,7 +438,7 @@ class EditorialBoardMemberSeeder extends Seeder
                                   Dr Paraskevi Eleftheriou holds a Ph.D. in Pedagogy from the University of Athens. The object of her study is intercultural education, the integration policies for students with heterogeneous cultural backgrounds, and the formation of the institutional framework for the education of students with heterogeneous cultural characteristics. Currently, she collaborates with the Intercultural Education Laboratory of University of Athens. She completed postgraduate studies in the postgraduate program "Theory, Practice and Evaluation of the Educational Process" at the Philosophical School of Athens. She is a graduate of the Athens School of Philosophy and has been working as a secondary education philologist since 2010. She has participated in research projects for the Intercultural Education Laboratory of the University of Athens. Her research interests are educational research as an axis of intercultural education, critical research in relation to the institutional framework, the education of immigrants and refugees, the application of critical pedagogy, and critical discourse analysis. Based on these interests, she has published articles, presentations and chapters in collective volumes in international and domestic publications.
                                   </p>
                                   ',
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Maria Patrizia Violi",
@@ -448,7 +448,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "biography" => '<p>Dr. Patrizia Violi, Full Professor of Semiotics at the University of Bologna. is director of VS. Quaderni di studi semiotici, and Former Director of the International Centre for Advanced Studies in the Humanities `Umberto Eco` and of TraMe - Centro di Studi Semiotici sulle Memorie Culturali. Among other publications, Patrizia Violi is the author of Meaning and Experience (Indiana University Press, 2001], Landscapes of Memory. Trauma, Space, History, (Peter Lang, 2017). She was PI of two Marie Curie EU exchange projects on memory and trauma in Europe and Latin America.
                                   </p>
                                   ',
-                'order_id' => null ,'journal_id' => 2
+                'journal_id' => 2
             ],
             [
                 "name" => "Arthur Ragauskas",
@@ -494,7 +494,7 @@ class EditorialBoardMemberSeeder extends Seeder
                  <li>Dr. Ragauskas's students and postdocs have received several awards, including the ACS graduate research award, the ORNL UT-Battelle Award, and the ORNL Supplementary Performance Award.</li>
                  </ul>
                  ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Nabila Abid",
@@ -511,7 +511,7 @@ class EditorialBoardMemberSeeder extends Seeder
                    Nabila has contributed significantly to academic literature, publishing in esteemed journals such as Energy Policy, Resources Policy, Business Strategy and Environment, Sustainable Development, and the Journal of Cleaner Production, etc.
                    </p>
                    ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Seyyed Akbar Sadaty",
@@ -523,7 +523,7 @@ class EditorialBoardMemberSeeder extends Seeder
                      Prof. Seyyed Akbar Sadaty is the first strategic, multidisciplinary researcher with process (SMM) in agricultural water and soil in the world. He has about 25 years of teaching experience at Payam Noor and Islamic Azad universities in Mazandaran and Golestan provinces in Iran. His keen interest has led him to complete his PhD in Soil Resource Management - Physics and Soil Conservation, in addition to various management disciplines. He has refereed more than 350 domestic and international articles and published 48 books in the Persian language in various fields (productivity management, soil resources, economics and ...). Due to his effective and efficient work, he has been chosen as the best author and researcher of the country and the relevant province (in Iran) more than 10 times and has received awards. Dr. Seyyed Akbar Sadaty, along with cultural and research activities in various journals of the world.
                      </p>
                      ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Marica Mamut",
@@ -539,7 +539,7 @@ class EditorialBoardMemberSeeder extends Seeder
                        As an external associate, he teaches at the Faculty of Natural Sciences, Mathematics and Educational Sciences of the University of Mostar (undergraduate, graduate, and postgraduate studies). She was a member of the expert working group for the preparation of test materials for national exams in geography and is a member of the State Commission for the Geography Competition. She wrote several scientific and professional papers in the field of physical and applied geography and participated in several international scientific meetings.
                        </p>
                        ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Mohammed Amer",
@@ -552,7 +552,7 @@ class EditorialBoardMemberSeeder extends Seeder
                     Mohammed Amer received the B.S. degree in Mechatronics Engineering from An-Najah National University, Palestine, in 2013, and the M.A., Ph.D. in Mechanical Science from National Chiao Tung University, Taiwan, in 2016 and 2020, respectively. Dr. Amer has served as an RD Prime Thermal Engineer at Sunonwealth Electric Machine Industry Co., Ltd. from December 2020 to February 2022. He was responsible for the new technology and roadmap of the company. He is currently an Assistant Professor in the Mechanical Engineering Department, at Palestine Technical University – Kadoorie (PTUK), Palestine. His fields of expertise include notebook cooling module improvement, electronics cooling, fan and blower, heat pipe, vapor chamber, material, coating, synthetic cooling, motor, liquid thermal solution, modeling and simulation, and others. His research areas include frosting and defrosting, plastic heat exchangers (dehumidification), nanofluids and heat transfer, PV/T solar systems, jet cooling, machines, aerodynamics, and mechatronics systems. Dr. Amer has published 16 patents and more than 40 peer-reviewed research papers over the past 5 years and reviewed over 150 papers since 2020. He is also a Review Editor for Smart Technologies, Frontiers, Switzerland.
                      </p>
                      ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Wuyang Hong",
@@ -560,7 +560,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "China",
                 "image" => "board-member-image/seer/01.png",
                 "biography" => "",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Ghulam Sarwar Soomro",
@@ -568,7 +568,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "Italy",
                 "image" => "board-member-image/seer/02.png",
                 "biography" => "",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Shi Yin",
@@ -584,7 +584,7 @@ class EditorialBoardMemberSeeder extends Seeder
                      Interests: Digital innovation management; knowledge management; energy and environmental assessment; green innovation processes; digital transformation; green manufacturing; environmental sustainability; sustainable process engineering; industrial engineering; combinatorics, algorithms, and optimization; healthcare big data; social network data analysis and mining; fuzzy rule-based systems; cognitive computational science (including innovative models and paradigms from digital humanities and quantitative and qualitative social sciences); civil engineering innovation for sustainability; green building; green building technology; digital engineering in construction; information management; smart buildings; smart cities; sustainable supply chain management.
                      </p>
                      ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Kulamani Parida",
@@ -599,7 +599,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 Professor Parida boasts an impressive collection of 16 state and national-level scientific awards, authorship of approximately 425 research articles. Professor Parida holds an outstanding record of 35 national scientific patents.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Shifeng Wang",
@@ -612,7 +612,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   Dr. Shifeng Wang is a distinguished Professor at Nanjing Tech University, specializing in various facets of energy research. With a focus on Hydrogen Energy, Solar Energy, and Sustainable Electrical Power Systems, Dr. Wang is at the forefront of innovative research. His expertise extends to Multiscale Energy System Analysis and Modeling, contributing valuable insights to the field. Additionally, his work encompasses cutting-edge research in Energy Conversion and Storage, shaping the future of sustainable energy solutions.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Majdi M. Alomari",
@@ -625,7 +625,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 Dr. Majdi M. Alomari has been an Associate Professor in the Electrical Engineering Department at the Australian University (AU) since 2015. He was an Assistant Professor in the Electrical Engineering Department at the Hashemite University - HU (2012-2015) and a Teaching Assistant in the Electrical Engineering Department at the University of Technology, Sydney – UTS (2009-2012). His research interests include Power System Analysis, Power System Stability and Control, Power System Planning, Power System Protection, Power Electronics, Electrical Machines and Drives, Electric Machine Design, Renewable Energy, Smart Grid, Energy Planning and Policy, Control Systems, Optimal Control, Nonlinear Dynamics, Linear System Analysis and other related topics. Dr. Alomari is a member of IEEE and the IEEE Power & Energy Society. Also, he is a Chartered Professional Engineer (CPEng) of Engineers Australia (EA)
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Lei Yang",
@@ -638,7 +638,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   Dr. Lei Yang is currently a Lecturer in Business and Management at the Business School of Zhengzhou University, P.R. China. Before that, she served as a Lecturer in Marketing at the School of Business and Management, Henan University of Economics and Law. She obtained her Ph.D. degree from Queen Mary University of London and a master’s degree in Business (Behavioural Science) from the University of Warwick. Her main research interests include consumer behavior, pro-environmental behavior, green marketing, and corporate social responsibility. She has participated in numerous international academic conferences in her field, such as the 34th European Group for Organizational Studies (EGOS) Colloquium, the Sustainability Development Academic Conference in Lille, France, and the British Academy of Management (BAM) Annual Conference. She serves as an anonymous reviewer for Management Review in China.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Sina Samadi Gharehveran",
@@ -651,7 +651,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 Sina Samadi Gharehveran received the B.S. and M.Sc. degrees in Power electrical engineering - planning and management of electrical systems from Tabriz University, Tabriz, Iran, in 2016 and 2018, respectively he is now a Ph.D. student at Tabriz University, Tabriz, Iran, from 2019 until now. His primary research is in optimization, smart grids, energy management, and power system resilience. He is currently working as a researcher in the electricity distribution organization of East Azarbaijan Province, Tabriz, Iran.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Arindam Chakraborty",
@@ -664,7 +664,7 @@ class EditorialBoardMemberSeeder extends Seeder
                    Dr Arindam was born and raised in Kolkata (eastern part of India), and he earned his Master's in Marine Biology from Pondicherry University (India) and later got his Doctoral degree in Marine Micropalaeontology from Birbal Sahni Institute of Palaeosciences (BSIP, India). He has experience working at world-renowned laboratories of UCL (London) during his PhD. His postdoctoral experience in India as a National Postdoctoral fellow (2017-2019) and Birbal Sahni Research Associate (2019-2022) at BSIP India was to understand the Neogene climate of the northern Indian Ocean. Later on, he joined the Institute of Earth Sciences, Academia Sinica, Taiwan, as a Postdoctoral Researcher working on several environmental and climatic issues. Currently, he is working as a senior lecturer at the Department of Geology, Universiti Malaya (Malaysia), and is also the supervisor of the Geology Museum at the department.
                    </p>
                    ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Fatemeh Zahed",
@@ -677,7 +677,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 Dr. Fatemeh Zahed received her Ph.D. degree in Environmental Engineering- Air Pollution from Tehran University, Tehran, Iran, in Feb. 2023. Her investigations have mainly focused on Waterbodies’ Quality Modeling, Atmospheric Air Pollution Management, and Indoor Air Quality (IAQ). Moreover, her expertise extends to Environmental Considerations of Energy Conservation Measures, as well as Green Building Surveys and certification. She has been working for the “Road, Housing and Urban Development Research Center (BHRC)” Since 2003 as a research projects manager and scientific member of BHRC’s Scientific board, conducting research projects on environmental issues of buildings, transportation and urban development.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Lei Yang",
@@ -685,7 +685,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "China",
                 "image" => "board-member-image/seer/10.png",
                 "biography" => "",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Constantinos Chrysikopoulos",
@@ -698,7 +698,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   Prof. Constantinos V. Chrysikopoulos received his B.S. in Chemical Engineering (1982) from the University of California, San Diego (UCSD), and M.S. in Chemical Engineering (1984) from Stanford University, Engineer Degree (1986) and Ph.D (1991) both in Civil and Environmental Engineering from Stanford University. He worked as a Post-Doctoral Research Associate (1991) in the Department of Civil and Environmental Engineering, Stanford University; Assistant, Associate and Full Professor (1991-2004) in the Department of Civil and Environmental Engineering, University of California, Irvine (UCI); and Full Professor (2004-2013) in the Department of Civil Engineering, University of Patras, Greece. He is currently a Professor at the School of Chemical and Environmental Engineering, Technical University of Crete, Greece (2013-], and in Civil and Environmental Engineering, Khalifa University, UAE (2022- ). He is the author of 132 peer-reviewed articles in professional journals, and his h-index is 44 (Web of Science), 47 (Scopus) 55 (Google Scholar). His research has focused on various experimental as well as theoretical aspects of contaminant transport in porous media and environmental systems. Current research areas include the fate and transport of nanoparticles and biocolloids (e.g., viruses, bacteria, nano pesticides) in subsurface formations, transport of polydisperse colloids in natural fractures, and dissolution of multi-component nonaqueous phase liquids in porous media. He has also worked in the areas of atmospheric dispersion, mathematical modeling of reactive transport in subsurface formations, and the development of ideal tracers for groundwater and hydrothermal studies. Furthermore, his research group is exploring the possibility of reducing environmental pollution with the employment solar solar-powered reactors for anaerobic wastewater treatment and the development of an environmentally friendly technology for groundwater remediation using acoustic waves.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Shulin Xu",
@@ -718,7 +718,7 @@ class EditorialBoardMemberSeeder extends Seeder
                     Dr. Xu's research endeavors and dedication to advancing knowledge in sustainable energy and environmental economics make him a valuable addition to the academic landscape.
                    </p>
                    ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Letizia Di Bella",
@@ -731,7 +731,7 @@ class EditorialBoardMemberSeeder extends Seeder
                    Letizia Di Bella is an associate Professor in Paleontology and Paleoecology at “Sapienza” University of Rome. She graduated in Geological Science (1990), a PhD in Paleontology (1995) Postdoctoral fellowship at “Sapienza” University of Rome (1996-1998), and three research collaboration fellowships (2000-2006). Since 1994 she is a member of the Italian Paleontological Society and of the Italian Geological Society. Since 1993 she has engaged in numerous research projects; as a specialist in Neogene and Quaternary biostratigraphy of the Mediterranean basin, she performs many conferences during the courses of Micropaleontology and Paleontology. She is a specialist in Micropaleontology, studying mainly foraminifera. In recent years, she also studied the environmental responses of the micro-meiobenthos community to climate changes and to anthropogenic impact.
                       Main scientific interests: biostratigraphy of Neogene-Quaternary marine succession Mediterranean basin through the study of foraminiferal assemblages; taxonomy, ecology and paleoecology of Caenozoic foraminifera finalized to paleoenvironmental and paleoclimatic reconstruction. Studies on recent foraminiferal assemblages as biomarkers in stressed environmental areas and extreme environments (hydrothermal vents; submarine caves, marine canyons). From 1993 she has participated in numerous research projects and international congresses and published 79 articles.
                     </p>",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Omar H. Abdalla ",
@@ -744,7 +744,7 @@ class EditorialBoardMemberSeeder extends Seeder
                      Professor Omar Hanafy Abdalla (Fellow of the Egyptian Society of Engineers (ESE), Life Senior Member of the IEEE, Member of Cigre-Egypt Reginal Study Committee C2) was born in Cairo, Egypt on 11 May 1945. He received a Ph.D. degree in electrical engineering from the University of Liverpool, England, in 1979. Since B. Sc. graduation in 1967, he has been appointed in various positions in the university as follows: Engineer in 1967, Demonstrator in 1970, Lecturer in 1976, Associate Professor in 1983, Professor in 1987, Head of the Department of Electrical Power and Machines Engineering 1987, Vice-Dean for Postgraduate Studies and Research 1997, Dean of the Faculty of Engineering 2002, Professor Emeritus 2005-now. He has published over 180 papers in Journals and conferences. He is a Reviewer for many national and international periodicals and conferences (e.g. Proceedings IET, IEEE Transactions, IJPSR, JPEL, MEPCON, Cigre, etc.). He is a member of the Editorial Board of the International Journal of Emerging Electrical Power Systems, and the Journal of Electrical Systems, and a member of the Advisory Board of the Trends in Advanced Sciences and Technology Journal. He has been a leader of many research and consulting activities with industry, including electrical power systems, electricity distribution networks, urban village planning, modern control systems, etc. He has been engaged in many activities with professional and social societies, including IEEE, ESE, and others. As a Dean of the Faculty of Engineering, he has introduced new programs in the faculty departments and led the promotion of essential administration and students' activities. He has organized, supervised and participated in conducting training courses for engineers and technicians. He was the Head of the Consultation Board and Head of the Automatic Control Department at the Technical College, Jeddah, KSA, 1988-1993. Prof. Omar H. Abdalla was a member of the Board of Directors of the South Cairo Electricity Distribution Company 2004-2007. From January 2007 to February 2014, he was on leave from Helwan University, working (System Studies Advisor) with Oman Electricity Transmission Company, Muscat, Sultanate of Oman. He was involved in various technical activities and leading strategic planning and transmission system technical studies such as the Transmission Master Plan 2014-2030, Five Year Annual Transmission System Capability Statements, planning and design of new generation and bulk industrial load connections, HV and EHV grid-stations, transmission lines of 400 kV, 220 kV and 132 kV levels, network expansions and reinforcements, Pre-Investment Appraisal Techno-Economic Studies for new projects, etc. He was also involved in the technical studies and practical operation of the interconnection between Oman and UAE. Prof. Omar Hanafy Abdalla received the Encouraging Prize of State in Engineering Sciences 1984, the First Class Distinction of Sciences and Arts, 1985, Helwan University Appreciation Prize in Engineering Sciences and Technology of the year 2007, and the “IEEE PES Chapter Outstanding Award”, for years of dedicated volunteer service to the chapter and to valuable contribution to the Power & Energy Society, IEEE PES Egypt Section, 2018.
                      </p>
                      ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Liliya Sushkevich",
@@ -753,7 +753,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "Belarus",
                 "image" => "board-member-image/seer/liliya-sushkevich.png",
                 "biography" => "<p>Liliya (Olegovna) Sushkevich has been the Head of the Department of Economic and Social Geography of the Faculty of Geography and Geoinformatics at the Belarusian State University since 2022. Prior to that (2015-2022), she worked at the Institute of Economics of the National Academy of Sciences of Belarus, including in 2015-2021 as a researcher in the sector of efficiency of mineral resources use, since 2021 as the head of the sector of international competitiveness and regional development of the Center for World Economy. In 2021 defended her dissertation on the topic “Spatio-temporal dynamics of the electric power industry development of the Republic of Belarus” and was awarded a PhD (in Geography). The sphere of scientific interests of L.O. Sushkevich covers economic and geographical development of the fuel and energy sector, territorial organization of energy industries, issues of efficiency of fuel and energy (local) resources use, energy security, and regional development During her career, she has participated in 4 state programs of scientific research related to humanitarian development and economics, as well as the development of the agro-industrial complex; she was the head and executor of 4 research projects carried out under the grant support of The Belarusian Republican Foundation for Fundamental Research and the Ministry of Education of the Republic of Belarus. Sushkevich L.O. has more than 80 scientific publications, including 26 articles in journals and in the collections of scientific articles</p>",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Cristina Perinelli",
@@ -766,7 +766,7 @@ class EditorialBoardMemberSeeder extends Seeder
                          Dr. Cristina Perinelli currently holds the position of Researcher at the Department of Earth Sciences, Sapienza University of Rome. She obtained her PhD at the University of Pisa. Her research activity was conducted by combining field, laboratory and experimental observations and focused mainly on the petrology of igneous rocks including: mechanism of magma production, melt migration and melt/rock interaction acting in the upper mantle and lower crust; influence of volatile components (H2O, CO2) on differentiation of basic magmas; crystallization kinetics of natural silicate systems and time scales of magmatic processes; petrology of subaerial and submarine volcanoes and definition of the eruptive mechanisms. In recent years, her research has also focused on the relationship between magmatic and hydrothermal systems in the genesis of metal deposits.
                          </p>
                          ",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             [
                 "name" => "Ebenezer Kojo Acquah ",
@@ -775,7 +775,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "country" => "Estonia",
                 "image" => "board-member-image/seer/ebenezer-kojo-acqua.png",
                 "biography" => "<p>Dr. Ebenezer Kojo Acquah is a rising young researcher and academic dedicated to environmental sustainability and water conservation. Ebenezer pursued a Bachelor of Science in Chemistry at the University of Ghana, Accra, where his research focused on synthesizing cellulose nanocrystals. Ebenezer continued his studies at the Daegu Gyeongbuk Institute of Science and Technology in South Korea, earning a master's degree in energy science and engineering in 2021. His graduate research centered on organic polymers, supramolecular chemistry, and water remediation with a focus on the synthesis of organic porous polymers for the adsorption of micropollutants from water. As a current early-stage researcher at Tallinn University of Technology in Estonia, Ebenezer works in the Laboratory of Photovoltaic Materials under the supervision of Dr. Svetlana Polivtseva. His research aims to develop mesoporous materials capable of removing heavy metals and trace organic pollutants from wastewater and urine. Ebenezer has authored papers on the adsorption of micropollutants from water sources in the Journal of Engineering and Industrial Chemistry, and the Journal of Advanced Materials. Ebenezer's academic excellence has been recognized with several honors. In 2016, he was named the best student of the Ghana Chemical Society. The following year, he received the prestigious Sam Korankye Ankrah Award for his contributions to the field of academia. He is deeply committed to environmental protection. Dr. Acquah views the world as a global village being rapidly urbanized and transformed by technology, with both positive and negative impacts. He is determined to play a role in safeguarding the environment, especially through his research on water remediation and conservation.</p>",
-                'order_id' => null ,'journal_id' => 3
+                'journal_id' => 3
             ],
             //cie
             [
@@ -789,7 +789,7 @@ class EditorialBoardMemberSeeder extends Seeder
                         Dr Tiantai Deng received his B.Eng. from the Harbin Institute of Technologies, Harbin, China, in 2015, and his Ph.D. degree from Queen’s University Belfast, Belfast, Ireland, in 2019. He is currently a lecturer at the University of Sheffield, Sheffield, U.K. Prior to his academic career, he was a senior engineer with HiSilicon, Huawei. His main research interests include hardware acceleration for image processing, deep learning and high-level design environments.
                         </p>
                     ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Dr. Salih Berkan Aydemir",
@@ -800,7 +800,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "biography" => "<p>
               Dr. Salih Berkan Aydemir received an M.Sc. in Computer Engineering from Anadolu University from 2013 to 2016 and a Ph.D. degrees in Computer Engineering from Eskisehir Technical University from 2016 to 2020, Eskisehir, Turkey. Currently, he is a research assistant professor at the Department of Computer Engineering, Amasya University, Turkey. His research interests include metaheuristic optimization, neural network structures, machine learning, and multi-criteria decision-making, with a focus on extending fuzzy sets.
               </p>",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Alireza Akhavan-Safar",
@@ -817,7 +817,7 @@ class EditorialBoardMemberSeeder extends Seeder
                Alireza has published over 100 ISI papers and delivered approximately 150 presentations at international conferences. He has also authored or co-authored 4 international books and contributed to 11 book chapters.
                </p>
                ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Dimitrios S. Sophianopoulos",
@@ -829,7 +829,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 Dimitrios Sophianopoulos is a Professor of Structural Stability, Dynamics and Steel Structures at the Department of Civil Engineering, University of Thessaly, Volos, Greece. He is also the Former Director of the Laboratory of Strength of Materials and Micromechanics in the same Department and the Former Head of the Structural Engineering Division. Prof. Sophianopoulos earned his Ph.D. in 1997 from the School of Civil Engineering of the National Technical University of Athens, Greece and his Bachelor in 1982 from the same Institution. He has published 54 papers in scholarly journals and 71 refereed National and International Conference papers, with more than 680 citations in Scopus (h-index 9) and about 1200 in Google Scholar (h-index 12). Prof. Sophianopoulos is a member of the Editorial Board of 5 International Journals and serves as a Reviewer in more than 15 high-impact international Journals of his field. He is also a member of ASCE, AIAA, Structural Stability Research Council and ISCES. He has supervised three (3) completed PhDs (and 3 more in progress), and numerous Master and Bachelor Theses. His Teaching experience includes undergraduate, graduate and postgraduate courses both in his country and abroad as a visiting Professor.
                 </p>
                 ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Ashraf Abdel Badee M. Ghorab",
@@ -849,7 +849,7 @@ class EditorialBoardMemberSeeder extends Seeder
               Furthermore, Dr. Ghorab is recognized internationally as a senior trainer and inspector for electro-mechanical and construction works, overseeing safety inspections and root cause analyses for over 300 factories worldwide. He specializes in maintenance planning, failure diagnosis, and renovation projects, assisting companies in implementing maintenance and safety contracting strategies for business development.
               </p>
               ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Xinqing Xiao",
@@ -859,7 +859,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "biography" => "<p>
                 <b> Xinqing Xiao </b> is associate professor in China Agricultural University. He has made innovative contributions in the fields of smart sensing, flexible electronics, self-powered sensing, battery-free sensing, smart agriculture, food monitoring. In the past five years, he has presided over and completed the National Natural Science Foundation Youth Program, the national key research and development international cooperation science and technology innovation project, the China Post doctoral Science Foundation projects and the provincial and ministerial key laboratory open projects. He has published more than 60 academic papers in domestic and foreign journals, and accumulated rich research experience
                  </p>",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Jawwad Nasar Chattha",
@@ -870,7 +870,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   Dr. Jawwad Nasar Chattha received a bachelor's degree in electrical engineering from the University of Engineering and Technology, Lahore, in 2006, a master's degree in electrical engineering from Virginia Tech in 2009, and a Ph.D. in communication theory from the Lahore University of Management Sciences, Lahore, in 2018. He is currently an assistant professor and departmental chair of the Electrical Engineering department at the University of Management and Technology, Lahore.
                   His research interests include communication theory and computer networking.
                   </p>",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Germin Elgohary",
@@ -881,7 +881,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   Professor Germin Elgohary is an esteemed member of various prestigious associations and organizations, including ECLAS (European Council of Landscape Architecture Schools), the Le-Notre Institute project, ISOCARP (The International Society of City and Regional Planning), and the Academic Committee for Landscape Architecture New Program at Ain Shams University.
                   Specialization: Architectural Design/ Working Drawings/ Visual Design/ Green Architecture/Sustainable Landscape / Landscape Architecture.
                   </p>",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "André Samuel Martins Gonçalves",
@@ -893,7 +893,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   Dr. André Gonçalves is presently an assistant professor at Dr. Lopes Dias School of Health from Polytechnic University of Castelo Branco, Portugal. He holds a PhD in Management from the University of Beira Interior, Portugal. He is a researcher at the Research Center of the Department of Management and Economics (NECE) at the University of Beira Interior, Portugal. He is also the Head Nurse at the Unit for Integrated Continuous Care from SCM Castelo Branco, Portugal. He is the author and co-author of articles and communications at international conferences on the topics of product innovation, sustainability, and management of healthcare teams and organizations.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Rajesh Banu",
@@ -903,7 +903,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "biography" => "<p>
                Dr. J. Rajesh Banu presently working as an Associate Professor at the Department of Biotechnology, Central University of Tamil Nadu (CUTN), India. Formerly, he was a visiting professor at the Center for Excellence in Environmental Studies, King Abdul Aziz University, Saudi Arabia. He has 19 years of teaching experience in national (Anna University & CUTN) and international universities (SKKU, South Korea). Dr. J. Rajesh Banu is a visiting researcher at East China Normal University, China, and a former post-doctoral fellow at Sungkyunkwan University (SKKU), South Korea. He is the author of 340 publications in SCI and SCIE journals with a cumulative impact factor of 2010.  His publications achieved more than 14000 citations and 63 H index. He is a senior editor of e-Prime, an Elsevier journal. He authored 5 books and published 50 book chapters and 14 conference proceedings. He obtained 10 Major grants from the Government of India and two consultancies from industries. He guided 17 Ph.D. students and 100 postgraduate engineering students in the discipline of environmental engineering and Science. His name is classified among the top 2% of scientists worldwide by independent researchers at Stanford University.  He was awarded with Think of Ecology Award by Hiyoshi, Japan, in 2018. His research centers on waste to energy, value-added product recovery from waste, biological wastewater treatment, Nutrient removal, Membrane Bioreactor, and Microbial Fuel cells.
                  </p>",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Abbas Hussain",
@@ -914,7 +914,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 "biography" => "<p>
                   Abbas Hussain has been serving as an Assistant Professor in the Mechanical Engineering Department at the National University of Science and Technology, Islamabad, Pakistan, since September 2019. His research interests encompass Mechanics and Dynamics of Machining Processes, Modeling of Micro Machining Operations, Structural Vibration, Machine Learning, and Additive Manufacturing. In August 2019, he earned his Ph.D. degree under the supervision of Dr. Ismail Lazoglu at Koc University, Istanbul, Turkey. He obtained his B.E. in Mechanical Engineering from N.E.D University, Karachi, Pakistan, in 2011.
                   </p>",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Mohamed EL-Shimy Mahmoud Bekhet",
@@ -927,7 +927,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   Prof. Dr. Mohamed EL-Shimy Mahmoud Bekhet (M. EL-Shimy) is currently a professor of the electrical power systems with the Department of Electrical Power and Machines – Faculty of Engineering - Ain Shams University. He is also an electromechanical specialist, a freelance trainer, technical advisor, and a member of many associations and professional networks. He is a technical reviewer with some major journals and conferences. His fields of interest include electric power systems: analysis, stability, economics, optimization, distribution, renewable energy integration, and reliability.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Mahmoud Ebrahimi",
@@ -943,7 +943,7 @@ class EditorialBoardMemberSeeder extends Seeder
                       He has been featured among the World's Top 2% Scientists List in 2020, 2021, and 2022, according to a Stanford University study.
                       </p>
                       ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Shruti Aggarwal",
@@ -959,7 +959,7 @@ class EditorialBoardMemberSeeder extends Seeder
                         Dr. Shruti Aggarwal works as an assistant professor in the Department of Computer Science and Engineering. She has worked as an associate professor and head at Chandigarh University and has pursued her doctorate in software engineering from N.I.T., Jalandhar. She has earned her Master’s degree from U.I.E.T., Panjab University, in 2011 and B.Tech. (C.S.E.) from Kurukshetra University in 2008. In more than 13 years of her teaching career at reputed institutes like N.IT., Kurukshetra University, etc; she has guided 36 research scholars, and published more than 100+ research papers in various Journals and Conferences of national and international repute. She has conducted numerous technical and non-technical events, supported various industrial projects, and has given talks in Data Mining and Software Engineering domain. She is the reviewer of various prestigious journals, and she has hosted session chairs in various international conferences. She has 14 patents and has been awarded with several awards like Abdul Kalam Innovation Special Appreciation Award, 50 Eminent Researchers of 2021, Research Excellence Award, Womonator Award, 100 Eminent Academicians of 2021, Global Femina Excellence Award, etc. from various reputed international and national organizations. She is currently working on book chapters, research projects, and patents in the domain of data science.
                         </p>
                         ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Yehia Kamal Abdelmonem Hanafy",
@@ -979,7 +979,7 @@ class EditorialBoardMemberSeeder extends Seeder
                             <li><b>Research Interests:</b> Irrigation and Drainage Engineering, Hydraulics and Hydraulic Structures, Surface and Groundwater Hydrology, Water Quality, etc.</li>
                             </ul>
                           ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Anil Kumar Verma",
@@ -995,7 +995,7 @@ class EditorialBoardMemberSeeder extends Seeder
                           He is a MACM (USA), LMCSI (Mumbai), GMAIMA (New Delhi). He is a certified software quality auditor by MoCIT, Govt. of India. His research interests include wireless networks, routing algorithms, mobile computing, and securing ad hoc networks. He is a Group Lead for the Mobile Computing and Communication (MC2) Research Group.
                           </p>
                           ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Muhamad Fazly Abdul Patah",
@@ -1011,7 +1011,7 @@ class EditorialBoardMemberSeeder extends Seeder
                             His area of research includes: Thermochemical Torrefaction, Pyrolysis, Gasification, Combustion and Liquefaction processes, Plastic, biomass, rubber and municipal wastes, chemical upcycling to higher-value products Ozone gas application for sterilization and water treatment applications Catalysis, chemical reaction and reactor design Hydrodynamic simulation of fluid flow using Computational Fluid Dynamics software Liquid atomization/spray with and without reaction Bioreactor design for medicinal mushroom mass production.
                             </p>
                             ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Qiang Cheng",
@@ -1024,7 +1024,7 @@ class EditorialBoardMemberSeeder extends Seeder
                               Qiang Cheng is a professor of Beijing University of Technology. He received his  Ph.D. degree from Huazhong University of Science and Technology in 2009. He is the deputy director of Beijing Key Laboratory of Advanced Manufacturing Technology and the director of the Key Laboratory of Digital Design and Testing Technology for Heavy Duty Machine Tools in Mechanical Industry. He has published more than 100 SCI papers and 20 EI papers and has been authorized more than 40 national invention patents and software copyrights. He is currently an expert in the evaluation of the department of industry and materials of the National Natural Science Foundation of China, a member of Industrial Big Data and Intelligent Systems Branch of Mechanical Engineering Society of China, a member of the medical integration branch of China Medical and Health Culture Association, the 10th Committee of Mechanical Industry Automation Branch of China. He is the associate editor of Journal of Modern Industry and Manufacturing, a guest editor of magazines such as Advanced in Mechanical Engineering and The Scientific World Journal, and reviewer of the more than 20 international journals, such as International Journal of Advanced Manufacturing Technology, Tribology International.
                               </p>
                               ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Ravinder Kumar",
@@ -1050,7 +1050,7 @@ class EditorialBoardMemberSeeder extends Seeder
                                 Dr. Ravinder Kumar's expertise and dedication make him a valuable asset in the realm of research and education. His contributions have had a positive impact on the field of Computer Science and Engineering, and he continues to inspire and influence the next generation of researchers and scholars at the Thapar Institute of Engineering and Technology.
                                 </p>
                                 ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Mohd Ridha Bin Muhamad",
@@ -1066,7 +1066,7 @@ class EditorialBoardMemberSeeder extends Seeder
                                   Currently, he is collaborating with Joining Welding Research Institute, Osaka University Japan, to develop a friction stir welding process in a sustainable way that can be implemented in Malaysia's manufacturing industry. The project explores the possibilities of joining similar and dissimilar materials such as polycarbonate/aluminum, aluminum/stainless steel, magnesium/steel, and aluminum/copper for various applications in the automotive and semiconductor industries. Analysis of welds using Transmission Electron Microscopy for joints with carbonaceous nanomaterial additives such as CNT and Graphene for the purpose of enforcement is his current passion. He was awarded the Distinguished International Associate from the Royal Academic of Engineering UK for his project on friction stir welding. He actively applies for research projects and has secured various research grants from domestic and international funders. He has completed supervision of 4 PhD and 8 Master students, and is currently supervising 10 PhD and 1 Master candidate.
                                   </p>
                                   ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Sumegh Tharewal",
@@ -1083,7 +1083,7 @@ class EditorialBoardMemberSeeder extends Seeder
                                   He is a PhD. Supervisor at symbiosis, Dr. Vishwanath Karad, MIT World Peace University, Pune, and PhD Co-supervisor at Manipal University, Jaipur, Rajasthan, India. He guided more than 30 Postgraduate students and 20 undergraduate students in their projects.
                                   </p>
                                   ",
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Wenyou Zhang",
@@ -1095,7 +1095,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 <p>
                 Dr. Wenyou Zhang is currently a research fellow at the Mechanical, Manufacturing & Biomedical Engineering of Trinity College Dublin, Ireland. He has an interdisciplinary education and research experience in Mechanical Engineering (Additive Manufacturing) and Biomedical Engineering, including materials research, design, finite element modeling and optimization, manufacturing, and characterizations. He holds a PhD in Mechanical and Biomedical Engineering from the University of Galway, Ireland and his doctoral training was funded by the Government of Ireland Postgraduate Scholarship. Due to his contributions to the Additive Manufacturing field, he is currently an early career editor and board member of three journals: Chinese Journal of Mechanical Engineering: Additive Manufacturing Frontiers journal, an editorial board member of three SCI journals, and a guest editor of Materials, and Materials Science in Additive Manufacturing journal.
                 </p>',
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Muhammad Asif",
@@ -1110,7 +1110,7 @@ class EditorialBoardMemberSeeder extends Seeder
                     In addition to his research contributions, Dr Asif is deeply passionate about education and has a proven track record of excellence in teaching. He is dedicated to nurturing the next generation of engineers, imparting both theoretical knowledge and practical skills to his students at NUST.
                     As a member of the editorial board, Dr Asif brings a unique blend of academic rigor, research acumen, and pedagogical insight. He is committed to upholding the highest standards of scholarly publication and is excited to contribute his expertise to furthering the mission of the journal.
                                             </p>',
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Mohamed A.F. Mahdy",
@@ -1122,7 +1122,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   <p>
                   Dr. Mohamed A.F. Mahdy works as an Assistant Professor in the field of Architectural Engineering at the College of Engineering and Design, Kingdom University. He has extensive experience in teaching and supervising MSc and PhD students. His research interests include Architectural Engineering, the built environment, and sustainable urban design and planning. Dr. Mahdy is dedicated to advancing knowledge in these areas and contributing to the development of innovative, sustainable solutions in urban environments.
                   </p>',
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Ragab A. El-Sehiemy",
@@ -1135,7 +1135,7 @@ class EditorialBoardMemberSeeder extends Seeder
                     Ragab A. El-Sehiemy (SMIEEE) gained his B.Sc., M.Sc., and Ph.D. in Electrical Power Systems from Menoufia University, Egypt, in 1996, 2005, and 2008, respectively. He has worked with the Arab Contractor Company as an electrical engineer for ten years. He joined the Faculty of Engineering at Kafrelsheikh University as an Assistant Researcher in 2009. Currently, he is a Full Professor of Electrical Power Systems at Kafrelshiekh University, Egypt. He received the Prof. Mahmoud Khalifia Award in Power System Engineering from the Academy of Research and Technology in 2016 and the Computer and Information in Industry Award from the Academy of Research and Technology in 2021. In 2021, Prof. El-Sehiemy was among the world’s top 2% high citations. Prof. El-Sehiemy is also a member of the Electricity and Energy Research Committee at the Academy of Research and Technology, Egypt. Finally, he was selected as a member of the arbitration committee in the scientific committee for the promotion of professors and assistant professors.
                     His research interests include power-system operation, planning and control, smart grids, renewable energy, and AI and its application to power systems.
                     </p>',
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Mehdi Gheisari",
@@ -1147,7 +1147,7 @@ class EditorialBoardMemberSeeder extends Seeder
                       <p>
                       Dr. Mehdi Gheisari is an Iranian Ph.D. holder in computer science who obtained his doctorate from China. He has actively engaged in collaborative projects with colleagues from various countries, spanning different domains, to expand his breadth of knowledge. His research interests encompass a wide range of areas, including IoT, E-Healthcare, Smart City, Machine Learning, Remote Sensing Data, Distributed Systems, and Cybersecurity. In addition to his research pursuits, he has actively contributed to the academic community. He has served as a reviewer for well-established venues such as IEEE Communication Magazine and has been a member of the Technical Program Committee (TPC) for several conferences.
                       </p>',
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Dr Aznida Abu Bakar Sajak",
@@ -1159,7 +1159,7 @@ class EditorialBoardMemberSeeder extends Seeder
                         <p>
                         Dr. Aznida Abu Bakar Sajak graduated from the University of Liverpool in 2005 with a Masters of Science (Engineering) in Telecommunications and Microelectronics Systems. Loves Liverpool so much that she decided to pursue her PhD at the same university sponsored by the Islamic Development Bank, Saudi Arabia. Was in Digi Telecommunications, a mobile service provider in Malaysia owned by Telenor ASA of Norway, for almost six years before joining UniKL in 2011. Holds a PhD in Electrical Engineering and Electronics from the University of Liverpool in 2019. A member of the Board of Engineers Malaysia, The Institution of Engineers, Malaysia and The Institution of Engineering and Technology, UK
                         </p>',
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Mahmoud Zadehbagheri",
@@ -1171,7 +1171,7 @@ class EditorialBoardMemberSeeder extends Seeder
                           <p>
                           Dr. Mahmoud Zadehbagheri received his Ph.D degree in Electrical Engineering from Universiti Teknologi Malaysia (UTM), Johor, Skudai, Malaysia, and Hakim Sabzvari University, Khorasan, Iran, in 2017. He is an associate professor with the Department of Electrical Engineering, Islamic Azad University, Yasouj Branch. He is a member of the IEEE Smart Grid Community and IEEE PES Technical Committee. Since 2018, he has been a co-supervisor and a consulting professor of more than 13 Ph.D and 50 M.Sc students. He is the author of two books, one published book chapter, 65 ISI-ranked journal articles, and 90 conference papers. He is currently collaborating as a reviewer and editorial board with the journals Applied Energy, Hydrogen Energy, IJRER, Micro Machines, sensors, Energy, EPCS, and IJPEDS. His research interests include the fields of power electronics, FACTS devices, optimization methods, renewable energy, energy hubs, and power quality
                           </p>',
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Seyed Majid Hashemzadeh",
@@ -1183,7 +1183,7 @@ class EditorialBoardMemberSeeder extends Seeder
                             <p>
                             Dr Seyed Majid Hashemzadeh received his PhD in power electronics engineering from the University of Tabriz, Tabriz, Iran (2023). He worked as a research assistant at Qatar University from May to August 2023. Currently, he is working as a research associate at the University of Tabriz. His research focuses on designing and modeling of dc-dc converters, multilevel inverters, solid state transformers, as well as control and operation of photovoltaic power systems, including PV modeling and maximum power point tracking.
                             </p>',
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Kerim Karabacak",
@@ -1195,7 +1195,7 @@ class EditorialBoardMemberSeeder extends Seeder
                               <p>
                               Dr. Kerim Karabacak completed his undergraduate education in Electrical and Electronics Engineering at Dumlupinar University. He has done his masters thesis on “Fault Diagnostics in Transformers Using Electronic Nose.” Afterward, he completed his PhD thesis on the “Control of Wind-Photovoltaic Hybrid Power Systems with Artificial Neural Networks” at Ege University and obtained his PhD. He has been teaching at the university for 12 years. In parallel with this, he assumed the task of co-founder and director of the start-up company “Triangle Renewable Energy”, which focuses on the development of ANN (Artificial Neural Networks) controlled inverters used for solar and wind energy systems. On renewable energy systems, he has scientific articles published in international peer-reviewed journals and presentations at international scientific conferences. He is actively working as a reviewer in various international academic journals. He contributed to various postgraduate theses as a jury member. He undertook manager and researcher roles in various scientific projects. With his studies in the development of renewable energy technology, he aims to contribute to creating a more liveable world.
                               </p>',
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Abraham Dandoussou",
@@ -1207,7 +1207,7 @@ class EditorialBoardMemberSeeder extends Seeder
                                 <p>
                                 Professor Abraham Dandoussou is a holder of a Master’s Degree in Computer Science, Electronics and Automation. He is also a holder of a Ph.D in Electrical Engineering and Industrial Automation, obtained at the University of Ngaoundere – Cameroon. After his recruitment as Assistant Lecturer at the University of Buea, Cameroon, he was promoted to Senior Lecturer and then Associate Professor. His main research interest concerns Power Generation and Renewable Energy, and Power Systems and Electrical Drives
                                 </p>',
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Yujun Yang",
@@ -1219,7 +1219,7 @@ class EditorialBoardMemberSeeder extends Seeder
                                     <p>
                                     Dr. Yang Yujun, Ph.D. in Engineering, Assistant Professor and Master\'s Supervisor at Xi\'an Jiaotong University. The main research areas are low-carbon and positive building design methods, regional thermal comfort optimization design, elderly behavior and aging friendly design, etc. Serving as a guest editor in the Buildings(IF=3.8) journal. Serving as a reviewer in over 10 journals, including Building and Environment, Science of the Total Environment, Sustainable Cities and Society, etc. Published 15 academic papers in SCI indexed journals such as Building and Environment or Sustainable Cities and Society, and also published over 20 conference papers. Dr. Yang, joined the editorial board to explore research on Engineering Problems and Legal Challenges in Urban and Rural Low carbon Development in CURRENT INTEGRATIVE ENGINEERING journal. This topic has enormous research potential and is also one of the most cutting-edge scientific issues at present. Urban and rural renewal is a necessary supplement to the development of high-speed urbanization. Rapid development will lead to a large number of problems such as overproduction, energy waste, and unbalanced resource allocation. These problems will reduce people\'s quality of life and the sustainability of future development. Discussing more new low-carbon building technologies in urban and rural renewal can effectively solve the conflict between people\'s increasing demand for quality of life and high energy consumption. At the same time, we also have to face up to the imbalance between urban and rural development. Although regional economic development is different, people in different regions have the right to equal healthy living environments.
                                     </p>',
-                'order_id' => null ,'journal_id' => 4
+                'journal_id' => 4
             ],
             [
                 "name" => "Gerhard Bezuidenhout",
@@ -1235,7 +1235,7 @@ class EditorialBoardMemberSeeder extends Seeder
                         I have graduate and postgraduate degrees (including a doctorate) in strategic management, organizational leadership, general management, and human resource management. I am also a UK Fellow for Teaching and Learning Support in Higher Education (FHEA). I have extensive expertise in university lectures, educational development, research, business ownership and management, sales, and consulting. My current research interests include Strategy-as-Practice. I have written and presented conference papers in the domains of management and human resources. I am also a reviewer for an academic journal specializing in human resources.
                         </p>
                 ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Matt Fuss",
@@ -1248,7 +1248,7 @@ class EditorialBoardMemberSeeder extends Seeder
               Associate Professor Dr. Matt Fuss received his undergraduate degrees in Business Administration and Spanish and an MBA from Geneva College. He earned his PhD in Rhetoric and Communication with an emphasis in Organizational and Interpersonal Communication from Duquesne University. Professor Fuss holds both senior-level professional certifications in human resources; SPHR-SCP from the Society of Human Resource Management and SPHR from the Human Resource Certification Institute. He is also a Certified Ethics Associate. Professor Fuss is the lead faculty member for the Management major and the Management and Human Resource Management concentrations within the Business Administration major in the Tannelhill Department of Business, Accounting and Sport Management at Geneva College in Beaver Falls, PA. Prior to teaching, Professor Fuss spent over 13 years in human resources and operations management in organizations ranging in size from 125 people to over 24,000.
               </p>
               ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Marc Y. Tassé",
@@ -1273,7 +1273,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 A multiple award-winning lecturer at the University of Ottawa’s Faculty of Law and at the Telfer Executive MBA program, Mr. Tassé has delivered lectures on corporate ethics and financial scandal remediation at some of the world’s premier universities such as McGill University and Harvard University.
                 </p>
                 ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "David Bolton",
@@ -1294,7 +1294,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   He is currently Welsh Regional Vice Chair of the Chartered Management Institute and President of Enterprise Educators UK for 2024 and 2025. He also is an external examiner at Keele, Glyndwr and Gloucestershire Universities as well as the University of Western Scotland.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Natthinee Thampanya",
@@ -1307,7 +1307,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   Dr Natthinee Thampanya is a Senior Lecturer in Finance at Oxford Brookes University, UK. Her main areas of research interest are financial econometrics, financial economics, derivatives, and risk management. She has published a number of high-quality research outputs, and her forthcoming publications are in the Journal of International Financial Markets, Institutions and Money, Technological Forecasting and Social Change, and the Journal of Environmental Management.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Fabienne Cadet-Laborde",
@@ -1319,7 +1319,7 @@ class EditorialBoardMemberSeeder extends Seeder
                     Dr. Fabienne Cadet holds a Ph.D. in Marketing from Hampton University. Currently, Dr. Cadet is an Associate Professor of Marketing at the Huizenga College of Business & Entrepreneurship of Nova Southeastern University in Fort Lauderdale, FL. Her research is motivated by her interests in consumer behavior, services marketing and branding. Dr. Cadet's research has been published in top journals such as the Journal of Business Research and the Thunderbird International Business Review. She was also awarded the Best Practitioner Award Finalist at the 26th Annual Frontiers in Service Conference. In 2023, Dr. Cadet was awarded Poets & Quants Top 40 Under 40 MBA Professors. Prior to her role as a full-time professor, she was both an adjunct professor and industry professional, holding various roles such as Senior Marketing Manager and Senior Market Analyst.
                     </p>
                     ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Desireé Cranfield",
@@ -1332,7 +1332,7 @@ class EditorialBoardMemberSeeder extends Seeder
                     Dr. Desireé Cranfield is appointed as a Senior Lecturer / Programme Director-interim of the Post Graduate MSc Management programme and all pathways,  within the School of Management at Swansea University. She has a Ph.D. in Knowledge Management from Southampton University, an M.Sc. in Data Communication Systems, from Brunel, and completed a PGCert for Higher Education. Dr Cranfield achieved a Senior fellowship of the Higher Education Academy status and is an assessor for the SFHEA at Swansea University. Her academic experience spans more than 18 years (UK and in South Africa). She has undertaken several management roles (Programme Manager, Project Manager, Faculty Graduate school manager) within the Higher Education context and is an external examiner. She is actively involved with the Athena Swan agenda. Her research interests lie within the context of Higher Education in particular, focusing on the enhancement of learning and teaching, improving processes and practices, using technology to enable this, as well as knowledge management and knowledge sharing within this context. She has co-authored several papers on Knowledge sharing and knowledge management, the impact of Covid-19 on students and staff, as well as cyber security perceptions and practices within HEIs. She has recently, in 2023, co-authored two chapters with a focus on Leadership in a digital age and  Knowledge Sharing in Higher Education. She has been invited to review journal articles from well-established journals like Social Sciences and Humanities Open (2023)-Elsevier publication, Information Technology and People, and Sage Open. She has been invited to join the Editorial boards of several well-established journals.
                     </p>
                     ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Aïda Darouichi",
@@ -1351,7 +1351,7 @@ class EditorialBoardMemberSeeder extends Seeder
                     Throughout her career, Aïda Darouichi has gained extensive experience in teaching management to students,  executives and professionals in several Swiss Universities.
                     </p>
                     ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Kevin Cullinane",
@@ -1364,7 +1364,7 @@ class EditorialBoardMemberSeeder extends Seeder
                       Prof. Kevin Cullinane is Professor of International Logistics and Transport Economics at the University of Gothenburg. Kevin has been a logistics adviser to the World Bank and transport adviser to the governments of Scotland, Ireland, Hong Kong, Egypt, Chile and the U.K. He holds an Honorary Professorship at the University of Hong Kong and the University of Ningbo in China. He is a Visiting Professor at the VTI (the Swedish National Road and Transport Research Institute), Liverpool John Moores University, Dalian Maritime University and Shanghai Maritime University. Prior to joining the University of Gothenburg on a permanent basis, he was appointed to the lifetime position of Honorary Visiting Professor at the University. Kevin has personally won research and consultancy projects to the value of USD 7m, many of which have informed the policies of national and/or regional governments. He has held other positions as the Director of the Transport Research Institute (TRI) at Edinburgh Napier University, Chair in Marine Transport & Management at Newcastle University, Professor and Head of the Department of Shipping & Transport Logistics at Hong Kong Polytechnic University, Head of the Centre for International Shipping & Transport at Plymouth University, Postdoctoral Research Fellow at the University of Oxford Transport Studies Unit and as Senior Partner in his own transport consultancy company, based in Cairo, Rennes, Hong Kong, Edinburgh and now Gothenburg, In terms of academic outputs, Kevin has published 12 books and over 200 journal papers.
                       </p>
                       ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Sugoutam Ghosh",
@@ -1377,7 +1377,7 @@ class EditorialBoardMemberSeeder extends Seeder
                       Sugoutam Ghosh serves as a Senior Lecturer and the head of the Graduate Diploma in Logistics and Supply Chain Management at the School of Business, Singapore University of Social Sciences (SUSS). Previously, he held positions as an Assistant Professor at Antalya International University, Turkey, and as a Research Fellow at Nanyang Business School, The Logistics Institute-Asia Pacific, Singapore, and the National University of Singapore. Additionally, he served as a visiting lecturer at the University of Toronto, Canada. Dr. Ghosh obtained his Ph.D. in Supply Chain Management from Nanyang Technological University, Singapore. He holds a Master's degree from IIT Kharagpur and a Bachelor's degree from Jadavpur University. Dr. Ghosh teaches courses on Operations Management, Inventory Management, Optimisation, and Simulation. He has designed and delivered executive training programmes on Supply Chain Planning and Supply Chain Risk Management. His research focuses on inventory management and supply chain risk management, and his work has been published in reputable journals such as POM and EJOR. Dr. Ghosh has been honored with the Outstanding Service Award by the IEOM Society.
                       </p>
                       ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Nick Capon",
@@ -1399,7 +1399,7 @@ class EditorialBoardMemberSeeder extends Seeder
                       He also has expertise in enterprise. He has started two businesses with a group of colleagues, one charity and one social enterprise, both continuing to grow after 6 years and 4 years, respectively with cumulative turnover so far of £650K. This has given him the opportunity to test the value of theory and how best to apply it in the context of small early-growth organizations.
                       </p>
                       ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "João M. Lopes",
@@ -1412,7 +1412,7 @@ class EditorialBoardMemberSeeder extends Seeder
                         João M. Lopes holds a Ph.D. in management. Currently, he is an Assistant Professor at the Miguel Torga Institute of Higher Education (ISMT) and University of Beira Interior (UBI), a Scientific Coordinator of Undergraduate Degree in Management (ISMT), and a Researcher at NECE (Research Unit for Business Sciences). Has several publications in journals indexed to WOS and Scopus. Additionally, he is an active editorial board member at several internationally reputed journals. His main research interests include: regional innovation systems, RIS3, smart specialization, artificial intelligence, tourism, strategy, entrepreneurship, marketing, innovation, circular economy, circular entrepreneurship, digital technology in business, environmental and social sustainability, and competitiveness.
                         </p>
                         ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Georgios Tsourvakas",
@@ -1425,7 +1425,7 @@ class EditorialBoardMemberSeeder extends Seeder
                           George Tsourvakas, Professor, BA (University of Piraeus), MA (Universities of Hamburg and Stockholm), PhD (Panteion University). He is teaching marketing management, strategic marketing, market research and branding at the Department of Business Administration, School of Economic and Political Sciences, National and Kapodistrian University of Athens. He was a visiting scholar at the Westminster and City Universities. He is the Director of the LAB “Integrated Marketing Communications”. His research has published in leading journals in the field such as Journal of Media Economics, International Journal on Media Management, Journal of Media Business Studies, European Journal of Law and Economics, Journal of Communications, Journal of Radio and Audio Media, Journal of Applied Journalism and Media Studies, Austral Communication, Journal of Non-Profit and Voluntary Sector Marketing, Social Responsibility Journal, International Journal of Technology Marketing, Journal of Product and Brand Management, Newspaper Research Journal, Museum Management and Curatorship. Journal of Political Marketing, Sustainability.
                           </p>
                           ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Konstantinos I. Stouras",
@@ -1438,7 +1438,7 @@ class EditorialBoardMemberSeeder extends Seeder
                           Konstantinos Stouras is Assistant Professor of Operations Management at UCD, Michael Smurfit Graduate Business School. Konstantinos specializes in technology management and innovation. His research examines crowd-based innovation models, and the impact of on-demand marketplaces and online communities in the digital transformation of the service industry. Konstantinos holds a Ph.D. in Operations Management from INSEAD and graduate degrees in Financial Engineering, and Applied Mathematics and Physics from the National Technical University of Athens (ΕΜΠ).
                           </p>
                           ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Ren Jing",
@@ -1451,7 +1451,7 @@ class EditorialBoardMemberSeeder extends Seeder
                             Dr. Ren Jing is currently a Senior Lecturer at the School of Business, Singapore University of Social Sciences, Singapore. She received her B.E. degree in Electronic Engineering from the Hefei University of Technology (China) and her Ph.D. in Information Systems from Singapore Management University. Jing’s research interests include interdisciplinary topics of Applied Artificial Intelligence in Recommendation, Marketing, Social Sciences and FinTech. Jing is a Chartered Fintech Professional. She is also working as an Associate Editor for the journal Electronic Commerce Research and Applications and a regular reviewer for several journals and conferences. Her publications appeared in several Q1 journals and top-tier conferences in the Information Systems and Machine Learning fields.
                             </p>
                             ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Beldina Owalla",
@@ -1467,7 +1467,7 @@ class EditorialBoardMemberSeeder extends Seeder
                         Beldina has worked on various research projects focused on women’s entrepreneurial identities, diversity and inclusion in business innovation, SME productivity, and community business growth strategies, social deprivation, and women business leaders. She has co-edited a book on Gender, Diversity and Innovation: Concepts, policies and practice, and published journal articles and book chapters in her areas of interest. Prior to joining academia, Beldina worked with the UN Food and Agriculture Organisation, where she was involved in the financial and operational management of various donor-funded projects.
                         </p>
                         ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Mosab Tabash",
@@ -1480,7 +1480,7 @@ class EditorialBoardMemberSeeder extends Seeder
                         Mosab I. Tabash is currently working as MBA Director and Associate Professor of Finance at the College of Business, Al Ain University, UAE. He obtained his Doctor of Philosophy (Ph.D.) in Finance from the Faculty of Management Studies (FMS Delhi). His research interests include Islamic banking and Finance, monetary policies, corporate governance, financial performance, investments, tourism, and risk management.
                         </p>
                     ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Xia Chongwu",
@@ -1496,7 +1496,7 @@ class EditorialBoardMemberSeeder extends Seeder
               His impactful research spans corporate finance and ESG, with numerous publications in esteemed journals such as Organization Science, Journal of Business Ethics, Journal of Futures Markets, and Accounting Horizons. Notable awards include the Responsible Research in Management Award in 2023 and the STR Best Paper Award in Stakeholder and Nonmarket Strategy in 2021. Dr. Xia's commitment to advancing knowledge is reflected in his extensive professional services, including serving as an ad-hoc referee for reputable journals. His dedication to responsible and impactful research positions him as a productive scholar and contributor to the global academic community.
               </p>
               ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Theresa Obuobisa-Darko",
@@ -1511,14 +1511,14 @@ class EditorialBoardMemberSeeder extends Seeder
               Professor Obuobisa-Darko has over thirty (30) years of teaching and research experience in the fields of Human Resource Management, Leadership, Organisational Development, and Public Administration. She has taught at all levels of the educational ladder, from the basic to the tertiary level. Her research interests include leadership in organizations, performance management, employee and career satisfaction, health and safety, employee engagement, and conflict management. Theresa has published in peer-reviewed journals and presented papers at both international and national conferences.
               </p>
               ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Ronnell D. Dela Rosa",
                 "affliation" => "Bataan Peninsula State University",
                 "country" => "Philippine",
                 "image" => "board-member-image/jblm/01.png",
-                'order_id' => null ,'journal_id' => 5,
+                'journal_id' => 5,
                 'biography' => ""
             ],
             [
@@ -1531,7 +1531,7 @@ class EditorialBoardMemberSeeder extends Seeder
                  Dr.Anurag Hazarika,M.Com,MBA,PGDCA,PGDRD is currently pursuing his Ph.D from the University of Science and Technology, Meghalaya, India.He has been a teaching faculty of KKHSOU University, Tezpur College Centre for last 6 years teaching Management, Commerce and Economics and previously Guest Faculty at Tezpur Law College,Assam as well.Currently, he is also serving as Guest Faculty of Tezpur University,(A Central University) Assam.He has to his credit about 8 Reference cum Text books on Commerce and Management and has been an Editor and Co editor for about 5 books till now.He has to his credit about 5 research papers in UGC CARELIST Journals and serving as Editorial member for 4 research journals and reviewer board member for about 10 national and international journals till now.He has participated and presented his research papers on USA at Duke University in 2014 and RUDN University, Russia in 2022 as had been speaker for few national and international conferences as well.
                  </p>
                  ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Juliansyah Noor",
@@ -1539,7 +1539,7 @@ class EditorialBoardMemberSeeder extends Seeder
 
                 "country" => "Indonesia",
                 "image" => "board-member-image/jblm/03.png",
-                'order_id' => null ,'journal_id' => 5, "biography" => ""
+                'journal_id' => 5, "biography" => ""
             ],
             [
                 "name" => "Mohammad Rashed Hasan Polas",
@@ -1552,7 +1552,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   Mohammad Rashed Hasan Polas works as a Lecturer and researcher at the Department of Business Administration & CRTC, Sonargaon University (SU), Bangladesh. He is also a PhD candidate in Management at the Centre for Postgraduate Studies, Limkokwing University of Creative Technology, Malaysia. Additionally, he has served as an External Researcher at the Universidad de Lima, Peru. Furthermore, he has worked as an affiliated researcher at the Universidad Católica Los Ángeles de Chimbote, Instituto de Investigación, Chimbote, Peru, and Universidad Católica de Trujillo, Instituto de Investigación, Chimbote, Peru. Moreover, he is the author of several papers in the Journal of Enterprising Communities, Journal of Public Affairs, International Journal of Management Practice, Global Journal of Flexible Systems Management, Environment, Development, and Sustainability, among others. He has participated in several national and international conferences/seminars. Additionally, he is an active editorial board member at several internationally reputed journals. He is currently working as an active Peer Reviewer for Several Renowned Q1 & Q2 Journals (Springer, Emerald, Wiley, Inderscience, and so on.  His research interests include Leadership, entrepreneurship, innovation, ethical decision-making, knowledge management, artificial intelligence, blockchain technology, and sustainability.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Fanos Tekelas",
@@ -1565,7 +1565,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 Dr. Tekelas is a Lecturer in Innovation and Entrepreneurship and the Programme Leader of the MBA programme at UCLan Cyprus. The crux of his research lies in examining the strategic postures of small and medium enterprises and their impact on their performance. Dr. Tekelas’ research interests also focus on entrepreneurial orientation and entrepreneurial behaviour in family firms. Dr Tekelas is a reviewer for the British Food Journal, and he maintains professional memberships in the Regional Studies Association and the Lancashire Institute for Economic and Business Research. He is an HRDA-certified trainer. He is currently representing the Republic of Cyprus as a member of the management committee in the European Cooperation in Science & Technology, Cost Action CA16206: Empowering the next generation of social enterprise scholars. Dr Tekelas has over 16 years of professional experience in small family-owned hotels while he has an established network with a significant number of family-owned hotels in Cyprus. In 2019, Dr Tekelas was appointed as the Director of the Centre for Entrepreneurial Development, Alliance and Research (CEDAR) LTD.
                 </p>
                  ',
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Karen Cripps",
@@ -1578,7 +1578,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 Dr. Karen Cripps is a Senior Lecturer in Leadership at the Business School, a Subject Coordinator for the Business and Management undergraduate programme, and an advisor for the Senior People Professional Apprenticeship. She is a Senior Fellow of the Higher Education Academy (SFHEA). With a long-established academic and teaching profile in sustainability leadership and management, Karen is committed to supporting student success and developing links to business networks and practice. Her practice is deeply aligned with the United Nations `Principles of Responsible Management Education` (PRME), for which she is the Secretary for PRME UK and Ireland Chapter Steering Committee, a Co-Lead for the London and South East regional network, and an ambassador for PRME Global Sustainability Mindset Working Group.
                 </p>
                  ',
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
 
             ],
             [
@@ -1592,7 +1592,7 @@ class EditorialBoardMemberSeeder extends Seeder
                    Dr. Anthony Bagherian is currently working as a Quality manager in the Vectrus System Corporations, Stuttgart, Germany. He has completed his Ph.D. studies at ISM (International School of Management, Paris. He earned both his Bachelor's and Master at Linköping Technical University from Sweden in Quality Management. He has published numerous research articles in various top-ranking journals (Emeralds, Elsevier, Taylor & Francis, Wiley, etc.). He is also a board editor and editor of journals (Elsevier, Springer, MDPI, etc.). His areas of research interest are Six Sigma, operational management, business Statistics, MCDM (Multiple-criteria decision analysis).
                    </p>
                    ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Nazrul Islam",
@@ -1607,7 +1607,7 @@ class EditorialBoardMemberSeeder extends Seeder
 
                      </p>
                      ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Alla Ozeran",
@@ -1625,7 +1625,7 @@ class EditorialBoardMemberSeeder extends Seeder
                        Key scientific interests include: financial and non-financial reporting of enterprises
                        </p>
                        ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Tiiu Kamdron",
@@ -1638,7 +1638,7 @@ class EditorialBoardMemberSeeder extends Seeder
                          Dr. Tiiu Kamdron, graduated from high school in 1971 and I started studying psychology at the University of Tartu in the same year. She received her master's degree in social psychology in 1993 from Tallinn University and a doctorate in Public Administration in 2003 from Tallinn University of Technology. Dr. Kamdron’s doctoral dissertation dealt with the topic of work motivation of senior civil servants. She have been teaching at Tallinn University of Technology since 1992, mainly organization theory and psychology and social psychology. Since 2012, she has mainly taught team work and group processes, employee counselling, work motivation and payment in the syllabus of the master's program in human resource management, and she is also responsible for the subject of master's seminar. She also taught at Pärnu College of the University of Tartu in the years 2011-2015. She has supervised 78 master's theses and 92 bachelor's theses over the years. Her interests are primary work motivation, work engagement, job crafting, well-being at work, team processes and leadership. She has published 31 articles and one monograph in categories 1.2; 1.3; 2.2; 3.4 and 5.2. Dr Kamdron belongs to EGAS (Estonian Group Analytic Society) and She is the representative of Estonia in the EFPP organization (European Federation of Psychoanalytic Psychotherapy).
                          </p>
                          ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Andreas E. Fousteris",
@@ -1655,7 +1655,7 @@ class EditorialBoardMemberSeeder extends Seeder
 
                            </p>
                            ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             [
                 "name" => "Mohammad Shamsul Hoque",
@@ -1668,7 +1668,7 @@ class EditorialBoardMemberSeeder extends Seeder
                           Dr. Mohammad Shamsul Hoque did his Ph.D. on ‘Women Empowerment Through Entrepreneurship Development in Bangladesh’ from the Centre for Higher Studies and Research, Bangladesh University of Professionals. He has published several papers in internationally renowned journals on women's leadership and entrepreneurship development. He has 20 years of experience. Dr. Hoque has been working as Country Program Lead, Gender Equality and Returns (GEAR) Program, and Senior Enterprise Advisor with the International Labour Organization since 2014. His key expertise includes project development, program management, and research in the areas of manufacturing business, SMEs and private sector development, women’s leadership, career advancement, economic empowerment, industrial relations, social compliance, labour practices, skills development, lean and workforce productivity, and care economy. He worked for CARE International, Marie Stopes International, and the Ministry of Education. He completed at least five successful research projects on women's leadership development, gender equality, social and labor standards, and social protection. His major fields of interest are Economics, Entrepreneurship, Leadership, Women's Economic Empowerment, Management, Private Sector Development, Labour Practices, and Human Rights
                            </p>
                            ",
-                'order_id' => null ,'journal_id' => 5
+                'journal_id' => 5
             ],
             //rer
             [
@@ -1682,7 +1682,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 Dr. Sara Mashayekh is a lecturer and researcher specializing in education, educational technology, pedagogical tasks, and formative assessment at the University of New South Wales (UNSW). In addition to her roles in teaching and research, Dr. Sara has held pivotal positions as a project manager and learning designer for various university initiatives. Her influence extends globally, having been invited to speak and present at renowned international conferences, where her insights and research findings have earned acclaim.
                 </p>
                 ",
-                'order_id' => null ,'journal_id' => 6
+                'journal_id' => 6
             ],
             [
                 "name" => "Murali Raman",
@@ -1722,7 +1722,7 @@ class EditorialBoardMemberSeeder extends Seeder
                  He continues to do research, train and teach in areas such as digital business transformation, design thinking and applications of IT in organisations.
                  </p>
                  ",
-                'order_id' => null ,'journal_id' => 6
+                'journal_id' => 6
             ],
             [
                 "name" => "Hassan Muhammad Abdel Maqsoud",
@@ -1739,7 +1739,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   Recent Publication: His most recent book is the 'Watch and Learn' series on teaching Arabic to non-native speakers, consisting of nine parts, published in 2023.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 6
+                'journal_id' => 6
             ],
             [
                 "name" => "Elisavet Lazarakou",
@@ -1752,7 +1752,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   Elisavet Lazarakou is an Assistant Professor at the Department of Pedagogy and Primary Education of the National and Kapodistrian University of Athens in the academic subject 'Assessment of the learning process: pedagogical-teaching approach'. She is also a Member of the Collaborating Teaching Staff of the Hellenic Open University for teaching the annual course 'Introduction to Adult Education.' She holds a Ph.D. and an M.Ed. in Pedagogy from the National and Kapodistrian University of Athens. She has taught in numerous undergraduate and postgraduate programs and participated in training seminars and European projects for primary and secondary school teachers. Her research interests focus on classroom assessment, teacher education, curriculum design and development, and adult education. She has worked as a researcher in several research projects funded by European and national agencies. Also, author of a book, several collective-volume chapters, papers in Greek and English journals and announcements at scientific conferences.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 6
+                'journal_id' => 6
 
             ],
             [
@@ -1777,7 +1777,7 @@ class EditorialBoardMemberSeeder extends Seeder
                  <li>Outstanding Educational Institution Administrator 2020 </li>
                  </ul>
               ",
-                'order_id' => null ,'journal_id' => 6
+                'journal_id' => 6
             ],
             [
                 "name" => "Maria Morena Enage-Dela Pena",
@@ -1795,7 +1795,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   Prof. Maria Morena previously held the position of Director of the Academic Related Services Office at Biliran Province State University from August 2017 to July 2021, showcasing commitment to administrative responsibilities.
                   </p>
                ",
-                'order_id' => null ,'journal_id' => 6
+                'journal_id' => 6
             ],
             [
                 "name" => "Omar Trabelsi",
@@ -1808,7 +1808,7 @@ class EditorialBoardMemberSeeder extends Seeder
                       Dr. Omar Trabelsi, a Sports Science Ph.D. specializing in sports pedagogy and didactics, graduated from the University of Sfax, Tunisia, in 2021. Currently serving as an Assistant Professor at the High Institute of Sports and Physical Education of Kef, University of Jendouba, Tunisia, Dr. Trabelsi is also a respected researcher at the National Observatory of Sport in Tunis, Tunisia. His research centers on integrating educational technology to enhance multifaceted learning in sports and physical education. Driven by a keen interest in advancing teacher education in sports, he actively explores technology-mediated pedagogies to enrich the educational landscape further.
                       </p>
                    ",
-                'order_id' => null ,'journal_id' => 6
+                'journal_id' => 6
             ],
             [
                 "name" => "Mohsen Hamed Farrag Abdel Aal",
@@ -1821,7 +1821,7 @@ class EditorialBoardMemberSeeder extends Seeder
                           Professor Mohsen Farrag is a distinguished academic leader with over three decades of experience in education and curriculum development. He has served on the Permanent Scientific Committee for the promotion of associate Professors in Curricula Specializations and led the curriculum and instructions department at Ain Shams University during the critical pandemic period. Prof. Farrag is renowned for his editorial contributions to fifteen specialized journals and his role in various committees, including those at Qassim University in Saudi Arabia. His international collaboration with UNESCO and FAO underscores his commitment to educational excellence. Prof. Farrag's extensive teaching and training experience, coupled with his supervision of over 90 master's and doctoral theses, reflects his dedication to nurturing future educators. Additionally, his scholarly publications, including books and research papers, demonstrate his profound impact on education research and practice worldwide.
                           </p>
                        ",
-                'order_id' => null ,'journal_id' => 6
+                'journal_id' => 6
             ],
             [
                 "name" => "Fatma Elzhraa Salem Mahmoud Mostafa",
@@ -1834,7 +1834,7 @@ class EditorialBoardMemberSeeder extends Seeder
                             Prof. Fatima Al-Zahraa Saleem Mahmoud is a distinguished professor of Educational Principles at Ain Shams University, Egypt. With a wealth of experience, she has served on numerous prestigious committees, including the Supreme Council for Culture and the Promotion Committee for Professors. As an active member of various scholarly associations both in Egypt and abroad, she contributes significantly to educational research and development. With a doctorate in Educational Principles and a background in English language studies, she is also a certified trainer at the Professional Teachers' Academy, Ministry of Education. Prof. Fatima is known for her expertise in philosophical and social foundations of education, and she has conducted training programs internationally, enriching the academic community with her insights. Based in Cairo, Egypt, she continues to make valuable contributions to the field of education.
                             </p>
                          ",
-                'order_id' => null ,'journal_id' => 6
+                'journal_id' => 6
             ],
             [
                 "name" => "Iqra Munaf",
@@ -1846,7 +1846,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 // <b> Xinqing Xiao </b> is associate professor in China Agricultural University. He has made innovative contributions in the fields of smart sensing, flexible electronics, self-powered sensing, battery-free sensing, smart agriculture, food monitoring. In the past five years, he has presided over and completed the National Natural Science Foundation Youth Program, the national key research and development international cooperation science and technology innovation project, the China Post doctoral Science Foundation projects and the provincial and ministerial key laboratory open projects. He has published more than 60 academic papers in domestic and foreign journals, and accumulated rich research experience
                 //  </p>"
 
-                'order_id' => null ,'journal_id' => 6
+                'journal_id' => 6
             ],
             [
                 "name" => "Marci H Levine",
@@ -1859,7 +1859,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 Dr. Levine is a clinician, researcher, educator, and mentor.  She is a Clinical Associate Professor in the Department of Oral and Maxillofacial Surgery at the New York University College of Dentistry.  She is board-certified in oral and maxillofacial surgery and practices at the NYU Dental Faculty Practice.  Dr. Levine's research activities and educational projects focus on the application of modern technology to enhance student learning and improve patient safety.  She is active in the Academy of Distinguished Educators and Omicron Kappa Upsilon, the national dental honor society.  Dr. Levine has received numerous honors and awards for her virtual reality simulation for local anesthesia education.  In 2023, she won the Excellence in Education Innovation Award at NYU-Dentistry and has earned several grants related to teaching and curriculum development.  In 2023 Dr. Levine was the first NYU dental school faculty member to become a 19 Washington Square North Fellow for her research collaboration with faculty at NYU-Abu Dhabi.
                 </p>
                  ",
-                'order_id' => null ,'journal_id' => 6
+                'journal_id' => 6
             ],
             [
                 "name" => "Christos Parthenis",
@@ -1875,7 +1875,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 He has completed MSc in Social Science and Research Methodology at the Department of Methodology, History and Theory of Science, University of Gothenburg, Sweden. He holds a PhD in Intercultural Education (dissertation title: "The effect of constructivism on education - comparison of intervention schools in the Program: "Education of Returned and Foreign Students" and normal public schools") of the University of Athens. The main research and scientific interests of X. Parthenis concern the formation of a cross-cultural methodology and approach that governs all curricular courses and activities, enriching and upgrading curricula, pedagogic methodology, teaching aids and teaching materials, developing methods of conflict resolution and intercultural  socialization and the inclusion of foreign children in the educational process, the training of teachers and education executives, as well as bilingual teachers, the strengthening of the emotional capital of teachers and the teaching tooling of other forms of intelligence, the development of the critical dimension of education , the cultivation of the students ability to switch between prisms and codes as well as to understand and enjoy various manifestations of the complex cultural phenomenon, through their active engagement with it, the information, awareness and cooperation of the stakeholders of the educational community and the support of activities that promote intercultural communication, the improvement of the institutional framework for the implementation of the intercultural approach in education, the formation of infrastructures for the documentation and dissemination of information. Based on these interests he has a number of publications and publications internationally.
                 </p>
                  ',
-                'order_id' => null ,'journal_id' => 6
+                'journal_id' => 6
             ],
             //pb
             [
@@ -1897,7 +1897,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 Dr. T. M. Aminabhavi, a distinguished academic, served as the Founder Director of the Center of Excellence in Polymer Science at Karnatak University, Dharwad. With roles ranging from Professor of Physical Chemistry to academic leadership, he has significantly contributed to polymer science, physical chemistry, and environmental engineering. His recent assignments include membership in the CEFIPRA - IRC Committee and the CSIR Research Funding Committee. Internationally engaged, he holds a Visiting Adjunct Professorship at Korea University and has collaborated with institutions across France, China, the USA, and more. In addition to academia, Dr. Aminabhavi has consulted for renowned organizations like Paul Hastings and Reliance Life Sciences. His extensive research spans materials for energy, membranes, pharmacy, and theoretical studies, reflecting in numerous patents and scholarly publications. As Founder President of the Society for Polymer Science, India, and Chairman of the Scientific Advisory Board at SDPC, Surat, Dr. Aminabhavi has demonstrated leadership in advancing knowledge and addressing environmental challenges.
                 </p>
                  ",
-                'order_id' => null ,'journal_id' => 7
+                'journal_id' => 7
             ],
             [
                 "name" => "Ahmed Elsonbaty",
@@ -1919,7 +1919,7 @@ class EditorialBoardMemberSeeder extends Seeder
                  Dr. Elsonbaty has demonstrated his scholarly prowess through the publication of several research papers, delving into diverse topics such as spectroscopy, chromatography, and electrochemical sensors. Of particular significance is the integration of computational studies, illustrating the implications and applications of these methodologies in pharmaceutical mixtures and biological samples.
                  </p>
                   ",
-                'order_id' => null ,'journal_id' => 7
+                'journal_id' => 7
             ],
             [
                 "name" => "David Dworaczyk",
@@ -1935,7 +1935,7 @@ class EditorialBoardMemberSeeder extends Seeder
                  Dr. Dworaczyk led Bryn Pharma in implementing financial and operational infrastructure for the successful development and pre-commercialization of their lead drug product. His adept leadership in team building, strategic funding, and FDA/regulatory strategy has positioned Bryn Pharma for continued success.
                  </p>
                   ",
-                'order_id' => null ,'journal_id' => 7
+                'journal_id' => 7
             ],
             [
                 "name" => "Khaled Attala",
@@ -1948,7 +1948,7 @@ class EditorialBoardMemberSeeder extends Seeder
                  Dr. Khaled Attala is a pharmaceutical chemistry researcher with over six years of experience in pharmaceutical analytical chemistry. He is currently a researcher and assistant lecturer at the Faculty of Pharmacy, Egyptian Russian University, where he has worked since 2017. He has authored and co-authored many research articles in reputable journals. He holds an MSc in Pharmaceutical Analysis from the Faculty of Pharmacy, Zagazig University, Egypt, which he obtained in 2021. He also graduated with a BSc in Pharmacy from the Faculty of Pharmacy, Ain-Shams University, Egypt 2016. His long-term goal is to enhance the quality of research by applying more advanced methodologies in pharmaceutical analysis. His research interests include integrating the latest technologies in material science and computational chemistry into pharmaceutical analysis.
                  </p>
                   ",
-                'order_id' => null ,'journal_id' => 7
+                'journal_id' => 7
             ],
             [
                 "name" => "Wu Nan",
@@ -1967,7 +1967,7 @@ class EditorialBoardMemberSeeder extends Seeder
                    Dr. Wu joined Haisco Pharmaceutical Group Company Ltd since 2017, titled as the Vice General Manager of Haisco Group, is responsible for the general management of R&D, marketing &sales, and human resources. She built and sharpened a clinical team for innovative drugs at Haisco, and established a core technology system that runs through the entire process of drug development for the company. She optimized and expanded the R&D pipeline of innovative drugs, creating multiple leading technology platforms. She has driven dozens of preclinical candidate compounds to enter the clinical stages of Phase I, II, and III and led the team to complete multiple NDA filings for innovative new drugs.
                    </p>
                     ",
-                'order_id' => null ,'journal_id' => 7
+                'journal_id' => 7
             ],
             [
                 "name" => "Mostafa Abbas Mostafa Shalaby",
@@ -2007,7 +2007,7 @@ class EditorialBoardMemberSeeder extends Seeder
                      Dr. Shalaby has left an indelible mark on the field of pharmacology through a career marked by excellence in teaching, research, and institutional service.
                      </p>
                       ",
-                'order_id' => null ,'journal_id' => 7
+                'journal_id' => 7
             ],
             [
                 "name" => "Eman Gamal Eldin Helal",
@@ -2021,7 +2021,7 @@ class EditorialBoardMemberSeeder extends Seeder
                      </p>
 
                       ",
-                'order_id' => null ,'journal_id' => 7
+                'journal_id' => 7
             ],
             [
                 "name" => "Elvis Ofori Ameyaw ",
@@ -2039,7 +2039,7 @@ class EditorialBoardMemberSeeder extends Seeder
                      </p>
 
                       ",
-                'order_id' => null ,'journal_id' => 7
+                'journal_id' => 7
             ],
             [
                 "name" => "Prachi Srivastava",
@@ -2056,7 +2056,7 @@ class EditorialBoardMemberSeeder extends Seeder
                     In addition to presenting her research, she has actively organized many national and international conferences, seminars, training programs, and FDP. She has also chaired many national and international sessions of conferences as well as delivered talks and guest lectures at different national and international scientific forums and academic platforms.
                      </p>
                       ",
-                'order_id' => null ,'journal_id' => 7
+                'journal_id' => 7
             ],
             //msr
             [
@@ -2071,7 +2071,7 @@ class EditorialBoardMemberSeeder extends Seeder
               She also has 4 research publications in scientific journals. She is a founding member of the board of Springer’s AI Ethics Scientific Journal.
               </p>
               ",
-                'order_id' => null ,'journal_id' => 8
+                'journal_id' => 8
             ],
             [
                 "name" => "Ke Chen",
@@ -2083,7 +2083,7 @@ class EditorialBoardMemberSeeder extends Seeder
               <p>
               Prof Chen is the Chair of the Department of Mathematics and Statistics and a Professor in Numerical Analysis at the University of Strathclyde. He is an Honorary Clinical Consultant at Clatterbridge Cancer Centre and also an Honorary Professor at the University of Liverpool, where he is the director of the Centre for Mathematical Imaging Techniques. For the past 20 years, his group developed a range of novel models for analyzing various problems across image modalities. The concerned medical problems conclude both preclinical and clinical imaging. Merging the advantages of AI and mathematical techniques is a special expertise and a major focus of research.  Tackling problems in cutting-edge medical sciences and healthcare to collaborate with and assist practitioners is his group’s priority.
               </p>",
-                'order_id' => null ,'journal_id' => 8
+                'journal_id' => 8
             ],
             [
                 "name" => "Chen Zhao",
@@ -2103,7 +2103,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 Known for his positive attitude and tireless energy, Dr. Chen Zhao is a powerful force in his workplace. He serves as an inspiration to his colleagues, encouraging a collaborative and hardworking environment. Driven by a passion for excellence in patient care and medical research, Dr. Zhao continues to make significant strides in the field of oncology, leaving an indelible mark on both the academic and clinical aspects of medicine.
                 </p>
                 ",
-                'order_id' => null ,'journal_id' => 8
+                'journal_id' => 8
             ],
             [
                 "name" => "Ali Adel Dawood",
@@ -2118,7 +2118,7 @@ class EditorialBoardMemberSeeder extends Seeder
               In addition to his teaching role, Dr. Dawood actively contributes to the advancement of scientific knowledge through his editorial roles in three international journals.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 8
+                'journal_id' => 8
             ],
             [
                 "name" => "Emmanuel Lamptey",
@@ -2131,7 +2131,7 @@ class EditorialBoardMemberSeeder extends Seeder
                         Emmanuel Lamptey, PhD is a registered nurse in Ghana with over 5 years of clinical practice and teaching. He holds a Bachelor of Science degree in Nursing from the University of Ghana and a Master of Science degree in Human Anatomy from the University of Lagos, Lagos, Nigeria. He had his terminal degree (PhD) from the Pan-African University, University of Ibadan, Nigeria. He works as a full-time Nursing lecturer at KAAF University Ghana and is also the deputy coordinator of the Postgraduate Nursing Program at the Institution. He is also a reviewing editor at e-life publications and a reviewer for many Scopus journals. Besides, he doubled as a Pan-African University Scholar of the African Union Commission.
                         </p>
                         ",
-                'order_id' => null ,'journal_id' => 8
+                'journal_id' => 8
             ],
             [
                 "name" => "Ismail Rabiu",
@@ -2143,7 +2143,7 @@ class EditorialBoardMemberSeeder extends Seeder
                         <p>
                         Ismail Rabiu is a Microbiologist working on Antibiotic resistance, Antimicrobial chemotherapy, epidemiology & novel disease containment strategies.
                         His research interest is on Infectious disease with a focus on drug discovery, Antimicrobial Resistance and Susceptibility patterns of Extremely drug-resistant bacteria (EDRB) while employing phenotypic and molecular tools to study bacterial pathogens harbouring the Carbapenemase, β-lactamase and Extended-spectrum β-lactamase enzymes and genes. In other to contribute to developing alternative treatment options, he is working on the extraction and screening of different medicinal plants for bioactive compounds against clinically important EDRB. His most recent work is on the screening of fungal metabolites and determining their mechanism of action against Multidrug-resistant Bacteria. Ismail Has published numerous articles, and book chapters with Springer and Tailor & Francis and served as keynote speaker in many conferences across the continent of Africa, Europe and Asia. To his credit, he is a reviewer and Editorial Board member of many journals in Singapore, UK and Nigeria. He is actively involved in the activities of notable professional societies such as the Nigerian Society for Microbiology, the European Society for Microbiology, Global Outreach member of the American Society for Microbiology and the Nigerian Bioinformatics and Genomics Network, among others.</p>",
-                'order_id' => null ,'journal_id' => 8
+                'journal_id' => 8
             ],
             [
                 "name" => "Dr. Alemayehu Shiferaw Lema",
@@ -2158,7 +2158,7 @@ class EditorialBoardMemberSeeder extends Seeder
 
                           </p>
                           ",
-                'order_id' => null ,'journal_id' => 8
+                'journal_id' => 8
             ],
             [
                 "name" => "Feryal Dabbagh-Gorjani",
@@ -2171,7 +2171,7 @@ class EditorialBoardMemberSeeder extends Seeder
                             Dr. Feryal Dabbagh-Gorjani is currently at Aston University, Birmingham. She is in the process of officially joining their research team. Her professional experience includes working at the Research Center of Fertility, clinical laboratories of hospitals, and research centers of pharmaceutical companies. Her expertise spans multiple sclerosis research, and she has served as a medical advisor, assisting clinical research teams and providing scientific training. Dr. Feryal has actively contributed to the academic community, presenting posters at international immunology congresses and publishing articles on various immunology topics.
                             </p>
                             ",
-                'order_id' => null ,'journal_id' => 8
+                'journal_id' => 8
             ],
             //sfr
             [
@@ -2185,7 +2185,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 //  Dr. António Miguel Martins is a professor at the Faculty of Social Sciences of the University of Madeira, Portugal. He holds a PhD in Management at the University of Porto, Portugal. His current research activities include real estate finance, asset pricing, banking and performance measurement and management in hospitality and tourism.
                 //  </p>
                 //  "
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Joy Jia",
@@ -2201,7 +2201,7 @@ class EditorialBoardMemberSeeder extends Seeder
                         Her research portfolio spans several key areas, including the integration of risk management with strategic finance, and the application of asset pricing and accounting-based valuation models, particularly in the context of emerging markets. Recently, her focus has broadened to include emerging topics such as sustainable finance, ESG, FinTech, and cryptocurrency, reflecting her adaptability and interest in evolving financial landscapes.
                         </p>
                         ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "António Miguel Martins",
@@ -2214,7 +2214,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 Dr. António Miguel Martins is a professor at the Faculty of Social Sciences of the University of Madeira, Portugal. He holds a PhD in Management at the University of Porto, Portugal. His current research activities include real estate finance, asset pricing, banking and performance measurement and management in hospitality and tourism.
                 </p>
                 ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Bruno Nkuiya",
@@ -2227,7 +2227,7 @@ class EditorialBoardMemberSeeder extends Seeder
               Dr. Bruno Nkuiya currently works as a faculty member in the Department of Economics at Rensselaer Polytechnic Institute’s School of Humanities, Arts, and Social Sciences. He earned his Ph.D. in Economics from the University of Montreal and further enhanced his training through a postdoctoral program at the University of California, Santa Barbara. His research interests encompass environmental and resource economics, resource extraction under uncertainty and risk, and asset pricing.
               </p>
               ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Christer Ljungwall",
@@ -2240,7 +2240,7 @@ class EditorialBoardMemberSeeder extends Seeder
               Dr. Christer Ljungwall is Assoc. Prof. at Gothenburg University, Sweden. He specializes in international economics, development economics, and politics, with a specific emphasis on issues pertaining to P.R. China. He has held several positions over the years, including Prof. at Peking University-HSBC Business School, P.R China; Science Counselor and Sr. diplomat at the Embassy of Sweden, P.R China; Assoc. Prof. at Copenhagen Business School, Denmark; Sr. Economist with the Asian Development Bank, the Philippines; and Research-fellow at Peking University, P.R China. He is the author of numerous academic articles in economics, five monographs, and 100+ reports. His current research work focuses on Int. Trade, knowledge production & innovation, and geoeconomics. He is an advisor to governments and businesses and a frequently invited speaker on issues pertaining to Asian economic development and innovation. Dr. Ljungwall received his PhD in economics from Gothenburg University in 2003.
               </p>
               ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Konstantinos Vergos",
@@ -2265,7 +2265,7 @@ class EditorialBoardMemberSeeder extends Seeder
               He is a certified financial analyst and has a systematic presence in global media  (Bloomberg,  Times, etc.) as an expert in company valuation, capital markets and financial policy issues.
               </p>
               ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Hatice Ozer Balli",
@@ -2281,7 +2281,7 @@ class EditorialBoardMemberSeeder extends Seeder
               She is ranked 1st female top researcher in Massey Business School and as 2nd top female economist among all NZ Economic Institutions and universities in rankings for all years by IDEAS (retrieved on Oct 2022). Her research broadly focused on applied time series econometrics and international macro/ finance. Having a solid advanced econometrics background combined with an application to financial data in her PhD, she progressed by expanding her experience in applied econometrics. Through collaboration, she was able to assist others lacking the technical skills by applying the latest techniques over a wide range of topics, including finance (exchange rates, equities, and assets), macroeconomics (income smoothing and bilateral trade), aviation (airport efficiency, forecasting air travel demand), energy economics (green bonds), banking (financial and social performance of microfinance institutions), property (windfarms, property values, housing market studies), and Islamic finance (sukuk returns).
               </p>
               ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Palaskas Theodosios",
@@ -2294,7 +2294,7 @@ class EditorialBoardMemberSeeder extends Seeder
               Theodosios B. Palaskas is a Professor of Economic Analysis & Development Economics, Dean of  School of Economy and Public Administration, Director of the Centre for Economic Policy Studies at the Panteion University of Athens, and scientific associate of Athens Academy. Previous academic appointments has been at the Oxford University – Institute of Economics and Statistics, International Development Center, and at St Peter’s College. He was elected Vice Rector at Panteion University for the period 2000-2002 and directed for five years the Greek Foundation for Economic and Industrial Research (IOBE). He completed his graduate studies in Athens and his postgraduate studies (M.Sc, MA (honours). & D. Phil), at the University of Oxford. He was a holder of the IKY -Foundation of Public Scholarships- and the NATO Scholarships for three years to study at Oxford. The European Commission, The World Bank, University of Oxford, ODA Research Scheme, Greek Ministries, such as Ministry of Development, Ministry of Economics, Bureau of Credit, Bank of Greece,  Association of Greek Banks, Athens Chamber of Commerce and Industry, Association of Greek Industries, etc have financed his research. His research interests focus on Economic Development issues and International Finance, such as Trade and Market Performance, Competitiveness, Finance and Asset Allocation, Economic Structural Reforms, and FDI. A large part of his research has been published in scientific, economic journals, books and working papers and has been quoted in the ‘Journal of Econometrics’, ‘Journal of the Royal Statistical Society’ ,  ‘Review of Economics and Statistics’, ‘Oxford Bulletin of Economics and Statistics’ , ‘Journal Of Development Economics’, etc.
               </p>
               ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Jurica Bosna",
@@ -2307,7 +2307,7 @@ class EditorialBoardMemberSeeder extends Seeder
               Dr. Jurica Bosna is an Assistant Professor at the Department of Economics, University of Zadar. He holds lectures on the following subjects: Managerial skills, Macroeconomy, Quantitative methods, Organizational behavior and Decision-making. Has the experience of working in management positions in the real sector. Currently holds the position of Head of the Department of Economics at the University of Zadar and is Editor-in-chief of the international scientific journal Oeconomica Jadertina. He is a member of the Croatian branch of the European Association of Scientific Editors (HR EASE). He continuously improves his skills, thereby acquiring the latest knowledge and understanding in the field of management. The field of his scientific interest is wide, and he places a special focus on financial integration, resource management within the organization and sustainable management. He participated in many scientific projects and is a mentor to students on postgraduate doctoral studies.
               </p>
               ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Biljana S. Ilic",
@@ -2321,7 +2321,7 @@ class EditorialBoardMemberSeeder extends Seeder
                         Featured references of PhD Biljana S. Ilic can be found in the Web of Science researcher database and the ORCID database, link: <a href='https://orcid/'>https://orcid</a>.
                         </p>
                         ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Ahmed Mohamed Habib",
@@ -2334,7 +2334,7 @@ class EditorialBoardMemberSeeder extends Seeder
                             Dr. Ahmed Mohamed Habib works in accounting and finance at Independent Research, Zagazig, Egypt. His research interests include accounting and finance science; corporate governance; intellectual capital; corporate social responsibility; environmental, social, and governance criteria; working capital management; corporate narrative reporting; corporate finance; earnings management; business strategies; corporate investment efficiency; performance optimization; continuous improvement; frontier analysis; data envelopment analysis (DEA); Malmquist Productivity Index analysis (MPI); DEA and MPI applications; managerial ability; knowledge management; decision support systems; and econometric analysis. He published numerous articles in high-ranking journals and conferences. He is a reviewer and editor for many journals indexed on Scopus and Web of Science.
                             </p>
                             ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
 
             ],
             [
@@ -2353,7 +2353,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 Dr. Cui's impactful contributions to the field are evident in his recent publications, showcasing his expertise in analyzing higher-order moment risk spillovers, time-frequency co-movement, and risk connectedness among global oil markets and various financial and commodity markets. Dr. Cui's dedication to unraveling complex financial dynamics demonstrates his commitment to advancing the understanding of financial markets.
                  </p>
               ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Khaled Guesmi",
@@ -2370,7 +2370,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   In addition to his academic pursuits, Dr. Guesmi is the Project Manager of the European Commission's Horizon 2020 Program for Research and Innovation. This program seeks to promote a radical re-design of energy strategies in the southeastern Mediterranean region by developing new models of cooperation between the EU and these countries. The focus is on sustainability and efficiency policies, with cooperation applied to various aspects of the energy sector, such as the development of renewables, energy efficiency technologies, and demand-side policies. Dr. Guesmi believes that the EU's support in these areas could bring added value and contribute to the sustainable development of these countries.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Gema Albort-Morant",
@@ -2383,7 +2383,7 @@ class EditorialBoardMemberSeeder extends Seeder
                   Gema Albort-Morant holds a Ph.D. degree with an international mention in Strategic Management and International Business from the University of Seville (Spain). Currently, she is an Associate Professor of Finance at the Department of Financial Economics and Operations Management at the University of Seville. Her research is focused on Innovation, Sustainability, Finance, Entrepreneurship and Fintech. She has published previous works within edited books, academic conference proceedings, and refereed scientific journals, including the Journal of Business Research, Journal of Knowledge Management, and Technological Forecasting and Social Change, among others.
                   </p>
                   ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Jin Changlun",
@@ -2395,7 +2395,7 @@ class EditorialBoardMemberSeeder extends Seeder
                Jin Changlun holds a Ph.D. in Finance and is an expert in microeconomics, macroeconomics, financial economics, and international portfolio investment. His research has been published in Finance Research Letters and Chinese Economic Review. Jin serves as an anonymous referee for various reputable academic journals, contributing to the rigor of scholarly publications.
                  </p>
               ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Kulwa Mang'ana",
@@ -2411,7 +2411,7 @@ class EditorialBoardMemberSeeder extends Seeder
                 In terms of his professional capacity, Mang'ana specializes in accountancy, business, and financial management. He is recognized as a Certified Public Accountant with certification number ACPA-3353. Mang'ana has contributed to research in his field, as indicated by his publications on platforms like ResearchGate, where peers have cited his work. One notable publication he has co-authored is Financial Management Practices and Performance of Agri-SMEs in Tanzania: A Structural Equation Modeling Analysis, which reflects his research focus on financial management practices in the agricultural sector.
                 </p>
                 ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Sonja Brlečić Valčić",
@@ -2424,7 +2424,7 @@ class EditorialBoardMemberSeeder extends Seeder
                     Dr. Sonja Brlečić Valčić is an Associate Professor with many years of work experience in the private sector. She has significant work experience related to project management and business organization, which she gained through many years of work in the international oil OFS company Saipem. Analytical skills and efficient planning skills are acquired through many years of scientific work, but also through work experience in the business. Through BVLab, she gains experience in promoting innovation and entrepreneurship by providing numerous consultations to entrepreneurs.
                     </p>
                     ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Stephen Oduro",
@@ -2436,7 +2436,7 @@ class EditorialBoardMemberSeeder extends Seeder
                         <p>Dr. Stephen Oduro is an Assistant Professor at the Faculty of Economics and Management of the Free University of Bozen-Bolzano, Italy. He earned his Ph.D. in Management from the University of International Studies of Rome, Italy. He also completed two postdoctoral programs at the Marconi University of Rome, Italy, and the Polytechnic University of Marche, Ancona, Italy. Dr. Oduro is an expert in quantitative research, particularly in meta-analysis. His current research interests include but are not limited to innovation management, entrepreneurship, digital innovation, family business management, CSR and sustainability, and small business management. He has authored and co-authored more than 50 journal and conference articles, serves in guest editorial assignments, and is a reviewer for several top journals. Professionally, Dr. Oduro specializes in accountancy at the Institute of Chartered Accountants, Ghana (ICAG), Level 2 (out of 3 levels).
                         </p>
                     ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Paul Wang",
@@ -2450,7 +2450,7 @@ class EditorialBoardMemberSeeder extends Seeder
 
                         </p>
                     ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
             [
                 "name" => "Philip L. Fazio",
@@ -2466,7 +2466,7 @@ class EditorialBoardMemberSeeder extends Seeder
                     Lastly, he is on the editorial board for the Investment and Wealth Monitor and the Journal of Investment Consulting. Both are publications of the Investment and Wealth Institute.
                     </p>
                 ",
-                'order_id' => null ,'journal_id' => 9
+                'journal_id' => 9
             ],
         ]);
     }

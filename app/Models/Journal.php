@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\JournalBoardMemberController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 
 class Journal extends Model
 {
@@ -38,5 +40,17 @@ class Journal extends Model
     public function volume(): HasMany
     {
         return $this->hasMany(JournalVolume::class, 'journal_id');
+    }
+
+    protected function acronym(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => strtoupper($value),
+        );
+    }
+
+    public function indexBodies()
+    {
+        return $this->belongsToMany(IndexBody::class, 'index_body_journal');
     }
 }

@@ -15,14 +15,30 @@
                     <div>
                         <h3 class="card-title fs-5">Volums</h3>
                     </div>
-                    <div>
-                        <button data-bs-toggle="modal" data-bs-target="#myModal"
-                            class="btn btn-primary waves-effect waves-light">
-                            <i class="fa fa-plus-circle me-2"></i>Add new Volums</button>
+                    <div class="d-flex align-items-center">
+                        <div class="">
+                            <select id="journalSelect" class="form-select" name="journal_id">
+                                <option selected disabled>Choose Journal</option>
+                                @foreach ($journals as $j)
+                                    <option value="{{ $j->acronym }}" @selected(request('journal' == $j->acronym))>{{ $j->acronym }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="ms-2">
+                            <button data-bs-toggle="modal" data-bs-target="#myModal"
+                                class="btn btn-primary waves-effect waves-light">
+                                <i class="fa fa-plus-circle me-2"></i>Add new Volums</button>
+                        </div>
+                        <div class=" ms-2">
+                            <button id="clearFilters" class="btn btn-secondary waves-effect waves-light">
+                                Clear All Filters
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">
-                 
+
                     <table id="datatable" class="table table-bordered dt-responsive nowrap w-100">
                         <thead>
                             <tr>
@@ -156,6 +172,18 @@
             var value = e.target.value;
             value = value.replace(/[^0-9]/g, '');
             e.target.value = value;
+        });
+        document.querySelector('select[name="journal_id"]').addEventListener('change', function() {
+            var selectedValue = this.value;
+            if (selectedValue) {
+                var currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.set('journal', selectedValue);
+                window.location.href = currentUrl.href;
+            }
+        });
+        document.getElementById("clearFilters").addEventListener("click", function() {
+            let baseUrl = window.location.origin + window.location.pathname;
+            window.location.href = baseUrl;
         });
     </script>
 @endsection

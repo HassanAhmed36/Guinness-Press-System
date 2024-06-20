@@ -10,15 +10,17 @@ class JournalBoardMember extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'email',
         'image',
         'affliation',
         'country',
         'biography',
         'journal_id',
-        'order_id',
         'google_scholar',
         'scopus',
-        'orcid'
+        'orchid',
+        'email',
+        'order_id'
     ];
 
     public function journal()

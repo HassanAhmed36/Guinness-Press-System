@@ -19,13 +19,12 @@ class JournalBoardMemberController extends Controller
     {
         $iso3166 = new ISO3166();
         $countries = $iso3166->all();
-
         if (request()->has('journal')) {
-            $members = JournalBoardMember::withWhereHas('journal', function ($q) {
+            $members = JournalBoardMember::OrderBy('order_id', 'ASC')->withWhereHas('journal', function ($q) {
                 $q->where('acronym', request('journal'));
-            }) ->get();
+            })->get();
         } else {
-            $members = JournalBoardMember::with('journal')->OrderByDesc('id')->get();
+            $members = JournalBoardMember::with('journal')->get();
         }
         $journals = Journal::select('id', 'name', 'acronym')->get();
         return view('admin.member.index', compact('countries', 'journals', 'members'));
@@ -45,18 +44,20 @@ class JournalBoardMemberController extends Controller
             'biography' => 'required',
             'journal_id' => 'required'
         ]);
-        $lastOrderID =  JournalBoardMember::OrderByDesc('id')->where('journal_name', request('journal_id'))->first();
-        $newOrderId = $lastOrderID->order_id += 1;
         try {
+            $lastOrderID =  JournalBoardMember::OrderByDesc('order_id')->where('journal_name', request('journal_id'))->first();
+            $newOrderId = $lastOrderID->order_id += 1;
+            $journal =  Journal::find($request->journal_id);
             if ($request->hasFile('image')) {
                 $name = uniqid() . '.' . $request->image->getClientOriginalName();
-                $request->image->move(public_path('bkp/assets/members/' . request('journal_id') . '/'), $name);
-                $image_path = 'bkp/assets/members/' . request('journal_id') . '/' . $name;
+                $request->image->move(public_path('board-member-image/' . $journal->acronym . '/'), $name);
+                $image_path = 'board-member-image/' . $journal->acronym . '/' . $name;
             }
             JournalBoardMember::create([
                 'name' => $request->name,
+                'email' => $request->email,
                 'image' => $image_path,
-                'affliation' => $request->affliation,
+                'affliation' => $request->affiliation,
                 'biography' => $request->biography,
                 'country' => $request->country,
                 'journal_name' => $request->journal_id,
@@ -110,6 +111,7 @@ class JournalBoardMemberController extends Controller
             $member = JournalBoardMember::find($id);
             $member->update([
                 'name' => $request->name,
+                'email' => $request->email,
                 'affliation' => $request->affliation,
                 'biography' => $request->biography,
                 'country' => $request->country,
@@ -120,8 +122,8 @@ class JournalBoardMemberController extends Controller
             ]);
             if ($request->hasFile('image')) {
                 $name = uniqid() . '.' . $request->image->getClientOriginalName();
-                $request->image->move(public_path('bkp/assets/members/' . request('journal_id') . '/'), $name);
-                $image_path = 'bkp/assets/members/' . request('journal_id') . '/' . $name;
+                $request->image->move(public_path('board-member-image/'), $name);
+                $image_path = 'board-member-image/' . $name;
                 $member->image = $image_path;
                 $member->save();
             }
@@ -144,5 +146,15 @@ class JournalBoardMemberController extends Controller
             dd($e->getMessage());
             return back()->with('error', 'Journal Editorial Board member Delete Failed!');
         }
+    }
+
+    public function updateOrder(Request $request)
+    {
+        foreach ($request->data as $data) {
+            JournalBoardMember::find($data['id'])->update([
+                'order_id' => $data['order_id']
+            ]);
+        }
+        return response()->json(['status' => 'success']);
     }
 }

@@ -64,16 +64,17 @@
                         <div class="actual-metrics-container has-metrics">
                             <div class="journalcard__metrics border">
                                 <span class="metrics_label">Acceptance rate</span>
-                                <span class="metrics_value">{{ $journal->journal_matrix->acceptance_rate }}</span>
+                                <span class="metrics_value">{{ $journal->journal_matrix->acceptance_rate }}%</span>
                             </div>
                             <div class="journalcard__metrics border">
                                 <span class="metrics_label">Submission to final decision</span>
                                 <span
-                                    class="metrics_value">{{ $journal->journal_matrix->submission_to_final_decision }}</span>
+                                    class="metrics_value">{{ $journal->journal_matrix->submission_to_final_decision }} days</span>
                             </div>
                             <div class="journalcard__metrics border">
                                 <span class="metrics_label">Acceptance to publication</span>
-                                <span class="metrics_value">{{ $journal->journal_matrix->acceptance_to_publication }}</span>
+                                <span
+                                    class="metrics_value">{{ $journal->journal_matrix->acceptance_to_publication }} days</span>
                             </div>
                             <div class="journalcard__metrics border">
                                 <span class="metrics_label">DOI Prefix</span>
@@ -95,7 +96,7 @@
                         <div class="journalcard__footer">
                             <div class="apc_label_value">
                                 <span class="apc_labels">APC</span>
-                                <span class="apc_data">{{ $journal->journal_matrix->acp }}</span>
+                                <span class="apc_data">${{ $journal->journal_matrix->acp }}</span>
                             </div>
                         </div>
                     </div>

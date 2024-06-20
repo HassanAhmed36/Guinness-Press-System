@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Article;
 use App\Models\Journal;
 use App\Models\JournalVolume;
 use App\Models\VolumeIssue;
@@ -39,11 +40,17 @@ class CustomService
         $issues = VolumeIssue::where('volume_id', $request->volume_id)->get();
         return view('admin.partials.doi.issue-selectbox', compact('issues'))->render();
     }
+    public function getDownloadCount()
+    {
+        $article = Article::find(request('id'));
+        return $article->download_count;
+    }
 
-    public function doiIndex()
+    public function increaseDownloadCount()
     {
+        $article = Article::find(request('id'));
+        $article->increment('download_count');
+        return $article->download_count;
     }
-    public function doiStore()
-    {
-    }
+
 }

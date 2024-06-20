@@ -91,11 +91,16 @@
                     <span class="side-menu__label">DOI Generator</span>
                 </a>
             </li>
+
             <li class="slide">
-                <a class="side-menu__item" href="#">
-                    <i class="feather feather-settings sidemenu_icon"></i>
-                    <span class="side-menu__label">Fields Settings</span>
+                <a class="side-menu__item" data-bs-toggle="slide" href="#">
+                    <i class="feather  feather-settings sidemenu_icon"></i>
+                    <span class="side-menu__label">Settings <span class="nav-list"></span></span><i
+                        class="angle fa fa-angle-right"></i>
                 </a>
+                <ul class="slide-menu">
+                    <li><a href="{{ route('index.body.index') }}" class="slide-item">Index Bodies</a></li>
+                </ul>
             </li>
         </ul>
     </div>

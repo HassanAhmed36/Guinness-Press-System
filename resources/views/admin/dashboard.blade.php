@@ -1,7 +1,7 @@
 @extends('admin.Layout.master')
 @section('main_section')
     <div class="page-header d-xl-flex d-block my-0">
-        <div class="page-left header my-0 py-0">
+        <div class="page-left header my-0 py-0 ">
             <h4 class="page-title">{{ auth()->user()->role->name }}<span
                     class="font-weight-bold ms-2 my-0 py-0">Dashboard</span></h4>
         </div>
@@ -79,7 +79,7 @@
                 </div>
             </div>
         </div>
-        <div class="card custom-card overflow-hidden">
+        {{-- <div class="card custom-card overflow-hidden">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h4 class="card-title fs-5">Lastest Submission</h4>
             </div>
@@ -118,6 +118,6 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 @endsection

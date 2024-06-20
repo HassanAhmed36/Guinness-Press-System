@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\JournalRequest;
 use App\Http\Requests\UpdateJournalRequest;
+use App\Models\IndexBody;
 use App\Models\Journal;
 use App\Models\JournalMatrix;
 use App\Models\JournalOverview;
@@ -18,6 +19,7 @@ class JournalController extends Controller
      */
     public function index()
     {
+
         $journals = Journal::all();
         return view('admin.journals.index', compact('journals'));
     }
@@ -27,7 +29,8 @@ class JournalController extends Controller
      */
     public function create()
     {
-        return view('admin.journals.create');
+        $indexing_bodies = IndexBody::select('id', 'name')->get();
+        return view('admin.journals.create', compact('indexing_bodies'));
     }
 
     /**
@@ -50,7 +53,7 @@ class JournalController extends Controller
                 'description' => $request->description,
                 'is_active' => $request->has('is_active') ? true : false,
             ]);
-
+            $journal->indexBodies()->attach($request->indexing_bodies);
             JournalMatrix::create([
                 'acceptance_rate' => $request->acceptance_rate,
                 'submission_to_final_decision' => $request->submission_to_final_decision,
@@ -59,7 +62,6 @@ class JournalController extends Controller
                 'publication_type' => 'Peer Reviewd',
                 'publishing_model' => $request->publishing_model,
                 'journal_category' => $request->journal_category,
-                'indexing_bodies' => $request->indexing_bodies,
                 'acp' => $request->acp,
                 'journal_id' => $journal->id,
             ]);
@@ -86,8 +88,9 @@ class JournalController extends Controller
     public function edit($id)
     {
         try {
-            $journal = Journal::with(['journal_overview', 'journal_matrix'])->find($id);
-            return view('admin.journals.edit', compact('journal'));
+            $journal = Journal::with(['journal_overview', 'journal_matrix', 'indexBodies'])->find($id);
+            $indexing_bodies = IndexBody::all();
+            return view('admin.journals.edit', compact('journal', 'indexing_bodies'));
         } catch (\Exception $e) {
             dd($e->getMessage());
             return back()->with('error', 'Something Wents Wrong!');
@@ -119,6 +122,7 @@ class JournalController extends Controller
                 $journal->image = $image_path;
                 $journal->save();
             }
+            $journal->indexBodies()->sync($request->indexing_bodies);
             $journal->journal_matrix()->update([
                 'acceptance_rate' => $request->acceptance_rate,
                 'submission_to_final_decision' => $request->submission_to_final_decision,

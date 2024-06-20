@@ -25,13 +25,14 @@
                         <thead>
                             <tr>
                                 <th>S.No</th>
-                                <th style="width:10%">Article ID</th>
+                                <th>Article ID</th>
                                 <th>title</th>
                                 <th>DIO</th>
-                                <th style="width:10%">Published Date</th>
+                                <th>Published Date</th>
                                 <th>Journal</th>
-                                <th style="width:8%">Issue</th>
-                                <th style="width:12%">Action</th>
+                                <th>Volume</th>
+                                <th>Issue</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,16 +42,20 @@
                                     <td>
                                         {{ $a->article_code }}
                                     </td>
-                                    <td>{{ $a->title }}</td>
+                                    <td>{{ \Illuminate\Support\Str::words($a->title, 5) }}</td>
                                     <td>{{ $a->dio }}</td>
                                     <td>{{ $a->published_date }}</td>
                                     <td>{{ $a->journal->acronym }}</td>
+                                    <td>Volume {{ $a->volume->name }}</td>
                                     <td>Issue {{ $a->issue->name }}</td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm edit-department" href="{{ asset($a->file_path) }}"
+                                        <a class="btn btn-primary btn-sm " href="{{ asset($a->file_path) }}"
                                             download="{{ $a->file_name }}">
                                             <i class="fa fa-download"></i></a>
-                                        <a class="btn btn-warning btn-sm edit-department"
+                                        <a class="btn btn-success btn-sm "
+                                            href="{{ route('article.show', ['id' => $a->id]) }}">
+                                            <i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-warning btn-sm "
                                             href="{{ route('admin.article.edit', ['id' => $a->id]) }}">
                                             <i class="fa fa-pencil"></i></a>
                                         <a class="btn btn-danger btn-sm"

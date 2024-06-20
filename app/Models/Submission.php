@@ -17,6 +17,7 @@ class Submission extends Model
         'manuscript_path',
         'admin_message',
         'admin_status',
+        'submission_type',
         'user_id',
     ];
 

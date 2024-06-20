@@ -109,10 +109,13 @@
                             <div class="col-md-3">
                                 <div class="mb-4">
                                     <label for="formrow-inputState" class="form-label">Index Bodies</label>
-                                    <select class="form-select select" name="indexing_bodies">
-                                        <option selected disabled>Choose...</option>
-                                        <option value="1" @selected($journal->journal_matrix->indexing_bodies == 1)>1</option>
-                                        <option value="2" @selected($journal->journal_matrix->indexing_bodies == 2)>2</option>
+                                    <select
+                                        class="form-select select custom-select select2 select2-show-search"
+                                        name="indexing_bodies[]" multiple>
+                                        @foreach ($indexing_bodies as $i)
+                                            <option value="{{ $i->id }}" @selected($journal->indexBodies->contains('id', $i->id))>
+                                                {{ $i->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

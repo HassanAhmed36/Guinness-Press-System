@@ -49,19 +49,24 @@ class SubmissionController extends Controller
             $manuscript_name = $request->manuscript->getClientOriginalName();
             $request->manuscript->move(public_path('manuscripts/'), $name);
             $manuscript_path = 'manuscripts/' . $name;
-            $user = Auth::user();
-            if (!Auth::check()) {
-                $user =  User::create([
-                    'name' => $request->first_name,
-                    'email' => $request->email_address,
-                    'password' => "",
-                    'role_id' => 3,
-                    'remember_token' => Str::random(10),
-                    'phone_number' => $request->phone_number,
-                    'country' => $request->country,
-                    'is_active' => false
-                ]);
+            if (User::where('email', $request->email_address)->exists()) {
+                $user  = User::where('email', $request->email_address)->first();
+            } else {
+                $user = Auth::user();
+                if (!Auth::check()) {
+                    $user =  User::create([
+                        'name' => $request->first_name,
+                        'email' => $request->email_address,
+                        'password' => "",
+                        'role_id' => 3,
+                        'remember_token' => Str::random(10),
+                        'phone_number' => $request->phone_number,
+                        'country' => $request->country,
+                        'is_active' => false
+                    ]);
+                }
             }
+
             $submission = Submission::create([
                 'menuscript_id' => $this->create_menuscript_id(),
                 'journal_id' => $request->journal_id,
@@ -80,7 +85,7 @@ class SubmissionController extends Controller
             return redirect()->route('submission.index')->with('success', 'Submitted Successfully!');
         } catch (\Exception $e) {
             DB::rollBack();
-            // dd($e->getMessage());
+            dd($e->getMessage());
             return back()->with('error', 'Submission Failed!');
         }
     }

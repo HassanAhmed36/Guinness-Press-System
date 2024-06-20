@@ -35,6 +35,26 @@
                 <input type="file" class="form-control" name="image" id="imageInput1"
                     placeholder="Select an image">
             </div>
+            <div class="col-4 mb-4">
+                <label for="" class="form-label">Google Scholars</label>
+                <input type="text" name="google_scholar" class="form-control"
+                    placeholder="enter google scholars link" value="{{ $m->google_scholar ?? '' }}">
+            </div>
+            <div class="col-4 mb-4">
+                <label for="" class="form-label">Orchid</label>
+                <input type="text" name="orcid" class="form-control" placeholder="enter Orchid link"
+                    value="{{ $m->orchid ?? '' }}">
+            </div>
+            <div class="col-4 mb-4">
+                <label for="" class="form-label">Scopus</label>
+                <input type="text" name="scopus" class="form-control" placeholder="enter Scopus link"
+                    value="{{ $m->scopus ?? '' }}">
+            </div>
+            <div class="col-4 mb-4">
+                <label for="" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="enter Email Address"
+                    value="{{ $m->email ?? '' }}">
+            </div>
             <div class="col-12 mb-4">
                 <label for="" class="form-label">Affliation</label>
                 <input type="text" name="affliation" class="form-control" placeholder="Enter Affiliateion" required

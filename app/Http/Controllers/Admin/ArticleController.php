@@ -14,6 +14,8 @@ use App\Models\Journal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use League\ISO3166\ISO3166;
+use Illuminate\Support\Str;
+
 
 class ArticleController extends Controller
 {
@@ -46,7 +48,6 @@ class ArticleController extends Controller
         $articleCode = optional($latestArticle)->article_code + 1 ?? 1;
         $formattedArticleCode = str_pad($articleCode, 5, '0', STR_PAD_LEFT);
         return $formattedArticleCode;
-
     }
 
 
@@ -68,11 +69,8 @@ class ArticleController extends Controller
         foreach ($request->authors as $author) {
             if (
                 !empty($author['firstname']) &&
-                !empty($author['middlename']) &&
-                !empty($author['lastname']) &&
-                !empty($author['affiliation']) &&
-                !empty($author['email']) &&
-                !empty($author['orchid_id'])
+                !empty($author['affiliation'])
+
             ) {
 
                 $author_array[] = [
@@ -87,15 +85,19 @@ class ArticleController extends Controller
         }
         DB::beginTransaction();
         try {
-            if ($request->hasFile('file')) {
-                $file_name = $request->file->getClientOriginalName();
-                $name = uniqid() . '.' . $request->file->getClientOriginalName();
-                $request->file->move(public_path('articles/'), $file_name);
-                $file_path = 'articles/' . $file_name;
+            if ($request->has('file')) {
+                $original_name = $request->file->getClientOriginalName();
+                $file_name = pathinfo($original_name, PATHINFO_FILENAME); // Extract filename without extension
+                $file_extension = $request->file->getClientOriginalExtension();
+                $slug = Str::slug($file_name);
+
+                $name = uniqid() . '-' . $slug . '.' . $file_extension;
+                $request->file->move(public_path('articles/'), $name);
+                $file_path = 'articles/' . $name;
             }
 
             $article = Article::create([
-                'article_code' => $this->create_article_code(),
+                'article_code' => $request->article_number,
                 'title' => $request->title,
                 'first_page' => $request->first_page,
                 'last_page' => $request->last_page,
@@ -123,10 +125,6 @@ class ArticleController extends Controller
                 $article->supplementary_file_path = $supplementary_file_path;
                 $article->save();
             }
-
-
-
-
             ArticleDetail::create([
                 'abstract' => $request->input('abstract'),
                 'references' => $request->input('references'),
@@ -135,7 +133,6 @@ class ArticleController extends Controller
                 'affiliations' => $affiliation_array,
                 'article_id' => $article->id,
             ]);
-
             $keywords = explode(',', $request->input('keywords'));
             foreach ($keywords as $keyword) {
                 ArticleKeyword::create([
@@ -155,9 +152,16 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Article $article)
+    public function show($id)
     {
-        //
+        try {
+            return view('admin.article.show', [
+                'article' => Article::with('article_details', 'keywords')->find($id)
+            ]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return back()->with('error', 'Something Wants Wrong');
+        }
     }
 
     /**
@@ -169,7 +173,7 @@ class ArticleController extends Controller
         $iso3166 = new ISO3166();
         $countries = $iso3166->all();
         $journals = Journal::select('id', 'name')->get();
-        $article = Article::with('journal' ,'volume' , 'issue' , 'keywords' , 'article_details')->find($id);
+        $article = Article::with('journal', 'volume', 'issue', 'keywords', 'article_details')->find($id);
         return view('admin.article.edit', compact('journals', 'countries', 'article'));
     }
 

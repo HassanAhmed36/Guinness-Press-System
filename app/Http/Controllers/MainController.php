@@ -6,10 +6,12 @@ namespace App\Http\Controllers;
 use App\Mail\ArticleMail;
 use App\Mail\ContactMail;
 use App\Mail\JoinMail;
+use App\Models\Article;
+use App\Models\IndexBody;
 use App\Models\Journal;
 use App\Models\Journal_settings;
-use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class MainController extends Controller
@@ -18,24 +20,32 @@ class MainController extends Controller
     public function index()
     {
         $journals = Journal::all();
-        return view('user.pages.index', compact('journals') );
+        return view('user.pages.index', compact('journals'));
     }
 
     public function journal()
     {
         $journals = Journal::all();
-        return view('user.pages.journal', compact('journals'));
+        $indexing_bodies = IndexBody::all();
+        return view('user.pages.journal', compact('journals', 'indexing_bodies'));
     }
 
     public function journal_details($journal_name)
     {
-        $journal = Journal::with(['journal_overview','journal_matrix' , 'volume' => function($q){
+        $journal = Journal::with(['journal_overview', 'journal_matrix', 'volume' => function ($q) {
             $q->OrderByDesc('id');
-        } ,'volume.issue' => function($q){
+        }, 'volume.issue' => function ($q) {
             $q->OrderByDesc('id');
-        }])->where('acronym' , $journal_name)->first();
+        }])->where('acronym', $journal_name)->first();
         // dd($journal->toArray());
         return view('user.pages.journal-details', compact('journal'));
+    }
+
+    public function article($id, $code)
+    {
+        $journal = Journal::where('acronym', $id)->first();
+        $article = Article::with('volume', 'issue', 'article_details', 'journal')->where('article_code', $code)->first();
+        return view('user.pages.article', compact('journal', 'article'));
     }
 
     public function sendEmail(Request $req)
@@ -61,9 +71,8 @@ class MainController extends Controller
             ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
             ->orderBy('categories.category_id', 'desc')
             ->get();
-        Mail::to('submission@guinnesspress.org')->send(new ContactMail($data));
+        // Mail::to('submission@guinnesspress.org')->send(new ContactMail($data));
         return view('front-end/thanku', 'datas', 'data', 'subcategories');
-
     }
 
     public function sendArticleEmail(Request $req)
@@ -110,14 +119,13 @@ class MainController extends Controller
             ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
             ->orderBy('categories.category_id', 'desc')
             ->get();
-        Mail::to('submission@guinnesspress.org')->send(new ArticleMail($datas));
+        // Mail::to('submission@guinnesspress.org')->send(new ArticleMail($datas));
         return view('front-end/thanku', compact('datas', 'data', 'subcategories'));
-
     }
 
     public function editorial_board($journal_name)
     {
-       $journal=  Journal::with('board_member')->where('acronym' , $journal_name)->first();
+        $journal =  Journal::with('board_member')->where('acronym', $journal_name)->first();
         return view('user.pages.editorial-board', compact('journal'));
     }
 
@@ -291,17 +299,19 @@ class MainController extends Controller
         }])->whereHas('volume.issue', function ($query) use ($issue_no) {
             $query->where('issue_id', $issue_no);
         })->first();
-        return view('user.pages.issue', compact('journal'));
+        $volume_id = $journal->volume->first()->id;
+        $articles = Article::with('article_details', 'journal')->where('volume_id', $volume_id)->where('journal_id', $journal->id)->get();
+        return view('user.pages.issue', compact('journal', 'articles'));
     }
 
 
     public function join_board($journal_name)
     {
-        $journal = Journal::where('acronym' , $journal_name)->first();
+        $journal = Journal::where('acronym', $journal_name)->first();
         return view('user.pages.join-board', compact('journal'));
     }
 
-    public function sendBoardEmail(Request $req)
+    public function senDBoardEmail(Request $req)
     {
 
         $fileattachment = array();
@@ -309,7 +319,6 @@ class MainController extends Controller
         foreach ($files as $file) {
             $fileattachment[] = $file->store('public/article-files');
         }
-
         $datas = [
             'name' => $req->name,
             'journal_name' => $req->journal_name,
@@ -320,11 +329,8 @@ class MainController extends Controller
             'scholar_id' => $req->scholar_id,
             'biography' => $req->biography,
             'thankyou_msg' => 'Thank you for submitting your article to Guinness Press! Your contribution is important to us. Our team will carefully review your work, and we will be in touch shortly. If you have any urgent inquiries, feel free to contact us at info@guinnesspress.org. We appreciate your interest in Guinness Press!'
-
         ];
-
         Mail::to('saifuddin@guinnesspress.org')->send(new JoinMail($datas));
-
         return view('user.pages.thanku', compact('datas'));
     }
 }

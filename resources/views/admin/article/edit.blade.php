@@ -238,7 +238,7 @@
                                                         name="affiliation[second_affiliation][country]">
                                                     <option selected disabled>Choose Country</option>
                                                     @foreach ($countries as $c)
-                                                        <option value="{{ $c['name'] }}" @selected(old('affiliation.second_affiliation.country' , $affiliations[1]['country']) == $c['name'])>
+                                                        <option value="{{ $c['name'] }}" @selected(old('affiliation.second_affiliation.country' , $affiliations[1]['country'] ?? null) == $c['name'])>
                                                             {{ $c['name'] }}
                                                         </option>
                                                     @endforeach
@@ -1158,7 +1158,7 @@
                                 <div class="col-md-12 mb-2">
                                     <div class="mb-4">
                                         <label for="" class="form-label">References</label>
-                                        <textarea rows="4" class="form-control content" name="references" placeholder="Enter references..">{{  $article->article_details->abstract ?? old('references') }}</textarea>
+                                        <textarea rows="4" class="form-control content" name="references" placeholder="Enter references..">{{  $article->article_details->references ?? old('references') }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -1280,7 +1280,7 @@
 
                         affiliations.forEach(function(affiliation) {
                             $(this).append(
-                                `<option value="${affiliation.name}">${affiliation.name}, ${affiliation.country}</option>`
+                                `<option value="${affiliation.name},${affiliation.country}">${affiliation.name}, ${affiliation.country}</option>`
                             );
                         }.bind(this));
                     });
@@ -1299,7 +1299,6 @@
 
     <script>
         $(document).ready(function() {
-            // Hide all author boxes initially
             $('#second_author_box').hide();
             $('#third_author_box').hide();
             $('#fourth_author_box').hide();

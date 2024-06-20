@@ -16,7 +16,13 @@ class JournalVolumeController extends Controller
     public function index()
     {
         $journals = Journal::all();
-        $volums = JournalVolume::with('journal')->get();
+        if (request()->has('journal')) {
+            $volums = JournalVolume::withWhereHas('journal', function ($q) {
+                $q->where('acronym', request('journal'));
+            })->get();
+        } else {
+            $volums = JournalVolume::with('journal')->get();
+        }
         return view('admin.volume.index', compact('journals', 'volums'));
     }
 

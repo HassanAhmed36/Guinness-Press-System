@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\JournalVolumeController;
 use App\Http\Controllers\Admin\SubmissionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VolumeIssueController;
+use App\Http\Controllers\IndexBodyController;
 use App\Services\CustomService;
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +58,7 @@ Route::prefix('/admin')->group(function () {
         Route::get('/article-edit/{id}', [ArticleController::class, 'edit'])->name('admin.article.edit');
         Route::post('/article-update/{id}', [ArticleController::class, 'update'])->name('admin.article.update');
         Route::get('/article-delete/{id}', [ArticleController::class, 'destroy'])->name('admin.article.delete');
+        Route::get('/article-show/{id}', [ArticleController::class, 'show'])->name('article.show');
 
         //Extra
         Route::get('/fetch-volumes', [CustomService::class, 'fetchVolumes'])->name('volumes.fetch');
@@ -82,8 +84,12 @@ Route::prefix('/admin')->group(function () {
         Route::post('/Update-user/{id}', [UserController::class, 'update'])->name('admin.user.update');
         Route::get('/profile', [UserController::class, 'profile'])->name('admin.user.profile');
 
-        Route::get('/editorial/member/update-order', [JournalBoardMemberController::class, 'updateOrder'])->name('editorial.member.updateOrder');
 
+        Route::get('/index-bodies', [IndexBodyController::class, 'index'])->name('index.body.index');
+        Route::post('/index-bodies-store', [IndexBodyController::class, 'store'])->name('index.body.store');
+        Route::get('/index-bodies-edit', [IndexBodyController::class, 'edit'])->name('index.body.edit');
+        Route::post('/index-bodies-update/{id}', [IndexBodyController::class, 'update'])->name('index.body.update');
+        Route::get('/index-bodies-delete/{id}', [IndexBodyController::class, 'destroy'])->name('index.body.destroy');
 
         Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });

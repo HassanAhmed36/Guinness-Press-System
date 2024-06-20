@@ -24,6 +24,7 @@
                                     <th>Journal name</th>
                                     <th>Author Email</th>
                                     <th>Status</th>
+                                    <th>Submission Type</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -34,25 +35,24 @@
                                         <td>{{ $s->menuscript_id }}</td>
                                         <td>{{ $s->journal->name }}</td>
                                         <td>{!! $s->user->email ?? '<span class="badge badge-warning">Guest User</span>' !!}</td>
-                                        <td>{{ $s->admin_status == 0 ? 'submitted' : ($s->admin_status == 1 ? 'approved' : 'rejected') }}</td>
+                                        <td>{{ $s->admin_status == 0 ? 'submitted' : ($s->admin_status == 1 ? 'approved' : 'rejected') }}
+                                        </td>
+                                        <td>{{ $s->submission_type == true ? 'website' : 'landing page' }}</td>
                                         <td>
-                                            <!-- View Button -->
                                             <button class="btn btn-warning btn-sm edit-btn" data-bs-toggle="modal"
                                                 data-bs-target="#editModal" data-id="{{ $s->id }}">
                                                 <i class="fa fa-eye"></i>
                                             </button>
-                                            <!-- Approve Button -->
                                             <button class="btn btn-success btn-sm approve-btn" data-bs-toggle="modal"
                                                 data-bs-target="#approveModal" data-id="{{ $s->id }}">
                                                 <i class="fa fa-check"></i>
                                             </button>
-                                            <!-- Reject Button -->
                                             <button class="btn btn-danger btn-sm reject-btn" data-bs-toggle="modal"
                                                 data-bs-target="#rejectModal" data-id="{{ $s->id }}">
                                                 <i class="fa fa-times"></i>
                                             </button>
-                                            <!-- Download Button -->
-                                            <a href="{{ asset($s->manuscript_path) }}" target="_blank" class="btn btn-info btn-sm" download="{{ $s->manuscript_name }}">
+                                            <a href="{{ asset($s->manuscript_path) }}" target="_blank"
+                                                class="btn btn-info btn-sm" download="{{ $s->manuscript_name }}">
                                                 <i class="fa fa-download"></i>
                                             </a>
                                         </td>
@@ -118,13 +118,15 @@
             $('.approve-btn').on('click', function() {
                 var submissionId = $(this).data('id');
                 $('#approve_submission_id').val(submissionId);
-                $('#approveForm').attr('action', '{{ url("admin/admin-approve-submission") }}/' + submissionId);
+                $('#approveForm').attr('action', '{{ url('admin/admin-approve-submission') }}/' +
+                    submissionId);
             });
 
             $('.reject-btn').on('click', function() {
                 var submissionId = $(this).data('id');
                 $('#reject_submission_id').val(submissionId);
-                $('#rejectForm').attr('action', '{{ url("admin/admin-reject-submission") }}/' + submissionId);
+                $('#rejectForm').attr('action', '{{ url('admin/admin-reject-submission') }}/' +
+                    submissionId);
             });
         });
     </script>

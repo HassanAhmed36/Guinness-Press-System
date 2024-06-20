@@ -15,7 +15,6 @@
                     <div>
                         <h4 class="card-title  fw-bold">DOI Generator</h4>
                     </div>
-
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -52,11 +51,14 @@
                         </div>
                         <div class="col-11 mb-4">
                             <label for="" class="form-label">Generated DOI</label>
-                            <input type="text" class="form-control" placeholder="Enter Volume name" name="name"
-                                required id="doi">
+                            <input type="text" class="form-control" placeholder="" name="name" required id="doi"
+                                readonly>
                         </div>
                         <div class="col-1 mt-5">
                             <button id="copyDoiButton" class="btn btn-primary">Copy DOI</button>
+                        </div>
+                        <div class="col-1 mt-5">
+                            <button id="regenrateDoi" class="btn btn-primary">Regenrate DOI</button>
                         </div>
                     </div>
                 </div>
@@ -104,36 +106,34 @@
                         }
                     });
                 });
-
-                function generatedoi() {
-                    let journal = $('#journal').val();
-                    let volume = $('#volume').val();
-                    let issue = $('#issue').val();
-                    let acronym = $('#journal option:selected').data('acronym');
-                    let issn = $('#journal option:selected').data('issn');
-
-                    let currentDate = new Date();
-                    let date = String(currentDate.getDate()).padStart(2, '0');
-                    let month = String(currentDate.getMonth() + 1).padStart(2, '0');
-                    let year = String(currentDate.getFullYear());
-
-                    let hours = String(currentDate.getHours()).padStart(2, '0');
-                    let minutes = String(currentDate.getMinutes()).padStart(2, '0');
-                    let seconds = String(currentDate.getSeconds()).padStart(2, '0');
-                    console.log(`hour: ${hours} , min: ${minutes} , sec: ${seconds}`);
-
-                    ac = acronym.padEnd(4, '0');
-                    issn = issn.replace(/-/g, '');
-
-                    let doi =
-                        `10.59762/${ac}${issn}${volume}${issue}${year}${month}${date}${hours}${minutes}${seconds}`;
-                    console.log(doi);
-                    console.log(doi.length);
-                    $('#doi').val(doi);
-                }
-
-
             });
+
+            function generatedoi() {
+                let journal = $('#journal').val();
+                let volume = $('#volume').val();
+                let issue = $('#issue').val();
+                let acronym = $('#journal option:selected').data('acronym');
+                let issn = $('#journal option:selected').data('issn');
+                console.log(acronym.toLowerCase());
+                let currentDate = new Date();
+                let date = String(currentDate.getDate()).padStart(2, '0');
+                let month = String(currentDate.getMonth() + 1).padStart(2, '0');
+                let year = String(currentDate.getFullYear());
+
+                let hours = String(currentDate.getHours()).padStart(2, '0');
+                let minutes = String(currentDate.getMinutes()).padStart(2, '0');
+                let seconds = String(currentDate.getSeconds()).padStart(2, '0');
+                console.log(`hour: ${hours} , min: ${minutes} , sec: ${seconds}`);
+
+                ac = acronym.padEnd(4, '0');
+                issn = issn.replace(/-/g, '');
+
+                let doi =
+                    `10.59762/${acronym.toLowerCase()}${issn}${volume}${issue}${year}${month}${date}${hours}${minutes}${seconds}`;
+                console.log(doi);
+                console.log(doi.length);
+                $('#doi').val(doi);
+            }
             $('#copyDoiButton').click(function() {
                 let doiField = $('#doi');
                 doiField.select();
@@ -146,6 +146,10 @@
                 setTimeout(function() {
                     $('#copyDoiButton').text('Copy DOI');
                 }, 2000);
+            });
+
+            $('#regenrateDoi').click(function() {
+                generatedoi();
             });
         </script>
     @endsection

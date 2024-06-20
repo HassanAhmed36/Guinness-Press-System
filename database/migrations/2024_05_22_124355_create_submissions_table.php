@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('manuscript_name');
             $table->string('manuscript_path');
             $table->string('admin_message')->nullable();
+            $table->boolean('submission_type')->default(true); //true - website , false - lp
             $table->integer('admin_status')->default(0); // 0 - submitted , 1 - Approved , 3 - Rejected
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->timestamps();

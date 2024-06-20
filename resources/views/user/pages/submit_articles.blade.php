@@ -1,269 +1,3 @@
-<?php $countryList = [
-    'Afghanistan',
-    'Albania',
-    'Algeria',
-    'American Samoa',
-    'Andorra',
-    'Angola',
-    'Anguilla',
-    'Antarctica',
-    'Antigua and Barbuda',
-    'Argentina',
-    'Armenia',
-    'Aruba',
-    'Australia',
-    'Austria',
-    'Azerbaijan',
-    'Bahamas',
-    'Bahrain',
-    'Bangladesh',
-    'Barbados',
-    'Belarus',
-    'Belgium',
-    'Belize',
-    'Benin',
-    'Bermuda',
-    'Bhutan',
-    'Bolivia',
-    'Bosnia and Herzegovina',
-    'Botswana',
-    'Bouvet Island',
-    'Brazil',
-    'British Antarctic Territory',
-    'British Indian Ocean Territory',
-    'British Virgin Islands',
-    'Brunei',
-    'Bulgaria',
-    'Burkina Faso',
-    'Burundi',
-    'Cambodia',
-    'Cameroon',
-    'Canada',
-    'Canton and Enderbury Islands',
-    'Cape Verde',
-    'Cayman Islands',
-    'Central African Republic',
-    'Chad',
-    'Chile',
-    'China',
-    'Christmas Island',
-    'Cocos [Keeling] Islands',
-    'Colombia',
-    'Comoros',
-    'Congo - Brazzaville',
-    'Congo - Kinshasa',
-    'Cook Islands',
-    'Costa Rica',
-    'Croatia',
-    'Cuba',
-    'Cyprus',
-    'Czech Republic',
-    'Côte d’Ivoire',
-    'Denmark',
-    'Djibouti',
-    'Dominica',
-    'Dominican Republic',
-    'Dronning Maud Land',
-    'East Germany',
-    'Ecuador',
-    'Egypt',
-    'El Salvador',
-    'Equatorial Guinea',
-    'Eritrea',
-    'Estonia',
-    'Ethiopia',
-    'Falkland Islands',
-    'Faroe Islands',
-    'Fiji',
-    'Finland',
-    'France',
-    'French Guiana',
-    'French Polynesia',
-    'French Southern Territories',
-    'French Southern and Antarctic Territories',
-    'Gabon',
-    'Gambia',
-    'Georgia',
-    'Germany',
-    'Ghana',
-    'Gibraltar',
-    'Greece',
-    'Greenland',
-    'Grenada',
-    'Guadeloupe',
-    'Guam',
-    'Guatemala',
-    'Guernsey',
-    'Guinea',
-    'Guinea-Bissau',
-    'Guyana',
-    'Haiti',
-    'Heard Island and McDonald Islands',
-    'Honduras',
-    'Hong Kong SAR China',
-    'Hungary',
-    'Iceland',
-    'India',
-    'Indonesia',
-    'Iran',
-    'Iraq',
-    'Ireland',
-    'Isle of Man',
-    'Israel',
-    'Italy',
-    'Jamaica',
-    'Japan',
-    'Jersey',
-    'Johnston Island',
-    'Jordan',
-    'Kazakhstan',
-    'Kenya',
-    'Kiribati',
-    'Kuwait',
-    'Kyrgyzstan',
-    'Laos',
-    'Latvia',
-    'Lebanon',
-    'Lesotho',
-    'Liberia',
-    'Libya',
-    'Liechtenstein',
-    'Lithuania',
-    'Luxembourg',
-    'Macau SAR China',
-    'Macedonia',
-    'Madagascar',
-    'Malawi',
-    'Malaysia',
-    'Maldives',
-    'Mali',
-    'Malta',
-    'Marshall Islands',
-    'Martinique',
-    'Mauritania',
-    'Mauritius',
-    'Mayotte',
-    'Metropolitan France',
-    'Mexico',
-    'Micronesia',
-    'Midway Islands',
-    'Moldova',
-    'Monaco',
-    'Mongolia',
-    'Montenegro',
-    'Montserrat',
-    'Morocco',
-    'Mozambique',
-    'Myanmar [Burma]',
-    'Namibia',
-    'Nauru',
-    'Nepal',
-    'Netherlands',
-    'Netherlands Antilles',
-    'Neutral Zone',
-    'New Caledonia',
-    'New Zealand',
-    'Nicaragua',
-    'Niger',
-    'Nigeria',
-    'Niue',
-    'Norfolk Island',
-    'North Korea',
-    'North Vietnam',
-    'Northern Mariana Islands',
-    'Norway',
-    'Oman',
-    'Pacific Islands Trust Territory',
-    'Pakistan',
-    'Palau',
-    'Palestinian Territories',
-    'Panama',
-    'Panama Canal Zone',
-    'Papua New Guinea',
-    'Paraguay',
-    "People's Democratic Republic of Yemen",
-    'Peru',
-    'Philippines',
-    'Pitcairn Islands',
-    'Poland',
-    'Portugal',
-    'Puerto Rico',
-    'Qatar',
-    'Romania',
-    'Russia',
-    'Rwanda',
-    'Réunion',
-    'Saint Barthélemy',
-    'Saint Helena',
-    'Saint Kitts and Nevis',
-    'Saint Lucia',
-    'Saint Martin',
-    'Saint Pierre and Miquelon',
-    'Saint Vincent and the Grenadines',
-    'Samoa',
-    'San Marino',
-    'Saudi Arabia',
-    'Senegal',
-    'Serbia',
-    'Serbia and Montenegro',
-    'Seychelles',
-    'Sierra Leone',
-    'Singapore',
-    'Slovakia',
-    'Slovenia',
-    'Solomon Islands',
-    'Somalia',
-    'South Africa',
-    'South Georgia and the South Sandwich Islands',
-    'South Korea',
-    'Spain',
-    'Sri Lanka',
-    'Sudan',
-    'Suriname',
-    'Svalbard and Jan Mayen',
-    'Swaziland',
-    'Sweden',
-    'Switzerland',
-    'Syria',
-    'São Tomé and Príncipe',
-    'Taiwan',
-    'Tajikistan',
-    'Tanzania',
-    'Thailand',
-    'Timor-Leste',
-    'Togo',
-    'Tokelau',
-    'Tonga',
-    'Trinidad and Tobago',
-    'Tunisia',
-    'Turkey',
-    'Turkmenistan',
-    'Turks and Caicos Islands',
-    'Tuvalu',
-    'U.S. Minor Outlying Islands',
-    'U.S. Miscellaneous Pacific Islands',
-    'U.S. Virgin Islands',
-    'Uganda',
-    'Ukraine',
-    'Union of Soviet Socialist Republics',
-    'United Arab Emirates',
-    'United Kingdom',
-    'United States',
-    'Unknown or Invalid Region',
-    'Uruguay',
-    'Uzbekistan',
-    'Vanuatu',
-    'Vatican City',
-    'Venezuela',
-    'Vietnam',
-    'Wake Island',
-    'Wallis and Futuna',
-    'Western Sahara',
-    'Yemen',
-    'Zambia',
-    'Zimbabwe',
-    'Åland Islands',
-]; ?>
 <!DOCTYPE html>
 <html>
 <!DOCTYPE html>
@@ -279,9 +13,7 @@
     <link rel="mask-icon" href="https://guinnesspress.org/lp/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <meta name='robots' content="noindex, nofollow" />
-    <title>Guinness Press Landing Page</title>
-
+    <title>Guinness Press</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -297,16 +29,12 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('lp_assets/css/stackedCards.css') }}" />
-    <!-- Important Owl stylesheet -->
     <link rel="stylesheet" href="{{ asset('lp_assets/owl-carousel/owl.carousel.css') }}">
-
-    <!-- Default Theme -->
     <link rel="stylesheet" href="{{ asset('lp_assets/owl-carousel/owl.theme.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="{{ asset('lp_assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('lp_assets/css/responsive.css') }}">
-
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         (function() {
             var options = {
                 whatsapp: "+16026495530", // WhatsApp number
@@ -326,32 +54,11 @@
             var x = document.getElementsByTagName('script')[0];
             x.parentNode.insertBefore(s, x);
         })();
-    </script>
+    </script> --}}
 
 
     <!-- Meta Pixel Code -->
-    <script>
-        ! function(f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function() {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1160206722000590');
-        fbq('track', 'PageView');
-    </script>
+   
 
     <!-- End Meta Pixel Code -->
 </head>
@@ -440,11 +147,10 @@
                                                 <select name="country" id="country"
                                                     class="form-control banner_txt_box" required>
                                                     <option selected disabled>Select Country</option>
-                                                    <?php foreach($countryList as $country): ?>
-                                                    <option @selected(auth()->user()->country == htmlspecialchars($country))
-                                                        value="<?= htmlspecialchars($country) ?>">
-                                                        <?= ucwords(strtolower(htmlspecialchars($country))) ?></option>
-                                                    <?php endforeach; ?>
+                                                    @foreach ($countries as $country)
+                                                        <option value="{{ $country['name'] }}">{{ $country['name'] }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -2096,21 +1802,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {},
-            Tawk_LoadStart = new Date();
-        (function() {
-            var s1 = document.createElement("script"),
-                s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/6581a87c07843602b803a7c1/1hi17ka3q';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
-    <!--End of Tawk.to Script-->
+
 
 
     <script>
@@ -2274,30 +1966,23 @@
                                                 <select name="country" id="country"
                                                     class="form-control banner_txt_box" required>
                                                     <option selected disabled>Select Country</option>
-                                                    <?php foreach($countryList as $country): ?>
-                                                    <option value="<?= htmlspecialchars($country) ?>">
-                                                        <?= ucwords(strtolower(htmlspecialchars($country))) ?></option>
-                                                    <?php endforeach; ?>
+                                                    @foreach ($countries as $country)
+                                                        <option value="{{ $country['name'] }}">{{ $country['name'] }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label>Select Journals</label>
-                                                <select type="text" class="form-control banner_txt_box" required
-                                                    name="journal">
-                                                    <option>Select Journal</option>
-                                                    <div class="form-group">
-                                                        <label>Select Journals</label>
-                                                        <select type="text" class="form-control banner_txt_box"
-                                                            required name="journal_id">
-                                                            <option>Select Journal</option>
-                                                            @foreach ($journals as $j)
-                                                                <option value="{{ $j->id }}">
-                                                                    {{ $j->name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
+                                                <select class="form-control banner_txt_box" required
+                                                    name="journal_id">
+                                                    <option value="">Select Journal</option>
+                                                    @foreach ($journals as $j)
+                                                        <option value="{{ $j->id }}">{{ $j->name }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>

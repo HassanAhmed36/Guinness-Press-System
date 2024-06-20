@@ -16,11 +16,15 @@ class VolumeIssueController extends Controller
     public function index()
     {
         $journals = Journal::all();
-        $issues = VolumeIssue::with(['volume' => function ($q) {
-            $q->select('id', 'name');
-        }, 'journal' => function ($q) {
-            $q->select('id', 'name');
-        }])->get();
+        $issues = VolumeIssue::with(['volume:id,name', 'journal:id,name'])
+            ->when(request()->has('journal'), function ($query) {
+                $journalAcronym = request('journal');
+                $query->whereHas('journal', function ($q) use ($journalAcronym) {
+                    $q->where('acronym', $journalAcronym);
+                });
+            })
+            ->get();
+
         return view('admin.issues.index', compact('journals', 'issues'));
     }
 

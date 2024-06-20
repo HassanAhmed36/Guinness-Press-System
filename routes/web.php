@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\JournalBoardMemberController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\JournalController;
@@ -12,13 +13,15 @@ use App\Http\Controllers\UserController;
 use App\Models\Article;
 use App\Models\Journal;
 use App\Models\Submission;
+use App\Services\CustomService;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/clear', function () {
-    Artisan::call('optimize:clear');
+Route::get('/migrate', function () {
+    Artisan::call('migrate:fresh');
+    Artisan::call('db:seed');
 });
 
 
@@ -81,12 +84,12 @@ Route::get('/blogs', [MainController::class, 'blogs']);
 Route::get('/user-information', [MainController::class, 'user_information']);
 Route::get('/dashboard', [MainController::class, 'dashboard']);
 Route::get('/search', [MainController::class, 'search'])->name('search');
-Route::view('/submit-your-article', 'user.pages.submit_articles', ['journals' => Journal::all()]);
+Route::get('/submit-your-article', [ArticleController::class, 'submitArticle']);
 
 Route::post('/form-submission', [MainController::class, 'sendEmail'])->name('send.email');
 Route::post('/article-submission', [MainController::class, 'sendArticleEmail'])->name('send.articlemail');
-Route::get('/publication/journal/{id}/{code}', [ArticleController::class, 'article']);
-Route::view('/thank-you', 'user.pages.thanku');
+Route::get('/publication/journal/{id}/{code}', [MainController::class, 'article']);
+Route::view('/thank-you', 'user.pages.thanku')->name('thank.u');
 Route::get('/journal/{journal_name}/join-board', [MainController::class, 'join_board']);
 Route::post('/joinboard', [MainController::class, 'sendBoardEmail'])->name('send.joinboard');
 Route::get('/submit-manuscripts', [SubmissionController::class, 'create'])->name('submit.manuscript');
@@ -110,15 +113,14 @@ Route::post('/resend-verify-email', [AuthController::class, 'resend'])->name('re
 
 Route::view('/test', 'mail.send-verification-mail');
 
+Route::get('/get-download-count', [CustomService::class, 'getDownloadCount'])->name('get.download.count');
+Route::get('/increase-download-count', [CustomService::class, 'increaseDownloadCount'])->name('increase.download.count');
+
+Route::get('/lp', [ArticleController::class, 'lpView']);
+Route::post('/submit-lp', [ArticleController::class, 'submitLp'])->name('submit.lp');
 
 
-
-
-
-
-
-
-
-
+Route::get('/article/{id}/increment-view', [ArticleController::class, 'incrementView'])->name('article.incrementView');
+Route::get('/editorial/member/update-order', [JournalBoardMemberController::class, 'updateOrder'])->name('editorial.member.updateOrder');
 
 require __DIR__ . '/admin.php';

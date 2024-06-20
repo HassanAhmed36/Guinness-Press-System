@@ -16,6 +16,7 @@
         <meta property="og:site_name" content="https://guinnesspress.org/">
         <meta name="citation_title" content="@yield('title')">
         @yield('citation_author')
+        @yield('meta_tags')
         <meta name="citation_publication_date" content="@yield('citation_publication_date')">
         <meta name="citation_year" content="@yield('citation_year')">
         <meta name="citation_journal_title" content="@yield('journal_title')">

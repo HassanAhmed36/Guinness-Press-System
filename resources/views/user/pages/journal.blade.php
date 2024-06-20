@@ -27,94 +27,7 @@
             </div>
         </div>
     </section>
-    <section class="slider_bar">
-        <div class="slider_bar_header">
-            <h3>INDEXING BODIES</h3>
-        </div>
-        <div class="owl-carousel" id="slider_1">
-            <div class="item">
-                <a href="https://www.doi.org/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_1.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.researchgate.net/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_2.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.crossref.org/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_3.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.dimensions.ai/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_4.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.academia.edu/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_5.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.mendeley.com/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_6.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://scholar.google.com/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_7.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.crossref.org/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_8.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://jgateplus.com/home/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_9.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://europub.co.uk/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_10.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.semanticscholar.org/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_11.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.lens.org/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_12.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.scilit.net/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_13.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://discovery.researcher.life/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_14.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://ouci.dntb.gov.ua/en/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_15.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.connectedpapers.com/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_16.png" class="img-fluid">
-                </a>
-            </div>
 
-        </div>
-    </section>
 @endsection
 @section('body')
     <section class="journal_sections">
@@ -122,98 +35,15 @@
             <div class="row">
                 <div class="col-md-4 filter_box">
                     <h3>INDEXING BODIES</h3>
-                    <div class="indexings">
-                        <ul>
-                            <li>
-                                <a href="https://www.doi.org/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_1.png" class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.researchgate.net/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_2.png" class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.crossref.org/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_3.png" class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.dimensions.ai/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_4.png" class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.academia.edu/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_5.png" class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.mendeley.com/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_6.png" class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://scholar.google.com/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_7.png"
-                                        class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.crossref.org/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_8.png"
-                                        class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://jgateplus.com/home/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_9.png"
-                                        class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://europub.co.uk/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_10.png"
-                                        class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.semanticscholar.org/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_11.png"
-                                        class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.lens.org/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_12.png"
-                                        class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.scilit.net/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_13.png"
-                                        class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://discovery.researcher.life/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_14.png"
-                                        class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://ouci.dntb.gov.ua/en/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_15.png"
-                                        class="img-fluid">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.connectedpapers.com/">
-                                    <img src="https://www.guinnesspress.org/lp/assets/images/index_16.png"
-                                        class="img-fluid">
-                                </a>
-                            </li>
+                    <div class="">
+                        <ul class="row mt-5">
+                            @foreach ($indexing_bodies as $i)
+                                <li class="mb-2 {{ $loop->last ? 'col-lg-12 text-center' : 'col-lg-4 ' }}">
+                                    <a href="{{ $i->link }}"> <img src="{{ asset($i->image) }}" class="img-fluid"
+                                            alt="Index Body Image">
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -237,8 +67,7 @@
                                                 <li>
                                                     <a
                                                         href="{{ url('/publication/journal', ['journal_name' => $j->acronym]) }}">
-                                                        <img src="{{ asset($j->image) }}" class="img-fluid"
-                                                            alt="">
+                                                        <img src="{{ asset($j->image) }}" class="img-fluid" alt="">
                                                     </a>
                                                 </li>
                                                 <li>

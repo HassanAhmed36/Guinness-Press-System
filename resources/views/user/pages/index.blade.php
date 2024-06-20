@@ -1,8 +1,7 @@
 @extends('user.layouts.template')
 @section('title', 'Guinness Press: Peer-Reviewed Journals for Research Papers')
 @section('keywords', 'peer reviewed journals, peer reviewed academic journal, journals to publish research papers')
-@section('description',
-    'Discover trusted peer-reviewed academic journals at Guinness Press. Submit your research for
+@section('description', 'Discover trusted peer-reviewed academic journals at Guinness Press. Submit your research for
     scholarly recognition. Join us in advancing knowledge.')
 @section('banner')
     <section class="main_banner">
