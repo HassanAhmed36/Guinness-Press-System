@@ -123,4 +123,9 @@ Route::post('/submit-lp', [ArticleController::class, 'submitLp'])->name('submit.
 Route::get('/article/{id}/increment-view', [ArticleController::class, 'incrementView'])->name('article.incrementView');
 Route::get('/editorial/member/update-order', [JournalBoardMemberController::class, 'updateOrder'])->name('editorial.member.updateOrder');
 
+Route::get('articles/{id}/citation/bib', [CustomService::class, 'downloadBibCitation'])->name('articles.citation.bib');
+Route::get('articles/{id}/citation/ris', [CustomService::class, 'downloadRisCitation'])->name('articles.citation.ris');
+Route::get('articles/{article}/citation/txt', [CustomService::class, 'downloadTxt'])->name('articles.citation.txt');
+
+
 require __DIR__ . '/admin.php';

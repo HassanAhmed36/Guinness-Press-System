@@ -47,12 +47,7 @@ class Article extends Model
     {
         return $this->hasMany(ArticleKeyword::class, 'article_id');
     }
-
-    public function author(): HasMany
-    {
-        return $this->hasMany(Author::class, 'article_id');
-    }
-
+    
     public function article_details()
     {
         return $this->hasOne(ArticleDetail::class, 'article_id');

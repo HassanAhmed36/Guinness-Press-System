@@ -434,7 +434,23 @@
                                                 <ul class="search-results">
                                                     <li>
                                                         <div class="article-titles">
-                                                            <h2>To cite this article</h2>
+                                                            <div class="d-flex align-items-center gap-4 mb-4">
+                                                                <div>
+                                                                    <h4>To cite this article</h4>
+                                                                </div>
+                                                                <div>
+                                                                    <span> <a
+                                                                            href="{{ route('articles.citation.bib', ['id' => $article->id]) }}">Download Bip</a></span>
+                                                                    |
+                                                                    <span> <a
+                                                                            href="{{ route('articles.citation.ris', ['id' => $article->id]) }}">Dwonload
+                                                                            Ris</a></span>
+                                                                    |
+                                                                    <span><a
+                                                                            href="{{ route('articles.citation.txt', ['article' => $article]) }}">Download
+                                                                            TXT</a></span>
+                                                                </div>
+                                                            </div>
                                                             <p>
                                                                 <span class="author_name">
                                                                     @foreach ($article->article_details->authors as $index => $author)
