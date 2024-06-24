@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('submissions', function (Blueprint $table) {
+        Schema::create('peer_review_feedback', function (Blueprint $table) {
             $table->id();
-            $table->string('manuscript_id')->unique();
-            $table->integer('status')->default(0);
-            $table->longText('initial_feedback')->nullable();
-            $table->foreignId('journal_id')->constrained('journals')->cascadeOnDelete();
+            $table->longText('feedback_message')->nullable();
+            $table->foreignId('submission_file_id')->constrained('submission_files')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('submissions');
+        Schema::dropIfExists('peer_review_feedback');
     }
 };

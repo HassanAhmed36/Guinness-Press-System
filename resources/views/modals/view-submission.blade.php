@@ -19,37 +19,22 @@
 </div>
 <div class="mb-3  border-light-subtle pb-1 poppins_fonts">
     <h5 class="mb-4">Author Files</h5>
-    <div class="mb-2 border rounded-2">
-        <div class="w-100 p-2 d-flex justify-content-between">
-            <div>manuscript: <strong>{{ $submission->manuscript_name }}</strong></div>
-            <div>
-                <a href="{{ asset($submission->manuscript_path) }}" download="{{ $submission->manuscript_name }}"
-                    class="btn btn-light btn-sm ">
-                    <i class="bi bi-download me-2"></i> Download
-                </a>
-                <a href="{{ asset($submission->manuscript_path) }}" target="_blank" class="btn btn-light btn-sm ">
-                    <i class="bi bi-eye me-2"></i> View
-                </a>
-            </div>
-        </div>
-    </div>
-    @if ($submission->cover_letter_name)
-        <div class="mb-2 border rounded-2 poppins_fonts">
+    @foreach ($submission->submission_files as $file)
+        <div class="mb-2 border rounded-2">
             <div class="w-100 p-2 d-flex justify-content-between">
-                <div>Cover letter: <strong>{{ $submission->cover_letter_name }}</strong></div>
+                <div>manuscript: <strong>{{ $file->file_name }}</strong></div>
                 <div>
-                    <a href="{{ asset($submission->cover_letter_path) }}"
-                        download="{{ $submission->cover_letter_name }}" class="btn btn-light btn-sm">
-                        <i class="bi bi-download">download</i>
+                    <a href="{{ asset($file->file_path) }}" download="{{ $file->file_name }}"
+                        class="btn btn-light btn-sm ">
+                        <i class="bi bi-download me-2"></i> Download
                     </a>
-                    <a href="{{ asset($submission->cover_letter_path) }}" target="_blank" class="btn btn-light btn-sm">
-                        <i class="bi bi-eye"></i> View
+                    <a href="{{ asset($file->file_path) }}" target="_blank" class="btn btn-light btn-sm ">
+                        <i class="bi bi-eye me-2"></i> View
                     </a>
                 </div>
             </div>
         </div>
-    @endif
-
+    @endforeach
 </div>
 @if ($submission->admin_message)
     <div class="mb-3 ">

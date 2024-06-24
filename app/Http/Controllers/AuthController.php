@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SendVerificationMail;
+use App\Mail\SubmissionNotifyOwn;
+use App\Mail\SubmissionThankyou;
 use App\Models\Submission;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -60,6 +62,7 @@ class AuthController extends Controller
         ]);
 
         session()->forget('user_id');
+   
         Auth::login($user);
         return redirect('/');
     }

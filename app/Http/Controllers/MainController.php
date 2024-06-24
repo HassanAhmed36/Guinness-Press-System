@@ -288,19 +288,22 @@ class MainController extends Controller
         return view('front-end/dashboard', compact('data', 'subcategories'));
     }
 
-    public function journal_issue($id, $issue, $issue_no)
+     public function journal_issue($id, $issue, $issue_no)
     {
-        $journal = Journal::with(['volume' => function ($query) use ($issue_no) {
-            $query->whereHas('issue', function ($query) use ($issue_no) {
-                $query->where('issue_id', $issue_no);
+        $journal = Journal::withWhereHas('volume', function ($q) use ($issue_no) {
+            $q->withWhereHas('issue', function ($q) use ($issue_no) {
+                $q->where('issue_id', $issue_no);
             });
-        }, 'volume.issue' => function ($query) use ($issue_no) {
-            $query->where('issue_id', $issue_no);
-        }])->whereHas('volume.issue', function ($query) use ($issue_no) {
-            $query->where('issue_id', $issue_no);
-        })->first();
+        })->where('acronym', $id)->first();
         $volume_id = $journal->volume->first()->id;
-        $articles = Article::with('article_details', 'journal')->where('volume_id', $volume_id)->where('journal_id', $journal->id)->get();
+        $issue_id = $journal->volume->first()->issue->first()->id;
+        $articles = Article::with('article_details', 'journal')
+            ->where('volume_id', $volume_id)
+            ->where('issue_id', $issue_id)
+            ->where(
+                'journal_id',
+                $journal->id
+            )->get();
         return view('user.pages.issue', compact('journal', 'articles'));
     }
 

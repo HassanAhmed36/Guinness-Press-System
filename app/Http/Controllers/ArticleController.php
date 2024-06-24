@@ -54,7 +54,7 @@ class ArticleController extends Controller
         return redirect('/thank-you');
     }
 
-    private function create_menuscript_id()
+    private function create_manuscript_id()
     {
         $lastSubmission = Submission::orderByDesc('id')->first();
         $id = $lastSubmission ? $lastSubmission->id + 1 : 1;

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SendVerificationMail;
+use App\Mail\SubmissionNotifyOwn;
+use App\Mail\SubmissionThankyou;
 use App\Models\Journal;
 use App\Models\Submission;
+use App\Models\SubmissionFile;
 use App\Models\SubmissionKeyword;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,9 +26,19 @@ class SubmissionController extends Controller
 
     public function index()
     {
-        $submissions = Submission::with(['user', 'submision_keywords'])->where('user_id', Auth::id())->paginate(10);
+        if (!Auth::check()) {
+            return back();
+        }
+
+        $submissions = Submission::with(['user', 'submission_files' => function ($q) {
+            $q->latest();
+        }])
+            ->where('user_id', Auth::id())
+            ->paginate(10);
+
         return view('user.pages.our-submission', compact('submissions'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -34,7 +47,7 @@ class SubmissionController extends Controller
     {
         return view('user.pages.submission', [
             'journals' => Journal::all(),
-            'menuscript_id' => $this->create_menuscript_id()
+            'manuscript_id' => $this->create_manuscript_id()
         ]);
     }
 
@@ -45,10 +58,6 @@ class SubmissionController extends Controller
     {
         DB::beginTransaction();
         try {
-            $name = uniqid() . '.' . $request->manuscript->getClientOriginalExtension();
-            $manuscript_name = $request->manuscript->getClientOriginalName();
-            $request->manuscript->move(public_path('manuscripts/'), $name);
-            $manuscript_path = 'manuscripts/' . $name;
             if (User::where('email', $request->email_address)->exists()) {
                 $user  = User::where('email', $request->email_address)->first();
             } else {
@@ -66,18 +75,26 @@ class SubmissionController extends Controller
                     ]);
                 }
             }
-
             $submission = Submission::create([
-                'menuscript_id' => $this->create_menuscript_id(),
+                'manuscript_id' => $this->create_manuscript_id(),
                 'journal_id' => $request->journal_id,
-                'manuscript_name' => $manuscript_name,
-                'manuscript_path' => $manuscript_path,
-                'admin_message' => null,
-                'admin_status' => 0,
+                'initial_feedback' => null,
+                'status' => 0,
                 'user_id' => $user->id,
             ]);
+            if ($request->manuscript) {
+                $name = $request->file('manuscript')->getClientOriginalName();
+                $path = 'storage/' . $request->file('manuscript')->store('manuscripts', 'public');
+                SubmissionFile::create([
+                    'file_name' => $name,
+                    'file_path' => $path,
+                    'submission_id' => $submission->id,
+                ]);
+            }
             session()->put('user_id', $user->id);
             DB::commit();
+            Mail::to($user->email)->send(new SubmissionThankyou());
+            Mail::to('developertesting132@gmail.com')->send(new SubmissionNotifyOwn($submission , $user));
             if (!Auth::check()) {
                 Mail::to($user->email)->send(new SendVerificationMail($user));
                 return redirect()->route('after.verify.email')->with('success', 'Verification email sent successfully. Please check your inbox and verify your email address.');
@@ -95,7 +112,7 @@ class SubmissionController extends Controller
      */
     public function show(Request $request)
     {
-        $submission =  Submission::with('submision_keywords')->find($request->id);
+        $submission =  Submission::find($request->id);
         return view('modals.view-submission', compact('submission'))->render();
     }
 
@@ -158,7 +175,7 @@ class SubmissionController extends Controller
         //
     }
 
-    private function create_menuscript_id()
+    private function create_manuscript_id()
     {
         $lastSubmission = Submission::orderByDesc('id')->first();
         $id = $lastSubmission ? $lastSubmission->id + 1 : 1;

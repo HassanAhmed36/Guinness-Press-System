@@ -148,10 +148,9 @@
                 });
             });
 
-
             $('#datatable').DataTable();
             $('#responsive-datatable').DataTable();
-        })
+        });
     </script>
 
     @if (session('success'))

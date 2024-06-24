@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('last_page');
             $table->string('article_type')->nullable();
             $table->date('recived_date')->nullable();
-            $table->date('revised_date')->nullable();  // Corrected from `data` to `date`
-            $table->date('accepted_date')->nullable(); // Changed to `date` for consistency
-            $table->date('published_date')->nullable(); // Changed to `date` for consistency
+            $table->date('revised_date')->nullable();  
+            $table->date('accepted_date')->nullable(); 
+            $table->date('published_date')->nullable(); 
             $table->string('dio');
             $table->integer('views_count')->default(0);
             $table->integer('download_count')->default(0);

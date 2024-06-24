@@ -32,28 +32,20 @@
                                 @foreach ($submissions as $s)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $s->menuscript_id }}</td>
+                                        <td>{{ $s->manuscript_id }}</td>
                                         <td>{{ $s->journal->name }}</td>
                                         <td>{!! $s->user->email ?? '<span class="badge badge-warning">Guest User</span>' !!}</td>
                                         <td>{{ $s->admin_status == 0 ? 'submitted' : ($s->admin_status == 1 ? 'approved' : 'rejected') }}
                                         </td>
                                         <td>{{ $s->submission_type == true ? 'website' : 'landing page' }}</td>
                                         <td>
-                                            <button class="btn btn-warning btn-sm edit-btn" data-bs-toggle="modal"
-                                                data-bs-target="#editModal" data-id="{{ $s->id }}">
+                                            <a href="{{ route('admin.submission.show', ['id' => $s->id]) }}"
+                                                class="btn btn-primary btn-sm ">
                                                 <i class="fa fa-eye"></i>
-                                            </button>
-                                            <button class="btn btn-success btn-sm approve-btn" data-bs-toggle="modal"
-                                                data-bs-target="#approveModal" data-id="{{ $s->id }}">
-                                                <i class="fa fa-check"></i>
-                                            </button>
-                                            <button class="btn btn-danger btn-sm reject-btn" data-bs-toggle="modal"
-                                                data-bs-target="#rejectModal" data-id="{{ $s->id }}">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                            <a href="{{ asset($s->manuscript_path) }}" target="_blank"
-                                                class="btn btn-info btn-sm" download="{{ $s->manuscript_name }}">
-                                                <i class="fa fa-download"></i>
+                                            </a>
+                                            <a href="{{ route('admin.submission.delete', ['id' => $s->id]) }}"
+                                                class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
                                     </tr>

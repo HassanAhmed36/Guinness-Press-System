@@ -58,7 +58,7 @@
         </div>
         <div class="content">
             <p>Hello,</p>
-            <p>Your manuscript ID <strong>{{ $submission->menuscript_id }}</strong> has been approved for future updates
+            <p>Your manuscript ID <strong>{{ $submission->manuscript_id }}</strong> has been approved for future updates
                 and APC payment. Check our website for further details.</p>
             <p>If you have any questions, please feel free to contact us.</p>
             <p>Best regards,<br>The Guinness Press Team</p>

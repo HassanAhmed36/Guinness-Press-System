@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('submission_keywords', function (Blueprint $table) {
+        Schema::create('initial_feed_backs', function (Blueprint $table) {
             $table->id();
-            $table->string('keyword');
-            $table->foreignId('submission_id')->nullable()->constrained('submissions');
+            $table->boolean('initial_status')->default(true);
+            $table->longText('feedback_message');
+            $table->foreignId('submission_file_id')->constrained('submission_files')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('submission_keywords');
+        Schema::dropIfExists('initial_feed_backs');
     }
 };

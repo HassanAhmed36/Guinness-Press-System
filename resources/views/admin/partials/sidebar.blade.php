@@ -100,6 +100,7 @@
                 </a>
                 <ul class="slide-menu">
                     <li><a href="{{ route('index.body.index') }}" class="slide-item">Index Bodies</a></li>
+                    <li><a href="{{ route('reference.generator') }}" class="slide-item">Refercence genrator</a></li>
                 </ul>
             </li>
         </ul>

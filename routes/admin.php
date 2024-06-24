@@ -76,6 +76,9 @@ Route::prefix('/admin')->group(function () {
         Route::post('/admin-reject-submission/{id}', [SubmissionController::class, 'rejectSubmission'])->name('admin.reject.submission');
 
         Route::get('/submissions', [SubmissionController::class, 'index'])->name('admin.submission.index');
+        Route::get('/submission-delete/{id}', [SubmissionController::class, 'destroy'])->name('admin.submission.delete');
+        Route::get('/submission-show/{id}', [SubmissionController::class, 'show'])->name('admin.submission.show');
+        Route::post('/update-initial-feedback-article', [SubmissionController::class, 'updateInitialFeedback'])->name('update.initial.feedback.article');
 
         Route::get('/users', [UserController::class, 'index'])->name('admin.user.index');
         Route::post('/store-users', [UserController::class, 'store'])->name('admin.user.store');
@@ -90,6 +93,9 @@ Route::prefix('/admin')->group(function () {
         Route::get('/index-bodies-edit', [IndexBodyController::class, 'edit'])->name('index.body.edit');
         Route::post('/index-bodies-update/{id}', [IndexBodyController::class, 'update'])->name('index.body.update');
         Route::get('/index-bodies-delete/{id}', [IndexBodyController::class, 'destroy'])->name('index.body.destroy');
+
+
+        Route::view('/references-generator', 'admin.refrences.index')->name('reference.generator');
 
         Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });

@@ -47,7 +47,7 @@ class Article extends Model
     {
         return $this->hasMany(ArticleKeyword::class, 'article_id');
     }
-    
+
     public function article_details()
     {
         return $this->hasOne(ArticleDetail::class, 'article_id');
@@ -55,7 +55,7 @@ class Article extends Model
 
     public function volume()
     {
-        return $this->belongsTo(JournalVolume::class, 'journal_id');
+        return $this->belongsTo(JournalVolume::class, 'volume_id');
     }
 
     public function affiliation(): HasMany

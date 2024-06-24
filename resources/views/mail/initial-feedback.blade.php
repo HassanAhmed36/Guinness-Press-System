@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reject Email</title>
+    <title>Iinitial Feedback Revied</title>
     <style>
         .container {
             width: 100%;
@@ -34,7 +34,6 @@
         .content p {
             margin: 0 0 10px;
             line-height: 1.6;
-            font-size: 14px;
         }
 
         .button {
@@ -54,16 +53,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Submission Reject</h1>
+            <h1>Initial Feedback Received</h1>
         </div>
-        <div class="content">
-            <p>Hello,</p>
-            <p>Your manuscript ID <strong>{{ $submission->manuscript_id }}</strong> has been rejected. Check the review
-                message our website</p>
-            <p>If you have any questions, please feel free to contact us.</p>
-            <p>Best regards,<br>The Guinness Press Team</p>
+        <div class="content" style="font-size: 15px">
+            {{ $data['message'] }}
         </div>
-
     </div>
 </body>
 

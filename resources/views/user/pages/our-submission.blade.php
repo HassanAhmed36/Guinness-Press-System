@@ -22,7 +22,7 @@
                                 <tr>
                                     <td class="w-50">
                                         <span class="my-0"><span class="fw-semibold "> MenuScript ID:</span>
-                                            {{ $submission->menuscript_id }}</span><br>
+                                            {{ $submission->manuscript_id }}</span><br>
                                     </td>
                                     @if (Auth::user()->role_id == 2)
                                         <td>{{ $submission->reviewer_status == 0 ? 'Submitted' : ($submission->reviewer_status == 1 ? 'Approved' : 'Rejected') }}

@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-4 mb-4">
                         <label for="" class="form-label">Manuscript ID</label>
-                        <input type="text" class="form-control bg-light " value="{{ $menuscript_id }}" readonly>
+                        <input type="text" class="form-control bg-light " value="{{ $manuscript_id }}" readonly>
                         @error('title')
                         <div class="invalid-feedback"> {{ $message }} </div>
                         @enderror

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reject Email</title>
+    <title>Submission Thank You</title>
     <style>
         .container {
             width: 100%;
@@ -18,7 +18,6 @@
         }
 
         .header {
-            /* text-align: center; */
             padding: 20px;
         }
 
@@ -34,13 +33,11 @@
         .content p {
             margin: 0 0 10px;
             line-height: 1.6;
-            font-size: 14px;
         }
 
         .button {
             display: block;
             width: fit-content;
-            /* margin: 20px auto; */
             padding: 10px 20px;
             background-color: #000000;
             color: #ffffff;
@@ -54,17 +51,14 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Submission Reject</h1>
-        </div>
+            <h1>Thanks For Your Submission</h1>
+        </div>  
         <div class="content">
-            <p>Hello,</p>
-            <p>Your manuscript ID <strong>{{ $submission->manuscript_id }}</strong> has been rejected. Check the review
-                message our website</p>
-            <p>If you have any questions, please feel free to contact us.</p>
-            <p>Best regards,<br>The Guinness Press Team</p>
+            <p style="margin-bottom: 20px">Thank you for submitting your work. We appreciate your contribution!</p>
+            <p>To track the progress of your submission, please log in to your account.</p>
+            <p>If you have any questions or need further assistance, feel free to contact us.</p>
+            <a href="{{ url('/user-login') }}" class="button">Log In to Your Account</a>
         </div>
-
     </div>
 </body>
-
 </html>

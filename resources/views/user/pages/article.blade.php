@@ -1,14 +1,15 @@
 @extends('user.layouts.article-template')
 @section('title', $article->title)
-@section('description', $article->description)
 @php
     $keywords = $article->keywords->pluck('keyword')->implode(', ');
+    $cleanAbstract = html_entity_decode(strip_tags($article->article_details->abstract));
 @endphp
+@section('description', $cleanAbstract)
 @section('keywords', $keywords)
-@section('journal_image', $article->journal->image)
+@section('journal_image', url($article->journal->image))
 @section('citation_publication_date', $article->published_date)
 @section('citation_year', \Carbon\Carbon::parse($article->published_date)->format('Y'))
-@section('citation_journal_title', $article->journal->title)
+@section('journal_title', $article->journal->name)
 @section('articledoi', $article->dio)
 @section('issn', $article->journal->issn_no)
 @section('meta_tags')
@@ -19,9 +20,25 @@
     <meta name="citation_lastpage" content="{{ $article->last_page }}">
     <meta name="citation_volume" content="{{ $article->volume->name }}">
     <meta name="citation_issue" content="{{ $article->issue->name }}">
-    <meta name="citation_abstract" content="{{ $article->article_details->abstract }}">
-    <meta name="copyright"
-        content="Copyright: © 2024 (corresponding author) et al. This is an open access article distributed under the terms of the Creative Commons Attribution License (CC BY 4.0 License), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and publisher are credited.">
+    <meta name="citation_abstract" content="{{ $cleanAbstract }}">
+    <meta name="copyright" content="Copyright: © 2024 (corresponding author) et al. This is an open access article distributed under the terms of the Creative Commons Attribution License (CC BY 4.0 License), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and publisher are credited.">
+    <meta name="dc.title" content="{{ $article->title }}">
+    @foreach ($article->article_details->authors as $author)
+        <meta name="dc.creator" content="{{ $author['firstname'] }} {{ $author['lastname'] }}">
+    @endforeach
+    <meta name="dc.type" content="Article">
+    <meta name="dc.source"
+        content="{{ $article->journal->name }} {{ \Carbon\Carbon::parse($article->published_date)->format('Y') }} , Vol. {{ $article->volume->name }}, Page {{ $article->first_page }} - {{ $article->last_page }}">
+    <meta name="dc.date" content="{{ $article->published_date }}">
+    <meta name ="dc.identifier" content="{{ $article->dio }}">
+    <meta name="dc.publisher" content="Guinness Press">
+    <meta name="dc.rights" content="http://creativecommons.org/licenses/by/4.0/">
+    <meta name="dc.format" content="application/pdf">
+    <meta name="dc.language" content="en">
+    <meta name="dc.description" content="{{ $cleanAbstract }}">
+    @foreach ($article->keywords as $keyword)
+        <meta name="dc.subject" content="{{ trim($keyword->keyword) }}">
+    @endforeach
 @endsection
 @section('banner')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

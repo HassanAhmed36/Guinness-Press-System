@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use App\Http\Requests\UpdateArticle;
+use App\Http\Requests\UpdateArticlRequest;
 use App\Models\Affiliation;
 use App\Models\Article;
 use App\Models\ArticleDetail;
@@ -180,7 +181,7 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateArticle $request, $id)
+    public function update(UpdateArticlRequest $request, $id)
     {
 
         $affiliation_array = [];

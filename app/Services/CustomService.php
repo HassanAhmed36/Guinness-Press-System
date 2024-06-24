@@ -56,109 +56,43 @@ class CustomService
         $article->increment('download_count');
         return $article->download_count;
     }
-
-    public function downloadBibCitation($id)
+    public static function getAdminStatus(int $status)
     {
-        $article = Article::with('journal', 'issue', 'volume', 'article_details')->findOrFail($id);
-        $bibContent = $this->generateBibCitation($article);
+        switch ($status) {
+            case 0:
+                return 'Submitted';
+                break;
+            case 1:
+                return 'Initial Q/A Approved';
+                break;
+            case 2:
+                return 'Initial Q/A Rejected';
+                break;
+            case 3:
+                return 'Pending (Paid)';
+                break;
+            case 4:
+                return 'Pending (Un Paid)';
+                break;
+            case 5:
+                return 'Peer Review';
+                break;
+            case 6:
+                return 'Peer Review Accepted';
+                break;
+            case 7:
+                return 'Peer Review Rejected';
+                break;
+            case 8:
+                return 'Approved (Not Published)';
+                break;
+            case 9:
+                return 'Published';
+                break;
 
-        return Response::make($bibContent, 200, [
-            'Content-Type' => 'application/x-bibtex',
-            'Content-Disposition' => 'attachment; filename="citation.bib"',
-        ]);
-    }
-
-    public function downloadRisCitation($id)
-    {
-        $article = Article::with('journal', 'issue', 'volume',  'article_details')->findOrFail($id);
-        $risContent = $this->generateRisCitation($article);
-
-        return Response::make($risContent, 200, [
-            'Content-Type' => 'application/x-research-info-systems',
-            'Content-Disposition' => 'attachment; filename="citation.ris"',
-        ]);
-    }
-
-
-    private function generateBibCitation(Article $article)
-    {
-        $authors = collect($article->article_details->authors)->map(function ($author) {
-            return $author['lastname'] . ', ' . $author['firstname'];
-        })->join(' and ');
-
-        // Strip HTML tags from the abstract
-        $abstract = strip_tags($article->article_details->abstract);
-
-        return "@Article{" . $article->article_code . ",
-AUTHOR = {" . $authors . "},
-TITLE = {" . $article->title . "},
-JOURNAL = {" . $article->journal->name . "},
-VOLUME = {" . $article->volume->name . "},
-YEAR = {" . Carbon::parse($article->published_date)->format('Y') . "},
-NUMBER = {" . $article->issue->name . "},
-ARTICLE-NUMBER = {" . $article->article_code . "},
-URL = {" . URL::to('/publication/journal/' . $article->journal->acronym . '/' . $article->article_code) . "},
-ISSN = {" . $article->journal->issn_no . "},
-ABSTRACT = {" . $abstract . "},
-DOI = {" . $article->dio . "}
-}";
-    }
-
-    private function generateRisCitation(Article $article)
-    {
-        // Convert authors array to collection and format them correctly
-        $authors = collect($article->article_details->authors)->map(function ($author) {
-            return "AU  - " . $author['lastname'] . ", " . $author['firstname'];
-        })->join("\n");
-
-        // Strip HTML tags from the abstract
-        $abstract = strip_tags($article->article_details->abstract);
-
-        return "TY  - EJOUR
-" . $authors . "
-TI  - " . $article->title . "
-T2  - " . $article->journal->name . "
-PY  - " . Carbon::parse($article->published_date)->format('Y') . "
-VL  - " . $article->volume->name . "
-IS  - " . $article->issue->name . "
-SN  - " . $article->journal->issn_no . "
-AB  - " . $abstract . "
-KW  - " . $article->keywords->pluck('keyword')->join('; ') . "
-DO  - " . $article->dio . "
-UR  - " . URL::to('/publication/journal/' . $article->journal->acronym . '/' . $article->article_code) . "
-ER  -";
-    }
-
-    public function downloadTxt(Article $article)
-    {
-        $citation = $this->generateTxtCitation($article);
-        $fileName = $article->article_code . '.txt';
-
-        return Response::make($citation, 200, [
-            'Content-Type' => 'text/plain',
-            'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
-        ]);
-    }
-
-    private function generateTxtCitation(Article $article)
-    {
-        $authors = collect($article->article_details->authors)->map(function ($author) {
-            return $author['lastname'] . ', ' . $author['firstname'];
-        })->join('; ');
-
-        $abstract = strip_tags($article->article_details->abstract);
-
-        return "Article Code: " . $article->article_code . "\n" .
-               "Authors: " . $authors . "\n" .
-               "Title: " . $article->title . "\n" .
-               "Journal: " . $article->journal->name . "\n" .
-               "Volume: " . $article->volume->name . "\n" .
-               "Year: " . Carbon::parse($article->published_date)->format('Y') . "\n" .
-               "Issue: " . $article->issue->name . "\n" .
-               "Article Number: " . $article->article_code . "\n" .
-               "URL: " . URL::to('/publication/journal/' . $article->journal->acronym . '/' . $article->article_code) . "\n" .
-               "ISSN: " . $article->journal->issn_no . "\n" .
-               "Abstract: " . $abstract . "\n" .
-               "DOI: " . $article->dio . "\n";
+            default:
+                return "";
+                break;
+        }
     }
 }

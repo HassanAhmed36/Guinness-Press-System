@@ -72,4 +72,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(UserBasicInfo::class, 'user_id');
     }
+
+    public static function booted()
+    {
+        static::deleting(function ($user) {
+            $user->submissions->each(function ($submission) {
+                $submission->delete();
+            });
+        });
+    }
 }
