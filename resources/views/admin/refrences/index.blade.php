@@ -44,13 +44,12 @@
                     var updatedReference = reference;
                     var links = '';
 
-                    // Handle the extraction and formatting for Google Scholar
                     var match = reference.match(regex);
                     if (match) {
                         var extractedString = match[1] ? match[1].trim() : match[2].trim();
                         var formattedString = extractedString.replace(/[^\w\s]/gi, '').replace(/\s+/g, '+');
                         var googleScholarLink = `https://scholar.google.com/scholar_lookup?title=${formattedString}`;
-                        links += `<a class="btn btn-sm btn-primary my-3" href="${googleScholarLink}" style="color: blue;" target="_blank">google scholar link</a>`;
+                        links += `<a class="btn btn-sm btn-primary my-3 text-white" href="${googleScholarLink}" target="_blank">google scholar link</a>`;
                     }
 
                     // Handle DOI links
@@ -58,7 +57,7 @@
                     if (doiMatch) {
                         doiMatch.forEach(function(doi) {
                             var cleanedDoi = doi.replace(/\s+/g, '');
-                            var clickableDoi = `<a href="${cleanedDoi}" target="_blank" class="btn btn-sm btn-primary my-3">crossref link</a>`;
+                            var clickableDoi = `<a href="${cleanedDoi}" target="_blank" class="btn btn-sm btn-primary my-3 text-white">crossref link</a>`;
                             links += ` ${clickableDoi}`;
                         });
                     }

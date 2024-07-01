@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Iinitial Feedback Revied</title>
+    <title>Submission Status Update</title>
     <style>
         .container {
             width: 100%;
@@ -18,7 +18,6 @@
         }
 
         .header {
-            /* text-align: center; */
             padding: 20px;
         }
 
@@ -39,7 +38,6 @@
         .button {
             display: block;
             width: fit-content;
-            /* margin: 20px auto; */
             padding: 10px 20px;
             background-color: #000000;
             color: #ffffff;
@@ -53,10 +51,16 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Initial Feedback Received</h1>
+            <h1>Guinness Press Submission Update</h1>
         </div>
-        <div class="content" style="font-size: 15px">
-            {{ $data['message'] }}
+        <div class="content">
+            <p>Hello,</p>
+            <p><strong>Submission Title:</strong> {{ $submission->title }}</p>
+            <p><strong>Stage and Status:</strong> {{ $stage }} ({{ $status }})</p>
+            <p><strong>Feedback:</strong> {!! $feedback !!}</p>
+            <p>{!! $messageContent !!}</p>
+            <p>For further details, please review the feedback message by logging into your account at <a
+                    href="https://guinnesspress.org/">Guinness Press</a>.</p>
         </div>
     </div>
 </body>

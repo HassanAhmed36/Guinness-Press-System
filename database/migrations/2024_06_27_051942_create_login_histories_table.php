@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('initial_feed_backs', function (Blueprint $table) {
+        Schema::create('login_histories', function (Blueprint $table) {
             $table->id();
-            $table->boolean('initial_status')->default(true);
-            $table->longText('feedback_message');
-            $table->foreignId('submission_file_id')->constrained('submission_files')->onDelete('cascade');
+            $table->string('ip_address');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('initial_feed_backs');
+        Schema::dropIfExists('login_histories');
     }
 };

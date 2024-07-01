@@ -4,31 +4,45 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-
 
 class Submission extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'manuscript_id',
-        'status',
-        'initial_feedback',
-        'journal_id',
-        'user_id',
+        'submission_id',
+        'title',
+        'subtitle',
+        'abstract',
+        'references',
+        'current_status',
+        'current_stage',
+        'user_id'
     ];
-    public function user(): BelongsTo
+
+
+    public function files()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->hasMany(SubmissionFile::class);
     }
-    public function journal(): BelongsTo
+    
+    public function user()
     {
-        return $this->belongsTo(Journal::class, 'journal_id');
+        return $this->belongsTo(User::class);
     }
-    public function submission_files(): HasMany
+
+    public function keywords()
     {
-        return $this->hasMany(SubmissionFile::class, 'submission_id');
+        return $this->hasMany(SubmissionKeyword::class);
+    }
+
+    public function statusHistory()
+    {
+        return $this->hasMany(SubmissionStatusHistory::class);
+    }
+
+    public function authors()
+    {
+        return $this->hasMany(SubmissionAuthor::class);
     }
 }

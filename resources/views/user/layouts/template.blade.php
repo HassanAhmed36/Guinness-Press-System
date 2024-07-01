@@ -16,7 +16,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://guinnesspress.org/lp/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://guinnesspress.org/lp/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://guinnesspress.org/lp/favicon-16x16.png">
-    <link rel="manifest" href="https://guinnesspress.org/lp/site.webmanifest">
+    {{-- <link rel="manifest" href="https://guinnesspress.org/lp/site.webmanifest"> --}}
     <link rel="mask-icon" href="https://guinnesspress.org/lp/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="{{ asset('assets/owl-carousel/owl.theme.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Meta Pixel Code -->
     <script>
@@ -92,15 +93,13 @@
                     <div class="right_bar">
                         <ul class="top_contact top_contact_2 white_text poppins_fonts">
                             <li>
-                                <a href="{{ url('/submit-your-article') }}"
-                                    class="btn btn-light btn-blue red-btn">Submit your Article</a>
+                                <a href="{{ url('/submit-your-article') }}" class="btn  btn-danger ">Submit your
+                                    Article</a>
                                 @guest
-                                    <a href="{{ route('user.login') }}"
-                                        class="btn btn-light btn-blue red-btn mx-2">Login</a>
+                                    <a href="{{ route('user.login') }}" class="btn  btn-danger  mx-2">Login</a>
                                 @endguest
                                 @auth
-                                    <a href="{{ route('user.logout') }}"
-                                        class="btn btn-light btn-blue red-btn mx-2">Logout</a>
+                                    <a href="{{ route('user.logout') }}" class="btn btn-danger mx-2">Logout</a>
                                 @endauth
                             </li>
                         </ul>
@@ -639,6 +638,8 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
@@ -774,155 +775,12 @@
             });
         });
     </script>
-    <div style="display: none;" class="popupform submitArticlePopup" id="submitArticlePopup">
-        <div class="alert alert-success success-signup" role="alert" style="display:none">
-            Sent Successfully
-        </div>
-        <h2>Submit Your Article</h2>
-        <!--<p>Fill the below fields</p>-->
-        <form action="{{ route('send.articlemail') }}" method="POST" class="cmxform web-package-form"
-            id="articleSub_form" enctype="multipart/form-data">
-            @csrf
-            <div class="row">
-                <div class="col">
-                    <h4 class="fcol_head">Article Detail:</h4>
-                    <div class="row">
-                        <!--<div class="col">-->
-                        <!--   <ul>-->
-                        <!--      <li>-->
-                        <!--         <i class="fa fa-user" aria-hidden="true"></i>-->
-                        <!--         <input type="text" required placeholder="Manuscript Title *" id ="wnm" name="manuscript_title">-->
-                        <!--      </li>-->
-                        <!--   </ul>-->
-                        <!--</div>-->
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <ul>
-                                <li>
-                                    <!--<i class="fa fa-envelope" aria-hidden="true"></i>-->
-                                    <select name="journal" required placeholder="Journal *" id="sa_journal">
-                                        <option value="none" selected disabled hidden>Journal</option>
-                                        <option value="International Journal Of Empirical Research Methods">
-                                            International Journal Of Empirical Research Methods</option>
-                                        <option value="Journal Of Business Leadership And Management">Journal Of
-                                            Business Leadership And Management</option>
-                                        <option value="Cultural Landscape Insights">Cultural Landscape Insights
-                                        </option>
-                                        <option value="Current Integrative Engineering">Current Integrative Engineering
-                                        </option>
-                                        <option value="Sustainable Energy And Environment Review">Sustainable Energy
-                                            And Environment Review</option>
-                                        <option value="Recent Educational Research">Recent Educational Research
-                                        </option>
-                                        <option value="Pharmaceutical Breakthroughs">Pharmaceutical Breakthroughs
-                                        </option>
-                                        <option value="Medical Spectrum Review">Medical Spectrum Review</option>
-                                        <option value="Strategic Financial Review">Strategic Financial Review</option>
-                                        <option value="Advanced Chemistry Insights">Advanced Chemistry Insights
-                                        </option>
-                                    </select>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <ul>
-                                <li>
-                                    <!--<i class="fa fa-phone" aria-hidden="true"></i>-->
-                                    <!--<input type="file" id="inputArticle-files" hidden="hidden" multiple/>-->
-                                    <!--  <button type="button" id="articlesub-button">CHOOSE FILES</button>-->
-                                    <!--  <span id="articlesub-text">No file Selected.</span>-->
-                                    <label for="article_fileattachment">
-                                        <a class="btn btn-primary text-light articlesub-button" role="button"
-                                            id="articlesub-button" aria-disabled="false">Upload Your Manuscript</a>
-                                    </label>
-                                    <input type="file" required name="article_fileattachment[]"
-                                        accept=".png,.docx,jpeg,.pdf,.xlsx" id="article_fileattachment"
-                                        style="opacity: 0;" multiple max-size="2048" />
-                                    <div id="files-area">
-                                        <span id="filesList">
-                                            <span id="files-names"></span>
-                                        </span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <h4 class="fcol_head">Authors Detail:</h4>
-                    <div class="row">
-                        <div class="col">
-                            <ul>
-                                <li>
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <input type="text" required placeholder="Full Name *" id ="wnm"
-                                        name="author_name">
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col">
-                            <ul>
-                                <li>
-                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <input type="number" required minlength="10" required placeholder="Phone No. *"
-                                        id="wpn" name="author_number">
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <ul>
-                                <li>
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                    <input type="email" required placeholder="Email Address *" id="wem"
-                                        name="author_email">
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <ul>
-                                <li>
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <input type="text" required placeholder="Country *" id ="wnm"
-                                        name="author_country">
-                                </li>
-                            </ul>
-                        </div>
-                        <!--<div class="col">-->
-                        <!--   <ul>-->
-                        <!--      <li>-->
-                        <!--         <i class="fa fa-user" aria-hidden="true"></i>-->
-                        <!--         <input type="text" required placeholder="Affiliation *" id ="wnm" name="affiliation">-->
-                        <!--      </li>-->
-                        <!--   </ul>-->
-                        <!--</div>-->
-                    </div>
-                </div>
-            </div>
-            <div class="submit_button">
-                <ul>
-                    <li>
-                        <input type="submit" value="Submit" id="your-article-submit" name="your-article-submit"
-                            placeholder="Submit Your Article" required>
-                    </li>
-                </ul>
-            </div>
-        </form>
-    </div>
 
     <script>
         const dt = new DataTransfer(); // Permet de manipuler les fichiers de l'input file
-
         jQuery("#article_fileattachment").on('change', function(e) {
             const maxFileSizeInMB = 2;
             const maxFileSizeInKB = 1024 * 1024 * maxFileSizeInMB;
-
             // this.files.forEach(
             //     function(singlefile){
             //       if (singlefile.size > maxFileSizeInKB) {
@@ -990,4 +848,3 @@
 </body>
 
 </html>
-

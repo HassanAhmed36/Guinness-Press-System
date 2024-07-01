@@ -21,10 +21,10 @@
                                 <tr>
                                     <th>S.No</th>
                                     <th>ManuScript ID</th>
-                                    <th>Journal name</th>
+                                    <th>User name</th>
                                     <th>Author Email</th>
                                     <th>Status</th>
-                                    <th>Submission Type</th>
+                                    <th>Submission Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -32,20 +32,31 @@
                                 @foreach ($submissions as $s)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $s->manuscript_id }}</td>
-                                        <td>{{ $s->journal->name }}</td>
+                                        <td>{{ $s->submission_id }}</td>
+                                        <td>{{ $s->user->user_basic_info->name }}</td>
                                         <td>{!! $s->user->email ?? '<span class="badge badge-warning">Guest User</span>' !!}</td>
-                                        <td>{{ $s->admin_status == 0 ? 'submitted' : ($s->admin_status == 1 ? 'approved' : 'rejected') }}
+                                        <td>{{ App\Services\SubmissionService::getSubmissionStage($s->current_stage) }}
+                                            ({{ App\Services\SubmissionService::getSubmissionStatus($s->current_status) }})
                                         </td>
-                                        <td>{{ $s->submission_type == true ? 'website' : 'landing page' }}</td>
                                         <td>
-                                            <a href="{{ route('admin.submission.show', ['id' => $s->id]) }}"
-                                                class="btn btn-primary btn-sm ">
+                                            {{ $s->created_at->format('M d, Y') }}
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-warning btn-sm "
+                                                href="{{ route('submission.show', ['id' => $s->id]) }}">
                                                 <i class="fa fa-eye"></i>
                                             </a>
-                                            <a href="{{ route('admin.submission.delete', ['id' => $s->id]) }}"
-                                                class="btn btn-danger btn-sm">
-                                                <i class="fa fa-trash"></i>
+                                            <button class="btn btn-success btn-sm approve-btn" data-bs-toggle="modal"
+                                                data-bs-target="#approveModal" data-id="{{ $s->id }}">
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-sm reject-btn" data-bs-toggle="modal"
+                                                data-bs-target="#rejectModal" data-id="{{ $s->id }}">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                            <a href="{{ asset($s->manuscript_path) }}" target="_blank"
+                                                class="btn btn-info btn-sm" download="{{ $s->manuscript_name }}">
+                                                <i class="fa fa-download"></i>
                                             </a>
                                         </td>
                                     </tr>

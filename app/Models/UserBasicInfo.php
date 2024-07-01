@@ -9,16 +9,12 @@ class UserBasicInfo extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title',
-        'first_name',
-        'last_name',
-        'current_job_title',
-        'department',
-        'institution',
+        'name',
+        'surname',
+        'affiliation',
         'country',
-        'contact_number',
+        'announcement_notify',
+        'primary_author',
         'user_id'
     ];
-
-    
 }

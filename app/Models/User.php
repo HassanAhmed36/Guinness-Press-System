@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -20,13 +21,10 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
         'email',
         'password',
         'role_id',
         'remember_token',
-        'phone_number',
-        'country',
         'is_active'
     ];
 
@@ -71,14 +69,5 @@ class User extends Authenticatable implements MustVerifyEmail
     public function user_basic_info()
     {
         return $this->hasOne(UserBasicInfo::class, 'user_id');
-    }
-
-    public static function booted()
-    {
-        static::deleting(function ($user) {
-            $user->submissions->each(function ($submission) {
-                $submission->delete();
-            });
-        });
     }
 }

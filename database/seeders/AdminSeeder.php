@@ -25,15 +25,38 @@ class AdminSeeder extends Seeder
         ]);
 
         $user = User::create([
-            'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password'),
             'role_id' => 1,
-            'remember_token' => Str::random(10),
-            'phone_number' => '123465789',
-            'country' => 'USA',
-            'is_active' => true
+            'is_active' => true,
         ]);
 
+        UserBasicInfo::create([
+            'name' => 'Admin',
+            'surname' => 'User',
+            'affiliation' => 'Admin Affiliation',
+            'country' => 'Admin Country',
+            'announcement_notify' => true,
+            'primary_author' => true,
+            'user_id' => $user->id,
+        ]);
+
+
+        $user2 = User::create([
+            'email' => 'hassanahmed3652@gmail.com',
+            'password' => Hash::make('password'),
+            'role_id' => 3,
+            'is_active' => true,
+        ]);
+
+        UserBasicInfo::create([
+            'name' => 'Hassan',
+            'surname' => 'Ahmed',
+            'affiliation' => 'New  Affiliation',
+            'country' => 'new Country',
+            'announcement_notify' => true,
+            'primary_author' => true,
+            'user_id' => $user2->id,
+        ]);
     }
 }

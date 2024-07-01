@@ -71,7 +71,6 @@ class ArticleController extends Controller
             if (
                 !empty($author['firstname']) &&
                 !empty($author['affiliation'])
-
             ) {
 
                 $author_array[] = [
@@ -198,11 +197,7 @@ class ArticleController extends Controller
         foreach ($request->authors as $author) {
             if (
                 !empty($author['firstname']) &&
-                !empty($author['middlename']) &&
-                !empty($author['lastname']) &&
-                !empty($author['affiliation']) &&
-                !empty($author['email']) &&
-                !empty($author['orchid_id'])
+                !empty($author['affiliation'])
             ) {
                 $author_array[] = [
                     "firstname" => $author['firstname'],

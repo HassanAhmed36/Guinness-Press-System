@@ -1,2012 +1,409 @@
-<!DOCTYPE html>
-<html>
-<!DOCTYPE html>
-<html lang="en">
+@extends('user.layouts.template')
+@section('body')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.9.2/tagify.css">
+    <div class="container my-5">
+        <form id="multiStepForm" method="POST" action="{{ route('submit.submission') }}" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="uploadedFiles" id="uploadedFilesInput">
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="step1-tab" data-bs-toggle="tab" type="button"
+                                role="tab" aria-controls="step1" aria-selected="true">Start</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="step2-tab" data-bs-toggle="tab" type="button" role="tab"
+                                aria-controls="step2" aria-selected="false">Upload Submission</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="step3-tab" data-bs-toggle="tab" type="button" role="tab"
+                                aria-controls="step3" aria-selected="false">Enter metadata</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="step4-tab" data-bs-toggle="tab" type="button" role="tab"
+                                aria-controls="step4" aria-selected="false">Confimation</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="step5-tab" data-bs-toggle="tab" type="button" role="tab"
+                                aria-controls="step5" aria-selected="false">Next step</button>
+                        </li>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://guinnesspress.org/lp/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://guinnesspress.org/lp/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://guinnesspress.org/lp/favicon-16x16.png">
-    <link rel="manifest" href="https://guinnesspress.org/lp/site.webmanifest">
-    <link rel="mask-icon" href="https://guinnesspress.org/lp/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <title>Guinness Press</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
-        integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.6.1/css/iziModal.min.css"
-        integrity="sha512-3c5WiuZUnVWCQGwVBf8XFg/4BKx48Xthd9nXi62YK0xnf39Oc2FV43lIEIdK50W+tfnw2lcVThJKmEAOoQG84Q=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('lp_assets/css/stackedCards.css') }}" />
-    <link rel="stylesheet" href="{{ asset('lp_assets/owl-carousel/owl.carousel.css') }}">
-    <link rel="stylesheet" href="{{ asset('lp_assets/owl-carousel/owl.theme.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ asset('lp_assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('lp_assets/css/responsive.css') }}">
-    {{-- <script type="text/javascript">
-        (function() {
-            var options = {
-                whatsapp: "+16026495530", // WhatsApp number
-                call_to_action: "Message us", // Call to action
-                position: "left", // Position may be 'right' or 'left'
-            };
-            var proto = document.location.protocol,
-                host = "getbutton.io",
-                url = proto + "//static." + host;
-            var s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.async = true;
-            s.src = url + '/widget-send-button/js/init.js';
-            s.onload = function() {
-                WhWidgetSendButton.init(host, proto, options);
-            };
-            var x = document.getElementsByTagName('script')[0];
-            x.parentNode.insertBefore(s, x);
-        })();
-    </script> --}}
-
-
-    <!-- Meta Pixel Code -->
-   
-
-    <!-- End Meta Pixel Code -->
-</head>
-
-<body>
-    <header>
-        <div class="bg-dark text-center">
-            <p class="text-white text-center fw-bold py-1">In case you have any difficulty submitting your article,
-                please contact us at submission@guinnesspress.org</p>
-        </div>
-        <div class="container">
-            <div class="head_bar">
-                <div class="left_col">
-                    <div class="logo_bar">
-                        <img src="{{ asset('lp_assets/images/light-logo.png') }}" class="img-fluid">
-                    </div>
-                </div>
-                <div class="right_bar">
-                    <div class="cta_btn">
-                        <a data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)"
-                            class="btn btn-info cta_btn cta_btn_blue">submit manuscript</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <section class="banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="banner_left_col">
-                        <h3>Guinness Press</h3>
-                        <h1>PUBLISH AN ARTICLE WITH GUINNESS PRESS</h1>
-                        <p>Looking For A Trusted Peer-Reviewed Journal to Publish Research Paper. Look No Further Than
-                            Guinness Press.</p>
-                        <div class="btn-group">
-                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)"
-                                class="btn btn-info cta_btn cta_btn_blue">submit manuscript</a>
-
-                        </div>
-                        <div class="t_pilot">
-                            <a href="https://www.trustpilot.com/review/guinnesspress.org">
-                                <img src="{{ asset('lp_assets/images/image-6.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="banner_right_col">
-                        <div class="form_area">
-                            <div class="form_header">
-                                <h3>SUBMIT ARTICLE TO PUBLISH IN OUR JOURNAL</h3>
-                            </div>
-                            <div class="form_body">
-                                <form enctype="multipart/form-data" method="POST"
-                                    action="{{ route('submission.store') }}">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Full Name</label>
-                                                <input type="text" class="form-control banner_txt_box" required
-                                                    name="first_name" value="{{ auth()->user()->name ?? '' }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Phone Number</label>
-                                                <input type="number" class="form-control banner_txt_box" required
-                                                    name="phone_number"
-                                                    value="{{ auth()->user()->phone_number ?? '' }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Email Address</label>
-                                                <input type="email" class="form-control banner_txt_box" required
-                                                    name="email_address"
-                                                    value="{{ auth()->user()->email_address ?? '' }}">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="country">Country</label>
-                                                <select name="country" id="country"
-                                                    class="form-control banner_txt_box" required>
-                                                    <option selected disabled>Select Country</option>
-                                                    @foreach ($countries as $country)
-                                                        <option value="{{ $country['name'] }}">{{ $country['name'] }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label>Select Journals</label>
-                                                <select type="text" class="form-control banner_txt_box" required
-                                                    name="journal_id">
-                                                    <option>Select Journal</option>
-                                                    @foreach ($journals as $j)
-                                                        <option value="{{ $j->id }}">{{ $j->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label>Upload Manuscript</label>
-                                                <input type="file" class="form-control banner_txt_box" required
-                                                    name="manuscript">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <button type="submit" name="submit"
-                                                class="btn btn-info cta_btn submit_btn">Submit Manuscript</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="sec_1">
-        <div class="container">
-            <div class="sec_1_header">
-                <h3>Indexing bodies</h3>
-            </div>
-            <div class="sec_1_body">
-                <div class="index_list">
-                    <ul>
-                        <li>
-                            <a href="https://www.doi.org/">
-                                <img src="{{ asset('lp_assets/images/index_1.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.researchgate.net/">
-                                <img src="{{ asset('lp_assets/images/index_2.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.crossref.org/">
-                                <img src="{{ asset('lp_assets/images/index_3.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.dimensions.ai/">
-                                <img src="{{ asset('lp_assets/images/index_4.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.academia.edu/">
-                                <img src="{{ asset('lp_assets/images/index_5.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.mendeley.com/">
-                                <img src="{{ asset('lp_assets/images/index_6.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://scholar.google.com/">
-                                <img src="{{ asset('lp_assets/images/index_7.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.crossref.org/">
-                                <img src="{{ asset('lp_assets/images/index_8.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://jgateplus.com/home/">
-                                <img src="{{ asset('lp_assets/images/index_9.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://europub.co.uk/">
-                                <img src="{{ asset('lp_assets/images/index_10.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.semanticscholar.org/">
-                                <img src="{{ asset('lp_assets/images/index_11.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.lens.org/">
-                                <img src="{{ asset('lp_assets/images/index_12.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.scilit.net/">
-                                <img src="{{ asset('lp_assets/images/index_13.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://discovery.researcher.life/">
-                                <img src="{{ asset('lp_assets/images/index_14.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://ouci.dntb.gov.ua/en/">
-                                <img src="{{ asset('lp_assets/images/index_15.png') }}" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.connectedpapers.com/">
-                                <img src="{{ asset('lp_assets/images/index_16.png') }}" class="img-fluid">
-                            </a>
-                        </li>
                     </ul>
                 </div>
-                <div class="index_list_2">
-                    <div class="owl-carousel" id="indexing">
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_1.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_2.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_3.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_4.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_5.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_6.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_7.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_8.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-
-                    </div>
-                    <div class="owl-carousel" id="indexing2">
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_9.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_10.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_11.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_12.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_13.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_14.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_15.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('lp_assets/images/index_16.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="sec_1_footer">
-                <div class="btn-group">
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)"
-                        class="btn btn-info cta_btn cta_btn_blue">submit manuscript</a>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="sec_2">
-        <div class="container">
-            <div class="sec_2_header">
-                <h3>Guinness press</h3>
-                <h2>Open Access Peer Reviewed Journals List</h2>
-                <div class="sec_2_label">
-                    <a href="" class="btn btn-info cta_btn cta_btn_white">Trending Journals</a>
-                </div>
-            </div>
-            <div class="sec_2_body">
-                <div class="sec_2_body_data">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="sec_2_box_item d-flex justify-content-center align-items-center">
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-12">
-                                        <div class="journal_img">
-                                            <img src="{{ asset('lp_assets/images/journals/ijerm.png') }}"
-                                                class="img-fluid">
-                                        </div>
+                <div class="card-body">
+                    <div class="tab-content " id="myTabContent">
+                        <div class="tab-pane fade show active" id="step1" style="border: none !important"
+                            role="tabpanel" aria-labelledby="step1-tab">
+                            <!-- Content of Step 1 -->
+                            <div class="search-results py-3">
+                                <div class="mb-4">
+                                    <h5>Section Policy</h5>
+                                    <p>This section comprises the research articles of the journal.</p>
+                                </div>
+                                <div class="my-5">
+                                    <h5>Submission Requirements</h5>
+                                    <p class="text-muted">You must read and acknowledge that you have completed the
+                                        requirements below before proceeding.</p>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="mb-4 form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                                        <label class="form-check-label" for="exampleCheck1">The submission has not been
+                                            previously published, nor is it before another journal for consideration (or an
+                                            explanation has been provided in comments to the editor).</label>
                                     </div>
-                                    <div class="col-lg-7 col-md-12">
-                                        <div class="sec_2_box_item_content">
-                                            <a href="https://www.guinnesspress.org/publication/journal/ijerm"
-                                                target="_blank">
-                                                <h3>
-                                                    International Journal Of Empirical Research Methods
-                                                </h3>
-                                            </a>
-
-                                            <p>
-
-                                            </p>
-
-                                            <div class="sec_2_box_item_content_footer">
-                                                <div class="left_footer_box">
-                                                    <p class="issn">
-                                                        <span>ISSN : </span>2995-6110
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Abbreviation : </span>IJERM
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>DOI Prefix : </span>10.59762/ijerm
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publication Type : </span>Peer Reviewed
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publishing Model : </span>Open Access
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Journal Category : </span>Multidisciplinary
-                                                    </p>
-                                                </div>
-
-                                                <div class="right_footer_box">
-                                                    <div class="btn-group">
-                                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
-                                                            Manuscript</a>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <a href="https://www.guinnesspress.org/publication/journal/ijerm"
-                                                            class="btn btn-danger py-1 px-2 text-white fw-bold">View
-                                                            Journals</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
+                                    <div class="mb-4 form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck2" required>
+                                        <label class="form-check-label" for="exampleCheck2">The submission file is in
+                                            OpenOffice, Microsoft Word, RTF, or WordPerfect document file format.</label>
+                                    </div>
+                                    <div class="mb-4 form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck3" required>
+                                        <label class="form-check-label" for="exampleCheck3">Where available, URLs for the
+                                            references have been provided.</label>
+                                    </div>
+                                    <div class="mb-4 form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck4" required>
+                                        <label class="form-check-label" for="exampleCheck4">The text is single-spaced; uses
+                                            a 12-point font; employs italics rather than underlining (except with URL
+                                            addresses); and all illustrations, figures, and tables are placed within the
+                                            text at the appropriate points.</label>
+                                    </div>
+                                    <div class="mb-4 form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck5" required>
+                                        <label class="form-check-label" for="exampleCheck5">The text adheres to the
+                                            stylistic and bibliographic requirements outlined in the <a
+                                                href="">Author Guidelines</a>, which are found in the About the
+                                            Journal section.</label>
+                                    </div>
+                                    <div class="mb-4 form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck6" required>
+                                        <label class="form-check-label" for="exampleCheck6">If submitting to a
+                                            peer-reviewed section of the journal, the instructions in <a
+                                                href="">Ensuring a Blind Review</a> have been followed.</label>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="my-5">
+                                        <h5>Acknowledge the copyright statement</h5>
+                                        <p>Copyright of the journal belongs to the University of San Jose-Recoletos.</p>
+                                    </div>
+                                    <div class="mb-4 form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck7" required>
+                                        <label class="form-check-label" for="exampleCheck7">Yes, I agree to abide by the
+                                            terms of the copyright statement.</label>
+                                    </div>
+                                    <div class="mb-4 form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck8" required>
+                                        <label class="form-check-label" for="exampleCheck8">Yes, I agree to have my data
+                                            collected and stored according to the privacy policy.</label>
                                     </div>
                                 </div>
                             </div>
+                            <button class="btn btn-primary nextBtn" type="button">Next</button>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="sec_2_box_item d-flex justify-content-center align-items-center">
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-12">
-                                        <div class="journal_img">
-                                            <img src="{{ asset('lp_assets/images/journals/cie.png') }}"
-                                                class="img-fluid">
+                        <div class="tab-pane fade" id="step2" style="border: none !important" role="tabpanel"
+                            aria-labelledby="step2-tab">
+                            <!-- Content of Step 2 -->
+                            <div class="py-3">
+                                <div class="mb-4 d-flex justify-content-between">
+                                    <div>
+                                        <h5>Files</h5>
+                                    </div>
+                                    <div>
+                                        <!-- Button to trigger file upload -->
+                                        <button class="btn btn-primary" type="button" id="addFile">Add Files</button>
+                                    </div>
+                                </div>
+                                <table class="table table-borderless" id="fileTable">
+                                    <thead class="table-secondary">
+                                        <tr>
+                                            <th>Sno</th>
+                                            <th>File</th>
+                                            <th>Type</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th class="sno">1</th>
+                                            <th>
+                                                <input type="file" class="form-control" name="file[1][file]" required>
+                                            </th>
+                                            <th>
+                                                <select name="file[1][filetype]" class="form-select">
+                                                    <option value="Article Text">Article Text</option>
+                                                    <option value="Research Instrument">Research Instrument</option>
+                                                    <option value="Research Material">Research Material</option>
+                                                    <option value="Research Article">Research Article</option>
+                                                    <option value="Transcript">Transcript</option>
+                                                    <option value="Data Analysis">Data Analysis</option>
+                                                    <option value="Dataset">Dataset</option>
+                                                    <option value="Source Test">Source Test</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </th>
+                                            <th><button class="btn btn-danger btn-sm remove-row" disabled>Remove</button>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button class="btn btn-secondary prevBtn" type="button">Previous</button>
+                            <button class="btn btn-primary nextBtn" type="button">Next</button>
+                        </div>
+                        <div class="tab-pane fade" id="step3" style="border: none !important" role="tabpanel"
+                            aria-labelledby="step3-tab">
+                            <!-- Content of Step 3 -->
+                            <div class="py-4">
+                                <div class="mb-4">
+                                    <label for="title" class="form-label">Title <sup
+                                            class="text-danger">*</sup></label>
+                                    <input type="text" name="title" class="form-control"
+                                        placeholder="Enter your title" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="subtitle" class="form-label">Subtitle</label>
+                                    <input type="text" class="form-control" name="subtitle"
+                                        placeholder="Enter your subtitle (optional)">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="abstract" class="form-label">Abstract <sup
+                                            class="text-danger">*</sup></label>
+                                    <textarea id="abstract" name="abstract" class="form-control" rows="8" placeholder="Enter your Abstract"
+                                        required></textarea>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h5 class="my-3">List Of Contributors</h5>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-primary" type="button" id="addContributorBtn">Add
+                                                Contributor</button>
                                         </div>
                                     </div>
-                                    <div class="col-lg-7 col-md-12">
-                                        <div class="sec_2_box_item_content">
-                                            <a href="https://www.guinnesspress.org/publication/journal/cie"
-                                                target="_blank">
-                                                <h3>
-                                                    Current Integrative Engineering
-                                                </h3>
-                                            </a>
-
-                                            <div class="sec_2_box_item_content_footer">
-                                                <div class="left_footer_box">
-                                                    <p class="issn">
-                                                        <span>ISSN : </span>2995-6307
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Abbreviation : </span>CIE
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>DOI Prefix : </span>10.59762/cie
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publication Type : </span>Peer Reviewed
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publishing Model : </span>Open Access
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Journal Category : </span>Engineering
-                                                    </p>
-                                                </div>
-                                                <div class="right_footer_box">
-                                                    <div class="btn-group">
-                                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
-                                                            Manuscript</a>
+                                    <table class="table table-borderless" id="contributorTable">
+                                        <thead class="table-secondary">
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Orcid ID</th>
+                                                <th>Role</th>
+                                                <th>Primary Contact</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input type="text" name="author[1][name]" class="form-control"
+                                                        placeholder="Name"
+                                                        value="{{ auth()->user()->user_basic_info->name ?? '' }}" required>
+                                                </td>
+                                                <td>
+                                                    <input type="email" name="author[1][email]" class="form-control"
+                                                        placeholder="Email" value="{{ auth()->user()->email ?? '' }}"
+                                                        required>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="author[1][orcid]" class="form-control"
+                                                        placeholder="Orcid" required>
+                                                </td>
+                                                <td>Author</td>
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input primary-contact-checkbox"
+                                                            type="checkbox" value="1" checked
+                                                            name="author[1][is_primary_contact]">
                                                     </div>
-                                                    <div class="btn-group">
-                                                        <a href="https://www.guinnesspress.org/publication/journal/cie"
-                                                            class="btn btn-danger py-1 px-2 text-white fw-bold">View
-                                                            Journals</a>
-                                                    </div>
-                                                </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-danger btn-sm" type="button"
+                                                        disabled>Remove</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
-                                            </div>
-
-                                        </div>
+                                <div class="mb-4">
+                                    <div class="mb-4">
+                                        <label for="keywords" class="form-label">Keywords</label>
+                                        <input type="text" class="form-control" id="keywords"
+                                            placeholder="Enter a keyword press ensta then enter next keyword"
+                                            name="keywords" required>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="mb-4">
+                                        <label for="references" class="form-label">References</label>
+                                        <textarea name="references" id="references" cols="30" rows="10" class="form-control" required></textarea>
                                     </div>
                                 </div>
                             </div>
+                            <button class="btn btn-secondary prevBtn" type="button">Previous</button>
+                            <button class="btn btn-primary nextBtn" type="button">Next</button>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="sec_2_box_item d-flex justify-content-center align-items-center">
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-12">
-                                        <div class="journal_img">
-                                            <img src="{{ asset('lp_assets/images/journals/cli.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7 col-md-12">
-                                        <div class="sec_2_box_item_content">
-                                            <a href="https://www.guinnesspress.org/publication/journal/cli"
-                                                target="_blank">
-                                                <h3>
-                                                    Cultural Landscape Insights
-                                                </h3>
-                                            </a>
-
-                                            <div class="sec_2_box_item_content_footer">
-                                                <div class="left_footer_box">
-                                                    <p class="issn">
-                                                        <span>ISSN : </span>2995-6129
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Abbreviation : </span>CLI
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>DOI Prefix : </span>10.59762/cli
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publication Type : </span>Peer Reviewed
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publishing Model : </span>Open Access
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Journal Category : </span>Cultural Studies
-                                                    </p>
-                                                </div>
-                                                <div class="right_footer_box">
-                                                    <div class="btn-group">
-                                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
-                                                            Manuscript</a>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <a href="https://www.guinnesspress.org/publication/journal/cli"
-                                                            class="btn btn-danger py-1 px-2 text-white fw-bold">View
-                                                            Journals</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="sec_2_box_item d-flex justify-content-center align-items-center">
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-12">
-                                        <div class="journal_img">
-                                            <img src="{{ asset('lp_assets/images/journals/seer.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7 col-md-12">
-                                        <div class="sec_2_box_item_content">
-                                            <a href="https://www.guinnesspress.org/publication/journal/seer"
-                                                target="_blank">
-                                                <h3>
-                                                    Sustainable Energy And Environment Review
-                                                </h3>
-                                            </a>
-                                            <div class="sec_2_box_item_content_footer">
-                                                <div class="left_footer_box">
-                                                    <p class="issn">
-                                                        <span>ISSN : </span>2996-1181
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Abbreviation : </span>SEER
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>DOI Prefix : </span>10.59762/seer
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publication Type : </span>Peer Reviewed
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publishing Model : </span>Open Access
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Journal Category : </span>Environmental Science
-                                                    </p>
-                                                </div>
-                                                <div class="right_footer_box">
-                                                    <div class="btn-group">
-                                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
-                                                            Manuscript</a>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <a href="https://www.guinnesspress.org/publication/journal/seer"
-                                                            class="btn btn-danger py-1 px-2 text-white fw-bold">View
-                                                            Journals</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="sec_2_box_item d-flex justify-content-center align-items-center">
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-12">
-                                        <div class="journal_img">
-                                            <img src="{{ asset('lp_assets/images/journals/jblm.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7 col-md-12">
-                                        <div class="sec_2_box_item_content">
-                                            <a href="https://www.guinnesspress.org/publication/journal/jblm"
-                                                target="_blank">
-                                                <h3>
-                                                    Journal Of Business Leadership And Management
-                                                </h3>
-                                            </a>
-                                            <div class="sec_2_box_item_content_footer">
-                                                <div class="left_footer_box">
-                                                    <p class="issn">
-                                                        <span>ISSN : </span>2995-620X
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Abbreviation : </span>JBLM
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>DOI Prefix : </span>10.59762/jblm
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publication Type : </span>Peer Reviewed
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publishing Model : </span>Open Access
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Journal Category : </span>Business/Management
-                                                    </p>
-                                                </div>
-                                                <div class="right_footer_box">
-                                                    <div class="btn-group">
-                                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
-                                                            Manuscript</a>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <a href="https://www.guinnesspress.org/publication/journal/jblm"
-                                                            class="btn btn-danger py-1 px-2 text-white fw-bold">View
-                                                            Journals</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="sec_2_box_item d-flex justify-content-center align-items-center">
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-12 ">
-                                        <div class="journal_img">
-                                            <img src="{{ asset('lp_assets/images/journals/pb.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7 col-md-12">
-                                        <div class="sec_2_box_item_content">
-                                            <a href="https://www.guinnesspress.org/publication/journal/pb"
-                                                target="_blank">
-                                                <h3>
-                                                    Pharmaceutical Breakthroughs
-                                                </h3>
-                                            </a>
-
-                                            <div class="sec_2_box_item_content_footer">
-                                                <div class="left_footer_box">
-                                                    <p class="issn">
-                                                        <span>ISSN : </span>2996-1157
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Abbreviation : </span>PB
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>DOI Prefix : </span>10.59762/pb
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publication Type : </span>Peer Reviewed
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publishing Model : </span>Open Access
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Journal Category : </span>Pharmacology
-                                                    </p>
-                                                </div>
-
-                                                <div class="right_footer_box">
-                                                    <div class="btn-group">
-                                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
-                                                            Manuscript</a>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <a href="https://www.guinnesspress.org/publication/journal/pb"
-                                                            class="btn btn-danger py-1 px-2 text-white fw-bold">View
-                                                            Journals</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-6">
-                            <div class="sec_2_box_item d-flex justify-content-center align-items-center">
-                                <div class="row">
-                                    <div class="col-lg-5">
-                                        <div class="journal_img">
-                                            <img src="{{ asset('lp_assets/images/journals/rer.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="sec_2_box_item_content">
-                                            <a href="https://www.guinnesspress.org/publication/journal/rer"
-                                                target="_blank">
-                                                <h3>
-                                                    Recent Educational Research
-                                                </h3>
-                                            </a>
-
-                                            <div class="sec_2_box_item_content_footer">
-                                                <div class="left_footer_box">
-                                                    <p class="issn">
-                                                        <span>ISSN : </span>2996-2366
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Abbreviation : </span>RER
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>DOI Prefix : </span>10.59762/rer
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publication Type : </span>Peer Reviewed
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publishing Model : </span>Open Access
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Journal Category : </span>Education
-                                                    </p>
-                                                </div>
-                                                <div class="right_footer_box">
-                                                    <div class="btn-group">
-                                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
-                                                            Manuscript</a>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <a href="https://www.guinnesspress.org/publication/journal/rer"
-                                                            class="btn btn-danger py-1 px-2 text-white fw-bold">View
-                                                            Journals</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="sec_2_body_data_2">
-                    <div class="owl-carousel" id="journals">
-                        <div class="item">
-                            <div class="sec_2_box_item">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="journal_img">
-                                            <img src="{{ asset('lp_assets/images/journals/ijerm.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="sec_2_box_item_content">
-                                            <a href="https://www.guinnesspress.org/publication/journal/ijerm"
-                                                target="_blank">
-                                                <h3>
-                                                    International Journal Of Empirical Research Methods
-                                                </h3>
-                                            </a>
-
-                                            <p>
-
-                                            </p>
-
-                                            <div class="sec_2_box_item_content_footer">
-                                                <div class="left_footer_box">
-                                                    <p class="issn">
-                                                        <span>ISSN : </span>2995-6110
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Abbreviation : </span>IJERM
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>DOI Prefix : </span>10.59762/ijerm
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publication Type : </span>Peer Reviewed
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publishing Model : </span>Open Access
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Journal Category : </span>Multidisciplinary
-                                                    </p>
-                                                </div>
-                                                <div class="right_footer_box">
-                                                    <div class="btn-group">
-                                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
-                                                            Manuscript</a>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <a href="https://www.guinnesspress.org/publication/journal/ijerm"
-                                                            class="btn btn-danger py-1 px-2 text-white fw-bold">View
-                                                            Journals</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="sec_2_box_item">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="journal_img">
-                                            <img src="{{ asset('lp_assets/images/journals/cie.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="sec_2_box_item_content">
-                                            <a href="https://www.guinnesspress.org/publication/journal/cie"
-                                                target="_blank">
-                                                <h3>
-                                                    Current Integrative Engineering
-                                                </h3>
-                                            </a>
-
-                                            <div class="sec_2_box_item_content_footer">
-                                                <div class="left_footer_box">
-                                                    <p class="issn">
-                                                        <span>ISSN : </span>2995-6307
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Abbreviation : </span>CIE
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>DOI Prefix : </span>10.59762/cie
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publication Type : </span>Peer Reviewed
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publishing Model : </span>Open Access
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Journal Category : </span>Engineering
-                                                    </p>
-                                                </div>
-                                                <div class="right_footer_box">
-                                                    <div class="btn-group">
-                                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
-                                                            Manuscript</a>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <a href="https://www.guinnesspress.org/publication/journal/cie"
-                                                            class="btn btn-danger py-1 px-2 text-white fw-bold">View
-                                                            Journals</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="sec_2_box_item">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="journal_img">
-                                            <img src="{{ asset('lp_assets/images/journals/cli.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="sec_2_box_item_content">
-                                            <a href="https://www.guinnesspress.org/publication/journal/cli"
-                                                target="_blank">
-                                                <h3>
-                                                    Current Integrative Engineering
-                                                </h3>
-                                            </a>
-
-                                            <div class="sec_2_box_item_content_footer">
-                                                <div class="left_footer_box">
-                                                    <p class="issn">
-                                                        <span>ISSN : </span>2995-6129
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Abbreviation : </span>CLI
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>DOI Prefix : </span>10.59762/cli
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publication Type : </span>Peer Reviewed
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publishing Model : </span>Open Access
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Journal Category : </span>Cultural Studies
-                                                    </p>
-                                                </div>
-                                                <div class="right_footer_box">
-                                                    <div class="btn-group">
-                                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
-                                                            Manuscript</a>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <a href="https://www.guinnesspress.org/publication/journal/cli"
-                                                            class="btn btn-danger py-1 px-2 text-white fw-bold">View
-                                                            Journals</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="sec_2_box_item">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="journal_img">
-                                            <img src="{{ asset('lp_assets/images/journals/seer.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="sec_2_box_item_content">
-                                            <a href="https://www.guinnesspress.org/publication/journal/seer"
-                                                target="_blank">
-                                                <h3>
-                                                    Sustainable Energy And Environment Review
-                                                </h3>
-                                            </a>
-
-
-                                            <div class="sec_2_box_item_content_footer">
-                                                <div class="left_footer_box">
-                                                    <p class="issn">
-                                                        <span>ISSN : </span>2996-1181
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Abbreviation : </span>SEER
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>DOI Prefix : </span>10.59762/seer
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publication Type : </span>Peer Reviewed
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publishing Model : </span>Open Access
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Journal Category : </span>Environmental Science
-                                                    </p>
-                                                </div>
-                                                <div class="right_footer_box">
-                                                    <div class="btn-group">
-                                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
-                                                            Manuscript</a>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <a href="https://www.guinnesspress.org/publication/journal/seer"
-                                                            class="btn btn-danger py-1 px-2 text-white fw-bold">View
-                                                            Journals</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="sec_2_box_item">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="journal_img">
-                                            <img src="{{ asset('lp_assets/images/journals/jblm.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="sec_2_box_item_content">
-                                            <a href="https://www.guinnesspress.org/publication/journal/jblm"
-                                                target="_blank">
-                                                <h3>
-                                                    Journal Of Business Leadership And Management
-                                                </h3>
-                                            </a>
-
-
-                                            <div class="sec_2_box_item_content_footer">
-                                                <div class="left_footer_box">
-                                                    <p class="issn">
-                                                        <span>ISSN : </span>2995-620X
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Abbreviation : </span>JBLM
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>DOI Prefix : </span>10.59762/jblm
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publication Type : </span>Peer Reviewed
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publishing Model : </span>Open Access
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Journal Category : </span>Business/Management
-                                                    </p>
-                                                </div>
-                                                <div class="right_footer_box">
-                                                    <div class="btn-group">
-                                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
-                                                            Manuscript</a>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <a href="https://www.guinnesspress.org/publication/journal/jblm"
-                                                            class="btn btn-danger py-1 px-2 text-white fw-bold">View
-                                                            Journals</a>
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="sec_2_box_item">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="journal_img">
-                                            <img src="{{ asset('lp_assets/images/journals/pb.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="sec_2_box_item_content">
-                                            <a href="https://www.guinnesspress.org/publication/journal/jblm"
-                                                target="_blank">
-                                                <h3>
-                                                    Pharmaceutical Breakthroughs
-                                                </h3>
-                                            </a>
-
-                                            <div class="sec_2_box_item_content_footer">
-                                                <div class="left_footer_box">
-                                                    <p class="issn">
-                                                        <span>ISSN : </span>2996-1157
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Abbreviation : </span>PB
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>DOI Prefix : </span>10.59762/pb
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publication Type : </span>Peer Reviewed
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publishing Model : </span>Open Access
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Journal Category : </span>Pharmacology
-                                                    </p>
-                                                </div>
-                                                <div class="right_footer_box">
-                                                    <div class="btn-group">
-                                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
-                                                            Manuscript</a>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <a href="https://www.guinnesspress.org/publication/journal/pb"
-                                                            class="btn btn-danger py-1 px-2 text-white fw-bold">View
-                                                            Journals</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="sec_2_box_item">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="journal_img">
-                                            <img src="{{ asset('lp_assets/images/journals/rer.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="sec_2_box_item_content">
-                                            <a href="https://www.guinnesspress.org/publication/journal/rer"
-                                                target="_blank">
-                                                <h3>
-                                                    Recent Educational Research
-                                                </h3>
-                                            </a>
-
-                                            <div class="sec_2_box_item_content_footer">
-                                                <div class="left_footer_box">
-                                                    <p class="issn">
-                                                        <span>ISSN : </span>2996-2366
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Abbreviation : </span>RER
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>DOI Prefix : </span>10.59762/rer
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publication Type : </span>Peer Reviewed
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Publishing Model : </span>Open Access
-                                                    </p>
-                                                    <p class="issn">
-                                                        <span>Journal Category : </span>Education
-                                                    </p>
-                                                </div>
-                                                <div class="right_footer_box">
-                                                    <div class="btn-group">
-                                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                            href="javascript:void(0)"
-                                                            class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
-                                                            Manuscript</a>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <a href="https://www.guinnesspress.org/publication/journal/rer"
-                                                            class="btn btn-danger py-1 px-2 text-white fw-bold">View
-                                                            Journals</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <section class="sec_3">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="sec_3_content pe-3">
-                        <h2>Publish Your Research Paper with Ease</h2>
-                        <p>
-                            Guinness Press is a premier platform to publish research paper, dedicated to providing a
-                            seamless and efficient journal publication experience. Our peer-reviewed journals ensure
-                            rapid publication, allowing your research to reach the forefront quickly. We offer
-                            comprehensive services for publishing research papers, scientific papers, and academic
-                            papers across a wide range of disciplines.
-                        </p>
-                        <div class="btn-group">
-                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)"
-                                class="btn btn-info cta_btn cta_btn_blue">submit manuscript</a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="sec_3_img_sec">
-                        <img src="{{ asset('lp_assets/images/cta_img.png') }}" class="img-fluid">
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <section class="sec_4">
-        <div class="container">
-            <div class="sec_4_header mb-4">
-                <h3>ARTICLES</h3>
-                <h2>OUR RECENT PUBLISHED ARTICLES</h2>
-            </div>
-            <div class="sec_4_body">
-                <div class="sec_4_slider">
-                    <div class="owl-carousel" id="articles">
-                        <div class="item">
-                            <a href="https://www.guinnesspress.org/publication/journal/cie/5230403">
-                                <div class="article_box">
-                                    <div class="article_body">
-                                        <h3>Calories Burnt Prediction Using Machine Learning Approach</h3>
-                                        <div class="article_content">
-                                            <div class="article_content_left">
-                                                <p>
-                                                    Author(s): Mohammad Tarek Aziz , Taohidur Rahman 2 Renzon Daniel
-                                                    Cosme Pecho , Nayeem Uddin Ahmed Khan , Akba Ull Hasna Era , MD.
-                                                    Abir Chowdhury
-                                                </p>
-                                                <p>
-                                                    Article | Published Online: 31 Oct 2023 | Pages [29 - 36]
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="https://www.guinnesspress.org/publication/journal/rer/5244305">
-                                <div class="article_box">
-                                    <div class="article_body">
-                                        <h3>Level of Writing Apprehension and Factors Affecting the Writing Performance:
-                                            Perspectives of the English Major Students</h3>
-                                        <div class="article_content">
-                                            <div class="article_content_left">
-                                                <p>
-                                                    Author(s): Roland A. Niez
-                                                </p>
-                                                <p>
-                                                    Article | Published Online: 17 Nov 2023 | Pages [31 - 45]
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="https://www.guinnesspress.org/publication/journal/jblm/5245003">
-                                <div class="article_box">
-                                    <div class="article_body">
-                                        <h3>The Role of Incoterms and Relational Resources on Competitive Advantage: A
-                                            Study of Freight Forwarders Company in Indonesia</h3>
-                                        <div class="article_content">
-                                            <div class="article_content_left">
-                                                <p>
-                                                    Author(s): Ahmad Sugiono , Agus Rahayu , Lili Adi Wibowo , Ratih
-                                                    Hurriyati
-                                                </p>
-                                                <p>
-                                                    Article | Published Online: 25 Dec 2023 | Pages [88 - 95]
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="https://www.guinnesspress.org/publication/journal/cie/5230402">
-                                <div class="article_box">
-                                    <div class="article_body">
-                                        <h3>Artificial Intelligence And Machine Learning For Supply Chain Resilience
-                                        </h3>
-                                        <div class="article_content">
-                                            <div class="article_content_left">
-                                                <p>
-                                                    Author(s): Ghada Elkady , Ahmed Hesham Sedky
-                                                </p>
-                                                <p>
-                                                    Article | Published Online: 31 Oct 2023 | Pages [23 - 28]
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="https://www.guinnesspress.org/publication/journal/jblm/5246305">
-                                <div class="article_box">
-                                    <div class="article_body">
-                                        <h3>Unveiling the Augmented Realm: Exploring the Dynamic Relationship between
-                                            Augmented Reality Technology and Consumer Engagement for Enhanced Purchase
-                                            Behavior</h3>
-                                        <div class="article_content">
-                                            <div class="article_content_left">
-                                                <p>
-                                                    Author(s): Nguyen Ngoc Bao Tran
-                                                </p>
-                                                <p>
-                                                    Article | Published Online: 05 Feb 2024 | Pages [48 - 58]
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="https://www.guinnesspress.org/publication/journal/ijerm/1122141">
-                                <div class="article_box">
-                                    <div class="article_body">
-                                        <h3>Deployment of Lean Six Sigma in Transportation Sector</h3>
-                                        <div class="article_content">
-                                            <div class="article_content_left">
-                                                <p>
-                                                    Author(s): Noor Azam Bin MD Saad
-                                                </p>
-                                                <p>
-                                                    Article | Published Online: 05 Dec 2023 | Pages [74 - 80]
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="https://www.guinnesspress.org/publication/journal/seer/5243102">
-                                <div class="article_box">
-                                    <div class="article_body">
-                                        <h3>Climate Change Impact On Upper Layang Reservoir Operation</h3>
-                                        <div class="article_content">
-                                            <div class="article_content_left">
-                                                <p>
-                                                    Author(s): Nur Nabilah Farhana Mohammad Fathilah , Aminu Sa’ad Sa’id
-                                                    , Ponselvi Jeevaragagam , Kamarul Azlan Mohd Nasir
-                                                </p>
-                                                <p>
-                                                    Article | Published Online: 03 Nov 2023 | Pages [16 - 26]
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="https://www.guinnesspress.org/publication/journal/rer/5244304">
-                                <div class="article_box">
-                                    <div class="article_body">
-                                        <h3>Analyzing Science Communication Discourses in a Global Society: A Case Study
-                                            of a Graduate School Classroom</h3>
-                                        <div class="article_content">
-                                            <div class="article_content_left">
-                                                <p>
-                                                    Author(s): Louis Placido F. Lachica , Giselle D. Arintoc
-                                                </p>
-                                                <p>
-                                                    Article | Published Online: 17 Nov 2023 | Pages [19 - 30]
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="https://www.guinnesspress.org/publication/journal/jblm/5243018">
-                                <div class="article_box">
-                                    <div class="article_body">
-                                        <h3>Economic Inequality And Its Effects On The Decision-Making Of Entrepreneurs
-                                            In Emerging Economies</h3>
-                                        <div class="article_content">
-                                            <div class="article_content_left">
-                                                <p>
-                                                    Author(s): Mercy Tony
-                                                </p>
-                                                <p>
-                                                    Article | Published Online: 09 Oct 2023 | Pages [67 - 73]
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="https://www.guinnesspress.org/publication/journal/ijerm/1024925">
-                                <div class="article_box">
-                                    <div class="article_body">
-                                        <h3>Adaptation Of Socrative Application As Online Teaching Platform During The
-                                            Covid-19 Pandemic</h3>
-                                        <div class="article_content">
-                                            <div class="article_content_left">
-                                                <p>
-                                                    Author(s): Mark Treve
-                                                </p>
-                                                <p>
-                                                    Article | Published Online: 05 Oct 2023 | Pages [17 - 26]
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="sec_5">
-        <div class="container">
-            <div class="sec_5_header">
-                <h3>WHAT OUR CLIENT SAY’S</h3>
-                <h2>TESTIMONIALS</h2>
-            </div>
-            <div class="sec_5_body">
-                <div class="testimonial">
-                    <div class="owl-carousel" id="testimonials">
-                        <div class="item">
-                            <div class="testimonials_box">
-                                <div class="testimonials_box_header">
-                                    <div class="testimonials_box_header_img">
-                                        <div class="testimonials_box_header_left">
-                                            <img src="{{ asset('lp_assets/images/client_5.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                        <div class="testimonials_box_header_right">
-                                            <img src="{{ asset('lp_assets/images/stars.png') }}" class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <h3>Lisa</h3>
-                                </div>
-                                <div class="testimonials_box_body">
-                                    <p>
-                                        Guinness Press has played a pivotal role in shaping my academic journey. Their
-                                        journals offer a robust platform for disseminating research findings and
-                                        engaging in scholarly discussions. I am truly grateful for the invaluable
-                                        opportunities they provide.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonials_box">
-                                <div class="testimonials_box_header">
-                                    <div class="testimonials_box_header_img">
-                                        <div class="testimonials_box_header_left">
-                                            <img src="{{ asset('lp_assets/images/client_2.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                        <div class="testimonials_box_header_right">
-                                            <img src="{{ asset('lp_assets/images/stars.png') }}" class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <h3>Marian</h3>
-                                </div>
-                                <div class="testimonials_box_body">
-                                    <p>
-                                        As a researcher, I rely on Guinness Press for their unwavering commitment to
-                                        academic excellence. Their journals not only showcase the latest advancements in
-                                        various fields but also foster a global community of scholars. I highly
-                                        recommend their publications to anyone passionate about expanding their
-                                        knowledge horizons.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonials_box">
-                                <div class="testimonials_box_header">
-                                    <div class="testimonials_box_header_img">
-                                        <div class="testimonials_box_header_left">
-                                            <img src="{{ asset('lp_assets/images/client_9.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                        <div class="testimonials_box_header_right">
-                                            <img src="{{ asset('lp_assets/images/stars.png') }}" class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <h3>Ahmed</h3>
-                                </div>
-                                <div class="testimonials_box_body">
-                                    <p>
-                                        Guinness Press stands out for its dedication to promoting the dissemination of
-                                        knowledge. Working with them has been a seamless experience, thanks to their
-                                        meticulous peer-review process and strong editorial support. I trust Guinness
-                                        Press to uphold the highest standards of scholarship in every publication.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonials_box">
-                                <div class="testimonials_box_header">
-                                    <div class="testimonials_box_header_img">
-                                        <div class="testimonials_box_header_left">
-                                            <img src="{{ asset('lp_assets/images/client_1.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                        <div class="testimonials_box_header_right">
-                                            <img src="{{ asset('lp_assets/images/stars.png') }}" class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <h3>Zain</h3>
-                                </div>
-                                <div class="testimonials_box_body">
-                                    <p>
-                                        Having had the privilege of publishing with Guinness Press, I am thoroughly
-                                        impressed with the outcome. Their diverse range of journals covers a wide
-                                        spectrum of topics, ensuring there's something for everyone. The editorial
-                                        team's professionalism and support have made the publication process a rewarding
-                                        journey.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonials_box">
-                                <div class="testimonials_box_header">
-                                    <div class="testimonials_box_header_img">
-                                        <div class="testimonials_box_header_left">
-                                            <img src="{{ asset('lp_assets/images/client_12.png') }}"
-                                                class="img-fluid">
-                                        </div>
-                                        <div class="testimonials_box_header_right">
-                                            <img src="{{ asset('lp_assets/images/stars.png') }}" class="img-fluid">
-                                        </div>
-                                    </div>
-                                    <h3>Robinson</h3>
-                                </div>
-                                <div class="testimonials_box_body">
-                                    <p>
-                                        Guinness Press has consistently been my preferred choice for academic research
-                                        publishing. Their commitment to open access ensures that scholarly knowledge
-                                        remains accessible to all. I highly recommend them to everyone.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="top_footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="footer_disclaimer">
-                            <div class="footer_logo">
-                                <a href="">
-                                    <img src="{{ asset('lp_assets/images/white-logo.png') }}" class="img-fluid">
-                                </a>
-                            </div>
-                            <p>
-                                We not only let you explore but also offer helpful resources so that you can learn from
-                                them.
+                        <div class="tab-pane fade" id="step4" style="border: none !important" role="tabpanel"
+                            aria-labelledby="step4-tab">
+                            <p>your submission has been uploaded and its ready to sent you may go back to review any of
+                                te information you have entered before continue when you ready click final submission
                             </p>
+                            <button class="btn btn-secondary prevBtn" type="button">Previous</button>
+                            <button class="btn btn-primary" type="submit">Submit</button>
                         </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="quick_links">
-                                    <h3>Browse</h3>
-                                    <ul>
-                                        <li>
-                                            <a href="https://guinnesspress.org/journal">Journals</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                        <div class="tab-pane fade" id="step5" style="border: none !important" role="tabpanel"
+                            aria-labelledby="step5-tab">
+                            <!-- Content of Step 5 -->
+                            <div class="py-3">
+
                             </div>
-                            <div class="col-lg-4">
-                                <div class="quick_links">
-                                    <h3>Resources</h3>
-                                    <ul>
-                                        <li>
-                                            <a
-                                                href="https://guinnesspress.org/librarian-resource-center"><span>Librarians</span></a>
-                                        </li>
-                                        <!--<li>-->
-                                        <!--    <a href="/booksellers"><i class="fa fa-check"></i><span>Booksellers</span></a>-->
-                                        <!--</li>-->
-                                        <!--<li>-->
-                                        <!--    <a href="/advertisers"><i class="fa fa-check"></i><span>Advertisers</span></a>-->
-                                        <!--</li>-->
-                                        <li>
-                                            <a
-                                                href="https://guinnesspress.org/reviewer-guidelines"><span>Reviewers</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://guinnesspress.org/authors-guidelines"><span>Author's
-                                                    Guidelines</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://guinnesspress.org/crossmark-policy"><span>Crossmark
-                                                    Policy</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://guinnesspress.org/article-correction"><span>Article
-                                                    Correction</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://guinnesspress.org/article-retraction"><span>Article
-                                                    Retraction</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://guinnesspress.org/publication-procedure"><span>Publication
-                                                    Procedure</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="quick_links">
-                                    <h3>About</h3>
-                                    <ul>
-                                        <li>
-                                            <a href="https://guinnesspress.org/about-us"><span>About
-                                                    Guinness</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://guinnesspress.org/contact-us"><span>Contact Us</span></a>
-                                        </li>
-                                        <!--<li>-->
-                                        <!--    <a href="blog"><i class="fa fa-check"></i><span>News</span></a>-->
-                                        <!--</li>-->
-                                        <!--<li>-->
-                                        <!--    <a href="/accessibility"><i class="fa fa-check"></i><span>Accessibility</span></a>-->
-                                        <!--</li>-->
-                                        <!--<li>-->
-                                        <!--    <a href="/modern-slavery-statement"><i class="fa fa-check"></i><span>Modern Slavery Statement</span></a>-->
-                                        <!--</li>-->
-                                        <li>
-                                            <a href="https://guinnesspress.org/policies-and-statements"><span>Policies
-                                                    and Statements</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://guinnesspress.org/peer-review-process"><span>Peer Review
-                                                    Process</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://guinnesspress.org/copyright-agreement"><span>Copyright
-                                                    Agreement</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://guinnesspress.org/archival-practices"><span>Archival
-                                                    Practices</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://guinnesspress.org/publication-fees"><span>Publication
-                                                    Fees</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="https://guinnesspress.org/repository-policy"><span>Repository
-                                                    Policy</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+
                         </div>
+
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="bottom_footer">
-            <div class="container">
-                <div class="bottom_footer_content">
-                    <p>Copyright © 2024 <span>Guinness press</span>. All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+        </form>
+    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"
-        integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
-
-    <script src="{{ asset('lp_lp_assets/js/script.js') }}"></script>
-
-    <script src="{{ asset('lp_lp_assets/js/stackedCards.js') }}"></script>
-    <script src="{{ asset('lp_lp_assets/css/stackedCards.min.js') }}"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.6.1/js/iziModal.min.js"
-        integrity="sha512-lR/2z/m/AunQdfBTSR8gp9bwkrjwMq1cP0BYRIZu8zd4ycLcpRYJopB+WsBGPDjlkJUwC6VHCmuAXwwPHlacww=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://bookpublishingandmarketing.org/lp/assets/js/lp-script.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-
-
-
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(window).ready(function() {
+        $(document).ready(function() {
+            var currentTab = 0;
+            showTab(currentTab);
 
-            var owl = $('#indexing2').owlCarousel({
-                loop: true,
-                responsiveClass: true,
-                nav: false,
-                margin: 4,
-                autoplayTimeout: 4000,
-                autoplay: true,
-                smartSpeed: 400,
-                center: false,
-                navText: ['&#8592;', '&#8594;'],
-                responsive: {
-                    0: {
-                        items: 4,
-                    },
-                    600: {
-                        items: 4
-                    },
-                    1200: {
-                        items: 4
-                    }
+            function showTab(n) {
+                var x = $(".tab-pane");
+                x.eq(n).addClass("show active").siblings().removeClass("show active");
+                $("#myTab .nav-link").eq(n).addClass("active").siblings().removeClass("active");
+
+                if (n == 0) {
+                    $(".prevBtn").hide();
+                } else {
+                    $(".prevBtn").show();
+                }
+
+                if (n == (x.length - 1)) {
+                    $(".nextBtn").hide();
+                } else {
+                    $(".nextBtn").show();
+                }
+            }
+
+            $(".nextBtn").click(function() {
+                var valid = validateForm();
+                if (valid) {
+                    currentTab++;
+                    showTab(currentTab);
                 }
             });
-            var owl = $('#indexing').owlCarousel({
-                loop: true,
-                responsiveClass: true,
-                nav: false,
-                margin: 4,
-                autoplayTimeout: 4000,
-                autoplay: true,
-                smartSpeed: 400,
-                center: false,
-                navText: ['&#8592;', '&#8594;'],
-                responsive: {
-                    0: {
-                        items: 4,
-                    },
-                    600: {
-                        items: 4
-                    },
-                    1200: {
-                        items: 4
+
+            $(".prevBtn").click(function() {
+                currentTab--;
+                showTab(currentTab);
+            });
+
+            function validateForm() {
+                var valid = true;
+                var currentStep = $(".tab-pane").eq(currentTab);
+
+                currentStep.find("input, select, textarea").each(function() {
+                    if (!this.checkValidity()) {
+                        $(this).addClass("is-invalid");
+                        valid = false;
+                    } else {
+                        $(this).removeClass("is-invalid");
                     }
+                });
+
+                return valid;
+            }
+            let rowCount = 1;
+            $("#addContributorBtn").click(function() {
+                const newIndex = rowCount + 1;
+                var newRow = `<tr>
+                    <td><input type="text" name="author[${newIndex}][name]" class="form-control" placeholder="Name" required></td>
+                    <td><input type="email" name="author[${newIndex}][email]" class="form-control" placeholder="Email" required></td>
+                    <td><input type="text" name="author[${newIndex}][orcid]" class="form-control" placeholder="Orcid" required></td>
+                    <td>Author</td>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input primary-contact-checkbox" type="checkbox" value="1" name="author[${newIndex}][is_primary_contact]">
+                        </div>
+                    </td>
+                    <td><button class="btn btn-danger btn-sm" type="button">Remove</button></td>
+                </tr>`;
+                $("#contributorTable tbody").append(newRow);
+            });
+
+            $(document).on("click", "#contributorTable .btn-danger", function() {
+                $(this).closest("tr").remove();
+            });
+
+            $(document).on("change", ".primary-contact-checkbox", function() {
+                $(".primary-contact-checkbox").not(this).prop("checked", false);
+                var isChecked = $(this).prop("checked");
+                if (isChecked) {
+                    $(this).closest("tr").find("td:eq(3)").text("Author");
+                    $("#contributorTable tbody tr").each(function() {
+                        if (!$(this).find(".primary-contact-checkbox").prop("checked")) {
+                            $(this).find("td:eq(3)").text("Co-Author");
+                        }
+                    });
+                } else {
+                    $(this).closest("tr").find("td:eq(3)").text("Author");
                 }
             });
-            var owl = $('#journals').owlCarousel({
-                loop: true,
-                responsiveClass: true,
-                nav: false,
-                margin: 4,
-                autoplayTimeout: 4000,
-                autoplay: true,
-                smartSpeed: 400,
-                center: false,
-                navText: ['&#8592;', '&#8594;'],
-                responsive: {
-                    0: {
-                        items: 1,
-                    },
-                    600: {
-                        items: 2
-                    },
-                    1200: {
-                        items: 2
-                    }
-                }
+
+
+            $('#addFile').click(function() {
+                const tableBody = $('#fileTable tbody');
+                const rowCount = tableBody.find('tr').length;
+                const newIndex = rowCount + 1;
+
+                const newRowHtml = `
+                <tr>
+                    <td class="sno">${newIndex}</td>
+                    <td>
+                        <input type="file" class="form-control" name="file[${newIndex}][file]" required>
+                    </td>
+                    <td>
+                        <select name="file[${newIndex}][filetype]" class="form-select">
+                            <option value="Article Text">Article Text</option>
+                            <option value="Research Instrument">Research Instrument</option>
+                            <option value="Research Material">Research Material</option>
+                            <option value="Research Article">Research Article</option>
+                            <option value="Transcript">Transcript</option>
+                            <option value="Data Analysis">Data Analysis</option>
+                            <option value="Dataset">Dataset</option>
+                            <option value="Source Test">Source Test</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btn-sm remove-row">Remove</button>
+                    </td>
+                </tr>`;
+                tableBody.append(newRowHtml);
             });
-            var owl = $('#articles').owlCarousel({
-                loop: true,
-                responsiveClass: true,
-                nav: true,
-                margin: 0,
-                autoplayTimeout: 4000,
-                smartSpeed: 400,
-                center: false,
-                navText: ['&#8592;', '&#8594;'],
-                responsive: {
-                    0: {
-                        items: 1,
-                    },
-                    600: {
-                        items: 1
-                    },
-                    1200: {
-                        items: 1
-                    }
-                }
+
+            $('#fileTable').on('click', '.remove-row', function() {
+                $(this).closest('tr').remove();
+                $('#fileTable tbody tr').each(function(index) {
+                    $(this).find('td.sno').text(index + 1);
+                });
             });
-            var owl = $('#testimonials').owlCarousel({
-                loop: true,
-                responsiveClass: true,
-                nav: false,
-                margin: 0,
-                autoplayTimeout: 4000,
-                smartSpeed: 400,
-                center: true,
-                navText: ['&#8592;', '&#8594;'],
-                responsive: {
-                    0: {
-                        items: 1,
-                    },
-                    600: {
-                        items: 3
-                    },
-                    1200: {
-                        items: 3
-                    }
-                }
-            });
+
         });
     </script>
-    <!-- Include js plugin -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-md modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="banner_right_col">
-                        <div class="form_area">
-                            <div class="form_header">
-                                <h3>SUBMIT ARTICLE TO PUBLISH IN OUR JOURNAL</h3>
-                            </div>
-                            <div class="form_body">
-                                <form enctype="multipart/form-data" method="POST"
-                                    action="{{ route('submission.store') }}">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Full Name</label>
-                                                <input type="text" class="form-control banner_txt_box" required
-                                                    name="first_name">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Phone Number</label>
-                                                <input type="number" class="form-control banner_txt_box" required
-                                                    name="phone_number">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Email Address</label>
-                                                <input type="email" class="form-control banner_txt_box" required
-                                                    name="email_address">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="country">Country</label>
-                                                <select name="country" id="country"
-                                                    class="form-control banner_txt_box" required>
-                                                    <option selected disabled>Select Country</option>
-                                                    @foreach ($countries as $country)
-                                                        <option value="{{ $country['name'] }}">{{ $country['name'] }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label>Select Journals</label>
-                                                <select class="form-control banner_txt_box" required
-                                                    name="journal_id">
-                                                    <option value="">Select Journal</option>
-                                                    @foreach ($journals as $j)
-                                                        <option value="{{ $j->id }}">{{ $j->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label>Upload Manuscript</label>
-                                                <input type="file" class="form-control banner_txt_box" required
-                                                    name="manuscript">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <button type="submit" name="submit"
-                                                class="btn btn-info cta_btn submit_btn">Submit Manuscript</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</body>
-
-</html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.9.2/tagify.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var input = document.querySelector('#keywords');
+            new Tagify(input);
+        });
+    </script>
+@endsection

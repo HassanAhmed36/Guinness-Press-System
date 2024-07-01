@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\ArticleMail;
 use App\Mail\ContactMail;
+use App\Mail\ContactUsMail;
 use App\Mail\JoinMail;
 use App\Models\Article;
 use App\Models\IndexBody;
@@ -33,9 +34,9 @@ class MainController extends Controller
     public function journal_details($journal_name)
     {
         $journal = Journal::with(['journal_overview', 'journal_matrix', 'volume' => function ($q) {
-            $q->OrderByDesc('id');
+            $q->OrderByDesc('id')->whereNot('is_active', false);
         }, 'volume.issue' => function ($q) {
-            $q->OrderByDesc('id');
+            $q->OrderByDesc('id')->whereNot('is_active', false);
         }])->where('acronym', $journal_name)->first();
         // dd($journal->toArray());
         return view('user.pages.journal-details', compact('journal'));
@@ -288,7 +289,7 @@ class MainController extends Controller
         return view('front-end/dashboard', compact('data', 'subcategories'));
     }
 
-     public function journal_issue($id, $issue, $issue_no)
+    public function journal_issue($id, $issue, $issue_no)
     {
         $journal = Journal::withWhereHas('volume', function ($q) use ($issue_no) {
             $q->withWhereHas('issue', function ($q) use ($issue_no) {
@@ -335,5 +336,31 @@ class MainController extends Controller
         ];
         Mail::to('saifuddin@guinnesspress.org')->send(new JoinMail($datas));
         return view('user.pages.thanku', compact('datas'));
+    }
+
+    public function submitContact()
+    {
+        $data = request()->toArray();
+
+        $message = "
+    Hello,
+    You have received a new message from the contact form on your website.
+    Details are as follows:
+    - Name: " . $data['name'] . "
+    - Email: " . $data['email'] . "
+    - Phone Number: " . $data['number'] . "
+    - Source: " . $data['source'] . "
+    - Message: " . $data['message'] . "
+    
+    Best regards,
+    Your Website Team
+        ";
+        $recipientEmail = 'hassanahmed3652@gmail.com';
+        Mail::raw($message, function ($mail) use ($data, $recipientEmail) {
+            $mail->to($recipientEmail)
+                ->subject('New Message from Contact Form')
+                ->from($data['email'], $data['name']);
+        });
+        return redirect('/thank-you');
     }
 }

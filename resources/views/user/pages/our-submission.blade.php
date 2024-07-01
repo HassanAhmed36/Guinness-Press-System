@@ -22,15 +22,11 @@
                                 <tr>
                                     <td class="w-50">
                                         <span class="my-0"><span class="fw-semibold "> MenuScript ID:</span>
-                                            {{ $submission->manuscript_id }}</span><br>
+                                            {{ $submission->submission_id }}</span><br>
                                     </td>
-                                    @if (Auth::user()->role_id == 2)
-                                        <td>{{ $submission->reviewer_status == 0 ? 'Submitted' : ($submission->reviewer_status == 1 ? 'Approved' : 'Rejected') }}
-                                        </td>
-                                    @else
-                                        <td>{{ $submission->admin_status == 0 ? 'Submitted' : ($submission->admin_status == 1 ? 'Approved' : 'Rejected') }}
-                                        </td>
-                                    @endif
+                                    <td class="w-50">
+                                        {{ App\Services\SubmissionService::getSubmissionStage($submission->current_stage) }}({{ App\Services\SubmissionService::getSubmissionStatus($submission->current_status) }})
+                                    </td>
                                     <td>
                                         <button type="button" class="btn btn-warning btn-sm view_btn"
                                             data-id="{{ $submission->id }}" data-bs-toggle="modal"
@@ -69,8 +65,7 @@
 
     <!-- Modal -->
     <!-- Modal -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).on('click', '.view_btn', function(e) {
             e.preventDefault();

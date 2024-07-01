@@ -1,17 +1,22 @@
 @extends('user.layouts.template')
+
 @section('body')
     <style>
         .form-label,
-        .form-control .font- {
+        .form-control,
+        .font- {
             font-family: Poppins !important;
         }
     </style>
-    
-    <div class="container mt-5" style="min-height: 60vh !important">
-        <h4 class="cocogoose_light mb-4 fw-bold fs-3">Register Yourself!</h4>
+
+    <div class="container mt-5" style="padding: 5vh 0 !important;">
+        <h4 class="cocogoose_light mb-4 fw-bold fs-4">Register Yourself!</h4>
         <form action="{{ route('submit.register') }}" method="post">
             @csrf
             <div class="row">
+                <div class="col-12">
+                    <h5 class="poppins my-4">Profile Information</h5>
+                </div>
                 <!-- Name -->
                 <div class="form-group mb-3 col-4">
                     <label class="form-label" for="name">Name</label>
@@ -22,6 +27,49 @@
                             {{ $message }}
                         </div>
                     @enderror
+                </div>
+                <!-- Surname -->
+                <div class="form-group mb-3 col-4">
+                    <label class="form-label" for="surname">Surname</label>
+                    <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror"
+                        name="surname" value="{{ old('surname') }}" autocomplete="surname" placeholder="Enter your surname">
+                    @error('surname')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <!-- Country -->
+                <div class="form-group mb-3 col-4">
+                    <label class="form-label" for="country">Country</label>
+                    <select id="country" class="form-select @error('country') is-invalid @enderror" name="country">
+                        <option value="">Select Country</option>
+                        @foreach ($countries as $c)
+                            <option value="{{ $c['name'] }}" {{ old('country') == $c['name'] ? 'selected' : '' }}>
+                                {{ $c['name'] }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('country')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="form-group mb-4 col-12">
+                    <label class="form-label" for="affiliation">Affilaition</label>
+                    <input id="affiliation" type="text" class="form-control @error('affiliation') is-invalid @enderror"
+                        name="affiliation" value="{{ old('affiliation') }}" autocomplete="affiliation"
+                        placeholder="Enter your affiliation">
+                    @error('affiliation')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="col-12">
+                    <h5 class="poppins my-4">Login Credentials</h5>
                 </div>
                 <!-- Email -->
                 <div class="form-group mb-3 col-4">
@@ -46,7 +94,7 @@
                     @enderror
                 </div>
                 <!-- Confirm Password -->
-                <div class="form-group mb-4 col-4">
+                <div class="form-group mb-3 col-4">
                     <label class="form-label" for="password_confirmation">Confirm Password</label>
                     <input id="password_confirmation" type="password"
                         class="form-control @error('password_confirmation') is-invalid @enderror"
@@ -57,38 +105,38 @@
                         </div>
                     @enderror
                 </div>
-
-                <!-- Phone Number -->
-                <div class="form-group mb-3 col-4">
-                    <label class="form-label" for="phone_number">Phone Number</label>
-                    <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror"
-                        name="phone_number" value="{{ old('phone_number') }}" placeholder="Enter your phone number">
-                    @error('phone_number')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+                <div class="col-12 mb-4 mt-5">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="agreeDataPrivacy" name="agree_data_privacy"
+                            required value="1" @checked(old('agree_data_privacy'))>
+                        <label class="form-check-label" for="agreeDataPrivacy">
+                            I agree that my collected data may be stored according to the <a
+                                href="/policies-and-statements">privacy policy</a>.
+                        </label>
+                    </div>
                 </div>
-                <!-- Country -->
-                <div class="form-group mb-3 col-4">
-                    <label class="form-label" for="country">Country</label>
-                    <select id="country" class="form-select @error('country') is-invalid @enderror" name="country">
-                        <option value="">Select Country</option>
-                        @foreach ($countries as $c)
-                            <option value="{{ $c['name'] }}" @selected(old('country') == $c['name'])>{{ $c['name'] }}</option>
-                        @endforeach
-                    </select>
-                    @error('country')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+                <div class="col-12 mb-4">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="notifyNewPublications"
+                            name="notify_new_publications" value="1" @checked(old('notify_new_publications'))>
+                        <label class="form-check-label" for="notifyNewPublications">
+                            I would like to be notified of new publications and announcements.
+                        </label>
+                    </div>
                 </div>
-
-
-                <div class="col-12 mb-3 font-">
+                <div class="col-12 mb-4">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="reviewSubmissions" name="review_submissions"
+                            value="1" @checked(old('review_submissions'))>
+                        <label class="form-check-label" for="reviewSubmissions">
+                            I would like to be contacted for requests to review submissions to this journal.
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12 mb-3">
                     Already Have an Account? <a href="{{ route('user.login') }}">Login</a>
                 </div>
+                <!-- Register Button -->
                 <div class="form-group mb-3 col-12">
                     <button class="btn btn-light btn-blue red-btn mx-2 ms-0">Register</button>
                 </div>

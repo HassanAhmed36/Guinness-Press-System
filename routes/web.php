@@ -19,16 +19,31 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/migrate', function () {
-    Artisan::call('migrate:fresh');
-    Artisan::call('db:seed');
+Route::get('/login', [AuthController::class, 'login'])->name('user.login');
+Route::post('/submit-login', [AuthController::class, 'SubmitLogin'])->name('submit.login');
+
+
+Route::get('/verify-email/{token}', [AuthController::class, 'VerifyEmail'])->name('verify.email');
+Route::get('/verification-email', function () {
+    return Auth::check() ? redirect('home') : view('user.auth.verification');
+})->name('after.verify.email');
+Route::get('/register', [AuthController::class, 'register'])->name('user.register');
+Route::post('/submit-register', [AuthController::class, 'SubmitRegister'])->name('submit.register');
+Route::post('/resend-verify-email', [AuthController::class, 'resend'])->name('resend.verify.email');
+
+Route::middleware('check.user.auth')->group(function () {
+
+    Route::view('/Registration-Complete', 'user.pages.after-register')->name('after.register');
+    Route::get('/submit-your-article', [ArticleController::class, 'submitArticle'])->name('submit.article');
+    Route::get('/our-submission', [SubmissionController::class, 'index'])->name('submission.index');
+    Route::post('/submit-submission', [SubmissionController::class, 'store'])->name('submit.submission');
+    Route::get('/user-logout', [AuthController::class, 'logout'])->name('user.logout');
+   
 });
 
 
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
 Route::post('/update-profile', [ProfileController::class, 'update'])->name('update.profile');
-Route::get('/our-submission', [SubmissionController::class, 'index'])->name('submission.index');
-Route::post('/submit-submission', [SubmissionController::class, 'store'])->name('submission.store');
 Route::get('/view-submission', [SubmissionController::class, 'show'])->name('view.submission');
 Route::post('/update-submission', [SubmissionController::class, 'update'])->name('update.submission');
 Route::get('/Users', [UserController::class, 'index'])->name('user.index');
@@ -41,9 +56,7 @@ Route::get('/approve-reviewer-request/{id}', [ReviewerController::class, 'update
 Route::get('/review-request', [ReviewerController::class, 'create'])->name('reviewer.request');
 Route::post('/submit-review-request', [ReviewerController::class, 'store'])->name('submit.reviewer.request');
 
-
 //Pages Route
-
 Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/home', [MainController::class, 'index']);
 Route::get('/index', [MainController::class, 'index']);
@@ -69,6 +82,7 @@ Route::view('/services', 'user.pages.services');
 Route::view('/benefits-of-being-a-reviewer', 'user.pages.benefits_of_being_a_reviewer');
 Route::view('/reviewer-guidelines', 'user.pages.reviewer-guideline');
 Route::view('/contact-us', 'user.pages.contact-us');
+Route::post('/submit-contact', [MainController::class, 'submitContact'])->name('submit.contact');
 Route::view('/librarian-resource-center', 'user.pages.librarian-resource-center');
 Route::view('/authors-guidelines', 'user.pages.authors-guidelines');
 Route::view('/crossmark-policy', 'user.pages.crossmark-policy');
@@ -84,7 +98,7 @@ Route::get('/blogs', [MainController::class, 'blogs']);
 Route::get('/user-information', [MainController::class, 'user_information']);
 Route::get('/dashboard', [MainController::class, 'dashboard']);
 Route::get('/search', [MainController::class, 'search'])->name('search');
-Route::get('/submit-your-article', [ArticleController::class, 'submitArticle']);
+
 
 Route::post('/form-submission', [MainController::class, 'sendEmail'])->name('send.email');
 Route::post('/article-submission', [MainController::class, 'sendArticleEmail'])->name('send.articlemail');
@@ -93,25 +107,6 @@ Route::view('/thank-you', 'user.pages.thanku')->name('thank.u');
 Route::get('/journal/{journal_name}/join-board', [MainController::class, 'join_board']);
 Route::post('/joinboard', [MainController::class, 'sendBoardEmail'])->name('send.joinboard');
 Route::get('/submit-manuscripts', [SubmissionController::class, 'create'])->name('submit.manuscript');
-Route::get('/login', [AuthController::class, 'loginAfterSubmission'])->name('login.after.submission');
-Route::post('/submit-login', [AuthController::class, 'submitLoginAfterSubmission'])->name('submit.login.after.submission');
-Route::get('/verify-email/{token}', [AuthController::class, 'VerifyEmail'])->name('verify.email');
-Route::get('/verification-email', function () {
-    return Auth::check() ? redirect('home') : view('user.auth.verification');
-})->name('after.verify.email');
-Route::get('/login-password', [AuthController::class, 'VerifyEmail'])->name('login.password');
-Route::post('/submit-login-password', [AuthController::class, 'submitLoginAfterSubmissionPassword'])->name('submit.login.after.submission.password');
-
-Route::get('/user-login', [AuthController::class, 'login'])->name('user.login');
-Route::post('/submit-user-login', [AuthController::class, 'SubmitLogin'])->name('submit.user.login');
-
-Route::get('/user-logout', [AuthController::class, 'logout'])->name('user.logout');
-Route::get('/register', [AuthController::class, 'register'])->name('user.register');
-Route::post('/submit-register', [AuthController::class, 'SubmitRegister'])->name('submit.register');
-
-Route::post('/resend-verify-email', [AuthController::class, 'resend'])->name('resend.verify.email');
-
-Route::view('/test', 'mail.send-verification-mail');
 
 Route::get('/get-download-count', [CustomService::class, 'getDownloadCount'])->name('get.download.count');
 Route::get('/increase-download-count', [CustomService::class, 'increaseDownloadCount'])->name('increase.download.count');
@@ -127,5 +122,6 @@ Route::get('articles/{id}/citation/bib', [CustomService::class, 'downloadBibCita
 Route::get('articles/{id}/citation/ris', [CustomService::class, 'downloadRisCitation'])->name('articles.citation.ris');
 Route::get('articles/{article}/citation/txt', [CustomService::class, 'downloadTxt'])->name('articles.citation.txt');
 
+Route::get('/ip', [CustomService::class, 'createLoginHistory']);
 
 require __DIR__ . '/admin.php';

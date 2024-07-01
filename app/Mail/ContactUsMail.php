@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class InitialFeedBack extends Mailable
+class ContactUsMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -27,7 +27,7 @@ class InitialFeedBack extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: $this->data['subject'],
+            subject: 'Contact Us',
         );
     }
 
@@ -37,7 +37,7 @@ class InitialFeedBack extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.initial-feedback',
+            view: 'view.name',
         );
     }
 

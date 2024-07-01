@@ -7,8 +7,8 @@ use App\Mail\SubmissionNotifyOwn;
 use App\Mail\SubmissionThankyou;
 use App\Models\Journal;
 use App\Models\Submission;
-use App\Models\SubmissionFile;
 use App\Models\SubmissionKeyword;
+use App\Models\SubmissionStatusHistory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,19 +26,9 @@ class SubmissionController extends Controller
 
     public function index()
     {
-        if (!Auth::check()) {
-            return back();
-        }
-
-        $submissions = Submission::with(['user', 'submission_files' => function ($q) {
-            $q->latest();
-        }])
-            ->where('user_id', Auth::id())
-            ->paginate(10);
-
+        $submissions = Auth::user()->submissions()->paginate(10);
         return view('user.pages.our-submission', compact('submissions'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -47,7 +37,6 @@ class SubmissionController extends Controller
     {
         return view('user.pages.submission', [
             'journals' => Journal::all(),
-            'manuscript_id' => $this->create_manuscript_id()
         ]);
     }
 
@@ -56,54 +45,76 @@ class SubmissionController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->toArray());
+        $keywordsJson = $request->input('keywords');
+        $keywordsArray = json_decode($keywordsJson, true);
+
+        $keywordValues = array_map(function ($keyword) {
+            return $keyword['value'];
+        }, $keywordsArray);
         DB::beginTransaction();
         try {
-            if (User::where('email', $request->email_address)->exists()) {
-                $user  = User::where('email', $request->email_address)->first();
-            } else {
-                $user = Auth::user();
-                if (!Auth::check()) {
-                    $user =  User::create([
-                        'name' => $request->first_name,
-                        'email' => $request->email_address,
-                        'password' => "",
-                        'role_id' => 3,
-                        'remember_token' => Str::random(10),
-                        'phone_number' => $request->phone_number,
-                        'country' => $request->country,
-                        'is_active' => false
-                    ]);
-                }
-            }
             $submission = Submission::create([
-                'manuscript_id' => $this->create_manuscript_id(),
-                'journal_id' => $request->journal_id,
-                'initial_feedback' => null,
-                'status' => 0,
-                'user_id' => $user->id,
+                'submission_id' => $this->create_submission_id(),
+                'title' => $request->title,
+                'subtitle' => $request->subtitle,
+                'abstract' => $request->abstract,
+                'references' => $request->references,
+                'current_status' => 0, 
+                'current_stage' => 0, 
+                'user_id' => Auth::id()
             ]);
-            if ($request->manuscript) {
-                $name = $request->file('manuscript')->getClientOriginalName();
-                $path = 'storage/' . $request->file('manuscript')->store('manuscripts', 'public');
-                SubmissionFile::create([
-                    'file_name' => $name,
-                    'file_path' => $path,
-                    'submission_id' => $submission->id,
+            $submission_history = SubmissionStatusHistory::where('submission_id', $submission->id)->latest()->first();
+            $submission_status = $submission_history ? $submission_history->status : 0;
+            $submission_stage = $submission_history ? $submission_history->stage : 0;
+
+            $submission->current_status = $submission_status;
+            $submission->current_stage = $submission_stage;
+            $submission->save();
+
+            foreach ($keywordValues as $keyword) {
+                $submission->keywords()->create([
+                    'keyword' => $keyword
                 ]);
             }
-            session()->put('user_id', $user->id);
-            DB::commit();
-            Mail::to($user->email)->send(new SubmissionThankyou());
-            Mail::to('developertesting132@gmail.com')->send(new SubmissionNotifyOwn($submission , $user));
-            if (!Auth::check()) {
-                Mail::to($user->email)->send(new SendVerificationMail($user));
-                return redirect()->route('after.verify.email')->with('success', 'Verification email sent successfully. Please check your inbox and verify your email address.');
+
+            foreach ($request->author as $author) {
+                $submission->authors()->create([
+                    'name' => $author['name'],
+                    'email' => $author['email'],
+                    'orcid' => $author['orcid'],
+                    'is_primary_contact' => isset($author['is_primary_contact']),
+                ]);
             }
-            return redirect()->route('submission.index')->with('success', 'Submitted Successfully!');
+
+            foreach ($request->file as $fileData) {
+                $file = $fileData['file'];
+                $fileType = $fileData['filetype'];
+
+                $name = uniqid() . '.' . $file->getClientOriginalExtension();
+                $manuscript_path = $file->move(public_path('submissions/'), $name);
+
+                $submission->files()->create([
+                    'file_path' => 'submissions/' . $name,
+                    'file_type' => $fileType,
+                    'feedback' => '',
+                    'status' => 0,
+                    'stage' => 0, // Set stage as needed
+                ]);
+            }
+
+
+            $submission->statusHistory()->create([
+                'status' => 0,
+                'stage' => $submission_stage,
+            ]);
+
+            DB::commit();
+            return to_route('submission.index')->with('success', 'Submission Submitted successfully');
         } catch (\Exception $e) {
-            DB::rollBack();
             dd($e->getMessage());
-            return back()->with('error', 'Submission Failed!');
+            DB::rollback();
+            return back()->with('error', 'Submission submitted failed');
         }
     }
 
@@ -112,7 +123,7 @@ class SubmissionController extends Controller
      */
     public function show(Request $request)
     {
-        $submission =  Submission::find($request->id);
+        $submission =  Submission::with(['keywords', 'authors', 'statusHistory', 'user', 'files'])->find($request->id);
         return view('modals.view-submission', compact('submission'))->render();
     }
 
@@ -175,10 +186,10 @@ class SubmissionController extends Controller
         //
     }
 
-    private function create_manuscript_id()
+    private function create_submission_id()
     {
         $lastSubmission = Submission::orderByDesc('id')->first();
         $id = $lastSubmission ? $lastSubmission->id + 1 : 1;
-        return 'MS-' . str_pad($id, 4, '0', STR_PAD_LEFT);
+        return 'GP-' . str_pad($id, 4, '0', STR_PAD_LEFT);
     }
 }

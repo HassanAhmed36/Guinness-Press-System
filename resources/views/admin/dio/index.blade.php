@@ -36,7 +36,6 @@
                                 <label for="" class="form-label">Volume</label>
                                 <select id="volume" class="form-select" name="volume_id" required>
                                     <option selected disabled>Choose Volume</option>
-
                                 </select>
                             </div>
                         </div>
@@ -45,7 +44,6 @@
                                 <label for="" class="form-label">Issue</label>
                                 <select id="issue" class="form-select" name="issue_id">
                                     <option selected disabled>Choose Issue</option>
-
                                 </select>
                             </div>
                         </div>
@@ -65,91 +63,94 @@
             </div>
         </div>
     </div>
-    <div>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        <script>
-            $(document).ready(function() {
-                $('#journal').change(function() {
-                    let journalId = $(this).val();
-                    let url = "{{ route('volumes.fetch.dio') }}";
-                    if (journalId) {
-                        $.ajax({
-                            url: url,
-                            type: 'GET',
-                            data: {
-                                journal_id: journalId
-                            },
-                            success: function(data) {
-                                $('#volume').html(data);
-
-                            }
-                        });
-                    } else {
-                        $('#volume').empty().append('<option selected disabled>Choose Volume</option>');
-                    }
-                });
-
-                $('#volume').change(function() {
-                    let volumeID = $(this).val();
-                    let url = "{{ route('issue.fetch.dio') }}";
+    <script>
+        $(document).ready(function() {
+            $('#journal').change(function() {
+                let journalId = $(this).val();
+                let url = "{{ route('volumes.fetch.dio') }}";
+                if (journalId) {
                     $.ajax({
-                        type: "GET",
                         url: url,
+                        type: 'GET',
                         data: {
-                            volume_id: volumeID
+                            journal_id: journalId
                         },
-                        success: function(response) {
-                            $('#issue').html(response);
-                            generatedoi()
+                        success: function(data) {
+                            $('#volume').html(data);
                         }
                     });
+                } else {
+                    $('#volume').empty().append('<option selected disabled>Choose Volume</option>');
+                }
+            });
+
+            $('#volume').change(function() {
+                let volumeID = $(this).val();
+                let url = "{{ route('issue.fetch.dio') }}";
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    data: {
+                        volume_id: volumeID
+                    },
+                    success: function(response) {
+                        $('#issue').html(response);
+                        generatedoi()
+                    }
                 });
             });
+        });
+        $('#issue').change(function() {
+            generatedoi()
+        });
 
-            function generatedoi() {
-                let journal = $('#journal').val();
-                let volume = $('#volume').val();
-                let issue = $('#issue').val();
-                let acronym = $('#journal option:selected').data('acronym');
-                let issn = $('#journal option:selected').data('issn');
-                console.log(acronym.toLowerCase());
-                let currentDate = new Date();
-                let date = String(currentDate.getDate()).padStart(2, '0');
-                let month = String(currentDate.getMonth() + 1).padStart(2, '0');
-                let year = String(currentDate.getFullYear());
+        function generatedoi() {
+            let journal = $('#journal').val();
+            let selectedVolume = $('#volume').find('option:selected');
+            let volumeDataId = selectedVolume.data('id'); // Store data-id in a variable
 
-                let hours = String(currentDate.getHours()).padStart(2, '0');
-                let minutes = String(currentDate.getMinutes()).padStart(2, '0');
-                let seconds = String(currentDate.getSeconds()).padStart(2, '0');
-                console.log(`hour: ${hours} , min: ${minutes} , sec: ${seconds}`);
+            let issue = $('#issue').val();
+            let acronym = $('#journal option:selected').data('acronym');
+            let issn = $('#journal option:selected').data('issn');
 
-                ac = acronym.padEnd(4, '0');
-                issn = issn.replace(/-/g, '');
+            let currentDate = new Date();
+            let date = String(currentDate.getDate()).padStart(2, '0');
+            let month = String(currentDate.getMonth() + 1).padStart(2, '0');
+            let year = String(currentDate.getFullYear());
 
-                let doi =
-                    `10.59762/${acronym.toLowerCase()}${issn}${volume}${issue}${year}${month}${date}${hours}${minutes}${seconds}`;
-                console.log(doi);
-                console.log(doi.length);
-                $('#doi').val(doi);
-            }
-            $('#copyDoiButton').click(function() {
-                let doiField = $('#doi');
-                doiField.select();
-                doiField[0].setSelectionRange(0, 99999);
-                navigator.clipboard.writeText(doiField.val()).then(function() {
-                    $('#copyDoiButton').text('Copied');
-                }, function(err) {
-                    console.error('Failed to copy: ', err);
-                });
-                setTimeout(function() {
-                    $('#copyDoiButton').text('Copy DOI');
-                }, 2000);
+            let hours = String(currentDate.getHours()).padStart(2, '0');
+            let minutes = String(currentDate.getMinutes()).padStart(2, '0');
+            let seconds = String(currentDate.getSeconds()).padStart(2, '0');
+
+
+            let ac = acronym.padEnd(4, '0');
+            issn = issn.replace(/-/g, '');
+
+            let doi =
+                `10.59762/${acronym.toLowerCase()}${issn}${volumeDataId}${issue}${year}${month}${date}${hours}${minutes}${seconds}`;
+
+            $('#doi').val(doi);
+        }
+
+        $('#copyDoiButton').click(function() {
+            let doiField = $('#doi');
+            doiField.select();
+            doiField[0].setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(doiField.val()).then(function() {
+                $('#copyDoiButton').text('Copied');
+            }, function(err) {
+                console.error('Failed to copy: ', err);
             });
+            setTimeout(function() {
+                $('#copyDoiButton').text('Copy DOI');
+            }, 2000);
+        });
 
-            $('#regenrateDoi').click(function() {
-                generatedoi();
-            });
-        </script>
-    @endsection
+        $('#regenrateDoi').click(function() {
+            generatedoi();
+        });
+    </script>
+@endsection

@@ -252,7 +252,7 @@
                                     <div class="col-md-6 col-xl-5 col-sm-12">
                                         <div class="article-sec1">
                                             @if (!empty($article->article_type))
-                                                <h3>{{ $article->article_type }}</h3>
+                                                <h3 class="poppins_fonts">{{ $article->article_type }}</h3>
                                             @endif
                                             <h1>{{ $article->title }}</h1>
                                             @php
@@ -404,11 +404,11 @@
                                                     <li>
                                                         <div class="article-titles">
                                                             <h2>Abstract</h2>
-                                                            <p>
+                                                            <p style="font-size:14px">
                                                                 {!! $article->article_details->abstract !!}
                                                             </p>
                                                             <div class="keywords_article">
-                                                                <p><b>Keywords:</b>
+                                                                <p style="font-size:14px"><b>Keywords:</b>
                                                                     @foreach ($article->keywords as $keyword)
                                                                         <span>{{ $keyword->keyword }}</span>
                                                                     @endforeach
@@ -440,7 +440,9 @@
                                                         <div class="article-titles">
                                                             <h2>References</h2>
                                                             <ul class="reference-content">
-                                                                <li> {!! $article->article_details->references !!}</li>
+                                                                <li id="reference-content" class='d-none'> {!! $article->article_details->references !!}</li>
+                                                                <li id="referencesTextarea" class="d-flex flex-wrap flex-column justifiy-content-start text-left align-items-start"></li>
+                                                                
                                                             </ul>
                                                         </div>
                                                     </li>
@@ -457,10 +459,10 @@
                                                                 </div>
                                                                 <div>
                                                                     <span> <a
-                                                                            href="{{ route('articles.citation.bib', ['id' => $article->id]) }}">Download Bip</a></span>
+                                                                            href="{{ route('articles.citation.bib', ['id' => $article->id]) }}">Download Bib</a></span>
                                                                     |
                                                                     <span> <a
-                                                                            href="{{ route('articles.citation.ris', ['id' => $article->id]) }}">Dwonload
+                                                                            href="{{ route('articles.citation.ris', ['id' => $article->id]) }}">Download
                                                                             Ris</a></span>
                                                                     |
                                                                     <span><a
@@ -692,4 +694,53 @@
             });
         });
     </script>
+    
+<script>
+    $(document).ready(function() {
+        let text = $('#reference-content').text();
+        console.log(text);
+        
+     
+        var references = text.split(/\[\d+\]/).filter(Boolean); 
+        var updatedReferences = [];
+         var regex = /\d+\)\s*([^,]+),/;
+        var doiRegex = /(https:\/\/doi\.org\/[^\s]+)/gi;
+
+        references.forEach(function(reference, index) {
+            var updatedReference = `[${index + 1}] ${reference.trim()}`; 
+            var links = '';
+            var match = reference.match(regex);
+            if (match) {
+                var extractedString = match[1].trim();
+                var formattedString = extractedString.replace(/[^\w\s]/gi, '').replace(/\s+/g, '+');
+                var googleScholarLink = `<a class="btn btn-sm btn-primary my-1 text-white text-left" href="https://scholar.google.com/scholar_lookup?title=${formattedString}" target="_blank">Google Scholar</a>`;
+                links += googleScholarLink;
+            }
+            var doiMatch = reference.match(doiRegex);
+            if (doiMatch) {
+                doiMatch.forEach(function(doi) {
+                    var cleanedDoi = doi.replace(/\s+/g, '');
+                    var clickableDoi = `<a href="${cleanedDoi}" target="_blank" class="btn btn-sm btn-primary my-1 text-white">CrossRef</a>`;
+                    links += ` ${clickableDoi}`;
+                });
+            }
+            if (links) {
+                links = `<div class="d-flex gap-2">${links}</div>`; 
+            }
+            updatedReference += links ? `<br>${links}` : '<br>'; 
+            updatedReferences.push(updatedReference);
+        });
+        
+        var updatedText = updatedReferences.join('<br>'); 
+        
+
+        updatedText = updatedText.replace(/\[\d+\]/g, '');
+
+        $('#referencesTextarea').html(updatedText);
+    });
+</script>
+
+
+
+
 @endsection

@@ -2425,13 +2425,13 @@ section.search-journal-filters .article-row .journal-details .article-sec1 h1 {
     padding: 0px 0px;
 }
 .search-titles h1 {
-    font-family: 'Bayon';
+    /* font-family: 'Bayon'; */
     font-size: 26px;
     letter-spacing: 0.6px;
     text-transform: capitalize;
     color: #000000;
     line-height: 1.2;
-    font-family: 'Cocogoose-Pro-Thin-Italic-trial';
+    /* font-family: 'Cocogoose-Pro-Thin-Italic-trial'; */
 }
 .article-row .journal-details .article-sec1 ul.article-authors {
     margin-bottom: 0px;

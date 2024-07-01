@@ -10,7 +10,10 @@ use App\Http\Controllers\Admin\SubmissionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VolumeIssueController;
 use App\Http\Controllers\IndexBodyController;
+use App\Models\Submission;
 use App\Services\CustomService;
+use App\Services\SubmissionService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -76,9 +79,9 @@ Route::prefix('/admin')->group(function () {
         Route::post('/admin-reject-submission/{id}', [SubmissionController::class, 'rejectSubmission'])->name('admin.reject.submission');
 
         Route::get('/submissions', [SubmissionController::class, 'index'])->name('admin.submission.index');
-        Route::get('/submission-delete/{id}', [SubmissionController::class, 'destroy'])->name('admin.submission.delete');
-        Route::get('/submission-show/{id}', [SubmissionController::class, 'show'])->name('admin.submission.show');
-        Route::post('/update-initial-feedback-article', [SubmissionController::class, 'updateInitialFeedback'])->name('update.initial.feedback.article');
+        Route::get('/submission-detail/{id}', [SubmissionController::class, 'show'])->name('submission.show');
+
+        Route::post('/submission-feedback', [CustomService::class, 'submitFeedback'])->name('submission.feedback');
 
         Route::get('/users', [UserController::class, 'index'])->name('admin.user.index');
         Route::post('/store-users', [UserController::class, 'store'])->name('admin.user.store');
