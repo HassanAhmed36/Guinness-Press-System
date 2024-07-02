@@ -21,9 +21,18 @@
                                 Action <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu" style="">
-                                <li><a href="#">Update Status</a></li>
-                                <li><a href="#">Assign to Peer Review</a></li>
+                                <li>
+                                    <button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                        data-bs-target="#updateStatus">
+                                        Update Status
+                                    </button>
+                                </li>
+                                <li>
+                                    <!-- Button to trigger modal -->
+
+                                </li>
                             </ul>
+
                         </div>
                     </div>
                 </div>
@@ -111,6 +120,10 @@
                                             data-bs-target="#feedbackModal{{ $loop->iteration }}">
                                             Add Feedback
                                         </button>
+                                        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#AssignToPeerReviewed{{ $loop->iteration }}">
+                                            Assign to peer review
+                                        </button>
                                     </td>
                                 </tr>
                                 <!-- Modal -->
@@ -185,6 +198,60 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="modal fade" id="AssignToPeerReviewed{{ $loop->iteration }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form action="{{ route('assign.peer.reviewed', ['id' => $submission->id]) }}"
+                                                method="post">
+                                                @csrf
+                                                <input type="hidden" name="submissionfile_id"
+                                                    value="{{ $file->id }}">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="exampleModalLabel">Assign to Peer Reviewed
+                                                    </h3>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-12 mb-4">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    value="1" id="assignOtherCheck" name="other_check">
+                                                                <label class="form-check-label" for="assignOtherCheck">
+                                                                    Assign other
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 mb-3" id="emailInput">
+                                                            <label for="boardmember" class="form-label">Email</label>
+                                                            <input type="email" class="form-control" name="email">
+                                                        </div>
+                                                        <div class="col-12 mb-3" id="boardMemberSelect">
+                                                            <label for="boardmember"
+                                                                class="form-label">Boardmember</label>
+                                                            <select name="boardmember[]" id="boardmember"
+                                                                class="form-select select2 select2-search" multiple>
+                                                                @foreach ($members as $member)
+                                                                    <option value="{{ $member->id }}">
+                                                                        {{ $member->name }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Assign</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
                         </tbody>
                     </table>
@@ -195,4 +262,68 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="updateStatus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ route('update.submission.status', ['id' => $submission->id]) }}" method="post">
+                    @csrf
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Submission Status</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <label for="stage" class="form-label">Stage</label>
+                                <select name="stage" id="stage" class="form-select">
+                                    <option value="0">Initail QA</option>
+                                    <option value="1">APC</option>
+                                    <option value="2">Peer Reviewed</option>
+                                    <option value="3">Publication</option>
+                                </select>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="status" class="form-label">Status</label>
+                                <select name="status" id="status" class="form-select">
+                                    <option value="0">Pending</option>
+                                    <option value="1">Aproved</option>
+                                    <option value="2">Rejected</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update Status</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#emailInput').hide();
+            $('#boardMemberSelect').show();
+            if ($('#assignOtherCheck').prop('checked')) {
+                $('#emailInput').show();
+                $('#boardMemberSelect').hide();
+            } else {
+                $('#emailInput').hide();
+                $('#boardMemberSelect').show();
+            }
+
+            $('#assignOtherCheck').change(function() {
+                if ($(this).prop('checked')) {
+                    $('#emailInput').show();
+                    $('#boardMemberSelect').hide();
+                } else {
+                    $('#emailInput').hide();
+                    $('#boardMemberSelect').show();
+                }
+            });
+        });
+    </script>
+
 @endsection

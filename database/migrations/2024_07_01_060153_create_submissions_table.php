@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('current_stage'); // Initial QA, APC, Peer Review, Publication
             $table->timestamps();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('journal_id')->constrained('journals')->onDelete('cascade');
             $table->softDeletes();
         });
 

@@ -1,5 +1,5 @@
-<aside class="app-sidebar">
-    <div class="app-sidebar__logo " style="border-bottom: none !important">
+<aside class="app-sidebar" style="overflow: scroll">
+    <div class="app-sidebar__logo " style="border-bottom: none !important;">
         <a class="header-brand" href="index.html">
             <img src="{{ asset('admin_assets/images/logo-light.png') }}" class="header-brand-img desktop-lgo"
                 style="width: 150px" alt="Dayonelogo">
@@ -11,7 +11,7 @@
                 style="width: 150px" alt="Dayonelogo">
         </a>
     </div>
-    <div class="app-sidebar3">
+    <div class="app-sidebar3 ">
         <div class="app-sidebar__user border-none">
             <div class="dropdown user-pro-body text-center">
                 <div class="user-pic">

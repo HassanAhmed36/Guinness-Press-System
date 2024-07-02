@@ -14,6 +14,7 @@ use App\Models\Article;
 use App\Models\Journal;
 use App\Models\Submission;
 use App\Services\CustomService;
+use App\Services\SubmissionService;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,19 +33,21 @@ Route::post('/submit-register', [AuthController::class, 'SubmitRegister'])->name
 Route::post('/resend-verify-email', [AuthController::class, 'resend'])->name('resend.verify.email');
 
 Route::middleware('check.user.auth')->group(function () {
-
     Route::view('/Registration-Complete', 'user.pages.after-register')->name('after.register');
+    Route::get('/user-logout', [AuthController::class, 'logout'])->name('user.logout');
+
+    //submission route
     Route::get('/submit-your-article', [ArticleController::class, 'submitArticle'])->name('submit.article');
     Route::get('/our-submission', [SubmissionController::class, 'index'])->name('submission.index');
     Route::post('/submit-submission', [SubmissionController::class, 'store'])->name('submit.submission');
-    Route::get('/user-logout', [AuthController::class, 'logout'])->name('user.logout');
-   
+    Route::get('/view-submission/{id}', [SubmissionController::class, 'show'])->name('view.submission');
+    Route::post('/update-submission-user/{id}', [SubmissionController::class, 'update'])->name('update.submission.user');
+    Route::get('/send-apc-mail/{id}', [SubmissionService::class, 'sendPaypalEmail'])->name('send.paypal.mail');
+
+    Route::get('/user-profile', [ProfileController::class, 'index'])->name('user.own.profile');
 });
-
-
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
 Route::post('/update-profile', [ProfileController::class, 'update'])->name('update.profile');
-Route::get('/view-submission', [SubmissionController::class, 'show'])->name('view.submission');
 Route::post('/update-submission', [SubmissionController::class, 'update'])->name('update.submission');
 Route::get('/Users', [UserController::class, 'index'])->name('user.index');
 Route::post('/user-store', [UserController::class, 'store'])->name('user.store');

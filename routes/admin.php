@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('/admin')->group(function () {
-    Route::redirect('/', '/admin/login');
+    Route::redirect('/admin', '/admin/login');
     Route::get('/login', [AuthController::class, 'login'])->name('admin.login');
     Route::post('/submit-login', [AuthController::class, 'Submitlogin'])->name('admin.submit.login');
     //journals
@@ -80,8 +80,10 @@ Route::prefix('/admin')->group(function () {
 
         Route::get('/submissions', [SubmissionController::class, 'index'])->name('admin.submission.index');
         Route::get('/submission-detail/{id}', [SubmissionController::class, 'show'])->name('submission.show');
-
+        Route::post('update-submission-status/{id}', [SubmissionController::class, 'updateStatus'])->name('update.submission.status');
         Route::post('/submission-feedback', [CustomService::class, 'submitFeedback'])->name('submission.feedback');
+
+        Route::post('/assign-peer-reviewed/{id}', [SubmissionService::class, 'assignPeerReviewed'])->name('assign.peer.reviewed');
 
         Route::get('/users', [UserController::class, 'index'])->name('admin.user.index');
         Route::post('/store-users', [UserController::class, 'store'])->name('admin.user.store');

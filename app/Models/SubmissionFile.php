@@ -16,4 +16,9 @@ class SubmissionFile extends Model
     {
         return $this->belongsTo(Submission::class);
     }
+
+    public function peerReviewAssignments()
+    {
+        return $this->hasMany(PeerReviewAssignment::class);
+    }
 }

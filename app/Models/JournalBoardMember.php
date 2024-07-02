@@ -27,4 +27,9 @@ class JournalBoardMember extends Model
     {
         return $this->belongsTo(Journal::class, 'journal_id');
     }
+
+    public function peerReviewAssignments()
+    {
+        return $this->hasMany(PeerReviewAssignment::class);
+    }
 }

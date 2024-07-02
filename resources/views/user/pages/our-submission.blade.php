@@ -9,6 +9,14 @@
                     </div>
                 </div>
                 <div class="my-4">
+                    @session('message')
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ $value }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endsession
+                </div>
+                <div class="my-4">
                     <table class="table table-bordered poppins_fonts">
                         <thead class="table-light">
                             <tr>
@@ -24,15 +32,18 @@
                                         <span class="my-0"><span class="fw-semibold "> MenuScript ID:</span>
                                             {{ $submission->submission_id }}</span><br>
                                     </td>
-                                    <td class="w-50">
+                                    <td class="w-25">
                                         {{ App\Services\SubmissionService::getSubmissionStage($submission->current_stage) }}({{ App\Services\SubmissionService::getSubmissionStatus($submission->current_status) }})
                                     </td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning btn-sm view_btn"
-                                            data-id="{{ $submission->id }}" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
+                                    <td class="w-25">
+                                        <a class="btn btn-warning btn-sm view_btn"
+                                            href="{{ route('view.submission', ['id' => $submission->id]) }}">
                                             view
-                                        </button>
+                                        </a>
+                                        <a class="btn btn-info btn-sm view_btn"
+                                            href="{{ route('send.paypal.mail', ['id' => $submission->id]) }}">
+                                            APC
+                                        </a>
                                     </td>
                                 </tr>
                             @empty
@@ -62,35 +73,4 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-    <!-- Modal -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).on('click', '.view_btn', function(e) {
-            e.preventDefault();
-            $('#edit_modal_body').html('<div class="text-center"><div class="spinner-border"></div></div>');
-            let id = $(this).data('id');
-            $.ajax({
-                type: "GET",
-                url: "{{ route('view.submission') }}",
-                data: {
-                    id: id
-                },
-                success: function(response) {
-                    $('#edit_modal_body').fadeOut('fast', function() {
-                        $(this).html(response).fadeIn('slow');
-                    });
-                }
-            });
-        });
-        $(document).ready(function() {
-            $('.approveBtn').click(function() {
-                let status = $(this).data('status');
-                let id = $(this).data('id');
-                $('#submission_status').val(status);
-                $('#submission_id').val(id);
-            });
-        });
-    </script>
 @endsection

@@ -6,6 +6,7 @@ use App\Mail\SendVerificationMail;
 use App\Mail\SubmissionNotifyOwn;
 use App\Mail\SubmissionThankyou;
 use App\Models\Journal;
+use App\Models\JournalBoardMember;
 use App\Models\Submission;
 use App\Models\SubmissionKeyword;
 use App\Models\SubmissionStatusHistory;
@@ -26,7 +27,7 @@ class SubmissionController extends Controller
 
     public function index()
     {
-        $submissions = Auth::user()->submissions()->paginate(10);
+        $submissions = Submission::where('user_id', Auth::id())->paginate(10);
         return view('user.pages.our-submission', compact('submissions'));
     }
 
@@ -56,12 +57,13 @@ class SubmissionController extends Controller
         try {
             $submission = Submission::create([
                 'submission_id' => $this->create_submission_id(),
+                'journal_id' => $request->journal_id,
                 'title' => $request->title,
                 'subtitle' => $request->subtitle,
                 'abstract' => $request->abstract,
                 'references' => $request->references,
-                'current_status' => 0, 
-                'current_stage' => 0, 
+                'current_status' => 0,
+                'current_stage' => 0,
                 'user_id' => Auth::id()
             ]);
             $submission_history = SubmissionStatusHistory::where('submission_id', $submission->id)->latest()->first();
@@ -121,10 +123,18 @@ class SubmissionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request)
+    public function show($id)
     {
-        $submission =  Submission::with(['keywords', 'authors', 'statusHistory', 'user', 'files'])->find($request->id);
-        return view('modals.view-submission', compact('submission'))->render();
+        $submission =  Submission::with(['keywords' => function ($q) {
+            $q->select('id', 'keyword', 'submission_id');
+        }, 'authors', 'statusHistory', 'user', 'files' => function ($q) {
+            $q->latest();
+        }])->find($id);
+        $keywords = $submission->keywords->map(function ($keyword) {
+            return $keyword->keyword;
+        })->toArray();
+        $journals = Journal::all();
+        return view('user.pages.view-submission', compact('submission', 'keywords', 'journals'));
     }
 
     /**
@@ -138,44 +148,79 @@ class SubmissionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'submission_id' => 'required|exists:submissions,id',
-            'status' => 'required|in:0,1',
-            'reviewer_message' => 'required|string',
-        ]);
+        // dd($request->toArray());
+        $keywordsJson = $request->input('keywords');
+        $keywordsArray = json_decode($keywordsJson, true);
 
-        $submission = Submission::with('reviewer')->findOrFail($request->submission_id);
-        if (Auth::user()->role_id == 1) {
+        $keywordValues = array_map(function ($keyword) {
+            return $keyword['value'];
+        }, $keywordsArray);
+
+        DB::beginTransaction();
+        try {
+            $submission = Submission::find($id);
             $submission->update([
-                'admin_status' => $request->status == "0" ? 2 : 1,
-                'admin_message' => $request->reviewer_message,
+                'journal_id' => $request->journal_id,
+                'title' => $request->title,
+                'subtitle' => $request->subtitle,
+                'abstract' => $request->abstract,
+                'references' => $request->references,
+                'current_status' => 0,
+                'current_stage' => 0,
+                'user_id' => Auth::id()
             ]);
-        } else {
-            $submission->update([
-                'reviewer_status' => $request->status == "0" ? 2 : 1,
-                'reviewer_message' => $request->reviewer_message,
-                'reviewer_id' => Auth::id()
+            $submission_history = SubmissionStatusHistory::where('submission_id', $submission->id)->latest()->first();
+            $submission_stage = $submission_history ? $submission_history->stage : 0;
+
+            $submission->current_status = 0;
+            $submission->current_stage = $submission_stage;
+            $submission->save();
+            $submission->keywords()->delete();
+            foreach ($keywordValues as $keyword) {
+                $submission->keywords()->create([
+                    'keyword' => $keyword
+                ]);
+            }
+            $submission->authors()->delete();
+            foreach ($request->author as $author) {
+                $submission->authors()->create([
+                    'name' => $author['name'],
+                    'email' => $author['email'],
+                    'orcid' => $author['orcid'],
+                    'is_primary_contact' => isset($author['is_primary_contact']),
+                ]);
+            }
+
+            foreach ($request->file as $fileData) {
+                $file = $fileData['file'];
+                $fileType = $fileData['filetype'];
+
+                $name = uniqid() . '.' . $file->getClientOriginalExtension();
+                $manuscript_path = $file->move(public_path('submissions/'), $name);
+
+                $submission->files()->create([
+                    'file_path' => 'submissions/' . $name,
+                    'file_type' => $fileType,
+                    'feedback' => '',
+                    'status' => 0,
+                    'stage' => 0, // Set stage as needed
+                ]);
+            }
+
+
+            $submission->statusHistory()->create([
+                'status' => 0,
+                'stage' => $submission_stage,
             ]);
+            DB::commit();
+            return to_route('submission.index')->with('success', 'Submission Submitted successfully');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            DB::rollback();
+            return back()->with('error', 'Submission submitted failed');
         }
-        if (Auth::user()->role_id != 1) {
-            $user = User::find(1);
-        } else {
-            $user = $submission->user;
-        }
-        $subject = $request->status == "0" ? "Submission Rejected" : "Submission Approved";
-        $statusText = $request->status == '0' ? 'Rejected' : 'Approved';
-        if (Auth::user()->role_id == 1) {
-            Mail::send('mail.admin-approve', ['user' => $user, 'submission' => $submission, 'statusText' => $statusText], function ($m) use ($user, $subject) {
-                $m->to($user->email)->subject($subject);
-            });
-        } else {
-            Mail::send('mail.send-status', ['user' => $user, 'submission' => $submission, 'statusText' => $statusText], function ($m) use ($user, $subject) {
-                $m->to($user->email)->subject($subject);
-            });
-        }
-        return back()->with('success', 'Status Updated Successfully!');
     }
 
     /**

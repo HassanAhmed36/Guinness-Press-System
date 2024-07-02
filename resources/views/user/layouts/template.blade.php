@@ -92,14 +92,29 @@
                     </div>
                     <div class="right_bar">
                         <ul class="top_contact top_contact_2 white_text poppins_fonts">
-                            <li>
-                                <a href="{{ url('/submit-your-article') }}" class="btn  btn-danger ">Submit your
-                                    Article</a>
+                            <li class="d-flex gap-3 align-items-center">
+                                <div>
+                                    <a href="{{ url('/submit-your-article') }}" class="btn btn-danger ">Submit your
+                                        Article</a>
+                                </div>
                                 @guest
-                                    <a href="{{ route('user.login') }}" class="btn  btn-danger  mx-2">Login</a>
+                                    <div>
+                                        <a href="{{ route('user.login') }}" class="btn btn-danger mx-2">Login</a>
+                                    </div>
                                 @endguest
                                 @auth
-                                    <a href="{{ route('user.logout') }}" class="btn btn-danger mx-2">Logout</a>
+                                    <div class="dropdown">
+                                        <button class="btn btn-danger btn-sm dropdown-toggle" type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Account <i class="fa fa-account"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="{{ route('user.own.profile') }}">Our
+                                                    Profile</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="{{ route('user.logout') }}">Logout</a></li>
+                                        </ul>
+                                    </div>
                                 @endauth
                             </li>
                         </ul>
@@ -387,14 +402,6 @@
             </div>
         </div>
     </header>
-    @session('message')
-        <div class="container">
-            <div class="alert alert-info alert-dismissible fade show my-3" role="alert">
-                <strong>Message</strong> Pleae compelete your profile Information
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        </div>
-    @endsession
     @yield('banner')
     @yield('body')
     <footer>

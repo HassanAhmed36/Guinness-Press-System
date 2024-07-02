@@ -11,6 +11,7 @@ class Submission extends Model
 
     protected $fillable = [
         'submission_id',
+        'journal_id',
         'title',
         'subtitle',
         'abstract',
@@ -25,7 +26,7 @@ class Submission extends Model
     {
         return $this->hasMany(SubmissionFile::class);
     }
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -44,5 +45,10 @@ class Submission extends Model
     public function authors()
     {
         return $this->hasMany(SubmissionAuthor::class);
+    }
+
+    public function journal()
+    {
+        return $this->belongsTo(Journal::class, 'journal_id');
     }
 }
