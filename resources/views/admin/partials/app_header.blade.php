@@ -72,7 +72,7 @@
                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow animated">
                                            <div class="p-3 text-center border-bottom">
                                                <a href="profile-1.html"
-                                                   class="text-center user pb-0 font-weight-bold">{{ auth()->user()->name }}</a>
+                                                   class="text-center user pb-0 font-weight-bold">{{ auth()->user()->name ?? '' }}</a>
                                                <p class="text-center user-semi-title">{{ auth()->user()->role->name }}
                                                </p>
                                            </div>

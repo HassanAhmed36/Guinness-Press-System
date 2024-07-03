@@ -53,6 +53,20 @@ class SubmissionService
         }
     }
 
+    public static function getPeerReviewStatus(int $status): string
+    {
+        switch ($status) {
+            case 0:
+                return "Pending";
+            case 1:
+                return "Approved";
+            case 2:
+                return "Reject";
+            default:
+                return "Unknown";
+        }
+    }
+
     public function sendPaypalEmail($id)
     {
         $authors = SubmissionAuthor::with('submission')->where('submission_id', $id)->get();
@@ -68,37 +82,76 @@ class SubmissionService
     public function assignPeerReviewed(Request $request)
     {
         $newGeneratedPassword = Str::random(6);
-        if ($request->filled('other_check')) {
+        $submissionFileId = $request->submissionfile_id;
+
+        DB::beginTransaction();
+        try {
+            $name = uniqid() . '.' . $request->file->getClientOriginalExtension();
+            $request->file->move(public_path('peer-review/'), $name);
+            $peer_review_file_path = 'peer-review/' . $name;
+
+            if ($request->filled('other_check')) {
+                $user = $this->getUser($request->email, $newGeneratedPassword);
+                PeerReviewAssignment::create([
+                    'submission_file_id' => $submissionFileId,
+                    'status' => 0,
+                    'user_id' => $user->id,
+                    'file_path' => $peer_review_file_path
+                ]);
+                Mail::to($user->email)->send(new SendPeerReview($user, $newGeneratedPassword));
+            } else {
+                foreach ($request->boardmember as $memberID) {
+                    $boardmember = JournalBoardMember::findOrFail($memberID);
+                    $user = $this->getUser($boardmember->email, $newGeneratedPassword);
+                    PeerReviewAssignment::create([
+                        'submission_file_id' => $submissionFileId,
+                        'status' => 0,
+                        'user_id' => $user->id,
+                        'file_path' => $peer_review_file_path
+                    ]);
+                    Mail::to($user->email)->send(new SendPeerReview($user, $newGeneratedPassword));
+                }
+            }
+            DB::commit();
+            return redirect()->back()->with('success', 'Submission Assigned and mail sent successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
+        }
+    }
+
+    private function getUser($email, $newGeneratedPassword)
+    {
+        $user = User::where('email', $email)->first();
+        if ($user) {
+            $user->password = Hash::make($newGeneratedPassword);
+            $user->save();
+        } else {
             $user = User::create([
-                'email' => $request->email,
+                'email' => $email,
                 'password' => Hash::make($newGeneratedPassword),
                 'role_id' => 2,
                 'is_active' => true
             ]);
-            PeerReviewAssignment::create([
-                'submission_file_id' => $request->submissionfile_id,
-                'status' => 0,
-                'user_id' => $user->id
+        }
+        return $user;
+    }
+
+    public function submitPeerReviewFeedback(Request $request)
+    {
+        $request->validate([
+            "peer_review_id" => "required",
+            "status" => "required",
+            "feedback" => "required",
+        ]);
+        try {
+            PeerReviewAssignment::where('id', $request->peer_review_id)->update([
+                'status' => $request->status,
+                'feedback' => $request->feedback
             ]);
-            Mail::to($user->email)->send(new SendPeerReview($user, $newGeneratedPassword));
-            return redirect()->back()->with('success', 'Submission Assigned and mail sent successfully');
-        } else {
-            foreach ($request->boardmember as $memberID) {
-                $boardmember = JournalBoardMember::find($memberID);
-                $user = User::create([
-                    'email' => $boardmember->email,
-                    'password' => Hash::make($newGeneratedPassword),
-                    'role_id' => 2,
-                    'is_active' => true
-                ]);
-                PeerReviewAssignment::create([
-                    'submission_file_id' => $request->submissionfile_id,
-                    'status' => 0,
-                    'user_id' => $user->id
-                ]);
-                Mail::to($user->email)->send(new SendPeerReview($user, $newGeneratedPassword));
-            }
-            return redirect()->back()->with('success', 'Submission Assigned and mail sent successfully');
+            return back()->with('success', 'Feedback submitted successfully');
+        } catch (\Throwable $th) {
+            return back()->with('error', 'Feedback submitted Failed');
         }
     }
 }

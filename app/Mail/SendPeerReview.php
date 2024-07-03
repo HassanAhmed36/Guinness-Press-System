@@ -24,7 +24,7 @@ class SendPeerReview extends Mailable
      * @param string $newGeneratedPassword
      * @param User $user
      */
-    public function __construct($newGeneratedPassword, User $user)
+    public function __construct(User $user , $newGeneratedPassword)
     {
         $this->newGeneratedPassword = $newGeneratedPassword;
         $this->user = $user;
@@ -35,7 +35,7 @@ class SendPeerReview extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Assigning Peer Review for Submission',
+            subject: 'Assigning For Peer Review',
         );
     }
 
@@ -45,7 +45,7 @@ class SendPeerReview extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.assign-peer-review',
         );
     }
 

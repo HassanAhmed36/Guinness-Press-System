@@ -28,8 +28,10 @@
                                     </button>
                                 </li>
                                 <li>
-                                    <!-- Button to trigger modal -->
-
+                                    <button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                        data-bs-target="#AssignToPeerReviewed">
+                                        Assign to peer review
+                                    </button>
                                 </li>
                             </ul>
 
@@ -120,10 +122,7 @@
                                             data-bs-target="#feedbackModal{{ $loop->iteration }}">
                                             Add Feedback
                                         </button>
-                                        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#AssignToPeerReviewed{{ $loop->iteration }}">
-                                            Assign to peer review
-                                        </button>
+
                                     </td>
                                 </tr>
                                 <!-- Modal -->
@@ -198,57 +197,111 @@
                                         </div>
                                     </div>
                                 </div>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <br>
+                    <h5 class="mb-4">Peer Reviewd</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Assign AtDate</th>
+                                <th>Status</th>
+                                <th>Feedback</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($submission->files as $file)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $file->file_type }}</td>
+                                    <td>{{ App\Services\SubmissionService::getSubmissionStage($file->stage) }}
+                                        ({{ App\Services\SubmissionService::getSubmissionStatus($file->status) }})
+                                    </td>
+                                    <td>{{ $file->created_at->format('Y , M d') }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#fileModal{{ $loop->iteration }}">
+                                            view feedback
+                                        </button>
+                                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#feedbackModal{{ $loop->iteration }}">
+                                            Add Feedback
+                                        </button>
 
-                                <div class="modal fade" id="AssignToPeerReviewed{{ $loop->iteration }}" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    </td>
+                                </tr>
+                                <!-- Modal -->
+                                <div class="modal fade" id="feedbackModal{{ $loop->iteration }}" tabindex="-1"
+                                    aria-labelledby="fileModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <form action="{{ route('assign.peer.reviewed', ['id' => $submission->id]) }}"
-                                                method="post">
-                                                @csrf
-                                                <input type="hidden" name="submissionfile_id"
-                                                    value="{{ $file->id }}">
+                                            <form action="{{ route('submission.feedback') }}" method="POST">
                                                 <div class="modal-header">
-                                                    <h3 class="modal-title" id="exampleModalLabel">Assign to Peer Reviewed
-                                                    </h3>
+                                                    <h5 class="modal-title" id="fileModalLabel">Add Feedback</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
+                                                    @csrf
                                                     <div class="row">
-                                                        <div class="col-12 mb-4">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox"
-                                                                    value="1" id="assignOtherCheck" name="other_check">
-                                                                <label class="form-check-label" for="assignOtherCheck">
-                                                                    Assign other
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 mb-3" id="emailInput">
-                                                            <label for="boardmember" class="form-label">Email</label>
-                                                            <input type="email" class="form-control" name="email">
-                                                        </div>
-                                                        <div class="col-12 mb-3" id="boardMemberSelect">
-                                                            <label for="boardmember"
-                                                                class="form-label">Boardmember</label>
-                                                            <select name="boardmember[]" id="boardmember"
-                                                                class="form-select select2 select2-search" multiple>
-                                                                @foreach ($members as $member)
-                                                                    <option value="{{ $member->id }}">
-                                                                        {{ $member->name }}
-                                                                    </option>
-                                                                @endforeach
+                                                        <input type="hidden" name="submission_id"
+                                                            value="{{ $submission->id }}">
+                                                        <input type="hidden" name="file_id"
+                                                            value="{{ $file->id }}">
+                                                        <div class="col-12 mb-3">
+                                                            <label for="stage" class="form-label">Stage</label>
+                                                            <select name="stage" class="form-select" id="stage">
+                                                                <option selected
+                                                                    value="{{ App\Services\SubmissionService::getSubmissionStage($file->stage) }}">
+                                                                    {{ App\Services\SubmissionService::getSubmissionStage($file->stage) }}
+                                                                </option>
                                                             </select>
                                                         </div>
+                                                        <div class="col-12 mb-3">
+                                                            <label for="status" class="form-label">Status</label>
+                                                            <select name="status" class="form-select" id="status">
+                                                                <option selected
+                                                                    value="{{ App\Services\SubmissionService::getSubmissionStatus($file->status) }}">
+                                                                    {{ App\Services\SubmissionService::getSubmissionStatus($file->status) }}
+                                                                </option>
+                                                                <option value="1">Approved</option>
+                                                                <option value="2">Rejected</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-12 mb-3">
+                                                            <label for="feedback" class="form-label">Feedback</label>
+                                                            <textarea name="feedback" id="feedback" rows="5" placeholder="Enter your feedback" class="form-control"></textarea>
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Save</button>
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Assign</button>
                                                 </div>
                                             </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="fileModal{{ $loop->iteration }}" tabindex="-1"
+                                    aria-labelledby="fileModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="fileModalLabel">Feedback</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                {{ $file->feedback ?? '' }}
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -313,7 +366,6 @@
                 $('#emailInput').hide();
                 $('#boardMemberSelect').show();
             }
-
             $('#assignOtherCheck').change(function() {
                 if ($(this).prop('checked')) {
                     $('#emailInput').show();
@@ -325,5 +377,57 @@
             });
         });
     </script>
-
+    <div class="modal fade" id="AssignToPeerReviewed" tabindex="-1" aria-labelledby="AssignToPeerReviewed"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ route('assign.peer.reviewed', ['id' => $submission->id]) }}" method="post"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="submissionfile_id" value="{{ $file->id }}">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">Assign to Peer Reviewed
+                        </h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="1" id="assignOtherCheck"
+                                        name="other_check">
+                                    <label class="form-check-label" for="assignOtherCheck">
+                                        Assign other
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-3" id="emailInput">
+                                <label for="boardmember" class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email">
+                            </div>
+                            <div class="col-12 mb-3" id="boardMemberSelect">
+                                <label for="boardmember" class="form-label">Boardmember</label>
+                                <select name="boardmember[]" id="boardmember" class="form-select select2 select2-search"
+                                    multiple>
+                                    @foreach ($members as $member)
+                                        <option value="{{ $member->id }}">
+                                            {{ $member->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="boardmember" class="form-label">Upload File</label>
+                                <input type="file" class="form-control" name="file" id="boardmember">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Assign</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection

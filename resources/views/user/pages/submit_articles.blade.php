@@ -337,7 +337,7 @@
                     <td><input type="text" name="author[${newIndex}][name]" class="form-control" placeholder="Name" required></td>
                     <td><input type="email" name="author[${newIndex}][email]" class="form-control" placeholder="Email" required></td>
                     <td><input type="text" name="author[${newIndex}][orcid]" class="form-control" placeholder="Orcid" required></td>
-                    <td>Author</td>
+                    <td>Co-Author</td>
                     <td>
                         <div class="form-check">
                             <input class="form-check-input primary-contact-checkbox" type="checkbox" value="1" name="author[${newIndex}][is_primary_contact]">

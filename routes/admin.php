@@ -17,15 +17,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
+Route::redirect('/admin', '/admin/login');
 
-Route::prefix('/admin')->group(function () {
-    Route::redirect('/admin', '/admin/login');
+Route::prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('admin.login');
     Route::post('/submit-login', [AuthController::class, 'Submitlogin'])->name('admin.submit.login');
-    //journals
+});
 
+Route::prefix('admin')->group(function () {
     Route::middleware('check.dashboard.auth')->group(function () {
-        Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+        
+        Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
         Route::get('/journals', [JournalController::class, 'index'])->name('admin.journal.index');
         Route::get('/create-journals', [JournalController::class, 'create'])->name('admin.journal.create');
         Route::post('/store-journal', [JournalController::class, 'store'])->name('admin.journal.store');

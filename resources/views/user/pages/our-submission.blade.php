@@ -40,10 +40,12 @@
                                             href="{{ route('view.submission', ['id' => $submission->id]) }}">
                                             view
                                         </a>
-                                        <a class="btn btn-info btn-sm view_btn"
-                                            href="{{ route('send.paypal.mail', ['id' => $submission->id]) }}">
-                                            APC
-                                        </a>
+                                        @if ($submission->current_stage == 1)
+                                            <a class="btn btn-info btn-sm view_btn"
+                                                href="{{ route('send.paypal.mail', ['id' => $submission->id]) }}">
+                                                APC
+                                            </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @empty

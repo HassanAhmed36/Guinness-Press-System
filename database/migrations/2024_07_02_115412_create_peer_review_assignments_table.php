@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('submission_file_id')->constrained('submission_files')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->integer('status')->default(0); // 0 - pending, 1 - approved, 2 - rejected
+            $table->longText('feedback')->nullable();
+            $table->string('file_path');
             $table->timestamps();
         });
     }

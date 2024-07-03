@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckDashBoardAuth
+class CheckBoardMemberAuth
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,9 @@ class CheckDashBoardAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role->id == 1) {
+        if (Auth::check() && Auth::user()->role->id == 2) {
             return $next($request);
         }
-        return redirect()->route('admin.login');
+        return redirect()->route('board.member.login');
     }
 }

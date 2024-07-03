@@ -14,7 +14,9 @@ class PeerReviewAssignment extends Model
         'journal_board_member_id',
         'submission_file_id',
         'status',
-        'user_id'
+        'user_id',
+        'feedback',
+        'file_path'
     ];
 
     public function journal_board_member()

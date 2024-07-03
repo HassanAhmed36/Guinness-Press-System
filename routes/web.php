@@ -128,3 +128,4 @@ Route::get('articles/{article}/citation/txt', [CustomService::class, 'downloadTx
 Route::get('/ip', [CustomService::class, 'createLoginHistory']);
 
 require __DIR__ . '/admin.php';
+require __DIR__ . '/boardmember.php';

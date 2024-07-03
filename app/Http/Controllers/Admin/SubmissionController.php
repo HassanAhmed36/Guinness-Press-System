@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Mail\ApproveSubmission;
 use App\Mail\RejectSubmission;
 use App\Models\JournalBoardMember;
+use App\Models\PeerReviewAssignment;
 use App\Models\Submission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class SubmissionController extends Controller
@@ -22,7 +24,8 @@ class SubmissionController extends Controller
     public function show($id)
     {
         $submission = Submission::with(['user', 'keywords', 'files', 'authors', 'statusHistory'])->first();
-        $members = JournalBoardMember::where('journal_id' , $submission->id)->get(); 
+        $members = JournalBoardMember::where('journal_id', $submission->journal_id)->get();
+        $peer_reviews = PeerReviewAssignment::where('submission_file_id' , )
         return view('admin.submission.show', compact('submission', 'members'));
     }
 
@@ -41,5 +44,9 @@ class SubmissionController extends Controller
         return back()->with('success', 'Submission Status and Stage Updated Successfully!');
     }
 
-    
+    public function PeerReview()
+    {
+        $submission = PeerReviewAssignment::with('submission_file')->where('user_id', Auth::id())->get();
+        return view('boardmember.peer-review', compact('submission'));
+    }
 }
