@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Submission extends Model
 {
@@ -50,5 +52,15 @@ class Submission extends Model
     public function journal()
     {
         return $this->belongsTo(Journal::class, 'journal_id');
+    }
+
+    public function peer_review(): HasMany
+    {
+        return $this->hasMany(PeerReviewAssignment::class);
+    }
+
+    public function pre_publications(): HasMany
+    {
+        return $this->hasMany(PrePublicationFile::class);
     }
 }

@@ -3,11 +3,13 @@
 namespace App\Services;
 
 use App\Mail\APCMail;
+use App\Mail\PrePublicationFileUploaded;
 use App\Mail\SendPeerReview;
 use App\Mail\SubmissionStatusUpdate;
 use App\Models\JournalBoardMember;
 use App\Models\JournalBoardMemberSubmissionFile;
 use App\Models\PeerReviewAssignment;
+use App\Models\PrePublicationFile;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -82,8 +84,6 @@ class SubmissionService
     public function assignPeerReviewed(Request $request)
     {
         $newGeneratedPassword = Str::random(6);
-        $submissionFileId = $request->submissionfile_id;
-
         DB::beginTransaction();
         try {
             $name = uniqid() . '.' . $request->file->getClientOriginalExtension();
@@ -93,7 +93,7 @@ class SubmissionService
             if ($request->filled('other_check')) {
                 $user = $this->getUser($request->email, $newGeneratedPassword);
                 PeerReviewAssignment::create([
-                    'submission_file_id' => $submissionFileId,
+                    'submission_id' => $request->submission_id,
                     'status' => 0,
                     'user_id' => $user->id,
                     'file_path' => $peer_review_file_path
@@ -104,7 +104,7 @@ class SubmissionService
                     $boardmember = JournalBoardMember::findOrFail($memberID);
                     $user = $this->getUser($boardmember->email, $newGeneratedPassword);
                     PeerReviewAssignment::create([
-                        'submission_file_id' => $submissionFileId,
+                        'submission_id' => $request->submission_id,
                         'status' => 0,
                         'user_id' => $user->id,
                         'file_path' => $peer_review_file_path
@@ -115,6 +115,7 @@ class SubmissionService
             DB::commit();
             return redirect()->back()->with('success', 'Submission Assigned and mail sent successfully');
         } catch (\Exception $e) {
+            dd($e->getMessage());
             DB::rollBack();
             return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
         }
@@ -152,6 +153,53 @@ class SubmissionService
             return back()->with('success', 'Feedback submitted successfully');
         } catch (\Throwable $th) {
             return back()->with('error', 'Feedback submitted Failed');
+        }
+    }
+
+    public function sendFileToAuthor(Request $request)
+    {
+        $request->validate([
+            'submission_id' => 'required',
+            'file' => 'required|file'
+        ]);
+
+        try {
+            $file_name = Str::random(8) . '.' . $request->file('file')->getClientOriginalExtension();
+            $request->file('file')->move(public_path('/pre-publication-file'), $file_name);
+            $path = "/pre-publication-file/" . $file_name;
+            $submission = Submission::with('user')->findOrFail($request->submission_id);
+            $submission->pre_publications()->create([
+                'submission_id' => $request->submission_id,
+                'path' =>  $path
+            ]);
+            Mail::to($submission->user->email)->send(new PrePublicationFileUploaded($submission));
+            return back()->with('success', 'Pre-publication file sent successfully');
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'File could not be uploaded. Please try again.'])->withInput();
+        }
+    }
+
+    public function postPrePublication(Request $request)
+    {
+        $request->validate([
+            'pre_publication_id' => 'required',
+            'status' => 'required',
+            'comment' => 'nullable'
+        ]);
+        try {
+            PrePublicationFile::find($request->pre_publication_id)
+                ->update([
+                    'status' => $request->status,
+                    'comment' => $request->comment
+                ]);
+            Mail::raw('Author updated the pre-publication file.', function ($message) {
+                $message->to('ahmed280045@gmail.com')
+                    ->subject('Pre-publication File Update');
+            });
+            return back()->with('success', 'Pre-publication file status submitted successfully!');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return back()->with('error', 'Pre-publication status failed to update.');
         }
     }
 }

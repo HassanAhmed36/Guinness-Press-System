@@ -12,7 +12,7 @@ class JournalBoardMember extends Model
         'name',
         'email',
         'image',
-        'affliation',
+        'affiliation',
         'country',
         'biography',
         'journal_id',

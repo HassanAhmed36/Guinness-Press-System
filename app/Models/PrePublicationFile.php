@@ -4,18 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class SubmissionFile extends Model
+class PrePublicationFile extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'submission_id', 'file_path', 'file_type', 'feedback', 'status', 'stage'
+        'submission_id', 'path', 'status', 'comment'
     ];
 
-    public function submission()
+    public function submission(): BelongsTo
     {
         return $this->belongsTo(Submission::class);
     }
-
-   
 }

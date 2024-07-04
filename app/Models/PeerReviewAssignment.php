@@ -12,7 +12,7 @@ class PeerReviewAssignment extends Model
 
     protected $fillable = [
         'journal_board_member_id',
-        'submission_file_id',
+        'submission_id',
         'status',
         'user_id',
         'feedback',
@@ -24,9 +24,9 @@ class PeerReviewAssignment extends Model
         return $this->belongsTo(JournalBoardMember::class);
     }
 
-    public function submission_file()
+    public function submission()
     {
-        return $this->belongsTo(SubmissionFile::class);
+        return $this->belongsTo(Submission::class);
     }
 
     public function user()

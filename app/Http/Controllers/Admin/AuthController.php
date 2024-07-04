@@ -13,9 +13,14 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+
     public function login()
     {
-        return view('admin.Auth.login');
+        if (Auth::check()) {
+            return   Auth()->user()->role_id == 1 ? to_route('admin.dashboard') : to_route('board.member.dashboard');
+        } else {
+            return view('admin.Auth.login');
+        }
     }
     public function Submitlogin(Request $request)
     {

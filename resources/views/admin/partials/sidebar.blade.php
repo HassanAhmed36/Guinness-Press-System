@@ -83,19 +83,11 @@
                     </a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="#">
-                        <i class="feather  feather-settings sidemenu_icon"></i>
-                        <span class="side-menu__label">Settings <span class="nav-list"></span></span><i
-                            class="angle fa fa-angle-right"></i>
+                    <a class="side-menu__item" href="{{ route('index.body.index') }}">
+                        <i class="feather feather-list sidemenu_icon"></i>
+                        <span class="side-menu__label">Indexing Bodies</span>
                     </a>
-                    <ul class="slide-menu">
-                        <li><a href="{{ route('index.body.index') }}" class="slide-item">Index Bodies</a></li>
-                        <li><a href="{{ route('reference.generator') }}" class="slide-item">Refercence genrator</a>
-                        </li>
-                    </ul>
                 </li>
-
-
             </ul>
         @elseif(Auth::user()->role_id == 2)
             <ul class="side-menu">

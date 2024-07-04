@@ -16,7 +16,7 @@ class EditorialBoardMemberSeeder extends Seeder
         JournalBoardMember::insert([
             [
                 "name" => "Kayode Nelson Adeniji",
-                "affliation" => "Department of Integrated Coastal Science at East Carolina University (ECU)",
+                "affiliation" => "Department of Integrated Coastal Science at East Carolina University (ECU)",
                 "country" => "United States",
                 "image" => "board-member-image/ijerm/08.png",
                 "biography" => " <p>Kayode Nelson Adeniji is a Ph.D. student in the Department of Integrated Coastal Science at East Carolina University (ECU], NC.research interests lie at the intersection of hurricanes and flood disaster management, exploring novel approaches for mitigatingimpacts of disasters. Specifically, he is interested in household recovery and non-structural mitigation strategies such as propacquisition encompassing community-driven initiatives, policy interventions, and effective risk deduction. Nelson earned his mastdegree in geography at ECU, where he also served as a research assistant researching the dynamics of compound flooding in Eastern NCarolina.</p>",
@@ -24,7 +24,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Galina Kedrova",
-                "affliation" => "Center for New Information Technologies in Humanitarian Education, Lomonosov Moscow State University",
+                "affiliation" => "Center for New Information Technologies in Humanitarian Education, Lomonosov Moscow State University",
                 "country" => "Russia",
                 "image" => "board-member-image/ijerm/09.png",
                 "biography" => "<p>Dr. Galina Kedrova graduated from the Department of Theoretical and Applied Linguistics, Faculty of Philology, Lomonosov Moscow State University (LMSU). Her main areas of interest are Digital Humanities, ICT in education, computer-assisted Russian language learning, phonetics, articulation, MRI in philological research, and the basis of articulation. As the Director of the Center for New Technologies in the Humanities, she is responsible for training faculty and postdoctoral students in the best practices of using digital scholarly resources in research and teaching and for organizing and conducting focused training programs in this area.",
@@ -32,7 +32,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Alessio Ishizaka",
-                "affliation" => "Information Systems, Supply Chain Management & Decision Support,  Neoma Business School",
+                "affiliation" => "Information Systems, Supply Chain Management & Decision Support,  Neoma Business School",
                 "country" => "France",
                 "image" => "board-member-image/ijerm/10.png",
                 "biography" => "<p>Alessio Ishizaka is a Distinguished Professor in Decision Analysis. He was Head of the Information Systems, Supply Chain and Decision making Department from 2019 to 2022. He was also the research lead and Deputy Director of the Centre of Operational Research and Logistics at the University of Portsmouth. Alessio received his PhD from the University of Basel (Switzerland). He worked successively for the University of Exeter (UK], University of York (UK], and Audencia Grande Ecole de Management Nantes (France). He has been a visiting professor in several universities in Italy, France, and Germany. His research is in the area of decision analysis, where he has published more than 120 papers. He is regularly involved in large European-funded projects. He has been the chair, co-organizer, and guest speaker of several conferences on this topic. He wrote the indispensable textbook Multicriteria Decision Analysis: methods and software.</p>",
@@ -40,7 +40,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Caroline Cox",
-                "affliation" => "School of Law, University of Portsmouth",
+                "affiliation" => "School of Law, University of Portsmouth",
                 "country" => "United Kingdom",
                 "image" => "board-member-image/ijerm/12.png",
                 "biography" => "<p>Dr. Caroline Cox is an Associate Professor specializing in Wildlife Law & Policy at the University of Portsmouth. As the lead researcher of the Ivory Project, initiated in November 2015, Dr. Cox has been instrumental in analyzing the illegal ivory trade both in the U.K. and internationally. Her research extends to various aspects of illegal wildlife trade, addressing issues such as pangolin trafficking and rhino poaching.</p><p>In collaboration with Dr. Nick Pamment, Dr. Cox launched The Ivory Project at the House of Commons in November 2015. This groundbreaking project focused on investigating the sale of ivory by the British antiques trade and lasted for 18 months. The culmination of their efforts was the release of a comprehensive report titled 'The Elephant in the Sale Room.'</p> <p>Dr. Cox's impactful report played a crucial role in the British Government's Impact Assessment, influencing changes in the law related to ivory sales in the U.K. The Ivory Act 2018, enacted on December 18, 2018, reflected the significant contributions of the Ivory Project team.Over the years, the Ivory Project has expanded its scope, fostering collaborations with partners in the U.K. and abroad. Ongoing projects include the investigation of illegal wildlife trade products online and promoting cross-jurisdictional cooperation in Range States</p><p> She is currently part of the teaching teams for the following undergraduate units: Wildlife Crime: Threats and Responses; Equity and Trusts; The Law of Succession; Trans-national Gang Crime; Environmental Law and The Legal Project.</p>",
@@ -48,7 +48,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Constantine Dimoulas",
-                "affliation" => "Department of Social Policy, Panteion University of Social and Political Sciences, Athens",
+                "affiliation" => "Department of Social Policy, Panteion University of Social and Political Sciences, Athens",
                 "country" => "Greece",
                 "image" => "board-member-image/ijerm/15.png",
                 "biography" => "<p> Constantine Dimoulas is a Professor at Panteion University of Social and Political Sciences- ATHENS(GREECE). From 2020-2022, he was the Scientific Director of the Panteion Center for Training and Lifelong Learning. Previously to his Academic career, he worked ( 1993-2010) as a researcher and scientific coordinator in the Labor Institute of General Confederation of Greek Workers (INE/GSEE) in the field of lifelong learning and labor market policies. From 2010-2015, parallel to his academic position he was also a researcher in the  Observatory for Economic and Social Issues(INE/GSEE).</p>",
@@ -56,7 +56,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ivan Krylov",
-                "affliation" => "Researcher at the Faculty of Geology of Moscow State University",
+                "affiliation" => "Researcher at the Faculty of Geology of Moscow State University",
                 "country" => "Russia",
                 "image" => "board-member-image/ijerm/14.png",
                 "biography" => "<p>Dr. Ivan Krylov, born in 1996, is a dedicated researcher in Geological and Mineralogical Sciences, specializing in ore deposits and geochemistry. Graduating from the Geological Faculty of Lomonosov Moscow State University in 2019, he quickly established himself as a geologist at the Institute of Geotechnologies. Transitioning to academia, he has been contributing significantly as a researcher at the Faculty of Geology, MSU, since 2019. In 2024, he achieved the esteemed title of Candidate of Geological and Mineralogical Sciences, showcasing his commitment to advancing scientific knowledge in the field. Scientific interests: Geology of ore deposits, geochemistry, methods of studying matter, minerageny, geochemical research methods.</p>",
@@ -64,7 +64,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ahmadreza Mohebbi",
-                "affliation" => "The University of Auckland",
+                "affiliation" => "The University of Auckland",
                 "country" => "New Zealand",
                 "image" => "board-member-image/ijerm/02.png",
                 "biography" => "<p>Ahmadreza Mohebbi has a Ph.D. in Education with a focus on language, culture, and society at the University of Auckland. His research interests include Cultural Linguistics, Linguistic Landscape, Teaching English as an International Language (TEIL], Materials and Curriculum Development for English Language Teaching and Learning, and Mixed methods studies. He has served as a reviewer for the Cogent Arts & humanities, Scientometrics, and Ampersand Journals. He has published several papers in international journals such as the International Journal of Multilingualism, The Reading Matrix, TESL-EJ, and Ampersand.</p>",
@@ -72,7 +72,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Michael Lynch",
-                "affliation" => "Moray House School of Education and Sport, IETL, University of Edinburgh",
+                "affiliation" => "Moray House School of Education and Sport, IETL, University of Edinburgh",
                 "country" => "United Kingdom",
                 "image" => "board-member-image/ijerm/11.png",
                 "biography" => "<p>Dr. Michael Lynch is a seasoned educator with over four decades of experience in the field. I spent 11 years as a teacher and principal teacher of Modern Languages, followed by 29 years as a teacher educator, including 18 years as a senior lecturer in language studies at the University of Edinburgh. Throughout his career, he has held numerous senior leadership roles at the Moray House School of Education and Sport (MHSES], including Programme Director and Academic Coordinator.</p><p>Dr. Lynch is also deeply involved in research endeavors. His work on projects like the ERASMUS Plus research project 'Playing Beyond CLIL' has led to innovative approaches in language teaching and curriculum development on an international level. Additionally, his collaboration with Pitch@Palace, initiated by His Royal Highness The Duke of York and the Royal Society of Engineers, has supported engineer entrepreneurs globally, fostering economic growth and job creation.</p>",
@@ -80,7 +80,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Atiqur Rahman Tuhin",
-                "affliation" => "School of Science and Engineering, Saga University, Saga 840-8502, Japan",
+                "affiliation" => "School of Science and Engineering, Saga University, Saga 840-8502, Japan",
                 "country" => "Japan",
                 "image" => "board-member-image/ijerm/01.png",
                 "biography" => "",
@@ -89,7 +89,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Effrosyni Mitsopoulou",
-                "affliation" => "School of Psychology  Faculty of Medicine, Health & Life Science Swansea University, Wales ",
+                "affiliation" => "School of Psychology  Faculty of Medicine, Health & Life Science Swansea University, Wales ",
                 "country" => "United Kingdom",
                 "image" => "board-member-image/ijerm/13.png",
                 "biography" => "<p>Dr. Effie Mitsopoulou holds a PhD from the University of Southampton. Currently, she serves as a full-time tutor at Swansea University, where she mentors students, lectures on Social Psychology and Research Methods, marks dissertations and assignments, and supervises final year projects. She also acts as a reviewer for the Psychology Ethics committee and serves as an Academic Integrity Officer for the Faculty of Medicine, Human and Life Sciences. Additionally, she works as a part-time lecturer at the Neapolis University of Paphos, teaching Research Methods, Statistics, and Personal Identity modules for distance master level psychology students. Previously, as a doctoral student, she served as a teaching assistant at the University of Southampton, marking assignments, delivering tutorials, and providing individual feedback to students. She was nominated for the Doctoral College Director's Award (Education) and awarded an Associate Teaching Fellowship in Higher Education (AFHEA) for her teaching contributions. Mitsopoulou also has experience as a peer reviewer for graduate journals and currently reviews submissions for various academic journals and organizations.</p> ",
@@ -97,7 +97,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Mohammad Tarek Aziz",
-                "affliation" => "Chittagong University of Engineering and Technology (CUET], Chattogram",
+                "affiliation" => "Chittagong University of Engineering and Technology (CUET], Chattogram",
                 "country" => "Bangladesh",
                 "image" => "board-member-image/ijerm/03.png",
                 "biography" => "<p> Mohammad Tarek Aziz is a Lecturer of Computer Science and Engineering at the Chittagong Institute of Engineering and Technology. His research interests are:</p><ul class='points'><li>Machine Learning</li><li>Deep Learning</li><li>Digital Image Processing</li><li>Natural Language Processing</li><li>Data Mining</li><li>Robotics</li> </ul>",
@@ -105,7 +105,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Bashir Bello",
-                "affliation" => "Department of Sociology Federal University Gusau, Zamfara State",
+                "affiliation" => "Department of Sociology Federal University Gusau, Zamfara State",
                 "country" => "Nigeria",
                 "image" => "board-member-image/ijerm/04.png",
                 "biography" => "
@@ -115,7 +115,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Lanka Sandeep Raj",
-                "affliation" => "Department of Mechanical Engineering, VNR Vignana Jyothi Institute of Engineering and Technology, Hyderabad, Telangana",
+                "affiliation" => "Department of Mechanical Engineering, VNR Vignana Jyothi Institute of Engineering and Technology, Hyderabad, Telangana",
                 "country" => "India",
                 "image" => "board-member-image/ijerm/05.png",
                 "biography" => "
@@ -127,7 +127,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Sourav Kumar Purohit",
-                "affliation" => "Sambalpur University Institute of Information Technology",
+                "affiliation" => "Sambalpur University Institute of Information Technology",
                 "country" => "India",
                 "image" => "board-member-image/ijerm/06.png",
                 "biography" => "
@@ -143,7 +143,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Valarie Sarah Opollo",
-                "affliation" => "Centre for Global Health Research, Kenya Medical Research Institute (KEMRI], Kisumu",
+                "affiliation" => "Centre for Global Health Research, Kenya Medical Research Institute (KEMRI], Kisumu",
                 "country" => "Kenya",
                 "image" => "board-member-image/ijerm/07.png",
                 "biography" => "
@@ -155,7 +155,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Patrick Ho-Tak Tsang",
-                "affliation" => "Department of Logistics and Maritime Studies, The Hong Kong Polytechnic University",
+                "affiliation" => "Department of Logistics and Maritime Studies, The Hong Kong Polytechnic University",
                 "country" => "Hong Kong",
                 "image" => "board-member-image/ijerm/Patrick.jpg",
                 "biography" => "
@@ -167,7 +167,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Lilia Psalta",
-                "affliation" => "American Psychological Association (APA], Association for the Treatment and Prevention of Sexual Abuse (ATSA], College of Sexual and Relationship Therapists (COSRT) and British Psychological Society (BPS)",
+                "affiliation" => "American Psychological Association (APA], Association for the Treatment and Prevention of Sexual Abuse (ATSA], College of Sexual and Relationship Therapists (COSRT) and British Psychological Society (BPS)",
                 "country" => "Cyprus",
                 "image" => "board-member-image/ijerm/lilia-psalta.jpg",
                 "biography" => "
@@ -179,7 +179,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Wei Zhang",
-                "affliation" => "School of Architecture and Engineering, Liaocheng University, Liaocheng",
+                "affiliation" => "School of Architecture and Engineering, Liaocheng University, Liaocheng",
                 "country" => "China",
                 "image" => "board-member-image/ijerm/Wei-hang.png",
                 "biography" => "
@@ -191,7 +191,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Tahira Anwar Lashari",
-                "affliation" => "Department of Computing, SEECS National University of Sciences and Technology (NUST], Islamabad.",
+                "affiliation" => "Department of Computing, SEECS National University of Sciences and Technology (NUST], Islamabad.",
                 "country" => "Pakistan",
                 "image" => "board-member-image/ijerm/tahira-anwar-lashari.jpg",
                 "biography" => "<p>Dr. Tahira A. Lashari did her PhD in educational psychology from Universiti  Tun  Hussein  Onn  Malaysia (UTHM) in 2015. After her PhD, she pursued her  Post‐Doctoral research at UTHM. She did her Master's in Applied Psychology from Punjab University Pakistan. She has published several international peer‐reviewed journals and conference papers. She also continues to contribute as a reviewer to several reputed journals.</p>",
@@ -199,7 +199,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Shooq Altamimi",
-                "affliation" => "Royal College of Surgeons in Ireland – Medical University of Bahrain",
+                "affiliation" => "Royal College of Surgeons in Ireland – Medical University of Bahrain",
                 "country" => "Bahrain",
                 "image" => "board-member-image/ijerm/shooq-altamimi.png",
                 "biography" => "<p>Shooq Altamimi is a distinguished educator with a dynamic career that bridges academia, training, and generative artificial intelligence. Shooq's academic journey began with a Bachelor's in Education from the University of Bahrain, followed by an MA in English Language Teaching with a minor in Applied Linguistics from Coventry University in the UK, where she specialized threshold concepts, hybrid learning, instructional design, and reflective practices. Upon completing her MA, Shooq transitioned into the role of learning and development specialist, in which she provided training, support, and mentorship for in-service English language teachers. Currently, as a Lecturer in English and Curriculum Developer at the Royal College of Surgeons in Ireland – Medical University of Bahrain, Shooq continues to teach and inspire the next generation of nurses and AI professionals. She develops cutting-edge course materials, supervises student research projects, and leads workshops on AI and its applications.</p>",
@@ -207,7 +207,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Qi Sun",
-                "affliation" => "Department of Electrical Engineering and Computer Science at Cleveland State University, Cleveland",
+                "affiliation" => "Department of Electrical Engineering and Computer Science at Cleveland State University, Cleveland",
                 "country" => "United States",
                 "image" => "board-member-image/ijerm/qi-sun.jpg",
                 "biography" => "<p>Dr. Qi Sun earned her Ph.D. in Management Science and Engineering from Northeastern University, Shenyang, China, in 2018. Before that, she completed her M.S. in Software Engineering at Kunming University of Science and Technology and her B.S. in Information and Computing Science at Liaoning University. Her research interests include algorithms and experimental methods, logistics supply chain, operations research, game theory, and system optimization. She has had the honor of serving as a postdoctoral researcher at Shanghai Jiao Tong University, focusing on logistics supply chain system optimization</p><p>Currently, Dr. Sun is serving as a Research Assistant in the Department of Electrical Engineering and Computer Science at Cleveland State University, Cleveland, US.</p>",
@@ -215,7 +215,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Laurence Armand French",
-                "affliation" => "Professor of Justice Studies, College of Liberal Arts, University of New Hampshire Durham",
+                "affiliation" => "Professor of Justice Studies, College of Liberal Arts, University of New Hampshire Durham",
                 "country" => "United States",
                 "image" => "board-member-image/ijerm/laurence-armand-french.png",
                 "biography" => "<p>Dr Laurence Armand French has the B.A., M.A., and Ph.D. in sociology (social disorganization/social psychology) from the University of New Hampshire, a Ph.D. in cultural psychology (educational psychology and measurement) from the University of Nebraska-Lincoln, and a M.A. in school psychology from Western New Mexico University. He pursued postdoctoral studies in “minorities and criminal justice education” at the State University of New York-Albany and completed the post-doctoral prescribing psychology program including the national exam. He is professor emeritus of psychology from Western New Mexico University; life-member and Fellow of the American Psychological Association; Fellow of the Society for the Psychological Study of Social Issues; Diplomate/Fellow of the College of Prescribing Psychologists (charter member); life-member of the American Society of Criminology; served honorably in the U.S. Marine Corps and is a life-member of the Veterans of Foreign Wars (VFW Post 2860); the Third Marine Division Association; and Disabled American Veterans (DAV). He is a licensed clinical psychologist (Arizona); a Fulbright Scholar (University of Sarajevo, Bosnia-Herzegovina – 2009-2010); and was a Visiting Endowed Chair of Criminology and Criminal Justice at St. Thomas University, Fredericton, New Brunswick, Canada (fall semester 2010). He completed a Fulbright Specialist project (#6764) on \"war crimes and missing persons,\" for the Republic of Srpska, Minister of Interior, Bosnia-Herzegovina at the Police College, University of Banja Luka, February 22 - April 3, 2016. He won a 2014 McGraw Hill Distinguished Scholar Award and the 2014 Distinguished Career Contribution to Research Award from Division 45 (Society for the Psychological Study of Culture, Ethnicity and Race) of the American Psychological Association. In 2018, he won a Marquis Who's Who Lifetime Achievement Award. He has over 300 publications including 20 books. His major areas of research interest are international and comparative social, human and criminal justice; Native American and minority issues; police and criminal psychology and neuro-, clinical, and forensic psychology.</p>",
@@ -223,7 +223,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Yue Zhuo",
-                "affliation" => "Chinese Instructor, Calvin University",
+                "affiliation" => "Chinese Instructor, Calvin University",
                 "country" => "United States",
                 "image" => "board-member-image/cli/12.png",
                 "biography" => "
@@ -240,7 +240,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ahmadreza Mohebbi",
-                "affliation" => "The University of Auckland",
+                "affiliation" => "The University of Auckland",
 
                 "country" => "New Zealand",
                 "image" => "board-member-image/cli/04.png",
@@ -253,7 +253,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Óscar Cabral",
-                "affliation" => "Faculty of Gastronomic Sciences, Mondragón University, San Sebastián",
+                "affiliation" => "Faculty of Gastronomic Sciences, Mondragón University, San Sebastián",
 
                 "country" => "Spain",
                 "image" => "board-member-image/cli/08.png",
@@ -272,7 +272,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Luciano Micali",
-                "affliation" => "Department of Philosophy, History and Art Studies, Faculty of Arts, University of Helsinki",
+                "affiliation" => "Department of Philosophy, History and Art Studies, Faculty of Arts, University of Helsinki",
 
                 "country" => "Finland",
                 "image" => "board-member-image/cli/09.png",
@@ -288,7 +288,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Dionysis Mourelatos",
-                "affliation" => "Department of Archaeology and History of Art of the National and Kapodistrian University of Athens",
+                "affiliation" => "Department of Archaeology and History of Art of the National and Kapodistrian University of Athens",
 
                 "country" => "Greece",
                 "image" => "board-member-image/cli/16.png",
@@ -301,7 +301,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Samikshya Madhukullya",
-                "affliation" => "Department of Cultural Studies, Tezpur University",
+                "affiliation" => "Department of Cultural Studies, Tezpur University",
 
                 "country" => "India",
                 "image" => "board-member-image/cli/01.png",
@@ -314,7 +314,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Jiangtao Xie",
-                "affliation" => "Yangzhou Architectural Design and Research Institute Co., Ltd",
+                "affiliation" => "Yangzhou Architectural Design and Research Institute Co., Ltd",
                 "country" => "China",
                 "image" => "board-member-image/cli/02.png",
                 "biography" => "",
@@ -323,7 +323,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Mohammed Ibrahiem Hassan Mohammed",
-                "affliation" => "Professor in Library and Information Dept., Faculty of Arts, Ain Shams University",
+                "affiliation" => "Professor in Library and Information Dept., Faculty of Arts, Ain Shams University",
                 "country" => "Egypt",
                 "image" => "board-member-image/cli/14.png",
                 "biography" => "Professor Mohammed Ibrahiem Hassan Mohammed is a renowned figure in Library and Information Science, currently serving as Vice Dean of Education and Students’ Affairs at Ain Shams University. With a career spanning over two decades, they've held key positions in academia, including professorships at Ain Shams University and Umm Al Qura University. Their dedication has been recognized through prestigious awards such as the 'Rightly Guided Son One who praises Al Nuaimi' prizes in Ajman, UAE, and the 'Sharjah for Librarianship Literature' prizes. Dr. Hassan Mohammed's passion for education and scholarly contributions continue to shape the field, earning them admiration and respect within the academic community.",
@@ -331,7 +331,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Penghui Jiang",
-                "affliation" => "College of Public Administration Nanjing Agriculture University",
+                "affiliation" => "College of Public Administration Nanjing Agriculture University",
                 "country" => "China",
                 "image" => "board-member-image/cli/03.png",
                 "biography" => "",
@@ -339,7 +339,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Yifan Zuo",
-                "affliation" => "Department of Leisure Sports (Leisure Tourism], School of Physical Education, Shenzhen University",
+                "affiliation" => "Department of Leisure Sports (Leisure Tourism], School of Physical Education, Shenzhen University",
 
                 "country" => "China",
                 "image" => "board-member-image/cli/05.png",
@@ -358,7 +358,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Nurul Huda Hamzah",
-                "affliation" => "Department of English Language, Faculty of Languages and Linguistics Universiti Malaya Kuala Lumpur",
+                "affiliation" => "Department of English Language, Faculty of Languages and Linguistics Universiti Malaya Kuala Lumpur",
 
                 "country" => "Malaysia",
                 "image" => "board-member-image/cli/06.png",
@@ -371,7 +371,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ngakan Ketut Acwin Dwijendra",
-                "affliation" => "Universitas Udayana, Bali",
+                "affiliation" => "Universitas Udayana, Bali",
 
                 "country" => "Indonesia",
                 "image" => "board-member-image/cli/07.png",
@@ -384,7 +384,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Fengyan Wang",
-                "affliation" => "School of Psychology, Nanjing Normal University, Nanjing, Jiangsu Province",
+                "affiliation" => "School of Psychology, Nanjing Normal University, Nanjing, Jiangsu Province",
 
                 "country" => "China",
                 "image" => "board-member-image/cli/10.png",
@@ -403,7 +403,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Teiborlang T. Kharsyntiew",
-                "affliation" => "School of International Studies, Jawaharlal Nehru University",
+                "affiliation" => "School of International Studies, Jawaharlal Nehru University",
 
                 "country" => "India",
                 "image" => "board-member-image/cli/11.png",
@@ -416,7 +416,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Hamid Zargham Boroujeni",
-                "affliation" => "Department of Tourism Management, Allameh Tabatabai University, Tehran",
+                "affiliation" => "Department of Tourism Management, Allameh Tabatabai University, Tehran",
 
                 "country" => "Iran",
                 "image" => "board-member-image/cli/13.png",
@@ -429,7 +429,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Paraskevi Eleftheriou",
-                "affliation" => "Intercultural Education Laboratory, University of Athens",
+                "affiliation" => "Intercultural Education Laboratory, University of Athens",
 
                 "country" => "Greece",
                 "image" => "board-member-image/cli/17.jpg",
@@ -442,7 +442,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Maria Patrizia Violi",
-                "affliation" => "University of Bologna",
+                "affiliation" => "University of Bologna",
                 "country" => "Italy",
                 "image" => "board-member-image/cli/18.jpg",
                 "biography" => '<p>Dr. Patrizia Violi, Full Professor of Semiotics at the University of Bologna. is director of VS. Quaderni di studi semiotici, and Former Director of the International Centre for Advanced Studies in the Humanities `Umberto Eco` and of TraMe - Centro di Studi Semiotici sulle Memorie Culturali. Among other publications, Patrizia Violi is the author of Meaning and Experience (Indiana University Press, 2001], Landscapes of Memory. Trauma, Space, History, (Peter Lang, 2017). She was PI of two Marie Curie EU exchange projects on memory and trauma in Europe and Latin America.
@@ -452,7 +452,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Arthur Ragauskas",
-                "affliation" => "University of Tennessee",
+                "affiliation" => "University of Tennessee",
                 "country" => "USA",
                 "image" => "board-member-image/seer/03.png",
                 "biography" => "
@@ -498,7 +498,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Nabila Abid",
-                "affliation" => "University of GAbrierle D Annuznio Chieti-Pescara",
+                "affiliation" => "University of GAbrierle D Annuznio Chieti-Pescara",
                 "country" => "Italy",
                 "image" => "board-member-image/seer/11.png",
                 "biography" => "
@@ -515,7 +515,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Seyyed Akbar Sadaty",
-                "affliation" => "slamic Azad University, Mazandaran",
+                "affiliation" => "slamic Azad University, Mazandaran",
                 "country" => "Iran",
                 "image" => "board-member-image/seer/15.png",
                 "biography" => "
@@ -527,7 +527,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Marica Mamut",
-                "affliation" => "Department of Geography, University of Zadar",
+                "affiliation" => "Department of Geography, University of Zadar",
 
                 "country" => "Croatia",
                 "image" => "board-member-image/seer/18.png",
@@ -543,7 +543,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Mohammed Amer",
-                "affliation" => "Department of Mechanical Engineering  College of Engineering and Technology Palestine Technical University – Kadoorie",
+                "affiliation" => "Department of Mechanical Engineering  College of Engineering and Technology Palestine Technical University – Kadoorie",
 
                 "country" => "Palestine",
                 "image" => "board-member-image/seer/05.png",
@@ -556,7 +556,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Wuyang Hong",
-                "affliation" => "Assistant Professor,  School of Architecture and Urban Planning Shenzhen University",
+                "affiliation" => "Assistant Professor,  School of Architecture and Urban Planning Shenzhen University",
                 "country" => "China",
                 "image" => "board-member-image/seer/01.png",
                 "biography" => "",
@@ -564,7 +564,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ghulam Sarwar Soomro",
-                "affliation" => "Environmental Studies, University of Padova, Italy",
+                "affiliation" => "Environmental Studies, University of Padova, Italy",
                 "country" => "Italy",
                 "image" => "board-member-image/seer/02.png",
                 "biography" => "",
@@ -572,7 +572,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Shi Yin",
-                "affliation" => "Hebei Agricultural University, Baoding",
+                "affiliation" => "Hebei Agricultural University, Baoding",
 
                 "country" => "China",
                 "image" => "board-member-image/seer/16.png",
@@ -588,7 +588,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Kulamani Parida",
-                "affliation" => "Centre for Nano Science and Nano Technology, Siksha 'O' Anusandhan University, Bhubaneswar",
+                "affiliation" => "Centre for Nano Science and Nano Technology, Siksha 'O' Anusandhan University, Bhubaneswar",
 
                 "country" => "India",
                 "image" => "board-member-image/seer/09.png",
@@ -603,7 +603,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Shifeng Wang",
-                "affliation" => "Nanjing Tech University, Jiangsu Province",
+                "affiliation" => "Nanjing Tech University, Jiangsu Province",
 
                 "country" => "China",
                 "image" => "board-member-image/seer/04.png",
@@ -616,7 +616,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Majdi M. Alomari",
-                "affliation" => "Electrical Engineering Department / Australian University (AU) P.O. Box 1411, Safat - 13015",
+                "affiliation" => "Electrical Engineering Department / Australian University (AU) P.O. Box 1411, Safat - 13015",
 
                 "country" => "Kuwait",
                 "image" => "board-member-image/seer/06.png",
@@ -629,7 +629,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Lei Yang",
-                "affliation" => "Business School of Zhengzhou University ",
+                "affiliation" => "Business School of Zhengzhou University ",
 
                 "country" => "China",
                 "image" => "board-member-image/seer/12.png",
@@ -642,7 +642,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Sina Samadi Gharehveran",
-                "affliation" => "University of Tabriz",
+                "affiliation" => "University of Tabriz",
 
                 "country" => "Iran",
                 "image" => "board-member-image/seer/07.png",
@@ -655,7 +655,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Arindam Chakraborty",
-                "affliation" => "Department of Geology, Faculty of Science, University of Malaya 50603 Kuala Lumpur",
+                "affiliation" => "Department of Geology, Faculty of Science, University of Malaya 50603 Kuala Lumpur",
 
                 "country" => "Malaysia",
                 "image" => "board-member-image/seer/14.png",
@@ -668,7 +668,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Fatemeh Zahed",
-                "affliation" => "Research Projects Manager and Scientific Member of BHRC’s Scientific Board",
+                "affiliation" => "Research Projects Manager and Scientific Member of BHRC’s Scientific Board",
 
                 "country" => "Iran",
                 "image" => "board-member-image/seer/08.png",
@@ -681,7 +681,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Lei Yang",
-                "affliation" => "School of Electrical Engineering, Zhengzhou University, Zhengzhou",
+                "affiliation" => "School of Electrical Engineering, Zhengzhou University, Zhengzhou",
                 "country" => "China",
                 "image" => "board-member-image/seer/10.png",
                 "biography" => "",
@@ -689,7 +689,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Constantinos Chrysikopoulos",
-                "affliation" => "Department Of Civil And Environmental Engineering, Kalifa University, Abu Dhabi",
+                "affiliation" => "Department Of Civil And Environmental Engineering, Kalifa University, Abu Dhabi",
 
                 "country" => "United Arab Emirates",
                 "image" => "board-member-image/seer/17.png",
@@ -702,7 +702,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Shulin Xu",
-                "affliation" => "School of Culture Tourism and Geography, Guangdong University of Finance & Economics, Guangzhou",
+                "affiliation" => "School of Culture Tourism and Geography, Guangdong University of Finance & Economics, Guangzhou",
 
                 "country" => "China",
                 "image" => "board-member-image/seer/13.png",
@@ -722,7 +722,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Letizia Di Bella",
-                "affliation" => "Earth Sciences Department of Sapienza, University of Rome. Piazzale Aldo Moro 5, 00135 Rome",
+                "affiliation" => "Earth Sciences Department of Sapienza, University of Rome. Piazzale Aldo Moro 5, 00135 Rome",
 
                 "country" => "Itlay",
                 "image" => "board-member-image/seer/14.gif",
@@ -735,7 +735,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Omar H. Abdalla ",
-                "affliation" => "Department of Electrical Power and Machines, Faculty of Engineering, Helwan University, Cairo, ",
+                "affiliation" => "Department of Electrical Power and Machines, Faculty of Engineering, Helwan University, Cairo, ",
 
                 "country" => "Egypt",
                 "image" => "board-member-image/seer/Omar-h-abdalla.jpg",
@@ -748,7 +748,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Liliya Sushkevich",
-                "affliation" => "Department of Economic and Social Geography of the Faculty of Geography and Geoinformatics at the Belarusian State University",
+                "affiliation" => "Department of Economic and Social Geography of the Faculty of Geography and Geoinformatics at the Belarusian State University",
 
                 "country" => "Belarus",
                 "image" => "board-member-image/seer/liliya-sushkevich.png",
@@ -757,7 +757,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Cristina Perinelli",
-                "affliation" => "Department of Earth Sciences, Sapienza University of Rome, Rome",
+                "affiliation" => "Department of Earth Sciences, Sapienza University of Rome, Rome",
 
                 "country" => "Italy",
                 "image" => "board-member-image/seer/cristina-perinelli.jpg",
@@ -770,7 +770,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ebenezer Kojo Acquah ",
-                "affliation" => "Department of Materials and Environmental Technology, Tallinn University of Technology· ",
+                "affiliation" => "Department of Materials and Environmental Technology, Tallinn University of Technology· ",
 
                 "country" => "Estonia",
                 "image" => "board-member-image/seer/ebenezer-kojo-acqua.png",
@@ -780,7 +780,7 @@ class EditorialBoardMemberSeeder extends Seeder
             //cie
             [
                 "name" => "Tiantai Deng",
-                "affliation" => "Department of Electronic and Electrical Engineering, The University of Sheffield",
+                "affiliation" => "Department of Electronic and Electrical Engineering, The University of Sheffield",
 
                 "country" => "United Kingdom",
                 "image" => "board-member-image/cie/13.png",
@@ -793,7 +793,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Dr. Salih Berkan Aydemir",
-                "affliation" => "Department of Computer Engineering, Amasya University",
+                "affiliation" => "Department of Computer Engineering, Amasya University",
 
                 "country" => "Turkey",
                 "image" => "board-member-image/cie/03.png",
@@ -804,7 +804,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Alireza Akhavan-Safar",
-                "affliation" => "Institute of Science and Innovation in Mechanical and Industrial Engineering (INEGI), Porto",
+                "affiliation" => "Institute of Science and Innovation in Mechanical and Industrial Engineering (INEGI), Porto",
 
                 "country" => "Portugal",
                 "image" => "board-member-image/cie/04.png",
@@ -821,7 +821,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Dimitrios S. Sophianopoulos",
-                "affliation" => "Department of Civil Engineering, University of Thessaly, Pedion Areos, Volos",
+                "affiliation" => "Department of Civil Engineering, University of Thessaly, Pedion Areos, Volos",
                 "country" => "Greece",
                 "image" => "board-member-image/cie/18.png",
                 "biography" => "
@@ -833,7 +833,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ashraf Abdel Badee M. Ghorab",
-                "affliation" => "Head of the Mechanical Power Department, Faculty of Engineering, Ain Shams University,  Cairo",
+                "affiliation" => "Head of the Mechanical Power Department, Faculty of Engineering, Ain Shams University,  Cairo",
 
                 "country" => "Egypt",
                 "image" => "board-member-image/cie/14.png",
@@ -853,7 +853,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Xinqing Xiao",
-                "affliation" => "Associate professor, College of Engineering, China Agricultural University",
+                "affiliation" => "Associate professor, College of Engineering, China Agricultural University",
                 "country" => "China",
                 "image" => "board-member-image/cie/01.jpg",
                 "biography" => "<p>
@@ -863,7 +863,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Jawwad Nasar Chattha",
-                "affliation" => "Department of Electrical Engineering, University of Management and Technology, Lahore ",
+                "affiliation" => "Department of Electrical Engineering, University of Management and Technology, Lahore ",
                 "country" => "Pakistan",
                 "image" => "board-member-image/cie/19.jpg",
                 "biography" => "<p>
@@ -874,7 +874,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Germin Elgohary",
-                "affliation" => "Urban Design and Planning Department Faculty of Engineering Ain Sham University",
+                "affiliation" => "Urban Design and Planning Department Faculty of Engineering Ain Sham University",
                 "country" => "Egypt",
                 "image" => "board-member-image/cie/17.png",
                 "biography" => "<p>
@@ -885,7 +885,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "André Samuel Martins Gonçalves",
-                "affliation" => "Polytechnic University of Castelo Branco",
+                "affiliation" => "Polytechnic University of Castelo Branco",
                 "country" => "Portugal",
                 "image" => "board-member-image/cie/05.png",
                 "biography" => "
@@ -897,7 +897,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Rajesh Banu",
-                "affliation" => "Associate Professor at the Department of Biotechnology, Central University of Tamil Nadu (CUTN)",
+                "affiliation" => "Associate Professor at the Department of Biotechnology, Central University of Tamil Nadu (CUTN)",
                 "country" => "India",
                 "image" => "board-member-image/cie/02.png",
                 "biography" => "<p>
@@ -907,7 +907,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Abbas Hussain",
-                "affliation" => "Mechanical Engineering Department, National University of Science and Technology, Islamabad",
+                "affiliation" => "Mechanical Engineering Department, National University of Science and Technology, Islamabad",
 
                 "country" => "Pakistan",
                 "image" => "board-member-image/cie/20.jpg",
@@ -918,7 +918,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Mohamed EL-Shimy Mahmoud Bekhet",
-                "affliation" => "Department of Electrical Power and Machines – Faculty of Engineering - Ain Shams University",
+                "affiliation" => "Department of Electrical Power and Machines – Faculty of Engineering - Ain Shams University",
 
                 "country" => "Egypt",
                 "image" => "board-member-image/cie/16.png",
@@ -931,7 +931,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Mahmoud Ebrahimi",
-                "affliation" => "Department of Mechanical Engineering, University of Maragheh, Maragheh",
+                "affiliation" => "Department of Mechanical Engineering, University of Maragheh, Maragheh",
 
                 "country" => "Iran",
                 "image" => "board-member-image/cie/06.png",
@@ -947,7 +947,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Shruti Aggarwal",
-                "affliation" => "Department of Computer Science and Engineering, Thapar University, Patiala",
+                "affiliation" => "Department of Computer Science and Engineering, Thapar University, Patiala",
 
                 "country" => "India",
                 "image" => "board-member-image/cie/07.png",
@@ -963,7 +963,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Yehia Kamal Abdelmonem Hanafy",
-                "affliation" => "Irrigation & Hydraulics Department, Faculty of Engineering, Ain Shams University, Cairo",
+                "affiliation" => "Irrigation & Hydraulics Department, Faculty of Engineering, Ain Shams University, Cairo",
 
                 "country" => "Egypt",
                 "image" => "board-member-image/cie/15.png",
@@ -983,7 +983,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Anil Kumar Verma",
-                "affliation" => "Computer Science & Engineering  Thapar Institute Of Engg & Technology, Patiala",
+                "affiliation" => "Computer Science & Engineering  Thapar Institute Of Engg & Technology, Patiala",
 
                 "country" => "India",
                 "image" => "board-member-image/cie/08.png",
@@ -999,7 +999,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Muhamad Fazly Abdul Patah",
-                "affliation" => "Department of Chemical Engineering, Faculty of Engineering, University of Malaya",
+                "affiliation" => "Department of Chemical Engineering, Faculty of Engineering, University of Malaya",
 
                 "country" => "Malaysia",
                 "image" => "board-member-image/cie/09.png",
@@ -1015,7 +1015,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Qiang Cheng",
-                "affliation" => "Beijing University of Technology",
+                "affiliation" => "Beijing University of Technology",
 
                 "country" => "China",
                 "image" => "board-member-image/cie/10.png",
@@ -1028,7 +1028,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ravinder Kumar",
-                "affliation" => "Thapar Institute of Engineering and Technology",
+                "affiliation" => "Thapar Institute of Engineering and Technology",
 
                 "country" => "India",
                 "image" => "board-member-image/cie/11.png",
@@ -1054,7 +1054,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Mohd Ridha Bin Muhamad",
-                "affliation" => "Department of Mechanical Engineering, Faculty of Engineering, Universiti Malaya, Kuala Lumpur",
+                "affiliation" => "Department of Mechanical Engineering, Faculty of Engineering, Universiti Malaya, Kuala Lumpur",
 
                 "country" => "Malaysia",
                 "image" => "board-member-image/cie/12.png",
@@ -1070,7 +1070,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Sumegh Tharewal",
-                "affliation" => "Free University of Bozen-Bolzano",
+                "affiliation" => "Free University of Bozen-Bolzano",
 
                 "country" => "Italy",
                 "image" => "board-member-image/cie/13.jpeg",
@@ -1087,7 +1087,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Wenyou Zhang",
-                "affliation" => "Department of Mechanical, Manufacturing & Biomedical Engineering,  Trinity College Dublin",
+                "affiliation" => "Department of Mechanical, Manufacturing & Biomedical Engineering,  Trinity College Dublin",
 
                 "country" => "Ireland ",
                 "image" => "board-member-image/cie/14.jpg",
@@ -1099,7 +1099,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Muhammad Asif",
-                "affliation" => "Department of Mechanical Engineering, National University of Sciences and Technology (NUST)",
+                "affiliation" => "Department of Mechanical Engineering, National University of Sciences and Technology (NUST)",
 
                 "country" => "Pakistan ",
                 "image" => "board-member-image/cie/15.jpg",
@@ -1114,7 +1114,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Mohamed A.F. Mahdy",
-                "affliation" => "Department of Architectural Engineering, College of Engineering and Design, Kingdom University",
+                "affiliation" => "Department of Architectural Engineering, College of Engineering and Design, Kingdom University",
 
                 "country" => "Bahrain ",
                 "image" => "board-member-image/cie/mohamed-mahdy.png",
@@ -1126,7 +1126,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ragab A. El-Sehiemy",
-                "affliation" => "Electrical Engineering Department, Faculty of Engineering,  Kafrelshiekh University",
+                "affiliation" => "Electrical Engineering Department, Faculty of Engineering,  Kafrelshiekh University",
 
                 "country" => "Egypt  ",
                 "image" => "board-member-image/cie/El-Sehiemy.jpg",
@@ -1139,7 +1139,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Mehdi Gheisari",
-                "affliation" => "Department of Computer Science, Islamic Azad University, Tehran,",
+                "affiliation" => "Department of Computer Science, Islamic Azad University, Tehran,",
 
                 "country" => "Iran",
                 "image" => "board-member-image/cie/mehdig-heisari.jpg",
@@ -1151,7 +1151,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Dr Aznida Abu Bakar Sajak",
-                "affliation" => "Department of Computer Engineering, Universiti Kuala Lumpur, Kuala Lumpur",
+                "affiliation" => "Department of Computer Engineering, Universiti Kuala Lumpur, Kuala Lumpur",
 
                 "country" => "Malaysia",
                 "image" => "board-member-image/cie/aznida-abu-bakar-sajak.jpg",
@@ -1163,7 +1163,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Mahmoud Zadehbagheri",
-                "affliation" => "Department of Electrical Engineering, Islamic Azad University, Yasouj Branch",
+                "affiliation" => "Department of Electrical Engineering, Islamic Azad University, Yasouj Branch",
 
                 "country" => "Iran",
                 "image" => "board-member-image/cie/mahmoud-zadehbagheri.png",
@@ -1175,7 +1175,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Seyed Majid Hashemzadeh",
-                "affliation" => "Faculty of Electrical and Computer Engineering. University of Tabriz. Tabriz",
+                "affiliation" => "Faculty of Electrical and Computer Engineering. University of Tabriz. Tabriz",
 
                 "country" => "Iran",
                 "image" => "board-member-image/cie/seyed-majid-hashemzadeh.jpg",
@@ -1187,7 +1187,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Kerim Karabacak",
-                "affliation" => "Dept. of Electronics and Automation, Dumlupinar Üniversitesi, Kutahya ",
+                "affiliation" => "Dept. of Electronics and Automation, Dumlupinar Üniversitesi, Kutahya ",
 
                 "country" => "Turkiye",
                 "image" => "board-member-image/cie/kerim-karabacak.jpg",
@@ -1199,7 +1199,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Abraham Dandoussou",
-                "affliation" => "Department of Fundamental Sciences and Engineering Techniques, School of Chemical Engineering and Mineral Industries, University of Ngaoundere.",
+                "affiliation" => "Department of Fundamental Sciences and Engineering Techniques, School of Chemical Engineering and Mineral Industries, University of Ngaoundere.",
 
                 "country" => "Cameroon",
                 "image" => "board-member-image/cie/abraham-dandoussou.jpg",
@@ -1211,7 +1211,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Yujun Yang",
-                "affliation" => "School of Human Settlements and Civil Engineering, Xi’an Jiaotong University, Xi’an",
+                "affiliation" => "School of Human Settlements and Civil Engineering, Xi’an Jiaotong University, Xi’an",
 
                 "country" => "China",
                 "image" => "board-member-image/cie/yujun-yang.jpg",
@@ -1223,7 +1223,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Gerhard Bezuidenhout",
-                "affliation" => "Senior Teaching Fellow, University of Portsmouth",
+                "affiliation" => "Senior Teaching Fellow, University of Portsmouth",
 
                 "country" => "UK",
                 "image" => "board-member-image/jblm/08.png",
@@ -1239,7 +1239,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Matt Fuss",
-                "affliation" => "Department of Business, Accounting and Sport Management, Geneva College, Beaver Falls, Pennsylvania",
+                "affiliation" => "Department of Business, Accounting and Sport Management, Geneva College, Beaver Falls, Pennsylvania",
 
                 "country" => "United States",
                 "image" => "board-member-image/jblm/09.png",
@@ -1252,7 +1252,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Marc Y. Tassé",
-                "affliation" => "University of Ottawa’s Faculty of Law, Ottawa, Ontario",
+                "affiliation" => "University of Ottawa’s Faculty of Law, Ottawa, Ontario",
 
                 "country" => "Canada",
                 "image" => "board-member-image/jblm/10.png",
@@ -1277,7 +1277,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "David Bolton",
-                "affliation" => "School of Management, Swansea University",
+                "affiliation" => "School of Management, Swansea University",
 
                 "country" => "United Kingdom",
                 "image" => "board-member-image/jblm/18.png",
@@ -1298,7 +1298,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Natthinee Thampanya",
-                "affliation" => "Senior Lecturer in Finance, Oxford Brookes University",
+                "affiliation" => "Senior Lecturer in Finance, Oxford Brookes University",
 
                 "country" => "United Kingdom",
                 "image" => "board-member-image/jblm/11.png",
@@ -1311,7 +1311,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Fabienne Cadet-Laborde",
-                "affliation" => "H. Wayne Huizenga College of Business and Entrepreneurship, Nova Southeastern University",
+                "affiliation" => "H. Wayne Huizenga College of Business and Entrepreneurship, Nova Southeastern University",
                 "country" => "United States",
                 "image" => "board-member-image/jblm/23.png",
                 "biography" => "
@@ -1323,7 +1323,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Desireé Cranfield",
-                "affliation" => "School of Management, Swansea University",
+                "affiliation" => "School of Management, Swansea University",
 
                 "country" => "United Kingdom",
                 "image" => "board-member-image/jblm/17.png",
@@ -1336,7 +1336,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Aïda Darouichi",
-                "affliation" => "Geneva School of Economics and Management, University of Geneva",
+                "affiliation" => "Geneva School of Economics and Management, University of Geneva",
 
                 "country" => "Switzerland",
                 "image" => "board-member-image/jblm/12.png",
@@ -1355,7 +1355,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Kevin Cullinane",
-                "affliation" => "University of Gothenburg",
+                "affiliation" => "University of Gothenburg",
 
                 "country" => "Sweden",
                 "image" => "board-member-image/jblm/21.png",
@@ -1368,7 +1368,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Sugoutam Ghosh",
-                "affliation" => "Head, Graduate Diploma in Logistics and Supply Chain Management Programme, School of Business, Singapore University of Social Sciences",
+                "affiliation" => "Head, Graduate Diploma in Logistics and Supply Chain Management Programme, School of Business, Singapore University of Social Sciences",
 
                 "country" => "Singapore",
                 "image" => "board-member-image/jblm/20.png",
@@ -1381,7 +1381,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Nick Capon",
-                "affliation" => "board-member-image/jblm/Portsmouth Business School, University of Portsmouth",
+                "affiliation" => "board-member-image/jblm/Portsmouth Business School, University of Portsmouth",
 
                 "country" => "United Kingdom",
                 "image" => "13.png",
@@ -1403,7 +1403,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "João M. Lopes",
-                "affliation" => "Miguel Torga Institute of Higher Education (ISMT), Coimbra and The University of Beira Interior (UBI), Covilhã",
+                "affiliation" => "Miguel Torga Institute of Higher Education (ISMT), Coimbra and The University of Beira Interior (UBI), Covilhã",
 
                 "country" => "Portugal",
                 "image" => "board-member-image/jblm/05.png",
@@ -1416,7 +1416,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Georgios Tsourvakas",
-                "affliation" => "Department of Business Administration, School of Economic and Political Sciences, National and Kapodistrian University of Athens",
+                "affiliation" => "Department of Business Administration, School of Economic and Political Sciences, National and Kapodistrian University of Athens",
 
                 "country" => "Greece",
                 "image" => "board-member-image/jblm/22.png",
@@ -1429,7 +1429,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Konstantinos I. Stouras",
-                "affliation" => "Michael Smurfit Graduate Business School, University College Dublin",
+                "affiliation" => "Michael Smurfit Graduate Business School, University College Dublin",
 
                 "country" => "Ireland",
                 "image" => "board-member-image/jblm/15.png",
@@ -1442,7 +1442,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ren Jing",
-                "affliation" => "School of Business, Singapore University of Social Sciences",
+                "affiliation" => "School of Business, Singapore University of Social Sciences",
 
                 "country" => "Singapore",
                 "image" => "board-member-image/jblm/19.png",
@@ -1455,7 +1455,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Beldina Owalla",
-                "affliation" => "Oxford Brookes University",
+                "affiliation" => "Oxford Brookes University",
 
                 "country" => "United Kingdom",
                 "image" => "board-member-image/jblm/14.png",
@@ -1471,7 +1471,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Mosab Tabash",
-                "affliation" => "MBA Director and Associate Professor of Finance at the College of Business, Al Ain University",
+                "affiliation" => "MBA Director and Associate Professor of Finance at the College of Business, Al Ain University",
 
                 "country" => "UAE",
                 "image" => "board-member-image/jblm/06.png",
@@ -1484,7 +1484,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Xia Chongwu",
-                "affliation" => "School of Business, Singapore University of Social Sciences",
+                "affiliation" => "School of Business, Singapore University of Social Sciences",
 
                 "country" => "Singapore",
                 "image" => "board-member-image/jblm/16.png",
@@ -1500,7 +1500,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Theresa Obuobisa-Darko",
-                "affliation" => "Department for the Management Studies in Ghana Communication Technology University, and a former Head of the Human Resource Management Department at Methodist University ",
+                "affiliation" => "Department for the Management Studies in Ghana Communication Technology University, and a former Head of the Human Resource Management Department at Methodist University ",
                 "country" => "Ghana",
                 "image" => "board-member-image/jblm/07.png",
                 "biography" => "
@@ -1515,7 +1515,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ronnell D. Dela Rosa",
-                "affliation" => "Bataan Peninsula State University",
+                "affiliation" => "Bataan Peninsula State University",
                 "country" => "Philippine",
                 "image" => "board-member-image/jblm/01.png",
                 'journal_id' => 5,
@@ -1523,7 +1523,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Anurag Hazarika",
-                "affliation" => "Tezpur University",
+                "affiliation" => "Tezpur University",
                 "country" => "India",
                 "image" => "board-member-image/jblm/02.png",
                 "biography" => "
@@ -1535,7 +1535,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Juliansyah Noor",
-                "affliation" => "La Tansa Mashiro University, Banten",
+                "affiliation" => "La Tansa Mashiro University, Banten",
 
                 "country" => "Indonesia",
                 "image" => "board-member-image/jblm/03.png",
@@ -1543,7 +1543,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Mohammad Rashed Hasan Polas",
-                "affliation" => "Department of Business Administration Sonargaon University (SU), Dhaka",
+                "affiliation" => "Department of Business Administration Sonargaon University (SU), Dhaka",
 
                 "country" => "Bangladesh",
                 "image" => "board-member-image/jblm/04.png",
@@ -1556,7 +1556,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Fanos Tekelas",
-                "affliation" => "University of Central Lancashire Cyprus/ Director of the Centre for Entrepreneurial Development, Alliance and Research (CEDAR)",
+                "affiliation" => "University of Central Lancashire Cyprus/ Director of the Centre for Entrepreneurial Development, Alliance and Research (CEDAR)",
 
                 "country" => "Cyprus",
                 "image" => "board-member-image/jblm/11.jpg",
@@ -1569,7 +1569,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Karen Cripps",
-                "affliation" => "Oxford Brookes Business School",
+                "affiliation" => "Oxford Brookes Business School",
 
                 "country" => "United Kingdom",
                 "image" => "board-member-image/jblm/12.jpg",
@@ -1583,7 +1583,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Anthony Bagherian",
-                "affliation" => "International School of Management (ISM), Paris",
+                "affiliation" => "International School of Management (ISM), Paris",
 
                 "country" => "France",
                 "image" => "board-member-image/jblm/anthony-bagherian.jpg",
@@ -1596,7 +1596,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Nazrul Islam",
-                "affliation" => "Department of Business Administration, Northern University Bangladesh",
+                "affiliation" => "Department of Business Administration, Northern University Bangladesh",
 
                 "country" => "Bangladesh",
                 "image" => "board-member-image/jblm/nazrul-islam.png",
@@ -1611,7 +1611,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Alla Ozeran",
-                "affliation" => "Department of Business Administration, Tallinn University of Technology",
+                "affiliation" => "Department of Business Administration, Tallinn University of Technology",
 
                 "country" => "Estonia",
                 "image" => "board-member-image/jblm/alla-ozeran.jpg",
@@ -1629,7 +1629,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Tiiu Kamdron",
-                "affliation" => "School of Business and Governance, Tallinn University of Technology",
+                "affiliation" => "School of Business and Governance, Tallinn University of Technology",
 
                 "country" => "Estonia",
                 "image" => "board-member-image/jblm/tiiu-kamdron.jpg",
@@ -1642,7 +1642,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Andreas E. Fousteris",
-                "affliation" => "Department of Business Administration, University of Piraeus, Piraeus",
+                "affiliation" => "Department of Business Administration, University of Piraeus, Piraeus",
 
                 "country" => "Greece",
                 "image" => "board-member-image/jblm/Andreas-E-Fousteris.jpg",
@@ -1659,7 +1659,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Mohammad Shamsul Hoque",
-                "affliation" => "The Centre for Higher Studies and Research, Bangladesh University of Professionals",
+                "affiliation" => "The Centre for Higher Studies and Research, Bangladesh University of Professionals",
 
                 "country" => "Bangladesh",
                 "image" => "board-member-image/jblm/mohammad-shamsul-hoque.jpg",
@@ -1673,7 +1673,7 @@ class EditorialBoardMemberSeeder extends Seeder
             //rer
             [
                 "name" => "Sara Mashayekh",
-                "affliation" => "School Of Education Arts, Design And Architecture University Of New South Wales Sydney",
+                "affiliation" => "School Of Education Arts, Design And Architecture University Of New South Wales Sydney",
 
                 "country" => "Australia",
                 "image" => "board-member-image/rer/05.png",
@@ -1686,7 +1686,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Murali Raman",
-                "affliation" => "Deputy Vice Chancellor, Director Postgraduate & Continuing Education Asia Pacific University",
+                "affiliation" => "Deputy Vice Chancellor, Director Postgraduate & Continuing Education Asia Pacific University",
 
                 "country" => "Malaysia",
                 "image" => "board-member-image/rer/02.png",
@@ -1726,7 +1726,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Hassan Muhammad Abdel Maqsoud",
-                "affliation" => "Professor of Arabic Language and Applied Linguistics at the Faculty of Education, Ain Shams University",
+                "affiliation" => "Professor of Arabic Language and Applied Linguistics at the Faculty of Education, Ain Shams University",
 
                 "country" => "Egypt",
                 "image" => "board-member-image/rer/11.png",
@@ -1743,7 +1743,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Elisavet Lazarakou",
-                "affliation" => "Department of Pedagogy and Primary Education of the National and Kapodistrian University of Athens",
+                "affiliation" => "Department of Pedagogy and Primary Education of the National and Kapodistrian University of Athens",
 
                 "country" => "Greece",
                 "image" => "board-member-image/rer/12.png",
@@ -1757,7 +1757,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Pongkit Ekvitayavetchanukul",
-                "affliation" => "The Board of Khon Kaen University Affairs, Khon Kaen University",
+                "affiliation" => "The Board of Khon Kaen University Affairs, Khon Kaen University",
 
                 "country" => "Thailand",
                 "image" => "board-member-image/rer/03.png",
@@ -1781,7 +1781,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Maria Morena Enage-Dela Pena",
-                "affliation" => "Biliran Province State University",
+                "affiliation" => "Biliran Province State University",
 
                 "country" => "Philippines",
                 "image" => "board-member-image/rer/04.png",
@@ -1799,7 +1799,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Omar Trabelsi",
-                "affliation" => "University of Jendouba",
+                "affiliation" => "University of Jendouba",
 
                 "country" => "Tunisia",
                 "image" => "board-member-image/rer/06.png",
@@ -1812,7 +1812,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Mohsen Hamed Farrag Abdel Aal",
-                "affliation" => "Professor of Curriculum and Instructions at the Faculty of Education, Ain Shams University",
+                "affiliation" => "Professor of Curriculum and Instructions at the Faculty of Education, Ain Shams University",
 
                 "country" => "Egypt",
                 "image" => "board-member-image/rer/09.png",
@@ -1825,7 +1825,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Fatma Elzhraa Salem Mahmoud Mostafa",
-                "affliation" => "Faculty of Education, Ain Shams University",
+                "affiliation" => "Faculty of Education, Ain Shams University",
 
                 "country" => "Egypt",
                 "image" => "board-member-image/rer/10.png",
@@ -1838,7 +1838,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Iqra Munaf",
-                "affliation" => "Department of Social Sciences, University of Karachi",
+                "affiliation" => "Department of Social Sciences, University of Karachi",
 
                 "country" => "Pakistan",
                 "image" => "board-member-image/rer/01.png",
@@ -1850,7 +1850,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Marci H Levine",
-                "affliation" => "New York University College",
+                "affiliation" => "New York University College",
 
                 "country" => "United States",
                 "image" => "board-member-image/rer/08.png",
@@ -1863,7 +1863,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Christos Parthenis",
-                "affliation" => "Pedagogical Department of Secondary Education, University of Athens",
+                "affiliation" => "Pedagogical Department of Secondary Education, University of Athens",
 
                 "country" => "Greece",
                 "image" => "board-member-image/rer/09.jpg",
@@ -1880,7 +1880,7 @@ class EditorialBoardMemberSeeder extends Seeder
             //pb
             [
                 "name" => "Tejraj M. Aminabhavi",
-                "affliation" => "University of Texas at Austin, Texas",
+                "affiliation" => "University of Texas at Austin, Texas",
 
                 "country" => "USA",
                 "image" => "board-member-image/rer/01.png",
@@ -1901,7 +1901,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ahmed Elsonbaty",
-                "affliation" => "Egyptian Russian University",
+                "affiliation" => "Egyptian Russian University",
 
                 "country" => "Egypt",
                 "image" => "board-member-image/pb/03.png",
@@ -1923,7 +1923,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "David Dworaczyk",
-                "affliation" => "Bryn Pharma, LLC. North Carolina",
+                "affiliation" => "Bryn Pharma, LLC. North Carolina",
 
                 "country" => "USA",
                 "image" => "board-member-image/pb/05.png",
@@ -1939,7 +1939,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Khaled Attala",
-                "affliation" => "Faculty of Pharmacy, Egyptian Russian University",
+                "affiliation" => "Faculty of Pharmacy, Egyptian Russian University",
 
                 "country" => "Egypt",
                 "image" => "board-member-image/pb/04.png",
@@ -1952,7 +1952,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Wu Nan",
-                "affliation" => "General Manager, Research & Development, Haisco Pharmaceutical Group Co Ltd",
+                "affiliation" => "General Manager, Research & Development, Haisco Pharmaceutical Group Co Ltd",
 
                 "country" => "China",
                 "image" => "board-member-image/pb/02.png",
@@ -1971,7 +1971,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Mostafa Abbas Mostafa Shalaby",
-                "affliation" => "Professor of Pharmacology and previous Head of the Pharmacology  Department, Faculty of Vet. Med., Cairo University,Giza",
+                "affiliation" => "Professor of Pharmacology and previous Head of the Pharmacology  Department, Faculty of Vet. Med., Cairo University,Giza",
 
                 "country" => "Egypt",
                 "image" => "board-member-image/pb/06.png",
@@ -2011,7 +2011,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Eman Gamal Eldin Helal",
-                "affliation" => "Al-Azhar Scientific Medical Society, faculty of medicine, Al-Azhar University",
+                "affiliation" => "Al-Azhar Scientific Medical Society, faculty of medicine, Al-Azhar University",
 
                 "country" => "Egypt",
                 "image" => "board-member-image/pb/07.jpg",
@@ -2025,7 +2025,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Elvis Ofori Ameyaw ",
-                "affliation" => "Dean, School of Pharmacy and Pharmaceutical Sciences University of Cape Coast. Cape Coast.",
+                "affiliation" => "Dean, School of Pharmacy and Pharmaceutical Sciences University of Cape Coast. Cape Coast.",
 
                 "country" => "Ghana",
                 "image" => "board-member-image/pb/08.jpg",
@@ -2043,7 +2043,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Prachi Srivastava",
-                "affliation" => "AMITY Institute of Biotechnology, AMITY University, Lucknow ",
+                "affiliation" => "AMITY Institute of Biotechnology, AMITY University, Lucknow ",
 
                 "country" => "India",
                 "image" => "board-member-image/pb/09.jpg",
@@ -2061,7 +2061,7 @@ class EditorialBoardMemberSeeder extends Seeder
             //msr
             [
                 "name" => "Naomi Kaduwela",
-                "affliation" => "Head of Kavi Labs, Kavi Global, Barrington",
+                "affiliation" => "Head of Kavi Labs, Kavi Global, Barrington",
 
                 "country" => "United States",
                 "image" => "board-member-image/msr/03.png",
@@ -2075,7 +2075,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ke Chen",
-                "affliation" => "Professor at University of Strathclyde and Honorary Professor at University of Liverpool",
+                "affiliation" => "Professor at University of Strathclyde and Honorary Professor at University of Liverpool",
 
                 "country" => "United Kingdom",
                 "image" => "board-member-image/msr/04.png",
@@ -2087,7 +2087,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Chen Zhao",
-                "affliation" => "Project Scientist Cancer Center, Renmin Hospital of Wuhan University Wuhan",
+                "affiliation" => "Project Scientist Cancer Center, Renmin Hospital of Wuhan University Wuhan",
 
                 "country" => "China",
                 "image" => "board-member-image/msr/10.png",
@@ -2107,7 +2107,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ali Adel Dawood",
-                "affliation" => "College of Medicine, University of Mosul, Mosul",
+                "affiliation" => "College of Medicine, University of Mosul, Mosul",
 
                 "country" => "Iraq",
                 "image" => "board-member-image/msr/02.png",
@@ -2122,7 +2122,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Emmanuel Lamptey",
-                "affliation" => "Institute of Life and Earth Sciences (Including Health and Agriculture), Pan African University, University of Ibadan",
+                "affiliation" => "Institute of Life and Earth Sciences (Including Health and Agriculture), Pan African University, University of Ibadan",
 
                 "country" => "Nigeria",
                 "image" => "board-member-image/msr/05.png",
@@ -2135,7 +2135,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ismail Rabiu",
-                "affliation" => "Department of Microbiology, School of Science and Information Technology, Skyline University Nigeria, Kano",
+                "affiliation" => "Department of Microbiology, School of Science and Information Technology, Skyline University Nigeria, Kano",
 
                 "country" => "Nigeria",
                 "image" => "board-member-image/msr/06.jpg",
@@ -2147,7 +2147,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Dr. Alemayehu Shiferaw Lema",
-                "affliation" => "Assistant professor at St. Paul’s Hospital Millennium Medical College, Addis Ababa.",
+                "affiliation" => "Assistant professor at St. Paul’s Hospital Millennium Medical College, Addis Ababa.",
 
                 "country" => "Ethiopia ",
                 "image" => "board-member-image/msr/alemayehu-shiferawl-ema.png",
@@ -2162,7 +2162,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Feryal Dabbagh-Gorjani",
-                "affliation" => "Department of Immunology, School of Medicine, Shiraz University of Medical Sciences, Shiraz.",
+                "affiliation" => "Department of Immunology, School of Medicine, Shiraz University of Medical Sciences, Shiraz.",
 
                 "country" => "Iran",
                 "image" => "board-member-image/msr/feryal-dabbagh-gorjani.jpg",
@@ -2176,7 +2176,7 @@ class EditorialBoardMemberSeeder extends Seeder
             //sfr
             [
                 "name" => "Debarshi Nandy",
-                "affliation" => "Brandeis International Business School, Waltham",
+                "affiliation" => "Brandeis International Business School, Waltham",
 
                 "country" => "United States",
                 "image" => "board-member-image/sfr/04.png",
@@ -2189,7 +2189,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Joy Jia",
-                "affliation" => "School of Management, Swansea University",
+                "affiliation" => "School of Management, Swansea University",
 
                 "country" => "United Kingdom",
                 "image" => "board-member-image/sfr/16.png",
@@ -2205,7 +2205,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "António Miguel Martins",
-                "affliation" => "Faculty of Social Sciences of the University of Madeira",
+                "affiliation" => "Faculty of Social Sciences of the University of Madeira",
 
                 "country" => "Portugal",
                 "image" => "board-member-image/sfr/03.png",
@@ -2218,7 +2218,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Bruno Nkuiya",
-                "affliation" => "Department of Economics, Rensselaer Polytechnic Institute",
+                "affiliation" => "Department of Economics, Rensselaer Polytechnic Institute",
 
                 "country" => "United States",
                 "image" => "board-member-image/sfr/07.png",
@@ -2231,7 +2231,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Christer Ljungwall",
-                "affliation" => "Department of Economics, University of Gothenburg, Gothenburg",
+                "affiliation" => "Department of Economics, University of Gothenburg, Gothenburg",
 
                 "country" => "Sweden",
                 "image" => "board-member-image/sfr/18.png",
@@ -2244,7 +2244,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Konstantinos Vergos",
-                "affliation" => "Associate Professor (Senior Lecturer) at the University of Portsmouth",
+                "affiliation" => "Associate Professor (Senior Lecturer) at the University of Portsmouth",
 
                 "country" => "United Kingdom",
                 "image" => "board-member-image/sfr/12.png",
@@ -2269,7 +2269,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Hatice Ozer Balli",
-                "affliation" => "School of Economics and Finance, College of Business, Massey University",
+                "affiliation" => "School of Economics and Finance, College of Business, Massey University",
 
                 "country" => "New Zealand",
                 "image" => "board-member-image/sfr/13.png",
@@ -2285,7 +2285,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Palaskas Theodosios",
-                "affliation" => "Professor of Economic Analysis and Dean of School of Economy and Public  Administration at Panteion University of Athens",
+                "affiliation" => "Professor of Economic Analysis and Dean of School of Economy and Public  Administration at Panteion University of Athens",
 
                 "country" => "Greece",
                 "image" => "board-member-image/sfr/17.png",
@@ -2298,7 +2298,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Jurica Bosna",
-                "affliation" => "University of Zadar, Department of Economics",
+                "affiliation" => "University of Zadar, Department of Economics",
 
                 "country" => "Croatia",
                 "image" => "board-member-image/sfr/14.png",
@@ -2311,7 +2311,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Biljana S. Ilic",
-                "affliation" => "Faculty of Project and Innovation Management 'Petar Jovanovic', Belgrade",
+                "affiliation" => "Faculty of Project and Innovation Management 'Petar Jovanovic', Belgrade",
 
                 "country" => "Serbia",
                 "image" => "board-member-image/sfr/05.png",
@@ -2325,7 +2325,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Ahmed Mohamed Habib",
-                "affliation" => "Accounting and Finance, Independent Research, Zagazig",
+                "affiliation" => "Accounting and Finance, Independent Research, Zagazig",
 
                 "country" => "Egypt",
                 "image" => "board-member-image/sfr/06.png",
@@ -2339,7 +2339,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Jinxin Cui",
-                "affliation" => "School of Statistics and Mathematics, Zhejiang Gongshang University",
+                "affiliation" => "School of Statistics and Mathematics, Zhejiang Gongshang University",
                 "country" => "China",
                 "image" => "board-member-image/sfr/01.png",
                 "biography" => "
@@ -2357,7 +2357,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Khaled Guesmi",
-                "affliation" => "Professor of Finance and Director of the Center of Research for Energy and Climate Change (CRECC) Paris School of Business",
+                "affiliation" => "Professor of Finance and Director of the Center of Research for Energy and Climate Change (CRECC) Paris School of Business",
 
                 "country" => "France",
                 "image" => "board-member-image/sfr/09.png",
@@ -2374,7 +2374,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Gema Albort-Morant",
-                "affliation" => "Department of Financial Economics and Operations Management, Sevilla University",
+                "affiliation" => "Department of Financial Economics and Operations Management, Sevilla University",
 
                 "country" => "Spain",
                 "image" => "board-member-image/sfr/11.png",
@@ -2387,7 +2387,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Jin Changlun",
-                "affliation" => "School of Banking and Finance, University of International Business and Economics",
+                "affiliation" => "School of Banking and Finance, University of International Business and Economics",
                 "country" => "China",
                 "image" => "board-member-image/sfr/02.png",
                 "biography" => "
@@ -2399,7 +2399,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Kulwa Mang'ana",
-                "affliation" => "School of Business Studies and Humanities (BuSH) The Nelson Mandela African Institution of Science and Technology(NM-AIST) Arusha",
+                "affiliation" => "School of Business Studies and Humanities (BuSH) The Nelson Mandela African Institution of Science and Technology(NM-AIST) Arusha",
 
                 "country" => "Tanzania",
                 "image" => "board-member-image/sfr/08.png",
@@ -2415,7 +2415,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Sonja Brlečić Valčić",
-                "affliation" => "Deputy Head, Department Of Economics, University Of Zadar",
+                "affiliation" => "Deputy Head, Department Of Economics, University Of Zadar",
 
                 "country" => "Croatia",
                 "image" => "board-member-image/sfr/15.png",
@@ -2428,7 +2428,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Stephen Oduro",
-                "affliation" => "Faculty of Economics and Management, Free University of Bozen-Bolzano",
+                "affiliation" => "Faculty of Economics and Management, Free University of Bozen-Bolzano",
 
                 "country" => "Italy",
                 "image" => "board-member-image/sfr/16.jpg",
@@ -2440,7 +2440,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Paul Wang",
-                "affliation" => "School of Accounting and Finance, The Hong Kong Polytechnic University",
+                "affiliation" => "School of Accounting and Finance, The Hong Kong Polytechnic University",
 
                 "country" => "Hong Kong",
                 "image" => "board-member-image/sfr/paul-wang.jpg",
@@ -2454,7 +2454,7 @@ class EditorialBoardMemberSeeder extends Seeder
             ],
             [
                 "name" => "Philip L. Fazio",
-                "affliation" => "College of Business & Management, Lynn University, Florida",
+                "affiliation" => "College of Business & Management, Lynn University, Florida",
 
                 "country" => "United States",
                 "image" => "board-member-image/sfr/philip-fazio.png",

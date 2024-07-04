@@ -56,9 +56,9 @@
                     value="{{ $m->email ?? '' }}">
             </div>
             <div class="col-12 mb-4">
-                <label for="" class="form-label">Affliation</label>
-                <input type="text" name="affliation" class="form-control" placeholder="Enter Affiliateion" required
-                    value="{{ $m->affliation }}">
+                <label for="" class="form-label">affiliation</label>
+                <input type="text" name="affiliation" class="form-control" placeholder="Enter Affiliateion" required
+                    value="{{ $m->affiliation }}">
             </div>
             <div class="col-12">
                 <label for="" class="form-label">Biography</label>

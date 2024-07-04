@@ -213,7 +213,7 @@
                                 $author_count = count($authors);
                             @endphp
                             <div class="col-12">
-                                <h5 class="my-3">Affliation Details</h5>
+                                <h5 class="my-3">affiliation Details</h5>
                                 <hr>
                             </div>
                             <div class="col-12">
@@ -222,10 +222,10 @@
                                         <div class="col-10 row" id="one_box">
                                             <div class="col-7">
                                                 <div class="mb-4">
-                                                    <label for="author_name" class="form-label">Affliation</label>
+                                                    <label for="author_name" class="form-label">affiliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[first_affiliation][name]"
-                                                        placeholder="Enter Affliation"
+                                                        placeholder="Enter affiliation"
                                                         value="{{ $affiliations[0]['name'] ?? old('affiliation.first_affiliation.name') }}"
                                                         required>
                                                 </div>
@@ -246,7 +246,7 @@
                                         <div class="col-10 row" id="two_box">
                                             <div class="col-7">
                                                 <div class="mb-4">
-                                                    <label for="author_name" class="form-label">Affliation</label>
+                                                    <label for="author_name" class="form-label">affiliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[second_affiliation][name]"
                                                         placeholder="Enter Affiliation"
@@ -272,11 +272,11 @@
                                         <div class="col-10 row" id="three_box">
                                             <div class="col-7">
                                                 <div class="mb-4">
-                                                    <label for="author_name" class="form-label">Affliation</label>
+                                                    <label for="author_name" class="form-label">affiliation</label>
                                                     <input type="text" class="form-control"
                                                         value="{{ $affiliations[2]['country'] ?? old('affiliation.third_affiliation.name') }}"
                                                         name="affiliation[third_affiliation][name]"
-                                                        placeholder="Enter Affliation">
+                                                        placeholder="Enter affiliation">
                                                 </div>
                                             </div>
                                             <div class="col-3">
@@ -298,7 +298,7 @@
                                         <div class="col-10 row" id="four_box">
                                             <div class="col-7">
                                                 <div class="mb-4">
-                                                    <label for="author_name" class="form-label">Affliation</label>
+                                                    <label for="author_name" class="form-label">affiliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[fourth_affiliation][name]"
                                                         placeholder="Enter Affiliation"
@@ -324,10 +324,10 @@
                                         <div class="col-10 row" id="five_box">
                                             <div class="col-7">
                                                 <div class="mb-4">
-                                                    <label for="author_name" class="form-label">Affliation</label>
+                                                    <label for="author_name" class="form-label">affiliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[fifth_affiliation][name]"
-                                                        placeholder="Enter Affliation"
+                                                        placeholder="Enter affiliation"
                                                         value="{{ $affiliations[4]['name'] ?? old('affiliation.fifth_affiliation.name') }}">
                                                 </div>
                                             </div>
@@ -350,10 +350,10 @@
                                         <div class="col-10 row" id="six_box">
                                             <div class="col-7">
                                                 <div class="mb-4">
-                                                    <label for="author_name" class="form-label">Affliation</label>
+                                                    <label for="author_name" class="form-label">affiliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[sixth_affiliation][name]"
-                                                        placeholder="Enter Affliation"
+                                                        placeholder="Enter affiliation"
                                                         value="{{ $affiliations[5]['name'] ?? old('affiliation.sixth_affiliation.name') }}">
                                                 </div>
                                             </div>
@@ -376,10 +376,10 @@
                                         <div class="col-10 row" id="seven_box">
                                             <div class="col-7">
                                                 <div class="mb-4">
-                                                    <label for="author_name" class="form-label">Affliation</label>
+                                                    <label for="author_name" class="form-label">affiliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[seventh_affiliation][name]"
-                                                        placeholder="Enter Affliation"
+                                                        placeholder="Enter affiliation"
                                                         value="{{ $affiliations[6]['name'] ?? old('affiliation.seventh_affiliation.name') }}">
                                                 </div>
                                             </div>
@@ -402,10 +402,10 @@
                                         <div class="col-10 row" id="eight_box">
                                             <div class="col-7">
                                                 <div class="mb-4">
-                                                    <label for="author_name" class="form-label">Affliation</label>
+                                                    <label for="author_name" class="form-label">affiliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[eight_affiliation][name]"
-                                                        placeholder="Enter Affliation"
+                                                        placeholder="Enter affiliation"
                                                         value="{{ $affiliations[7]['name'] ?? old('affiliation.eight_affiliation.name') }}">
                                                 </div>
                                             </div>
@@ -428,7 +428,7 @@
                                         <div class="col-10 row" id="nine_box">
                                             <div class="col-7">
                                                 <div class="mb-4">
-                                                    <label for="author_name" class="form-label">Affliation</label>
+                                                    <label for="author_name" class="form-label">affiliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[nine_affiliation][name]"
                                                         placeholder="Enter Affiliation"
@@ -454,10 +454,10 @@
                                         <div class="col-10 row" id="ten_box">
                                             <div class="col-7">
                                                 <div class="mb-4">
-                                                    <label for="author_name" class="form-label">Affliation</label>
+                                                    <label for="author_name" class="form-label">affiliation</label>
                                                     <input type="text" class="form-control"
                                                         name="affiliation[ten_affiliation][name]"
-                                                        placeholder="Enter Affliation"
+                                                        placeholder="Enter affiliation"
                                                         value="{{ $affiliations[9]['name'] ?? old('affiliation.ten_affiliation.name') }}">
                                                 </div>
                                             </div>

@@ -31,7 +31,17 @@
     <script src="{{ asset('admin_assets/plugins/select2/select2.full.min.js') }}"></script>
     <script src="{{ asset('admin_assets/plugins/p-scrollbar/p-scrollbar.js') }}"></script>
     <script src="{{ asset('admin_assets/js/custom.js') }}"></script>
-
+    <script>
+        $('form').each(function() {
+            $(this).on('submit', function() {
+                var button = $(this).find('button[type="submit"]');
+                button.prop('disabled', true).html(`
+                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                `);
+                return true;
+            });
+        });
+    </script>
 </body>
 
 </html>

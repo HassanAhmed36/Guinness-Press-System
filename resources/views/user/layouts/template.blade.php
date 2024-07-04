@@ -852,6 +852,18 @@
         })();
     </script>
     <!--End of Tawk.to Script-->
+
+    <script>
+        $('form').each(function() {
+            $(this).on('submit', function() {
+                var button = $(this).find('button[type="submit"]');
+                button.prop('disabled', true).html(`
+                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                `);
+                return true;
+            });
+        });
+    </script>
 </body>
 
 </html>

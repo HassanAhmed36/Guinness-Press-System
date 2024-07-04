@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('peer_review_assignments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('journal_board_member_id')->nullable()->constrained('journal_board_members')->onDelete('cascade');
-            $table->foreignId('submission_file_id')->constrained('submission_files')->onDelete('cascade');
+            $table->foreignId('submission_id')->constrained('submissions')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->integer('status')->default(0); // 0 - pending, 1 - approved, 2 - rejected
             $table->longText('feedback')->nullable();

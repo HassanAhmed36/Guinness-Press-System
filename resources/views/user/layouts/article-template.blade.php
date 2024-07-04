@@ -831,5 +831,30 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+@session('success')
+    <script>
+        toastr.success("{{ session('success') }}");
+    </script>
+@endsession
+@session('error')
+    <script>
+        toastr.error("{{ session('error') }}");
+    </script>
+@endsession
+
+<script>
+    $('form').each(function() {
+        $(this).on('submit', function() {
+            var button = $(this).find('button[type="submit"]');
+            button.prop('disabled', true).html(`
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            `);
+            return true;
+        });
+    });
+</script>
    </body>
 </html>

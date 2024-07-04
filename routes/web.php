@@ -44,6 +44,7 @@ Route::middleware('check.user.auth')->group(function () {
     Route::post('/update-submission-user/{id}', [SubmissionController::class, 'update'])->name('update.submission.user');
     Route::get('/send-apc-mail/{id}', [SubmissionService::class, 'sendPaypalEmail'])->name('send.paypal.mail');
 
+    Route::post('/post-pre-publication', [SubmissionService::class, 'postPrePublication'])->name('post.pre.publication');
     Route::get('/user-profile', [ProfileController::class, 'index'])->name('user.own.profile');
 });
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');

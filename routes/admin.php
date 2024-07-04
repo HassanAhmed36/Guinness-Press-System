@@ -26,7 +26,7 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('admin')->group(function () {
     Route::middleware('check.dashboard.auth')->group(function () {
-        
+
         Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
         Route::get('/journals', [JournalController::class, 'index'])->name('admin.journal.index');
         Route::get('/create-journals', [JournalController::class, 'create'])->name('admin.journal.create');
@@ -86,6 +86,8 @@ Route::prefix('admin')->group(function () {
         Route::post('/submission-feedback', [CustomService::class, 'submitFeedback'])->name('submission.feedback');
 
         Route::post('/assign-peer-reviewed/{id}', [SubmissionService::class, 'assignPeerReviewed'])->name('assign.peer.reviewed');
+    Route::post('/send-file-to-author/{id}', [SubmissionService::class, 'sendFileToAuthor'])->name('send.file.to.author');
+
 
         Route::get('/users', [UserController::class, 'index'])->name('admin.user.index');
         Route::post('/store-users', [UserController::class, 'store'])->name('admin.user.store');

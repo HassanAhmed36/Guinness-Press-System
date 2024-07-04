@@ -39,7 +39,7 @@ class JournalBoardMemberController extends Controller
         $request->validate([
             'name' => 'required',
             'image' => 'required',
-            'affliation' => 'required',
+            'affiliation' => 'required',
             'country' => 'required',
             'biography' => 'required',
             'journal_id' => 'required'
@@ -57,7 +57,7 @@ class JournalBoardMemberController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'image' => $image_path,
-                'affliation' => $request->affiliation,
+                'affiliation' => $request->affiliation,
                 'biography' => $request->biography,
                 'country' => $request->country,
                 'journal_name' => $request->journal_id,
@@ -102,7 +102,7 @@ class JournalBoardMemberController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'affliation' => 'required',
+            'affiliation' => 'required',
             'country' => 'required',
             'biography' => 'required',
             'journal_id' => 'required'
@@ -112,7 +112,7 @@ class JournalBoardMemberController extends Controller
             $member->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                'affliation' => $request->affliation,
+                'affiliation' => $request->affiliation,
                 'biography' => $request->biography,
                 'country' => $request->country,
                 'journal_name' => $request->journal_id,

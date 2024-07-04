@@ -169,7 +169,7 @@
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title member_name">{{ $board_member->name }}</h5>
-                                        <h6 class="member_affiliation">{{ $board_member->affliation }}</h6>
+                                        <h6 class="member_affiliation">{{ $board_member->affiliation }}</h6>
                                         <h6 class="member_city">
                                             {{ $board_member->country }}</h6>
                                         <p class="card-text"></p>

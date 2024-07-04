@@ -24,11 +24,15 @@
     <link href="{{ asset('admin_assets/plugins/datatable/css/buttons.bootstrap5.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin_assets/plugins/datatable/responsive.bootstrap5.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin_assets/plugins/wysiwyag/richtext.css') }}" rel="stylesheet" />
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <style>
         .form-control::placeholder {
             color: rgba(0, 0, 0, 0.820) !important;
+        }
+
+        .toast-success {
+            background-color: rgb(10, 192, 116) !important;
         }
     </style>
 
@@ -152,32 +156,29 @@
             $('#responsive-datatable').DataTable();
         });
     </script>
-
-    @if (session('success'))
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    @session('success')
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                not1({
-                    msg: "{{ session('success') }}",
-                    type: "success"
-                });
-            });
+            toastr.success("{{ session('success') }}");
         </script>
-    @endif
-
-    @if (session('error'))
+    @endsession
+    @session('error')
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                not1({
-                    msg: "{{ session('error') }}",
-                    type: "error"
-                });
-            });
+            toastr.error("{{ session('error') }}");
         </script>
-    @endif
-
-    <script src="{{ asset('admin_assets/plugins/notify/js/notifIt.js') }}"></script>
-    <link href="{{ asset('admin_assets/plugins/notify/css/jquery.growl.css') }}" rel="stylesheet" />
-    <link href="{{ asset('admin_assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+    @endsession
+    <script>
+        $('form').each(function() {
+            $(this).on('submit', function() {
+                var button = $(this).find('button[type="submit"]');
+                button.prop('disabled', true).html(`
+                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                    Loading...
+                `);
+                return true;
+            });
+        });
+    </script>
 
 </body>
 

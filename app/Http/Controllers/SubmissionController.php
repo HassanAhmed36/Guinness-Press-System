@@ -27,7 +27,10 @@ class SubmissionController extends Controller
 
     public function index()
     {
-        $submissions = Submission::where('user_id', Auth::id())->paginate(10);
+        $submissions = Submission::with(['pre_publications' => function ($q) {
+            $q->OrderByDesc('id');
+        }])->where('user_id', Auth::id())->paginate(10);
+
         return view('user.pages.our-submission', compact('submissions'));
     }
 
