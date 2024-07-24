@@ -165,7 +165,7 @@
                                                         <option value="Other">Other</option>
                                                     </select>
                                                 </th>
-                                                <th><button class="btn btn-danger btn-sm remove-row"
+                                                <th><button class="btn btn-light btn-blue btn-sm remove-row"
                                                         disabled>Remove</button>
                                                 </th>
                                             </tr>
@@ -309,7 +309,7 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <button class="btn btn-danger btn-sm" type="button"
+                                                        <button class="btn btn-light btn-blue btn-sm" type="button"
                                                             disabled>Remove</button>
                                                     </td>
                                                 </tr>
@@ -414,7 +414,7 @@
                             <input class="form-check-input primary-contact-checkbox" type="checkbox" value="1" name="author[${newIndex}][is_primary_contact]">
                         </div>
                     </td>
-                    <td><button class="btn btn-danger btn-sm" type="button">Remove</button></td>
+                    <td><button class="btn btn-light btn-blue btn-sm" type="button">Remove</button></td>
                 </tr>`;
                 $("#contributorTable tbody").append(newRow);
             });
@@ -464,7 +464,7 @@
                         </select>
                     </td>
                     <td>
-                        <button class="btn btn-danger btn-sm remove-row">Remove</button>
+                        <button class="btn btn-light btn-blue btn-sm remove-row">Remove</button>
                     </td>
                 </tr>`;
                 tableBody.append(newRowHtml);

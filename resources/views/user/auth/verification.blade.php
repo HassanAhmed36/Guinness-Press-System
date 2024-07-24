@@ -21,7 +21,7 @@
                             <input type="hidden" name="user_id" value="{{ session()->get('user_id') }}">
                             <div>
                                 <button type="submit"
-                                    class="btn btn-light btn-blue red-btn">{{ __('Resend Verification Email') }}</button>
+                                    class="btn btn-light btn-blue">{{ __('Resend Verification Email') }}</button>
                             </div>
                         </form>
                     </div>

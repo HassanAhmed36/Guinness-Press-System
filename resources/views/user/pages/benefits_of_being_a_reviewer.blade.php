@@ -53,7 +53,7 @@
                     </p>
                     <div class="btn-group">
                         <a href="{{url('/journals')}}" class="btn btn-light btn-blue">Find Your Journals</a>
-                        <a href="{{url('/submit-your-article')}}" class="btn btn-light btn-blue red-btn">Submit your Article</a>
+                        <a href="{{url('/submit-your-article')}}" class="btn btn-light btn-blue">Submit your Article</a>
                     </div>
                 </div>
             </div>

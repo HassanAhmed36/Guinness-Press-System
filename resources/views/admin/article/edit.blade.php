@@ -266,7 +266,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2">
-                                                <button class="btn btn-danger mt-5 remove-btn">remove</button>
+                                                <button class="btn btn-light btn-blue mt-5 remove-btn">remove</button>
                                             </div>
                                         </div>
                                         <div class="col-10 row" id="three_box">
@@ -292,7 +292,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2">
-                                                <button class="btn btn-danger mt-5 remove-btn">remove</button>
+                                                <button class="btn btn-light btn-blue mt-5 remove-btn">remove</button>
                                             </div>
                                         </div>
                                         <div class="col-10 row" id="four_box">
@@ -318,7 +318,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2">
-                                                <button class="btn btn-danger mt-5 remove-btn">remove</button>
+                                                <button class="btn btn-light btn-blue mt-5 remove-btn">remove</button>
                                             </div>
                                         </div>
                                         <div class="col-10 row" id="five_box">
@@ -344,7 +344,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2">
-                                                <button class="btn btn-danger mt-5 remove-btn">remove</button>
+                                                <button class="btn btn-light btn-blue mt-5 remove-btn">remove</button>
                                             </div>
                                         </div>
                                         <div class="col-10 row" id="six_box">
@@ -370,7 +370,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2">
-                                                <button class="btn btn-danger mt-5 remove-btn">remove</button>
+                                                <button class="btn btn-light btn-blue mt-5 remove-btn">remove</button>
                                             </div>
                                         </div>
                                         <div class="col-10 row" id="seven_box">
@@ -396,7 +396,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2">
-                                                <button class="btn btn-danger mt-5 remove-btn">remove</button>
+                                                <button class="btn btn-light btn-blue mt-5 remove-btn">remove</button>
                                             </div>
                                         </div>
                                         <div class="col-10 row" id="eight_box">
@@ -422,7 +422,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2">
-                                                <button class="btn btn-danger mt-5 remove-btn">remove</button>
+                                                <button class="btn btn-light btn-blue mt-5 remove-btn">remove</button>
                                             </div>
                                         </div>
                                         <div class="col-10 row" id="nine_box">
@@ -448,7 +448,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2">
-                                                <button class="btn btn-danger mt-5 remove-btn">remove</button>
+                                                <button class="btn btn-light btn-blue mt-5 remove-btn">remove</button>
                                             </div>
                                         </div>
                                         <div class="col-10 row" id="ten_box">
@@ -474,7 +474,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-2">
-                                                <button class="btn btn-danger mt-5 remove-btn">remove</button>
+                                                <button class="btn btn-light btn-blue mt-5 remove-btn">remove</button>
                                             </div>
                                         </div>
                                         <div class="col-2 mt-5">
@@ -617,7 +617,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-3 mt-4">
-                                                <button class="btn btn-danger remove-author">remove</button>
+                                                <button class="btn btn-light btn-blue remove-author">remove</button>
                                             </div>
 
                                         </div>
@@ -684,7 +684,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-3 mt-4">
-                                                <button class="btn btn-danger remove-author">remove</button>
+                                                <button class="btn btn-light btn-blue remove-author">remove</button>
                                             </div>
                                         </div>
                                     </div>
@@ -750,7 +750,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-3 mt-4">
-                                                <button class="btn btn-danger remove-author">remove</button>
+                                                <button class="btn btn-light btn-blue remove-author">remove</button>
                                             </div>
                                         </div>
                                     </div>
@@ -816,7 +816,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-3 mt-4">
-                                                <button class="btn btn-danger remove-author">remove</button>
+                                                <button class="btn btn-light btn-blue remove-author">remove</button>
                                             </div>
                                         </div>
                                     </div>
@@ -882,7 +882,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-3 mt-4">
-                                                <button class="btn btn-danger remove-author">remove</button>
+                                                <button class="btn btn-light btn-blue remove-author">remove</button>
                                             </div>
                                         </div>
                                     </div>
@@ -948,7 +948,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-3 mt-4">
-                                                <button class="btn btn-danger remove-author">remove</button>
+                                                <button class="btn btn-light btn-blue remove-author">remove</button>
                                             </div>
                                         </div>
                                     </div>
@@ -1014,7 +1014,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-3 mt-4">
-                                                <button class="btn btn-danger remove-author">remove</button>
+                                                <button class="btn btn-light btn-blue remove-author">remove</button>
                                             </div>
                                         </div>
                                     </div>
@@ -1080,7 +1080,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-3 mt-4">
-                                                <button class="btn btn-danger remove-author">remove</button>
+                                                <button class="btn btn-light btn-blue remove-author">remove</button>
                                             </div>
                                         </div>
                                     </div>
@@ -1146,7 +1146,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-3 mt-4">
-                                                <button class="btn btn-danger remove-author">remove</button>
+                                                <button class="btn btn-light btn-blue remove-author">remove</button>
                                             </div>
                                         </div>
                                     </div>

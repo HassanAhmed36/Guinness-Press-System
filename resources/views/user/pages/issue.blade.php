@@ -42,9 +42,10 @@
                     </div>
                     <div class="btn-group">
                         <a href="javascript:;" data-fancybox="" data-src="#submitArticlePopup"
-                            class="btn btn-light btn-blue red-btn">Submit Your Article</a>
+                            class="btn btn-light btn-blue">Submit Your Article</a>
                         <a href="{{ url('/journal', ['journal_name' => $journal->acronym, 'journal_p' => 'editorial-board']) }}"
                             class="btn btn-light btn-blue">Editorial Board</a>
+                        <button class="btn btn-light btn-blue" id="indexing-toggle">Indexing Bodies</button>
                     </div>
                 </div>
                 <div class="col-6 col-lg-2">
@@ -61,94 +62,31 @@
             </div>
         </div>
     </section>
-    <section class="slider_bar">
-        <div class="slider_bar_header">
-            <h3>INDEXING BODIES</h3>
-        </div>
-        <div class="owl-carousel" id="slider_1">
-            <div class="item">
-                <a href="https://www.doi.org/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_1.png" class="img-fluid">
-                </a>
+    <div class="my-5" id="indexing-section" style="display: none;">
+        <section class="container">
+            <div class="my-4">
+                <h4>INDEXING BODIES</h4>
             </div>
-            <div class="item">
-                <a href="https://www.researchgate.net/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_2.png" class="img-fluid">
-                </a>
+            <div class="d-flex flex-wrap gap-4">
+                @foreach ($indexing_bodies as $i)
+                    <div class="item">
+                        <a href="{{ $i->link }}">
+                            <img src="{{ asset($i->image) }}" class="img-fluid"
+                                style="height: 100px; width:100px; border-radius:50%; border:1px solid grey; ">
+                        </a>
+                    </div>
+                @endforeach
             </div>
-            <div class="item">
-                <a href="https://www.crossref.org/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_3.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.dimensions.ai/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_4.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.academia.edu/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_5.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.mendeley.com/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_6.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://scholar.google.com/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_7.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.crossref.org/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_8.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://jgateplus.com/home/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_9.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://europub.co.uk/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_10.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.semanticscholar.org/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_11.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.lens.org/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_12.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.scilit.net/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_13.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://discovery.researcher.life/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_14.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://ouci.dntb.gov.ua/en/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_15.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.connectedpapers.com/">
-                    <img src="https://www.guinnesspress.org/lp//assets/images/index_16.png" class="img-fluid">
-                </a>
-            </div>
-
-        </div>
-    </section>
+        </section>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#indexing-toggle").click(function() {
+                $("#indexing-section").slideToggle("slow");
+            });
+        });
+    </script>
 @endsection
 @section('body')
     <section class="search-journal-filters search-results explore_jarticles_sec issues_articles_sec">
@@ -195,7 +133,7 @@
                                                 {{ $author['middlename'] ?? '' }}
                                                 {{ $author['lastname'] ?? '' }}
                                                 @if (!$loop->last)
-                                                  |   
+                                                    |
                                                 @endif
                                             @endforeach
                                         </p>

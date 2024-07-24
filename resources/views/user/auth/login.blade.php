@@ -36,7 +36,7 @@
                                 Don't Have an Account? <a href="{{ route('user.register') }}">Register</a>
                             </div>
                             <div class="col-12 mb-4">
-                                <button class="btn btn-light btn-blue red-btn pe-4 ms-0" type="submit">Login</button>
+                                <button class="btn btn-light btn-blue pe-4 ms-0" type="submit">Login</button>
                             </div>
                         </div>
                     </form>

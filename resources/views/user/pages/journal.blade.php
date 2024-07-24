@@ -38,9 +38,10 @@
                     <div class="">
                         <ul class="row mt-5">
                             @foreach ($indexing_bodies as $i)
-                                <li class="mb-2 {{ $loop->last ? 'col-lg-12 text-center' : 'col-lg-4 ' }}">
+                                <li class="mb-2 col-lg-4">
                                     <a href="{{ $i->link }}"> <img src="{{ asset($i->image) }}" class="img-fluid"
-                                            alt="Index Body Image">
+                                            alt="Index Body Image"
+                                            style="height: 100px; width:100px; border-radius:50%; border:1px solid lightgrey;">
                                     </a>
                                 </li>
                             @endforeach

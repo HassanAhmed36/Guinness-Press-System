@@ -17,6 +17,7 @@ class LandingPage extends Mailable
     public $manuscript_name;
     public $manuscript_path;
     public $data;
+    public $url;
 
     /**
      * Create a new message instance.
@@ -25,11 +26,12 @@ class LandingPage extends Mailable
      * @param string $manuscript_path
      * @param array $data
      */
-    public function __construct($manuscript_name, $manuscript_path, $data)
+    public function __construct($manuscript_name, $manuscript_path, $data , $url)
     {
         $this->manuscript_name = $manuscript_name;
         $this->manuscript_path = $manuscript_path;
         $this->data = $data;
+        $this->url = $url;
     }
 
     /**

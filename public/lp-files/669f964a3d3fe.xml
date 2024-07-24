@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<crossref_result version="3.0" xmlns="http://www.crossref.org/qrschema/3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/qrschema/crossref_query_output3.0.xsd">
+ <query_result>
+  <head>
+   <email_address>none</email_address>
+   <doi_batch_id>none</doi_batch_id>
+  </head>
+  <body>
+   <forward_link doi="10.59762/cie570390541120231031130323">
+    <conf_cite fl_count="0">
+     <isbn type="electronic">979-8-3503-6052-3</isbn>
+     <volume_title>2024 IEEE International Conference on Interdisciplinary Approaches in Technology and Management for Social Innovation (IATMSI)</volume_title>
+     <paper_title>CycleFit: An Analysis of Regression Models for Caloric Expenditure Prediction in Cycling Activities</paper_title>
+     <contributors>
+      <contributor first-author="true" sequence="first" contributor_role="author">
+       <given_name>Harry</given_name>
+       <surname>Paul</surname>
+      </contributor>
+      <contributor first-author="false" sequence="additional" contributor_role="author">
+       <given_name>Adithya</given_name>
+       <surname>Rajendran</surname>
+      </contributor>
+      <contributor first-author="false" sequence="additional" contributor_role="author">
+       <given_name>Cino</given_name>
+       <surname>Sunil</surname>
+      </contributor>
+      <contributor first-author="false" sequence="additional" contributor_role="author">
+       <given_name>Anjali</given_name>
+       <surname>T</surname>
+      </contributor>
+      <contributor first-author="false" sequence="additional" contributor_role="author">
+       <given_name>S</given_name>
+       <surname>Abhishek</surname>
+      </contributor>
+     </contributors>
+     <first_page>1</first_page>
+     <publication_type/>
+     <doi type="conference_paper">10.1109/IATMSI60426.2024.10503071</doi>
+     <year>2024</year>
+    </conf_cite>
+   </forward_link>
+   <forward_link doi="10.59762/cie570390541120231031130323">
+    <conf_cite fl_count="4">
+     <isbn type="electronic">979-8-3503-2753-3</isbn>
+     <volume_title>2024 2nd International Conference on Intelligent Data Communication Technologies and Internet of Things (IDCIoT)</volume_title>
+     <paper_title>Enhanced Fake News Detection through the Fusion of Deep Learning and Repeat Vector Representations</paper_title>
+     <contributors>
+      <contributor first-author="true" sequence="first" contributor_role="author">
+       <given_name>Tanjim</given_name>
+       <surname>Mahmud</surname>
+      </contributor>
+      <contributor first-author="false" sequence="additional" contributor_role="author">
+       <given_name>Imran</given_name>
+       <surname>Hasan</surname>
+      </contributor>
+      <contributor first-author="false" sequence="additional" contributor_role="author">
+       <given_name>Mohammad Tarek</given_name>
+       <surname>Aziz</surname>
+      </contributor>
+      <contributor first-author="false" sequence="additional" contributor_role="author">
+       <given_name>Taohidur</given_name>
+       <surname>Rahman</surname>
+      </contributor>
+      <contributor first-author="false" sequence="additional" contributor_role="author">
+       <given_name>Mohammad Shahadat</given_name>
+       <surname>Hossain</surname>
+      </contributor>
+      <contributor first-author="false" sequence="additional" contributor_role="author">
+       <given_name>Karl</given_name>
+       <surname>Andersson</surname>
+      </contributor>
+     </contributors>
+     <first_page>654</first_page>
+     <publication_type/>
+     <doi type="conference_paper">10.1109/IDCIoT59759.2024.10467839</doi>
+     <year>2024</year>
+    </conf_cite>
+   </forward_link>
+   <forward_link doi="10.59762/cie570390541120231031130323">
+    <conf_cite fl_count="0">
+     <isbn type="electronic">979-8-3503-6509-2</isbn>
+     <volume_title>2024 Ninth International Conference on Science Technology Engineering and Mathematics (ICONSTEM)</volume_title>
+     <paper_title>Evolution of Artificial Intelligence Based Burned Calories Prediction System Using Novel Hybrid Learning Methodology</paper_title>
+     <contributors>
+      <contributor first-author="true" sequence="first" contributor_role="author">
+       <given_name>M.</given_name>
+       <surname>Priscilla</surname>
+      </contributor>
+      <contributor first-author="false" sequence="additional" contributor_role="author">
+       <given_name>A.</given_name>
+       <surname>Suriya</surname>
+      </contributor>
+      <contributor first-author="false" sequence="additional" contributor_role="author">
+       <given_name>J.</given_name>
+       <surname>Srikanth</surname>
+      </contributor>
+      <contributor first-author="false" sequence="additional" contributor_role="author">
+       <given_name>S.</given_name>
+       <surname>Jagadhishwaran</surname>
+      </contributor>
+      <contributor first-author="false" sequence="additional" contributor_role="author">
+       <given_name>M. Naveen</given_name>
+       <surname>Kumar</surname>
+      </contributor>
+      <contributor first-author="false" sequence="additional" contributor_role="author">
+       <given_name>D.</given_name>
+       <surname>Yasvanth</surname>
+      </contributor>
+     </contributors>
+     <first_page>1</first_page>
+     <publication_type/>
+     <doi type="conference_paper">10.1109/ICONSTEM60960.2024.10568726</doi>
+     <year>2024</year>
+    </conf_cite>
+   </forward_link>
+  </body>
+ </query_result>
+</crossref_result>

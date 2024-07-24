@@ -90,7 +90,7 @@
                             @enderror
                         </div>
                         <div class="form-group mb-3 col-12">
-                            <button class="btn btn-light btn-blue red-btn ms-0">Update Profile</button>
+                            <button class="btn btn-light btn-blue ms-0">Update Profile</button>
                         </div>
                     </div>
                 </form>

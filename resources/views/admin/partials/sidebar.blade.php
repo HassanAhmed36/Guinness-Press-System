@@ -88,6 +88,30 @@
                         <span class="side-menu__label">Indexing Bodies</span>
                     </a>
                 </li>
+                <li class="slide">
+                    <a class="side-menu__item" href="{{ route('admin.blog.index') }}">
+                        <i class="feather feather-book sidemenu_icon"></i>
+                        <span class="side-menu__label">Blogs</span>
+                    </a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item" href="{{ route('admin.news.letter') }}">
+                        <i class="feather feather-mail sidemenu_icon"></i>
+                        <span class="side-menu__label">News Letters</span>
+                    </a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item" href="{{ route('admin.leads') }}">
+                        <i class="feather feather-user-plus sidemenu_icon"></i>
+                        <span class="side-menu__label">Leads</span>
+                    </a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item" href="{{ route('admin.meta.data') }}">
+                        <i class="feather feather-list sidemenu_icon"></i>
+                        <span class="side-menu__label">Meta Data</span>
+                    </a>
+                </li>
             </ul>
         @elseif(Auth::user()->role_id == 2)
             <ul class="side-menu">

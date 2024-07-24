@@ -1,19 +1,20 @@
 @extends('user.layouts.template')
 @section('title', 'About Guinness Press: Your Premier Academic Publisher')
 @section('keywords', 'academic publisher, open access journals, publish in open access')
-@section('description', 'Learn about Guinness Press, dedicated to open access journals. Publish your research in open
+@section('description',
+    'Learn about Guinness Press, dedicated to open access journals. Publish your research in open
     access formats for global accessibility and impact.')
 
 @section('banner')
-    <section class="main_banner inner_banner">
+    <section class="main_banner inner_banner py-5" style="background-image: url({{ asset('about.png') }}); min-height:60vh;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="banner_content white_text">
-                        <h3 class="cocogoose_light">
+                        <h3 class="cocogoose_light mb-4">
                             ABOUT US
                         </h3>
-                        <h1 class="cocogoose_light">
+                        <h1 class="cocogoose_light mb-4">
                             ABOUT GUINNESS PRESS
                         </h1>
                         <p class="poppins_fonts">
@@ -21,122 +22,89 @@
                             on the world through the dissemination of high-quality research and scholarly insights.
                         </p>
                     </div>
+                    <div class="text-white text-center">
+                        <h1 class="fw-bold mb-4 cocogoose_light fs-2" style="text-transform: capitalize">What about the
+                            Guinness Press</h1>
+                        <p class="mb-5 poppins_fonts">At Guinness Press, we are committed to the advancement of knowledge
+                            through the publication of high-quality, peer-reviewed open access journals. Our mission is to
+                            support researchers and scholars by providing a platform that ensures their work reaches a
+                            global audience without barriers. Our diverse range of publications covers multiple disciplines,
+                            fostering an inclusive community for knowledge exchange and innovation.</p>
+                        <p class="mb-5 poppins_fonts">Our commitment to open access ensures that everyone, regardless of
+                            their location or institutional affiliation, can access and benefit from the latest research
+                            findings. We believe that by making knowledge freely available, we contribute to the collective
+                            growth of the academic community and society at large.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+
 @section('body')
-    <section class="sec_3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="./assets/images/women_img_3.png" class="img-fluid">
-                </div>
-                <div class="col-md-6">
-                    <div class="sec_3_content">
-                        <h3 class="text-uppercase cocogoose_light">
-                            ABOUT US
-                        </h3>
-                        <h2 class="cocogoose_light text-uppercase">
-                            About Guinness Press
-                        </h2>
-                        <p class="poppins_fonts">
-                            Welcome To Guinness Press, A Distinguished Academic Journal Publisher Committed To Advancing
-                            Knowledge Through The Dissemination Of High-Quality, Open-Access Scholarly Articles. Established
-                            With A Vision To Foster Intellectual Curiosity And Promote Academic Excellence, Guinness Press
-                            Is Dedicated To Providing A Platform For Researchers, Scholars, And Academics To Share Their
-                            Insights And Discoveries With The Global Community.
-                        </p>
-                        <p class="poppins_fonts text-capitalize">
-                            Our commitment to academic excellence is reflected in our rigorous peer-review process, ensuring
-                            that only the most impactful and well-researched articles are published. By upholding stringent
-                            standards of quality and integrity, we aim to contribute to the advancement of knowledge and
-                            drive innovation across various fields of study.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="sec_5">
+    <section class="py-5 container">
         <div class="row">
-            <div class="col-md-5 sec_5_leftbar">
-                <div class="">
-                    <div class="container">
-                        <div class="sec_5_leftbar_content">
-                            <img src="./assets/images/logo-light.png" class="img-fluid">
-                            <p class="poppins_fonts white_text">
-                                At Guinness Press, our mission is to facilitate the free exchange of ideas and knowledge
-                                across diverse academic disciplines. A commitment to academic integrity, accessibility, and
-                                inclusivity drives us. Through our open-access publishing model, we aim to break down
-                                barriers to information, ensuring that cutting-edge research is available to all.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-12 col-lg-6 ">
+                <h1 class="cocogoose_light mb-5 fs-2 fw-bold">Our Vision and Mission</h1>
+                <p class="mb-5 poppins_fonts">At Guinness Press, our vision is to lead the way in academic publishing by
+                    promoting open access to high-quality research. We aim to empower researchers by providing them with a
+                    platform that supports the dissemination of their work to a global audience. Our mission is to
+                    facilitate the exchange of knowledge across disciplines and to foster innovation and collaboration
+                    within the academic community.</p>
+                <p class="mb-5 poppins_fonts">We strive to uphold the highest standards of integrity, transparency, and
+                    excellence in everything we do. Our dedicated team works tirelessly to ensure that each publication
+                    meets rigorous quality criteria and contributes meaningfully to the body of academic knowledge.</p>
             </div>
-            <div class="col-md-7">
-                <div class="sec_5_rightbar">
-                    <div class="container">
-                        <div class="sec_5_rightbar_content">
-                            <h3 class="text-uppercase white_text cocogoose_light">
-                                What Can Guinness Press Do?
-                            </h3>
-                            <h3 class="text-uppercase white_text cocogoose_light">
-                                Our journals
-                            </h3>
-                            <p class="white_text poppins_fonts">
-                                Through peer-reviewed articles, editorials, and other scholarly content, our journals
-                                contribute to the advancement of knowledge and the promotion of academic excellence
-                                worldwide.
-                            </p>
-                            <h3 class="text-uppercase white_text cocogoose_light">
-                                Why choose us?
-                            </h3>
-                            <p class="white_text poppins_fonts">
-                                • Our articles undergo rigorous peer review processes, ensuring the highest standards of
-                                quality and reliability in scientific research are published.
-                            </p>
-                            <p class="white_text poppins_fonts">
-                                • With an extensive and experienced Board of Members overseeing our journals, we guarantee
-                                authoritative oversight and guidance, contributing to the credibility and relevance of our
-                                publications.
-                            </p>
-                            <p class="white_text poppins_fonts">
-                                • Our journals are indexed in reputable indexing agencies, enhancing the visibility and
-                                accessibility of your research to a global audience, thereby maximizing its impact and
-                                reach.
-                            </p>
-                            <div class="btn-group">
-                                <a href="{{ url('/journals') }}" class="btn btn-light btn-blue">Find Your Journals</a>
-                                <a href="{{ url('/submit-your-article') }}" class="btn btn-light btn-blue red-btn">Submit
-                                    your Article</a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-lg-1 col-0"></div>
+            <div class="col-12 col-lg-5">
+                <div class="">
+                    <svg width="407" height="56" viewBox="0 0 407 56" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect x="114" y="22.9193" width="293" height="11" rx="5.5" fill="#154986" />
+                        <path
+                            d="M24.752 56.0046H0L23.296 0.919312H39.0693L24.752 56.0046ZM64.064 56.0046H39.312L62.608 0.919312H78.3813L64.064 56.0046Z"
+                            fill="#154986" />
+                    </svg>
+                    <p class="fs-4 fw-semibold text-center my-5">
+                        "Empowering research and fostering innovation through open access publishing."
+                    </p>
+                    <svg width="407" height="56" viewBox="0 0 407 56" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect width="293" height="11" rx="5.5" transform="matrix(-1 0 0 1 293 22.9193)"
+                            fill="#154986" />
+                        <path
+                            d="M382.248 56.0046H407L383.704 0.919312H367.931L382.248 56.0046ZM342.936 56.0046H367.688L344.392 0.919312H328.619L342.936 56.0046Z"
+                            fill="#154986" />
+                    </svg>
                 </div>
             </div>
         </div>
     </section>
-    <section class="sec_4">
+    <section class="sec_4" style="background-image: url('{{ asset('about.png') }}'); min-height: 60vh; background-repeat: no-repeat; background-size: cover; background-position: center;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="sec_4_content">
-                        <h2 class="cocogoose_light text-uppercase">
+                        <h2 class="cocogoose_light text-uppercase text-white">
                             What Sets Us Apart
                         </h2>
-                        <p class="poppins_fonts">
-                            We prioritize quality, integrity and accessibility in all our publications, fostering a global
+                        <p class="poppins_fonts text-white">
+                            We prioritize quality, integrity, and accessibility in all our publications, fostering a global
                             community of knowledge exchange and collaboration.
                         </p>
                     </div>
                 </div>
+                <style>
+                    .box_item.box_item_3:hover {
+                        background-color: white !important;
+                        color: #184888 !important;
+                    }
+                </style>
                 <div class="sec_4_boxes">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="box_item box_item_3">
+                        <div class="col-md-3 overflow-hidden">
+                            <div class="box_item box_item_3"
+                                style="background: transparent; color:white; border:1px solid white">
                                 <div class="box_header">
                                     <div class="box_icon">
                                         <img src="{{ asset('assets/images/about/1.png') }}" class="img-fluid" />
@@ -148,54 +116,57 @@
                                 <div class="box_body">
                                     <p>
                                         We take pride in the vast diversity of topics covered in our publications. From
-                                        Science to Humanities and the arts to technology, Guinness Press is a home for a
+                                        science to humanities and the arts to technology, Guinness Press is a home for a
                                         wide range of academic disciplines.
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="box_item box_item_3">
+                        <div class="col-md-3 overflow-hidden">
+                            <div class="box_item box_item_3"
+                                style="background: transparent; color:white; border:1px solid white">
                                 <div class="box_header">
                                     <div class="box_icon">
                                         <img src="{{ asset('assets/images/about/1.png') }}" class="img-fluid" />
                                     </div>
                                     <div class="box_content">
-                                        <h3>Peer-Reviewed Superiority</h3>
+                                        <h3>Peer-Reviewed Excellence</h3>
                                     </div>
                                 </div>
-                                <div class="box_body">
+                                <div class="box_body mb-4">
                                     <p>
                                         Every article published by Guinness Press undergoes a rigorous peer-review process,
                                         ensuring the highest standards of quality and credibility. Our esteemed panel of
-                                        expert reviewers assesses submissions based on originality, methodology, and
-                                        contribution to the field.
+                                        expert reviewers assesses submissions based on originality, significance, and
+                                        methodological.
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="box_item box_item_3">
+                        <div class="col-md-3 overflow-hidden">
+                            <div class="box_item box_item_3"
+                                style="background: transparent; color:white; border:1px solid white">
                                 <div class="box_header">
                                     <div class="box_icon">
                                         <img src="{{ asset('assets/images/about/2.png') }}" class="img-fluid" />
                                     </div>
                                     <div class="box_content">
-                                        <h3>Open Access Pledge</h3>
+                                        <h3>Open Access Commitment</h3>
                                     </div>
                                 </div>
                                 <div class="box_body">
                                     <p>
                                         We firmly believe that knowledge should be freely accessible to all, regardless of
                                         geographical location or institutional affiliation. All our articles are accessible
-                                        to anyone with an internet connection, promoting global inclusivity and fostering a
-                                        vibrant academic community.
+                                        to anyone with an internet connection, promoting global inclusivity and the
+                                        democratization of knowledge.
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="box_item box_item_3">
+                        <div class="col-md-3 overflow-hidden">
+                            <div class="box_item box_item_3"
+                                style="background: transparent; color:white; border:1px solid white">
                                 <div class="box_header">
                                     <div class="box_icon">
                                         <img src="{{ asset('assets/images/about/3.png') }}" class="img-fluid" />
@@ -208,17 +179,16 @@
                                     <p>
                                         We understand the importance of supporting authors throughout the publication
                                         process. Our dedicated team of editors and publishing professionals provides
-                                        personalized guidance and assistance, ensuring a smooth and enriching experience for
-                                        every author.
+                                        personalized guidance and assistance to ensure that every author's work is
+                                        presented in the best possible light.
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="btn-group">
-                        <a href="{{ url('/journals') }}" class="btn btn-light btn-blue">Find Your Journals</a>
-                        <a href="{{ url('/submit-your-article') }}" class="btn btn-light btn-blue red-btn">Submit your
-                            Article</a>
+                        <a href="{{ url('/journals') }}" class="btn btn-light mx-2">Find Your Journal</a>
+                        <a href="{{ url('/submit-your-article') }}" class="btn btn-light mx-2">Submit Your Paper</a>
                     </div>
                 </div>
             </div>

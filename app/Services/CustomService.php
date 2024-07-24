@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Mail\NewsLetterVerification;
 use App\Models\Article;
 use App\Models\Journal;
 use App\Models\JournalVolume;
@@ -19,6 +20,9 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\URL;
 use App\Services\SubmissionService;
 use App\Mail\SubmissionStatusUpdate;
+use App\Models\Lead;
+use App\Models\NewsLetter;
+use App\Models\Tag;
 
 class CustomService
 {
@@ -264,5 +268,48 @@ class CustomService
         }
     }
 
-  
+    public function searchArticle(Request $request)
+    {
+        $query = $request->input('query');
+        $articles = Article::with('journal')
+            ->where('title', 'like', '%' . $query . '%')
+            ->get();
+        return view('user.partials.search', ['articles' => $articles])->render();
+    }
+
+    public function subscribeEmail(Request $request)
+    {
+        $data = NewsLetter::create([
+            'email' => $request->email
+        ]);
+        Mail::to($data->email)->send(new NewsLetterVerification($data));
+        return redirect('/thank-you');
+    }
+
+    public function subscribeEmailVerification($id)
+    {
+        $NewsLetter = NewsLetter::findOrFail($id);
+        $NewsLetter->update([
+            'is_verified' => true
+        ]);
+        return redirect('/thank-you');
+    }
+
+    public function verifyLead($id)
+    {
+        $lead = Lead::findOrFail($id);
+        $lead->update([
+            'is_verified' => true
+        ]);
+        return redirect('/thank-you');
+    }
+    
+    
+        public function markAsConverted($id)
+    {
+        $lead = Lead::findOrFail($id);
+        $lead->update(['is_conversion' => true]);
+
+        return back()->with('success', 'Lead converted successfully');
+    }
 }

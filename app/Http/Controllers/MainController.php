@@ -8,45 +8,98 @@ use App\Mail\ContactMail;
 use App\Mail\ContactUsMail;
 use App\Mail\JoinMail;
 use App\Models\Article;
+use App\Models\Blog;
 use App\Models\IndexBody;
 use App\Models\Journal;
 use App\Models\Journal_settings;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Cache;
+
 
 class MainController extends Controller
 {
 
     public function index()
     {
-        $journals = Journal::all();
-        return view('user.pages.index', compact('journals'));
+        $journals = Cache::remember('journals', 1440, function () {
+            return Journal::all();
+        });
+
+        $articles = Cache::remember('articles123', 1440, function () {
+            return Article::with('volume', 'issue', 'journal', 'article_details')->whereNot('article_code', '5230402')->inRandomOrder()->limit(3)->get();
+        });
+
+        $indexing_bodies = Cache::remember('indexing_bodies', 1440, function () {
+            return IndexBody::all();
+        });
+        return view('user.pages.index', compact('journals', 'articles', 'indexing_bodies'));
     }
 
-    public function journal()
+
+    public function journal(Request $request)
     {
-        $journals = Journal::all();
+        $acronym = [];
+        if ($request->has('category')) {
+            switch ($request->input('category')) {
+                case 'business':
+                    $acronym = ['jblm', 'sfr'];
+                    break;
+                case 'multidisciplinary':
+                    $acronym = ['ijerm'];
+                    break;
+                case 'social-sciences':
+                    $acronym = ['seer'];
+                    break;
+                case 'engineering':
+                    $acronym = ['cie'];
+                    break;
+                case 'sciences':
+                    $acronym = ['pb', 'msr', 'aci'];
+                    break;
+                case 'humanities':
+                    $acronym = ['reer', 'cli'];
+                    break;
+                default:
+                    // Handle unknown categories if needed
+                    break;
+            }
+        }
+
+         $journals = empty($acronym) ? Journal::all() : Journal::whereIn('acronym', $acronym)->get();
+
         $indexing_bodies = IndexBody::all();
+    
+
         return view('user.pages.journal', compact('journals', 'indexing_bodies'));
     }
 
     public function journal_details($journal_name)
     {
-        $journal = Journal::with(['journal_overview', 'journal_matrix', 'volume' => function ($q) {
-            $q->OrderByDesc('id')->whereNot('is_active', false);
-        }, 'volume.issue' => function ($q) {
-            $q->OrderByDesc('id')->whereNot('is_active', false);
-        }])->where('acronym', $journal_name)->first();
-        // dd($journal->toArray());
-        return view('user.pages.journal-details', compact('journal'));
+        $journal = Journal::with([
+                'journal_overview',
+                'journal_matrix',
+                'volume' => function ($q) {
+                    $q->orderByDesc('id')->whereNot('is_active', false);
+                },
+                'volume.issue' => function ($q) {
+                    $q->orderByDesc('id')->whereNot('is_active', false);
+                }
+            ])->where('acronym', $journal_name)->first();
+
+        $indexing_bodies = IndexBody::all();
+
+        return view('user.pages.journal-details', compact('journal', 'indexing_bodies'));
     }
 
     public function article($id, $code)
     {
         $journal = Journal::where('acronym', $id)->first();
         $article = Article::with('volume', 'issue', 'article_details', 'journal')->where('article_code', $code)->first();
-        return view('user.pages.article', compact('journal', 'article'));
+        $indexing_bodies  = IndexBody::all();
+        return view('user.pages.article', compact('journal', 'article', 'indexing_bodies'));
     }
 
     public function sendEmail(Request $req)
@@ -72,21 +125,14 @@ class MainController extends Controller
             ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
             ->orderBy('categories.category_id', 'desc')
             ->get();
-        // Mail::to('submission@guinnesspress.org')->send(new ContactMail($data));
+        Mail::to('submission@guinnesspress.org')->send(new ContactMail($data));
         return view('front-end/thanku', 'datas', 'data', 'subcategories');
     }
 
     public function sendArticleEmail(Request $req)
     {
 
-        // dd($req->file('article_fileattachment'));
 
-
-        //  if ($fileattachment->getError() == 1) {
-        //         $max_size = $data['fileattachment']->getMaxFileSize() / 1024 / 1024;  // Get size in Mb
-        //         $error = 'The document size must be less than ' . $max_size . 'Mb.';
-        //         return redirect()->back()->with('flash_danger', $error);
-        //     }
         $fileattachment = array();
         $files = $req->file('article_fileattachment');
         foreach ($files as $file) {
@@ -120,13 +166,15 @@ class MainController extends Controller
             ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
             ->orderBy('categories.category_id', 'desc')
             ->get();
-        // Mail::to('submission@guinnesspress.org')->send(new ArticleMail($datas));
+        Mail::to('submission@guinnesspress.org')->send(new ArticleMail($datas));
         return view('front-end/thanku', compact('datas', 'data', 'subcategories'));
     }
 
     public function editorial_board($journal_name)
     {
-        $journal =  Journal::with('board_member')->where('acronym', $journal_name)->first();
+        $journal =  Journal::with(['board_member' => function ($q) {
+            $q->OrderBy('order_id', 'ASC');
+        }])->where('acronym', $journal_name)->first();
         return view('user.pages.editorial-board', compact('journal'));
     }
 
@@ -180,10 +228,6 @@ class MainController extends Controller
             ->get();
         return view('front-end/download-citation', 'data', 'subcategories');
     }
-
-
-
-
 
     public function article_processing_charges()
     {
@@ -240,20 +284,12 @@ class MainController extends Controller
 
     public function blogs()
     {
-        $data = DB::table('categories')
-            ->select('*')
-            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
-            ->where(['parent_id' => null, 'setting_name' => 'title'])
-            ->orderBy('categories.category_id', 'desc')
-            ->limit(6)
-            ->get();
-        $subcategories = DB::table('categories')
-            ->select('*')
-            ->join('category_settings', 'category_settings.category_id', '=', 'categories.category_id')
-            ->orderBy('categories.category_id', 'desc')
-            ->get();
-        return view('front-end/blogs', compact('data', 'subcategories'));
+        $blogs = Blog::with('tags')->paginate(4);
+        $tags = Tag::inRandomOrder()->limit(15)->get();
+        return view('user.pages.blogs', compact('blogs', 'tags'));
     }
+
+
 
     public function user_information()
     {
@@ -289,23 +325,21 @@ class MainController extends Controller
         return view('front-end/dashboard', compact('data', 'subcategories'));
     }
 
-    public function journal_issue($id, $issue, $issue_no)
+     public function journal_issue($id, $issue, $issue_no)
     {
         $journal = Journal::withWhereHas('volume', function ($q) use ($issue_no) {
             $q->withWhereHas('issue', function ($q) use ($issue_no) {
                 $q->where('issue_id', $issue_no);
             });
         })->where('acronym', $id)->first();
+        
         $volume_id = $journal->volume->first()->id;
         $issue_id = $journal->volume->first()->issue->first()->id;
         $articles = Article::with('article_details', 'journal')
-            ->where('volume_id', $volume_id)
             ->where('issue_id', $issue_id)
-            ->where(
-                'journal_id',
-                $journal->id
-            )->get();
-        return view('user.pages.issue', compact('journal', 'articles'));
+            ->where('journal_id', $journal->id)->get();
+        $indexing_bodies = IndexBody::all();
+        return view('user.pages.issue', compact('journal', 'articles' ,'indexing_bodies'));
     }
 
 
@@ -343,24 +377,29 @@ class MainController extends Controller
         $data = request()->toArray();
 
         $message = "
-    Hello,
-    You have received a new message from the contact form on your website.
-    Details are as follows:
-    - Name: " . $data['name'] . "
-    - Email: " . $data['email'] . "
-    - Phone Number: " . $data['number'] . "
-    - Source: " . $data['source'] . "
-    - Message: " . $data['message'] . "
-    
-    Best regards,
-    Your Website Team
-        ";
-        $recipientEmail = 'hassanahmed3652@gmail.com';
+            Hello,
+            You have received a new message from the contact form on your website.
+            Details are as follows:
+            - Name: " . $data['name'] . "
+            - Email: " . $data['email'] . "
+            - Phone Number: " . $data['number'] . "
+            - Source: " . $data['source'] . "
+            - Message: " . $data['message'] . "
+            
+            Best regards,
+            Your Website Team ";
+        $recipientEmail = 'submission@guinnesspress.org';
         Mail::raw($message, function ($mail) use ($data, $recipientEmail) {
             $mail->to($recipientEmail)
                 ->subject('New Message from Contact Form')
                 ->from($data['email'], $data['name']);
         });
         return redirect('/thank-you');
+    }
+
+    public function blog_details($slug)
+    {
+        $blog = Blog::where('slug', $slug)->first();
+        return view('user.pages.blog_details', compact('blog'));
     }
 }

@@ -3,22 +3,32 @@
 use App\Http\Controllers\Admin\JournalBoardMemberController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\JournalController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewerController;
 use App\Http\Controllers\SubmissionController;
+use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\UserController;
-use App\Models\Article;
-use App\Models\Journal;
-use App\Models\Submission;
+use App\Models\Blog;
 use App\Services\CustomService;
 use App\Services\SubmissionService;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
+
+
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+
+    return "Cache cleared successfully!";
+});
 
 Route::get('/login', [AuthController::class, 'login'])->name('user.login');
 Route::post('/submit-login', [AuthController::class, 'SubmitLogin'])->name('submit.login');
@@ -98,10 +108,23 @@ Route::view('/copyright-agreement', 'user.pages.copyright-agreement');
 Route::view('/publication-fees', 'user.pages.publication-fees');
 Route::get('/refund-policy', [MainController::class, 'refund_policy']);
 Route::get('/payment-options', [MainController::class, 'payment_options']);
-Route::get('/blogs', [MainController::class, 'blogs']);
+Route::get('detail/{slug}', [MainController::class, 'blog_details'])->name('blog.detail');
+// Route::get('/blogs', [MainController::class, 'blogs']);
 Route::get('/user-information', [MainController::class, 'user_information']);
 Route::get('/dashboard', [MainController::class, 'dashboard']);
 Route::get('/search', [MainController::class, 'search'])->name('search');
+
+Route::get('/forum', [ThreadController::class, 'index'])->name('thread.index');
+Route::post('/thread-store', [ThreadController::class, 'store'])->name('thread.store');
+Route::get('/thread-detail/{thread}', [ThreadController::class, 'show'])->name('thread.detail');
+
+
+
+Route::get('/comments', [CommentController::class, 'index'])->name('get.comments');
+Route::post('/comments', [CommentController::class, 'store'])->name('post.comments');
+Route::post('/comments/reply', [CommentController::class, 'replyStore'])->name('post.reply');
+
+
 
 
 Route::post('/form-submission', [MainController::class, 'sendEmail'])->name('send.email');
@@ -118,6 +141,8 @@ Route::get('/increase-download-count', [CustomService::class, 'increaseDownloadC
 Route::get('/lp', [ArticleController::class, 'lpView']);
 Route::post('/submit-lp', [ArticleController::class, 'submitLp'])->name('submit.lp');
 
+Route::get('/search-article', [CustomService::class, 'searchArticle'])->name('search.article');
+
 
 Route::get('/article/{id}/increment-view', [ArticleController::class, 'incrementView'])->name('article.incrementView');
 Route::get('/editorial/member/update-order', [JournalBoardMemberController::class, 'updateOrder'])->name('editorial.member.updateOrder');
@@ -127,6 +152,15 @@ Route::get('articles/{id}/citation/ris', [CustomService::class, 'downloadRisCita
 Route::get('articles/{article}/citation/txt', [CustomService::class, 'downloadTxt'])->name('articles.citation.txt');
 
 Route::get('/ip', [CustomService::class, 'createLoginHistory']);
+Route::get('/verify-lead/{id}', [CustomService::class, 'verifyLead'])->name('verify.lead');
+
+Route::post('/subscribe-email', [CustomService::class, 'subscribeEmail']);
+Route::get('/news-verify-email/{id}', [CustomService::class, 'subscribeEmailVerification'])->name('news.verify.email');
+
+
+Route::view('/blogs', 'user.pages.blogs', ['blogs' =>  Blog::where('category', 'blog')->paginate(10)]);
+Route::view('/research-study', 'user.pages.research-study', ['blogs' =>  Blog::where('category', 'researh study')->paginate(10)]);
+Route::view('/case-study', 'user.pages.case-study', ['blogs' =>  Blog::where('category', 'case study')->paginate(10)]);
 
 require __DIR__ . '/admin.php';
 require __DIR__ . '/boardmember.php';

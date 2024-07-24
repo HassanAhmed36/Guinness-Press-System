@@ -52,7 +52,7 @@
                                             href="{{ route('admin.journal.edit', ['id' => $j->id]) }}"
                                             data-id="{{ $j->id }}">
                                             <i class="fa fa-edit"></i></a>
-                                        <a class="btn btn-danger btn-sm"
+                                        <a class="btn btn-light btn-blue btn-sm"
                                             href="{{ route('admin.journal.delete', ['id' => $j->id]) }}">
                                             <i class="fa fa-trash"></i></a>
                                         </a>

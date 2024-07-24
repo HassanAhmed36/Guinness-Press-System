@@ -58,7 +58,7 @@
                                         <a class="btn btn-warning btn-sm "
                                             href="{{ route('admin.article.edit', ['id' => $a->id]) }}">
                                             <i class="fa fa-pencil"></i></a>
-                                        <a class="btn btn-danger btn-sm"
+                                        <a class="btn btn-light btn-blue btn-sm"
                                             href="{{ route('admin.article.delete', ['id' => $a->id]) }}">
                                             <i class="fa fa-trash"></i></a>
                                         </a>

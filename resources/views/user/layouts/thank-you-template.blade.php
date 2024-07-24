@@ -71,310 +71,7 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="top_bar">
-            <div class="container">
-                <div class="top_head">
-                    <div class="left_bar">
-                        <ul class="top_contact">
-                            <li>
-                                <a class="poppins_fonts white_text">
-                                    <i class="fa fa-envelope fa-mail-icon"></i>
-                                    info@guinnesspress.org
-                                </a>
-                            </li>
-                            <li>
-                                <a class="poppins_fonts white_text">
-                                    <i class="fa fa-phone fa-phone-icon"></i>
-                                    +1 (602) 649-5530
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="right_bar">
-                        <ul class="top_contact top_contact_2 white_text poppins_fonts">
-                            <li>
-                                <a href="{{ url('/submit-your-article') }}"
-                                    class="btn btn-light btn-blue red-btn">Submit your Article</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="nav_bar_class">
-            <div class="container">
-                <div class="row">
-                    <div class="col-9 col-md-3 col-sm-6">
-                        <div class="logo-bar">
-                            <a href="{{ url('/') }}">
-                                <img src="{{ asset('assets/images/logo-dark.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-3 col-md-9 col-sm-6">
-                        <nav class="navbar navbar-expand-lg navbar-light">
-                            <div class="container-fluid">
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                                    aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="collapse navbar-collapse" id="navbarNav">
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item">
-                                            <a class="nav-link" aria-current="page"
-                                                href="{{ url('/') }}">Home</a>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                                role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false"
-                                                href="https://www.guinnesspress.org/about-us">About</a>
-                                            <div class="dropdown-menu dropdown-menu-single"
-                                                aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="{{ url('/about-us') }}">About Us</a>
-                                                <!--<a class="dropdown-item" href="/career">Careers</a>-->
-                                                <!--<a class="dropdown-item" href="/contact-us">Locations</a>-->
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/peer-review-process') }}">Peer Review Process</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/archival-practices') }}">Archival Practices</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/publication-fees') }}">Publication Fees</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/repository-policy') }}">Repository Policy</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/crossmark-policy') }}">Crossmark Policy</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/article-correction') }}">Articles Correction</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/article-retraction') }}">Articles Retraction</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/publication-procedure') }}">Publication
-                                                    Procedure</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/policies-and-statements') }}">Policies and
-                                                    Statements</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/copyright-agreement') }}">Copyright Agreement</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/disclaimer') }}">Disclaimer</a>
-                                                <a class="dropdown-item" href="{{ url('/mission-vision') }}">Mission
-                                                    Vission and Values</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/publication-ethics-statement') }}">Publication
-                                                    Ethics Statement</a>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page"
-                                                href="{{ url('/services') }}">Services</a>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                                role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false"
-                                                href="https://www.guinnesspress.org/about-us">Resources</a>
-                                            <div class="dropdown-menu dropdown-menu-single"
-                                                aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/benefits-of-being-a-reviewer') }}">Benefits of
-                                                    Being A Reviewer</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/reviewer-guidelines') }}">Reviewer Guidelines</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/authors-guidelines') }}">Authors Guidelines</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/librarian-resource-center') }}">Librarian Resource
-                                                    Center</a>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" aria-current="page"
-                                                href="{{ url('/journals') }}">Journals</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ url('/contact-us') }}">Contact Us</a>
-                                        </li>
-                                        <!--<li class="nav-item dropdown">-->
-                                        <!--    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="https://www.guinnesspress.org/about-us">Others</a>-->
-                                        <!--    <div class="dropdown-menu dropdown-menu-single" aria-labelledby="navbarDropdown">-->
-                                        <!--<a class="dropdown-item" href="{{ url('/article-processing-charges') }}">Article Processing Charges</a>-->
-                                        <!--       <a class="dropdown-item" href="{{ url('/repository-policy') }}">Repository Policy</a>-->
-                                        <!--<a class="dropdown-item" href="{{ url('/reviewer-guidelines') }}">Reviewer Guidelines</a>-->
-                                        <!--       <a class="dropdown-item" href="{{ url('/librarian-resource-center') }}">Librarian Resource Center</a>-->
-                                        <!--       <a class="dropdown-item" href="{{ url('/crossmark-policy') }}">Crossmark Policy</a>-->
-                                        <!--       <a class="dropdown-item" href="{{ url('/article-correction') }}">Articles Correction</a>-->
-                                        <!--       <a class="dropdown-item" href="{{ url('/article-retraction') }}">Articles Retraction</a>-->
-                                        <!--       <a class="dropdown-item" href="{{ url('/publication-procedure') }}">Publication Procedure</a>-->
-                                        <!--       <a class="dropdown-item" href="{{ url('/policies-and-statements') }}">Policies and Statements</a>-->
-                                        <!--       <a class="dropdown-item" href="{{ url('/copyright-agreement') }}">Copyright Agreement</a>-->
-                                        <!--<a class="dropdown-item" href="{{ url('/publication-fees') }}">Publication Fees</a>-->
-                                        <!--<a class="dropdown-item" href="{{ url('/refund-policy') }}">Refund Policy</a>-->
-                                        <!--<a class="dropdown-item" href="{{ url('/payment-options') }}">Payment Options</a>-->
-                                        <!--    </div>-->
-                                        <!--</li>-->
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <header class="mbl_header">
-        <div class="top_bar">
-            <div class="container">
-                <div class="top_head">
-                    <div class="left_bar">
-                        <ul class="top_contact">
-                            <li>
-                                <a class="poppins_fonts white_text">
-                                    <i class="fa fa-envelope fa-mail-icon"></i>
-                                    info@guinnesspress.org
-                                </a>
-                            </li>
-                            <li>
-                                <a class="poppins_fonts white_text">
-                                    <i class="fa fa-phone fa-phone-icon"></i>
-                                    +1 (602) 649-5530
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="right_bar">
-                        <ul class="top_contact top_contact_2 white_text poppins_fonts">
-                            <li>
-                                <a href="{{ url('/submit-your-article') }}" class="btn btn-light btn-blue">Submit
-                                    your Article</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="nav_bar_class">
-            <div class="container">
-                <div class="row">
-                    <div class="col-9 col-md-9 col-sm-6">
-                        <div class="logo-bar">
-                            <a href="{{ url('/') }}">
-                                <img src="{{ asset('assets/images/logo-dark.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-3 col-md-3 col-sm-6">
-                        <nav class="navbar navbar-expand-lg navbar-light">
-                            <div class="container-fluid">
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                                    aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="col-12 col-md-12 col-sm-12">
-                        <nav class="navbar navbar-expand-lg navbar-light">
-                            <div class="container-fluid">
-                                <div class="collapse navbar-collapse" id="navbarNav">
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page"
-                                                href="{{ url('/') }}">Home</a>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                                role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false"
-                                                href="https://www.guinnesspress.org/about-us">About</a>
-                                            <div class="dropdown-menu dropdown-menu-single"
-                                                aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="{{ url('/about-us') }}">About Us</a>
-                                                <!--<a class="dropdown-item" href="/career">Careers</a>-->
-                                                <!--<a class="dropdown-item" href="/contact-us">Locations</a>-->
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/peer-review-process') }}">Peer Review Process</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/archival-practices') }}">Archival Practices</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/publication-fees') }}">Publication Fees</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/repository-policy') }}">Repository Policy</a>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" aria-current="page"
-                                                href="{{ url('/services') }}">Services</a>
-                                        </li>
-
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                                role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false"
-                                                href="https://www.guinnesspress.org/about-us">Resources</a>
-                                            <div class="dropdown-menu dropdown-menu-single"
-                                                aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/benefits-of-being-a-reviewer') }}">Benefits of
-                                                    Being A Reviewer</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/reviewer-guidelines') }}">Reviewer Guidelines</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/authors-guidelines') }}">Authors Guidelines</a>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" aria-current="page"
-                                                href="{{ url('/journals') }}">Journals</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ url('/contact') }}">Contact Us</a>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                                role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false"
-                                                href="https://www.guinnesspress.org/about-us">Others</a>
-                                            <div class="dropdown-menu dropdown-menu-single"
-                                                aria-labelledby="navbarDropdown">
-                                                <!--<a class="dropdown-item" href="{{ url('/article-processing-charges') }}">Article Processing Charges</a>-->
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/repository-policy') }}">Repository Policy</a>
-                                                <!--<a class="dropdown-item" href="{{ url('/reviewer-guidelines') }}">Reviewer Guidelines</a>-->
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/librarian-resource-center') }}">Librarian Resource
-                                                    Center</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/crossmark-policy') }}">Crossmark Policy</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/articles-correction') }}">Articles Correction</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/articles-retraction') }}">Articles Retraction</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/publication-procedure') }}">Publication
-                                                    Procedure</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/policies-and-statements') }}">Policies and
-                                                    Statements</a>
-                                                <a class="dropdown-item"
-                                                    href="{{ url('/copyright-agreement') }}">Copyright Agreement</a>
-                                                <!--<a class="dropdown-item" href="{{ url('/publication-fees') }}">Publication Fees</a>-->
-                                                <!--<a class="dropdown-item" href="{{ url('/refund-policy') }}">Refund Policy</a>-->
-                                                <!--<a class="dropdown-item" href="{{ url('/payment-options') }}">Payment Options</a>-->
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    @include('user.layouts.navbar')
     @yield('banner')
     @yield('body')
     <footer>
@@ -651,7 +348,7 @@
         });
         $("#slider_2").owlCarousel({
             items: 5,
-            itemsDesktop: [1500, 6],
+            itemsDesktop: [1500, 3],
             itemsDesktopSmall: [1200, 4],
             itemsTablet: [1000, 2],
             itemsTablet: [768, 3],
@@ -980,6 +677,19 @@
             });
         });
     </script>
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16632897206"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-16632897206');
+</script>
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-16632897206/JaguCMDEgcQZELa9l_s9'});
+</script>
 </body>
 
 </html>

@@ -45,7 +45,7 @@ class JournalBoardMemberController extends Controller
             'journal_id' => 'required'
         ]);
         try {
-            $lastOrderID =  JournalBoardMember::OrderByDesc('order_id')->where('journal_name', request('journal_id'))->first();
+            $lastOrderID =  JournalBoardMember::OrderByDesc('order_id')->where('journal_id', request('journal_id'))->first();
             $newOrderId = $lastOrderID->order_id += 1;
             $journal =  Journal::find($request->journal_id);
             if ($request->hasFile('image')) {
@@ -57,10 +57,10 @@ class JournalBoardMemberController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'image' => $image_path,
-                'affiliation' => $request->affiliation,
+                'affliation' => $request->affiliation,
                 'biography' => $request->biography,
                 'country' => $request->country,
-                'journal_name' => $request->journal_id,
+                'journal_id' => $request->journal_id,
                 'google_scholar' => $request->google_scholar,
                 'scopus' => $request->scopus,
                 'orcid' => $request->orcid,
@@ -112,10 +112,10 @@ class JournalBoardMemberController extends Controller
             $member->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                'affiliation' => $request->affiliation,
+                'affliation' => $request->affiliation,
                 'biography' => $request->biography,
                 'country' => $request->country,
-                'journal_name' => $request->journal_id,
+                'journal_id' => $request->journal_id,
                 'google_scholar' => $request->google_scholar,
                 'scopus' => $request->scopus,
                 'orcid' => $request->orcid,

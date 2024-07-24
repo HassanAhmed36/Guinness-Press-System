@@ -21,9 +21,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(AdminSeeder::class);
         $this->call(JournalSeeder::class);
-        $this->call(VolumeSeeder::class);
-        $this->call(IssueSeeder::class);
-        $this->call(EditorialBoardMemberSeeder::class);
-        $this->call(IndexBodySeeder::class);
+         $this->call(VolumeSeeder::class);
+         $this->call(IssueSeeder::class);
+         $this->call(EditorialBoardMemberSeeder::class);
     }
 }

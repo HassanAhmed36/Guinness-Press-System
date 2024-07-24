@@ -17,7 +17,6 @@ class UpdateJournalRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'issn_no' => 'required|string|max:255',
             'is_active' => 'nullable',
             'description' => 'required|string',
             'acceptance_rate' => 'required',

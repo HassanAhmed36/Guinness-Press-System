@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary nextBtn" type="button">Next</button>
+                            <button class="btn btn-light btn-blue  nextBtn" type="button">Next</button>
                         </div>
                         <div class="tab-pane fade" id="step2" style="border: none !important" role="tabpanel"
                             aria-labelledby="step2-tab">
@@ -122,7 +122,7 @@
                                     </div>
                                     <div>
                                         <!-- Button to trigger file upload -->
-                                        <button class="btn btn-primary" type="button" id="addFile">Add Files</button>
+                                        <button class="btn btn-light btn-blue " type="button" id="addFile">Add Files</button>
                                     </div>
                                 </div>
                                 <table class="table table-borderless" id="fileTable">
@@ -153,14 +153,14 @@
                                                     <option value="Other">Other</option>
                                                 </select>
                                             </th>
-                                            <th><button class="btn btn-danger btn-sm remove-row" disabled>Remove</button>
+                                            <th><button class="btn btn-light btn-blue btn-sm remove-row" disabled>Remove</button>
                                             </th>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <button class="btn btn-secondary prevBtn" type="button">Previous</button>
-                            <button class="btn btn-primary nextBtn" type="button">Next</button>
+                            <button class="btn btn-light btn-blue  nextBtn" type="button">Next</button>
                         </div>
                         <div class="tab-pane fade" id="step3" style="border: none !important" role="tabpanel"
                             aria-labelledby="step3-tab">
@@ -189,7 +189,7 @@
                                             <h5 class="my-3">List Of Contributors</h5>
                                         </div>
                                         <div>
-                                            <button class="btn btn-primary" type="button" id="addContributorBtn">Add
+                                            <button class="btn btn-light btn-blue " type="button" id="addContributorBtn">Add
                                                 Contributor</button>
                                         </div>
                                     </div>
@@ -229,7 +229,7 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-danger btn-sm" type="button"
+                                                    <button class="btn btn-light btn-blue btn-sm" type="button"
                                                         disabled>Remove</button>
                                                 </td>
                                             </tr>
@@ -253,7 +253,7 @@
                                 </div>
                             </div>
                             <button class="btn btn-secondary prevBtn" type="button">Previous</button>
-                            <button class="btn btn-primary nextBtn" type="button">Next</button>
+                            <button class="btn btn-light btn-blue  nextBtn" type="button">Next</button>
                         </div>
                         <div class="tab-pane fade" id="step4" style="border: none !important" role="tabpanel"
                             aria-labelledby="step4-tab">
@@ -261,7 +261,7 @@
                                 te information you have entered before continue when you ready click final submission
                             </p>
                             <button class="btn btn-secondary prevBtn" type="button">Previous</button>
-                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <button class="btn btn-light btn-blue " type="submit">Submit</button>
                         </div>
                         <div class="tab-pane fade" id="step5" style="border: none !important" role="tabpanel"
                             aria-labelledby="step5-tab">
@@ -343,7 +343,7 @@
                             <input class="form-check-input primary-contact-checkbox" type="checkbox" value="1" name="author[${newIndex}][is_primary_contact]">
                         </div>
                     </td>
-                    <td><button class="btn btn-danger btn-sm" type="button">Remove</button></td>
+                    <td><button class="btn btn-light btn-blue btn-sm" type="button">Remove</button></td>
                 </tr>`;
                 $("#contributorTable tbody").append(newRow);
             });
@@ -393,7 +393,7 @@
                         </select>
                     </td>
                     <td>
-                        <button class="btn btn-danger btn-sm remove-row">Remove</button>
+                        <button class="btn btn-light btn-blue btn-sm remove-row">Remove</button>
                     </td>
                 </tr>`;
                 tableBody.append(newRowHtml);

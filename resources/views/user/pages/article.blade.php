@@ -21,7 +21,8 @@
     <meta name="citation_volume" content="{{ $article->volume->name }}">
     <meta name="citation_issue" content="{{ $article->issue->name }}">
     <meta name="citation_abstract" content="{{ $cleanAbstract }}">
-    <meta name="copyright" content="Copyright: © 2024 (corresponding author) et al. This is an open access article distributed under the terms of the Creative Commons Attribution License (CC BY 4.0 License), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and publisher are credited.">
+    <meta name="copyright"
+        content="Copyright: © 2024 (corresponding author) et al. This is an open access article distributed under the terms of the Creative Commons Attribution License (CC BY 4.0 License), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and publisher are credited.">
     <meta name="dc.title" content="{{ $article->title }}">
     @foreach ($article->article_details->authors as $author)
         <meta name="dc.creator" content="{{ $author['firstname'] }} {{ $author['lastname'] }}">
@@ -61,7 +62,7 @@
             }
         });
     </script>
-
+  
     <section class="detail_bread_crumb">
         <div class="container">
             <div class="row">
@@ -100,106 +101,48 @@
                         </p>
                     </div>
                     <div class="btn-group">
-                        <a href="javascript:;" data-fancybox="" data-src="#submitArticlePopup"
-                            class="btn btn-light btn-blue red-btn ">Submit Your Article</a>
+                        <a href="{{ route('submit.article') }}" class="btn btn-light btn-blue">Submit Your Article</a>
                         <a href="{{ url('/journal', ['journal_name' => $journal->acronym, 'journal_p' => 'editorial-board']) }}"
                             class="btn btn-light btn-blue">Editorial Board</a>
+                        <button class="btn btn-light btn-blue" id="indexing-toggle">Indexing Bodies</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="slider_bar">
-        <div class="slider_bar_header">
-            <h3>INDEXING BODIES</h3>
-        </div>
-        <div class="owl-carousel" id="slider_1">
-            <div class="item">
-                <a href="https://www.doi.org/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_1.png" class="img-fluid">
-                </a>
+    <div class="my-5" id="indexing-section" style="display: none;">
+        <section class="container">
+            <div class="my-4">
+                <h4>INDEXING BODIES</h4>
             </div>
-            <div class="item">
-                <a href="https://www.researchgate.net/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_2.png" class="img-fluid">
-                </a>
+            <div class="d-flex flex-wrap gap-4">
+                @foreach ($indexing_bodies as $i)
+                    <div class="item">
+                        <a href="{{ $i->link }}">
+                            <img src="{{ asset($i->image) }}" class="img-fluid"
+                                style="height: 100px; width:100px; border-radius:50%; border:1px solid grey; ">
+                        </a>
+                    </div>
+                @endforeach
             </div>
-            <div class="item">
-                <a href="https://www.crossref.org/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_3.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.dimensions.ai/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_4.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.academia.edu/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_5.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.mendeley.com/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_6.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://scholar.google.com/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_7.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.crossref.org/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_8.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://jgateplus.com/home/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_9.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://europub.co.uk/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_10.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.semanticscholar.org/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_11.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.lens.org/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_12.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.scilit.net/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_13.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://discovery.researcher.life/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_14.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://ouci.dntb.gov.ua/en/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_15.png" class="img-fluid">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.connectedpapers.com/">
-                    <img src="https://www.guinnesspress.org/lp/assets/images/index_16.png" class="img-fluid">
-                </a>
-            </div>
-
-        </div>
-    </section>
+        </section>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#indexing-toggle").click(function() {
+                $("#indexing-section").slideToggle("slow");
+            });
+        });
+    </script>
 @endsection
 @section('body')
+    <style>
+        .fs-7 {
+            font-size: 14px !important;
+        }
+    </style>
     <section class="search-journal-filters journal-overview article-overview aos-init aos-animate" data-aos="zoom-in">
         <div class="container-fluid">
             <div class="container">
@@ -209,9 +152,7 @@
                             <div class="journal-details">
                                 <div class="row">
                                     <div class="col-md-2 col-xl-2 col-sm-12">
-
                                         <ul class="article-views">
-
                                             <li class="article-corres-author">
                                                 <h6>{{ $article->views_count }}</h6>
                                                 <span>Views</span>
@@ -259,14 +200,14 @@
                                                 $affiliationArray = [];
                                                 $testingArray = [];
                                                 foreach ($article->article_details->affiliations as $key => $value) {
+                                                
                                                     $affiliationArray[] = [
                                                         'id' => $key + 1,
-                                                        'affiliation' => $value['name'] . $value['country'],
+                                                        'affiliation' => $value['name'] . ',' . $value['country'],
                                                     ];
                                                     $testingArray[] = $value['name'];
                                                 }
                                             @endphp
-
                                             <ul class="article-authors">
                                                 @foreach ($article->article_details->authors as $index => $author)
                                                     <li class="article-corres-author">
@@ -281,11 +222,19 @@
                                                                             $affiliation,
                                                                             $testingArray,
                                                                         );
+                                                                       
+                                                                        
+                                                                        
                                                                         if ($index !== false) {
                                                                             echo $index + 1;
                                                                         }
                                                                     @endphp
                                                                 @endforeach
+                                                                @if($author['orchid_id'])
+                                                                    <a href="https://orcid.org/{{$author['orchid_id']}}" target="_blank">
+                                                                        <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/orcid-2752107-2284924.png?f=webp&w=256" style="width:15px"  />
+                                                                    </a>
+                                                                @endif
                                                             </sup>
                                                         </a>
                                                         @if (!empty($author['orcid_id']))
@@ -299,20 +248,19 @@
                                                     </li>
                                                 @endforeach
                                             </ul>
-
-                                            <p class="author_bio">
+                                            <p class="author_bio fs-7">
                                                 @foreach ($affiliationArray as $index => $author)
                                                     <sup>{{ $author['id'] }}</sup> {{ $author['affiliation'] }}
                                                     {!! $loop->remaining ? '&nbsp; | &nbsp;' : '' !!}
                                                 @endforeach
                                             </p>
                                             <div class="article_vol">
-                                                <p>Volume {{ $article->volume->name }}</p>
-                                                <p>Issue {{ $article->issue->name }}</p>
-                                                <p>Page: [{{ $article->first_page }} - {{ $article->last_page }}]</p>
+                                                <p class="fs-7">Volume {{ $article->volume->name }}</p>
+                                                <p class="fs-7">Issue {{ $article->issue->name }}</p>
+                                                <p class="fs-7">Page: [{{ $article->first_page }} - {{ $article->last_page }}]</p>
                                             </div>
                                             <div class="published_date">
-                                                <p>Published Online:
+                                                <p class="fs-7">Published Online:
                                                     {{ \Carbon\Carbon::parse($article->published_date)->format('F j, Y') }}
                                                 </p>
                                             </div>
@@ -320,7 +268,7 @@
                                             <ul class="article-informations">
                                                 <li class="article-citation">
                                                     DOI: &nbsp;
-                                                    <a class="doi-link" href="https://doi.org/{{ $article->dio }}"
+                                                    <a class="doi-link fs-7" href="https://doi.org/{{ $article->dio }}"
                                                         style="-webkit-user-select: none;
                                                                -webkit-touch-callout: none;
                                                                -moz-user-select: none;
@@ -440,9 +388,11 @@
                                                         <div class="article-titles">
                                                             <h2>References</h2>
                                                             <ul class="reference-content">
-                                                                <li id="reference-content" class='d-none'> {!! $article->article_details->references !!}</li>
-                                                                <li id="referencesTextarea" class="d-flex flex-wrap flex-column justifiy-content-start text-left align-items-start"></li>
-                                                                
+                                                                    {!! $article->article_details->references !!}</li>
+                                                                <!--<li id="referencesTextarea"-->
+                                                                <!--    class="d-flex flex-wrap flex-column justifiy-content-start text-left align-items-start">-->
+                                                                <!--</li>-->
+
                                                             </ul>
                                                         </div>
                                                     </li>
@@ -459,7 +409,8 @@
                                                                 </div>
                                                                 <div>
                                                                     <span> <a
-                                                                            href="{{ route('articles.citation.bib', ['id' => $article->id]) }}">Download Bib</a></span>
+                                                                            href="{{ route('articles.citation.bib', ['id' => $article->id]) }}">Download
+                                                                            Bib</a></span>
                                                                     |
                                                                     <span> <a
                                                                             href="{{ route('articles.citation.ris', ['id' => $article->id]) }}">Download
@@ -470,7 +421,7 @@
                                                                             TXT</a></span>
                                                                 </div>
                                                             </div>
-                                                            <p>
+                                                            <p class="fs-7">
                                                                 <span class="author_name">
                                                                     @foreach ($article->article_details->authors as $index => $author)
                                                                         {{ $author['lastname'] }},
@@ -488,8 +439,8 @@
                                                                     @endforeach
                                                                 </span>
                                                                 ({{ \Carbon\Carbon::parse($article->published_date)->format('Y') }}).
-                                                                <span class="a_title">{{ $article->title }}</span>.
-                                                                <i class="jtitle">{{ $article->journal->title }}</i>,
+                                                                <span class="" style="">{{ $article->title }}</span>.
+                                                                <i class="">{{ $article->journal->name }}</i>,
                                                                 <i>{{ $article->volume->name }}</i>({{ $article->issue->name }}),
                                                                 {{ $article->first_page }}-{{ $article->last_page }}.
                                                                 <a
@@ -524,7 +475,7 @@
                                                     <li>
                                                         <div class="article-titles">
                                                             <h2>Copyright and Permissions</h2>
-                                                            <p>At Guinness Press, authors retain the copyright for all
+                                                            <p class="fs-7">At Guinness Press, authors retain the copyright for all
                                                                 articles published in our journals. These articles are
                                                                 licensed under the open-access Creative Commons CC BY 4.0
                                                                 license, granting free access for reading and download.
@@ -532,17 +483,25 @@
                                                                 appropriately cited when reusing or quoting the article.
                                                                 These terms ensure widespread accessibility while ensuring
                                                                 proper attribution to the authors.</p>
-                                                            <p>All content published by Guinness Press is safeguarded by
+                                                            <p class="fs-7">All content published by Guinness Press is safeguarded by
                                                                 international copyright and intellectual property
                                                                 regulations. We kindly request that you honor these
                                                                 protections when utilizing our materials.</p>
-                                                            <p>For further information, please contact us at
-                                                                info@guinnesspress.org.</p>
+                                                            <p class="fs-7">For further information, please contact us at
+                                                                <span style="text-transform:lowercase;">info@guinnesspress.org</span>.</p>
                                                         </div>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
+                                        
+                                        
+                                        <!--<div class="my-5">-->
+                                        <!--    <h4 class="my-4">This article is cited by</h4>-->
+                                        <!--    <div id="papers-list" class="list-group">-->
+                                               
+                                        <!--    </div>-->
+                                        <!--</div>-->
                                     </div>
                                     <div class="col-md-4 col-xl-4 col-sm-12">
                                         <div class="socialshare_links">
@@ -668,79 +627,54 @@
             });
         }
     </script>
-    <!-- Custom JavaScript -->
-    <!-- Custom JavaScript -->
-    <!-- Custom JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabLinks = document.querySelectorAll('.nav-link');
-            tabLinks.forEach(tab => {
-                tab.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    const targetTab = document.querySelector(this.getAttribute('href'));
-                    if (targetTab.classList.contains('show')) {
-                        targetTab.classList.remove('show');
-                        targetTab.classList.remove('active');
-                    } else {
-                        const tabContents = document.querySelectorAll('.tab-pane');
-                        tabContents.forEach(content => {
-                            content.classList.remove('show');
-                            content.classList.remove('active');
-                        });
-                        targetTab.classList.add('show');
-                        targetTab.classList.add('active');
-                    }
-                });
+        $(document).ready(function() {
+            let text = $('#reference-content').text();
+            console.log(text);
+
+
+            var references = text.split(/\[\d+\]/).filter(Boolean);
+            var updatedReferences = [];
+            var regex = /\d+\)\s*([^,]+),/;
+            var doiRegex = /(https:\/\/doi\.org\/[^\s]+)/gi;
+
+            references.forEach(function(reference, index) {
+                var updatedReference = `[${index + 1}] ${reference.trim()}`;
+                var links = '';
+                var match = reference.match(regex);
+                if (match) {
+                    var extractedString = match[1].trim();
+                    var formattedString = extractedString.replace(/[^\w\s]/gi, '').replace(/\s+/g, '+');
+                    var googleScholarLink =
+                        `<a class="btn btn-sm btn-primary my-1 text-white text-left" href="https://scholar.google.com/scholar_lookup?title=${formattedString}" target="_blank">Google Scholar</a>`;
+                    links += googleScholarLink;
+                }
+                var doiMatch = reference.match(doiRegex);
+                if (doiMatch) {
+                    doiMatch.forEach(function(doi) {
+                        var cleanedDoi = doi.replace(/\s+/g, '');
+                        var clickableDoi =
+                            `<a href="${cleanedDoi}" target="_blank" class="btn btn-sm btn-primary my-1 text-white">CrossRef</a>`;
+                        links += ` ${clickableDoi}`;
+                    });
+                }
+                if (links) {
+                    links = `<div class="d-flex gap-2">${links}</div>`;
+                }
+                updatedReference += links ? `<br>${links}` : '<br>';
+                updatedReferences.push(updatedReference);
             });
+
+            var updatedText = updatedReferences.join('<br>');
+
+
+            updatedText = updatedText.replace(/\[\d+\]/g, '');
+
+            $('#referencesTextarea').html(updatedText);
         });
     </script>
+
     
-<script>
-    $(document).ready(function() {
-        let text = $('#reference-content').text();
-        console.log(text);
-        
-     
-        var references = text.split(/\[\d+\]/).filter(Boolean); 
-        var updatedReferences = [];
-         var regex = /\d+\)\s*([^,]+),/;
-        var doiRegex = /(https:\/\/doi\.org\/[^\s]+)/gi;
-
-        references.forEach(function(reference, index) {
-            var updatedReference = `[${index + 1}] ${reference.trim()}`; 
-            var links = '';
-            var match = reference.match(regex);
-            if (match) {
-                var extractedString = match[1].trim();
-                var formattedString = extractedString.replace(/[^\w\s]/gi, '').replace(/\s+/g, '+');
-                var googleScholarLink = `<a class="btn btn-sm btn-primary my-1 text-white text-left" href="https://scholar.google.com/scholar_lookup?title=${formattedString}" target="_blank">Google Scholar</a>`;
-                links += googleScholarLink;
-            }
-            var doiMatch = reference.match(doiRegex);
-            if (doiMatch) {
-                doiMatch.forEach(function(doi) {
-                    var cleanedDoi = doi.replace(/\s+/g, '');
-                    var clickableDoi = `<a href="${cleanedDoi}" target="_blank" class="btn btn-sm btn-primary my-1 text-white">CrossRef</a>`;
-                    links += ` ${clickableDoi}`;
-                });
-            }
-            if (links) {
-                links = `<div class="d-flex gap-2">${links}</div>`; 
-            }
-            updatedReference += links ? `<br>${links}` : '<br>'; 
-            updatedReferences.push(updatedReference);
-        });
-        
-        var updatedText = updatedReferences.join('<br>'); 
-        
-
-        updatedText = updatedText.replace(/\[\d+\]/g, '');
-
-        $('#referencesTextarea').html(updatedText);
-    });
-</script>
-
-
 
 
 @endsection

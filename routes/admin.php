@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\DoiGeneratorController;
 use App\Http\Controllers\Admin\JournalBoardMemberController;
 use App\Http\Controllers\Admin\JournalController;
@@ -15,6 +16,7 @@ use App\Services\CustomService;
 use App\Services\SubmissionService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MetaDataController;
 
 
 Route::redirect('/admin', '/admin/login');
@@ -86,7 +88,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/submission-feedback', [CustomService::class, 'submitFeedback'])->name('submission.feedback');
 
         Route::post('/assign-peer-reviewed/{id}', [SubmissionService::class, 'assignPeerReviewed'])->name('assign.peer.reviewed');
-    Route::post('/send-file-to-author/{id}', [SubmissionService::class, 'sendFileToAuthor'])->name('send.file.to.author');
+        Route::post('/send-file-to-author/{id}', [SubmissionService::class, 'sendFileToAuthor'])->name('send.file.to.author');
 
 
         Route::get('/users', [UserController::class, 'index'])->name('admin.user.index');
@@ -106,6 +108,26 @@ Route::prefix('admin')->group(function () {
 
         Route::view('/references-generator', 'admin.refrences.index')->name('reference.generator');
 
+        Route::get('/blogs', [BlogController::class, 'index'])->name('admin.blog.index');
+        Route::get('/add-blogs', [BlogController::class, 'create'])->name('admin.blog.create');
+        Route::post('/store-blogs', [BlogController::class, 'store'])->name('admin.blog.store');
+        Route::get('/edit-blogs/{id}', [BlogController::class, 'edit'])->name('admin.blog.edit');
+        Route::post('/update-blogs/{id}', [BlogController::class, 'update'])->name('admin.blog.update');
+        Route::get('/delete-blogs/{id}', [BlogController::class, 'destroy'])->name('admin.blog.delete');
+
+
+
+        Route::view('/news-letter', 'admin.newsletter.index')->name('admin.news.letter');
+        Route::view('/leads', 'admin.leads.index')->name('admin.leads');
+        
+        
+        
+        Route::get('/meta-data', [MetaDataController::class, 'index'])->name('admin.meta.data');
+        Route::post('/post-meta-data', [MetaDataController::class, 'postMetaData'])->name('admin.post.meta.data');
+        
+        Route::get('/mark-converted/{id}', [CustomService::class, 'markAsConverted'])->name('mark.converted');
+        
+        
         Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     });
 });

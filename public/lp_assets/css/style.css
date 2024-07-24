@@ -801,3 +801,20 @@ div#exampleModal .modal-content {
 .sec_2_box_item .journal_img {
     width: 65%;
 }
+
+
+
+@media (max-width: 450px) {
+        .journal_img {
+            margin-left: 4rem !important; 
+        }
+
+}
+
+
+
+
+
+
+
+

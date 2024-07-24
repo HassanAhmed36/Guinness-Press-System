@@ -48,7 +48,7 @@
                                             data-bs-target="#editModal" data-id="{{ $i->id }}">
                                             <i class="fa fa-edit"></i>
                                         </button>
-                                        <a class="btn btn-danger btn-sm"
+                                        <a class="btn btn-light btn-blue btn-sm"
                                             href="{{ route('index.body.destroy', ['id' => $i->id]) }}">
                                             <i class="fa fa-trash"></i>
                                         </a>

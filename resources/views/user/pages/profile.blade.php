@@ -126,7 +126,7 @@
                     </div>
                     <!-- Register Button -->
                     <div class="form-group mb-3 col-12 mt-5">
-                        <button class="btn btn-light btn-blue red-btn mx-2 ms-0">Update Profile</button>
+                        <button class="btn btn-light btn-blue mx-2 ms-0">Update Profile</button>
                     </div>
                 </div>
             </form>

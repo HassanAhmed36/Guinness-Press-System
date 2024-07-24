@@ -30,7 +30,7 @@
                     </div>
                     <div class="btn-group">
                         <a href="javascript:;" data-fancybox="" data-src="#submitArticlePopup"
-                            class="btn btn-light btn-blue red-btn">Submit Your Article</a>
+                            class="btn btn-light btn-blue">Submit Your Article</a>
                         <a href="{{ url('/journal', ['journal_name' => $journal->acronym, 'journal_p' => 'editorial-board']) }}"
                             class="btn btn-light btn-blue">Editorial Board</a>
                         <a href="{{ url('/publication/journal', ['journal_name' => $journal->acronym]) }}"

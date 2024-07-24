@@ -35,7 +35,7 @@ class SubmissionController extends Controller
             'pre_publications' => function ($q) {
                 $q->OrderByDesc('id');
             }
-        ])->first();
+        ])->find($id);
         $members = JournalBoardMember::where('journal_id', $submission->journal_id)->get();
         return view('admin.submission.show', compact('submission', 'members'));
     }

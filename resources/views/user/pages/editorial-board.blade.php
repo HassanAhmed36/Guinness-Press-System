@@ -40,7 +40,7 @@
                     </div>
                     <div class="btn-group">
                         <a href="javascript:;" data-fancybox="" data-src="#submitArticlePopup"
-                            class="btn btn-light btn-blue red-btn">Submit Your Article</a>
+                            class="btn btn-light btn-blue">Submit Your Article</a>
                         <a href="{{ url('/publication/journal', ['journal_name' => $journal->acronym]) }}"
                             class="btn btn-light btn-blue">Journal Home</a>
                         <a href="{{ url('/journal', ['journal_name' => $journal->acronym, 'journal_p' => 'join-board']) }}"
@@ -169,7 +169,7 @@
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title member_name">{{ $board_member->name }}</h5>
-                                        <h6 class="member_affiliation">{{ $board_member->affiliation }}</h6>
+                                        <h6 class="member_affiliation">{{ $board_member->affliation }}</h6>
                                         <h6 class="member_city">
                                             {{ $board_member->country }}</h6>
                                         <p class="card-text"></p>

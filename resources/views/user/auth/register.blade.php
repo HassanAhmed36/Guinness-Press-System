@@ -138,7 +138,7 @@
                 </div>
                 <!-- Register Button -->
                 <div class="form-group mb-3 col-12">
-                    <button class="btn btn-light btn-blue red-btn mx-2 ms-0">Register</button>
+                    <button class="btn btn-light btn-blue mx-2 ms-0">Register</button>
                 </div>
             </div>
         </form>

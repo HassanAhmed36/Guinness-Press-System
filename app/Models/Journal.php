@@ -42,12 +42,7 @@ class Journal extends Model
         return $this->hasMany(JournalVolume::class, 'journal_id');
     }
 
-    protected function acronym(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => strtoupper($value),
-        );
-    }
+
 
     public function indexBodies()
     {

@@ -54,7 +54,7 @@
                                                 data-bs-target="#editModal" data-id="{{ $u->id }}">
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                            <a class="btn btn-danger btn-sm"
+                                            <a class="btn btn-light btn-blue btn-sm"
                                                 href="{{ route('admin.user.delete', ['id' => $u->id]) }}">
                                                 <i class="fa fa-trash"></i>
                                             </a>

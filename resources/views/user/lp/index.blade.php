@@ -41,27 +41,27 @@
     <link rel="stylesheet" href="{{ asset('lp_assets/css/responsive.css') }}">
 
 
-    <script type="text/javascript">
-        (function() {
-            var options = {
-                whatsapp: "+16026495530", // WhatsApp number
-                call_to_action: "Message us", // Call to action
-                position: "left", // Position may be 'right' or 'left'
-            };
-            var proto = document.location.protocol,
-                host = "getbutton.io",
-                url = proto + "//static." + host;
-            var s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.async = true;
-            s.src = url + '/widget-send-button/js/init.js';
-            s.onload = function() {
-                WhWidgetSendButton.init(host, proto, options);
-            };
-            var x = document.getElementsByTagName('script')[0];
-            x.parentNode.insertBefore(s, x);
-        })();
-    </script>
+    <!-- <script type="text/javascript">
+    //     (function() {
+    //         var options = {
+    //             whatsapp: "+16026495530", // WhatsApp number
+    //             call_to_action: "Message us", // Call to action
+    //             position: "left", // Position may be 'right' or 'left'
+    //         };
+    //         var proto = document.location.protocol,
+    //             host = "getbutton.io",
+    //             url = proto + "//static." + host;
+    //         var s = document.createElement('script');
+    //         s.type = 'text/javascript';
+    //         s.async = true;
+    //         s.src = url + '/widget-send-button/js/init.js';
+    //         s.onload = function() {
+    //             WhWidgetSendButton.init(host, proto, options);
+    //         };
+    //         var x = document.getElementsByTagName('script')[0];
+    //         x.parentNode.insertBefore(s, x);
+    //     })();
+    // </script>-->
 
 
     <!-- Meta Pixel Code -->
@@ -89,11 +89,10 @@
     </script>
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=1160206722000590&ev=PageView&noscript=1" /></noscript>
-    <!-- End Meta Pixel Code -->
 </head>
 
 <body>
-    <header>
+    <header class="">
         <div class="bg-dark text-center">
             <p class="text-white text-center fw-bold py-1">In case you have any difficulty submitting your article,
                 please contact us at submission@guinnesspress.org</p>
@@ -123,11 +122,12 @@
                         <h1>PUBLISH AN ARTICLE WITH GUINNESS PRESS</h1>
                         <p>Looking For A Trusted Peer-Reviewed Journal to Publish Research Paper. Look No Further Than
                             Guinness Press.</p>
-                        <div class="btn-group">
-                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)"
-                                class="btn btn-info cta_btn cta_btn_blue">submit manuscript</a>
-
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 text-center text-lg-start text-md-start text-sm-start">
+                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)" class="btn btn-info cta_btn cta_btn_blue">submit manuscript</a>
                         </div>
+                    </div>
+
                         <div class="t_pilot">
                             <a href="https://www.trustpilot.com/review/guinnesspress.org">
                                 <img src="{{ asset('lp_assets/images/image-6.png') }}" class="img-fluid">
@@ -143,69 +143,85 @@
                             </div>
                             <div class="form_body">
                                 <form enctype="multipart/form-data" method="POST" action="{{ route('submit.lp') }}">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Full Name</label>
-                                                <input type="text" class="form-control banner_txt_box" required
-                                                    name="first_name">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Phone Number</label>
-                                                <input type="number" class="form-control banner_txt_box" required
-                                                    name="phone_number">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Email Address</label>
-                                                <input type="email" class="form-control banner_txt_box" required
-                                                    name="email_address">
-                                            </div>
-                                        </div>
+    @csrf
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control banner_txt_box @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required>
+                @error('first_name')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
 
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="country">Country</label>
-                                                <select name="country" id="country"
-                                                    class="form-control banner_txt_box" required>
-                                                    <option selected disabled>Select Country</option>
-                                                    @foreach ($countries as $country)
-                                                        <option value="{{ $country['name'] }}">{{ $country['name'] }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="number" class="form-control banner_txt_box @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required>
+                @error('phone_number')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
 
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label>Select Journals</label>
-                                                <select type="text" class="form-control banner_txt_box" required
-                                                    name="journal">
-                                                    <option>Select Journal</option>
-                                                    @foreach ($journals as $j)
-                                                        <option value="{{ $j->id }}">{{ $j->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label>Upload Manuscript</label>
-                                                <input type="file" class="form-control banner_txt_box" required
-                                                    name="attachement">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <button type="submit" 
-                                                class="btn btn-info cta_btn submit_btn">Submit Manuscript</button>
-                                        </div>
-                                    </div>
-                                </form>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" class="form-control banner_txt_box @error('email_address') is-invalid @enderror" name="email_address" value="{{ old('email_address') }}" required>
+                @error('email_address')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select name="country" id="country" class="form-control banner_txt_box @error('country') is-invalid @enderror" required>
+                    <option value="" disabled selected>Select Country</option>
+                    @foreach ($countries as $country)
+                        <option value="{{ $country['name'] }}" {{ old('country') == $country['name'] ? 'selected' : '' }}>{{ $country['name'] }}</option>
+                    @endforeach
+                </select>
+                @error('country')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+
+        <input type="hidden" name="url" value="{{ request()->fullUrl() }}">
+
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label>Select Journals</label>
+                <select class="form-control banner_txt_box @error('journal') is-invalid @enderror" name="journal" required>
+                    <option value="" disabled selected>Select journal</option>
+                    @foreach ($journals as $j)
+                        <option value="{{ $j->id }}">{{ $j->name }}</option>
+                    @endforeach
+                </select>
+                @error('journal')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label>Upload Manuscript</label>
+                <input type="file" class="form-control banner_txt_box @error('attachement') is-invalid @enderror" name="attachement" required>
+                @error('attachement')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <button type="submit" class="btn btn-info cta_btn submit_btn">Submit Manuscript</button>
+        </div>
+    </div>
+</form>
                             </div>
                         </div>
                     </div>
@@ -219,112 +235,23 @@
                 <h3>Indexing bodies</h3>
             </div>
             <div class="sec_1_body">
-                <div class="">
-                    <ul class="row list-unstyled justify-content-center">
+                <div class="my-5">
+                      <div class="d-flex flex-wrap gap-4 justify-content-center">
                         @foreach ($indexing_bodies as $i)
-                            <li class="col-2 my-2">
+                            <div class="item">
                                 <a href="{{ $i->link }}">
                                     <img src="{{ asset($i->image) }}" class="img-fluid"
-                                        style="border-radius: 50% !important">
+                                        style="height: 100px; width:100px; border-radius:50%; border:1px solid grey; ">
                                 </a>
-                            </li>
+                            </div>
                         @endforeach
-
-                    </ul>
-                </div>
-                <div class="index_list_2">
-                    <div class="owl-carousel" id="indexing">
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_1.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_2.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_3.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_4.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_5.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_6.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_7.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_8.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-
-                    </div>
-                    <div class="owl-carousel" id="indexing2">
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_9.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_10.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_11.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_12.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_13.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_14.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_15.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="">
-                                <img src="{{ asset('assets/images/index_16.png') }}" class="img-fluid">
-                            </a>
-                        </div>
-
                     </div>
                 </div>
             </div>
             <div class="sec_1_footer">
                 <div class="btn-group">
                     <a data-bs-toggle="modal" data-bs-target="#exampleModal" href="javascript:void(0)"
-                        class="btn btn-info cta_btn cta_btn_blue">submit manuscript</a>
+                        class="btn btn-info cta_btn cta_btn_blue ">submit manuscript</a>
 
                 </div>
             </div>
@@ -343,20 +270,20 @@
                 <div class="sec_2_body_data">
                     <div class="row justify-content-center">
                         @foreach ($journals as $j)
-                            <div class="col-lg-6">
+                            <div class="col-6">
                                 <div class="sec_2_box_item d-flex justify-content-center align-items-center">
                                     <div class="row">
-                                        <div class="col-lg-5 col-md-12">
+                                        <div class="col-lg-5 col-md-5 col-sm-5">
                                             <div class="journal_img">
-                                                <img src="{{ $j->image }}" class="img-fluid">
+                                                <img src="{{ asset($j->image) }}" class="img-fluid">
                                             </div>
                                         </div>
-                                        <div class="col-lg-7 col-md-12">
+                                        <div class="col-lg-7 col-md-7 col-sm-7">
                                             <div class="sec_2_box_item_content">
                                                 <a href="https://www.guinnesspress.org/publication/journal/ijerm"
                                                     target="_blank">
                                                     <h3>
-                                                        {{ $j->title }}
+                                                        {{ $j->name }}
                                                     </h3>
                                                 </a>
                                                 <div class="sec_2_box_item_content_footer">
@@ -393,7 +320,7 @@
                                                         </div>
                                                         <div class="btn-group">
                                                             <a href="https://www.guinnesspress.org/publication/journal/ijerm"
-                                                                class="btn btn-danger py-1 px-2 text-white fw-bold">View
+                                                                class="btn btn-info py-2 px-2 cta_btn cta_btn_blue  text-white fw-bold">View
                                                                 Journals</a>
                                                         </div>
                                                     </div>
@@ -414,17 +341,17 @@
                             <div class="item">
                                 <div class="sec_2_box_item">
                                     <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="journal_img">
+                                        <div class="col-12 col-lg-5 col-md-4 col-sm-6 mb-4">
+                                             <div class="journal_img">
                                                 <img src="{{ asset($j->image) }}" class="img-fluid">
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-12 col-lg-7 col-md-8 col-sm-6 mb-4">
                                             <div class="sec_2_box_item_content">
                                                 <a href="https://www.guinnesspress.org/publication/journal/ijerm"
                                                     target="_blank">
                                                     <h3>
-                                                        International Journal Of Empirical Research Methods
+                                                        {{ $j->name }}
                                                     </h3>
                                                 </a>
 
@@ -452,16 +379,16 @@
                                                             </span>{{ $j->journal_matrix->journal_category }}
                                                         </p>
                                                     </div>
-                                                    <div class="right_footer_box">
-                                                        <div class="btn-group">
+                                                    <div class="">
+                                                        <div class="btn-group w-100">
                                                             <a data-bs-toggle="modal" data-bs-target="#exampleModal"
                                                                 href="javascript:void(0)"
                                                                 class="btn btn-info py-2 px-2 cta_btn cta_btn_blue">Submit
                                                                 Manuscript</a>
                                                         </div>
-                                                        <div class="btn-group">
+                                                        <div class="btn-group w-100">
                                                             <a href="https://www.guinnesspress.org/publication/journal/ijerm"
-                                                                class="btn btn-danger py-1 px-2 text-white fw-bold">View
+                                                                class="btn btn-info py-2 px-2 cta_btn cta_btn_blue text-white fw-bold">View
                                                                 Journals</a>
                                                         </div>
                                                     </div>
@@ -1177,72 +1104,103 @@
                                 <h3>SUBMIT ARTICLE TO PUBLISH IN OUR JOURNAL</h3>
                             </div>
                             <div class="form_body">
-                                <form enctype="multipart/form-data" method="POST"
-                                    action="{{ route('submit.lp') }}">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Full Name</label>
-                                                <input type="text" class="form-control banner_txt_box" required
-                                                    name="first_name">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Phone Number</label>
-                                                <input type="number" class="form-control banner_txt_box" required
-                                                    name="phone_number">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Email Address</label>
-                                                <input type="email" class="form-control banner_txt_box" required
-                                                    name="email_address">
-                                            </div>
-                                        </div>
+                                <form enctype="multipart/form-data" method="POST" action="{{ route('submit.lp') }}">
+    @csrf
+    <div class="row">
+        <!-- Full Name Field -->
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control banner_txt_box @error('first_name') is-invalid @enderror" 
+                    name="first_name" value="{{ old('first_name') }}" required>
+                @error('first_name')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
 
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="country">Country</label>
-                                                <select name="country" id="country"
-                                                    class="form-control banner_txt_box" required>
-                                                    <option selected disabled>Select Country</option>
-                                                    @foreach ($countries as $country)
-                                                        <option value="{{ $country['name'] }}">{{ $country['name'] }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
+        <!-- Phone Number Field -->
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="number" class="form-control banner_txt_box @error('phone_number') is-invalid @enderror" 
+                    name="phone_number" value="{{ old('phone_number') }}" required>
+                @error('phone_number')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
 
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label>Select Journals</label>
-                                                <select type="text" class="form-control banner_txt_box" required
-                                                    name="journal">
-                                                    <option>Select Journal</option>
-                                                    @foreach ($journals as $j)
-                                                        <option value="{{ $j->id }}">{{ $j->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label>Upload Manuscript</label>
-                                                <input type="file" class="form-control banner_txt_box" required
-                                                    name="attachement">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <button type="submit" name="submit"
-                                                class="btn btn-info cta_btn submit_btn">Submit Manuscript</button>
-                                        </div>
-                                    </div>
-                                </form>
+        <!-- Email Address Field -->
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" class="form-control banner_txt_box @error('email_address') is-invalid @enderror" 
+                    name="email_address" value="{{ old('email_address') }}" required>
+                @error('email_address')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Country Field -->
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select name="country" id="country" class="form-control banner_txt_box @error('country') is-invalid @enderror" 
+                    required>
+                    <option value="" disabled selected>Select Country</option>
+                    @foreach ($countries as $country)
+                        <option value="{{ $country['name'] }}" {{ old('country') == $country['name'] ? 'selected' : '' }}>
+                            {{ $country['name'] }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('country')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+
+        <input type="hidden" name="url" value="{{ request()->fullUrl() }}">
+
+        <!-- Select Journals Field -->
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label>Select Journals</label>
+                <select class="form-control banner_txt_box @error('journal') is-invalid @enderror" 
+                    name="journal" required>
+                    <option value="" disabled selected>Select Journal</option>
+                    @foreach ($journals as $j)
+                        <option value="{{ $j->id }}">
+                            {{ $j->name }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('journal')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Upload Manuscript Field -->
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label>Upload Manuscript</label>
+                <input type="file" class="form-control banner_txt_box @error('attachement') is-invalid @enderror" 
+                    name="attachement" required>
+                @error('attachement')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="col-lg-12">
+            <button type="submit" name="submit" class="btn btn-info cta_btn submit_btn">Submit Manuscript</button>
+        </div>
+    </div>
+</form>
                             </div>
                         </div>
                     </div>
@@ -1251,6 +1209,16 @@
             </div>
         </div>
     </div>
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16632897206"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-16632897206');
+</script>
 </body>
 
 </html>

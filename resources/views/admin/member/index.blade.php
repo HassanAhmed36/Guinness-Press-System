@@ -50,8 +50,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12">
-                    <div class="table-responsive">
-                        <table id="responsive-datatable" class="table table-bordered nowrap w-100">
+                        <table id="file-datatable" class="table table-bordered dt-responsive nowrap w-100">
                             <thead>
                                 <tr>
                                     <th style="width: 10% !important">S.No</th>
@@ -89,7 +88,6 @@
                                 @endforelse
                             </tbody>
                         </table>
-                    </div>
                 </div>
 
             </div>
@@ -124,16 +122,16 @@
                                 <label for="" class="form-label">Journal</label>
                                 <select id="" class="form-select" name="journal_id" required>
                                     <option selected disabled>Choose Journal</option>
-                                    <option value="ijerm">ijerm</option>
-                                    <option value="cli">cli</option>
-                                    <option value="seer">seer</option>
-                                    <option value="cie">cie</option>
-                                    <option value="jblm">jblm</option>
-                                    <option value="rer">rer</option>
-                                    <option value="pb">pb</option>
-                                    <option value="msr">msr</option>
-                                    <option value="sfe">sfe</option>
-                                    <option value="aci">aci</option>
+                                    <option value="1">ijerm</option>
+                                    <option value="2">cli</option>
+                                    <option value="3">seer</option>
+                                    <option value="4">cie</option>
+                                    <option value="5">jblm</option>
+                                    <option value="6">rer</option>
+                                    <option value="7">pb</option>
+                                    <option value="8">msr</option>
+                                    <option value="9">sfe</option>
+                                    <option value="10">aci</option>
                                 </select>
                             </div>
                             <div class="col-4 mb-4">
@@ -167,7 +165,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="" class="form-label">Biography</label>
-                                <textarea id="biography" cols="30" rows="10" name="biography" class="form-control"
+                                <textarea id="biography" cols="30" rows="10" name="biography" class="form-control content"
                                     placeholder="Enter Biography"></textarea>
                             </div>
                             <style>
@@ -258,7 +256,7 @@
                 success: function(response) {
                     $('#modal-body').html('');
                     $('#modal-body').html(response);
-                    CKEDITOR.replace('biography-edit');
+       
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText);
@@ -349,7 +347,32 @@
                 success: function(response) {
                     $('#modal-body').html('');
                     $('#modal-body').html(response);
-                    CKEDITOR.replace('biography-edit');
+                                 $('.content').each(function() {
+                $(this).richText({
+                    bold: true,
+                    italic: true,
+                    underline: false,
+                    strikeThrough: true,
+                    ol: true,
+                    ul: true,
+                    heading: true,
+                    fontColor: true,
+                    fontSize: true,
+                    imageUpload: false,
+                    fileUpload: false,
+                    videoEmbed: false,
+                    urls: true,
+                    table: false,
+                    removeStyles: false,
+                    code: true,
+                    youtube: false,
+                    align: true,
+                    leftAlign: true,
+                    centerAlign: true,
+                    rightAlign: true,
+                    justify: true,
+                });
+            });
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText);

@@ -58,11 +58,11 @@
             <div class="col-12 mb-4">
                 <label for="" class="form-label">affiliation</label>
                 <input type="text" name="affiliation" class="form-control" placeholder="Enter Affiliateion" required
-                    value="{{ $m->affiliation }}">
+                    value="{{ $m->affliation }}">
             </div>
             <div class="col-12">
                 <label for="" class="form-label">Biography</label>
-                <textarea id="" cols="30" rows="10" name="biography" class="form-control"
+                <textarea id="" cols="30" rows="10" name="biography" class="form-control content"
                     placeholder="Enter Biography">{{ $m->biography }}</textarea>
             </div>
             <style>

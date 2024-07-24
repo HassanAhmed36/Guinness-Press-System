@@ -35,45 +35,45 @@
                         <h3 class="cocogoose_light">
                             Process
                         </h3>
-                        <h1 class="cocogoose_light">
+                        <h1 class="cocogoose_light mb-4">
                             PEER REVIEW PROCESS
                         </h1>
-                        <p class="poppins_fonts">
+                        <p class="poppins_fonts mb-4">
                             Peer review is a vital process used to evaluate the quality of a manuscript before it is
                             published. Independent experts in the relevant research field assess submitted manuscripts for
                             originality, validity, and significance. This aids editors in deciding whether a manuscript
-                            should be published in their journal.
+                            should be published in their journal.s
                         </p>
-                        <h5>
+                        <h5 class="cocogoose_light mb-4">
                             Here Is How It Operates:
                         </h5>
-                        <p class="poppins_fonts">
+                        <p class="poppins_fonts mb-4">
                             When a manuscript is submitted, it undergoes an initial assessment to determine if it meets the
                             submission criteria. If so, the editorial team selects potential peer reviewers within the
                             research area to evaluate the manuscript and provide recommendations.
                         </p>
-                        <p class="poppins_fonts">
+                        <p class="poppins_fonts mb-4">
                             In a double-blind review, the reviewers do not know the authors' names, and conversely, the
                             authors do not know who reviewed their manuscript.
                         </p>
-                        <p class="poppins_fonts">
+                        <p class="poppins_fonts mb-4">
                             The purpose of peer review is to validate the manuscript's integrity. Peer reviewers are
                             experienced professionals who volunteer their time to enhance the manuscripts they review. This
                             process makes manuscripts more robust, easier to comprehend, and more valuable to others in the
                             field.
                         </p>
-                        <p class="poppins_fonts">
+                        <p class="poppins_fonts mb-4">
                             The duration of the review process depends on the responsiveness of the reviewers. The initial
                             round of the process typically takes about six weeks, with a maximum of three months. In cases
                             where reviewers report conflict or are unreasonably delayed, additional expert opinions may be
                             sought. In rare instances where finding a second referee is exceptionally challenging, a
                             decision may be made by the handling Editor based on only one referee report.
                         </p>
-                        <p class="poppins_fonts">
+                        <p class="poppins_fonts mb-4">
                             Revised manuscripts are generally returned to the initial reviewer for reevaluation, who may
                             request further revisions.
                         </p>
-                        <img src="{{ asset('assets/images/peer-review-process/image.jpg') }}" class="img-fluid" />
+                        <img src="{{ asset('assets/images/peer-review-process/image.jpg') }}" class="img-fluid mt-5" />
                     </div>
                 </div>
             </div>
